@@ -298,10 +298,64 @@ var K_CUR="prep2:actual",K_SAVED="prep2:guardadas",K_DISC="prep2:discursos",K_LI
 function lsGet(k,d){try{var x=localStorage.getItem(k);return x?JSON.parse(x):d;}catch(e){return d;}}
 function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
 var K_WEEK="prep2:semana";
+/* Campos de texto válidos de la semana. Un respaldo antiguo guarda `week` como
+   texto (solo la etiqueta): pasarlo a Object.assign esparciría sus caracteres. */
+var WEEK_FIELDS=["key","label","shortLabel","reading","fetched","program","url"];
+function normalizeWeek(w){
+  var out={};
+  if(w&&typeof w==="object"&&!Array.isArray(w)){
+    for(var i=0;i<WEEK_FIELDS.length;i++){var k=WEEK_FIELDS[i];if(typeof w[k]==="string")out[k]=w[k];}
+  }else if(typeof w==="string"){
+    out.shortLabel=w;
+  }
+  return out;
+}
+function normalizeParts(p){
+  if(!Array.isArray(p))return null;
+  var out=[];
+  for(var i=0;i<p.length;i++){if(p[i]&&typeof p[i]==="object"&&!Array.isArray(p[i]))out.push(p[i]);}
+  return out.length?out:null;
+}
+/* Combina el fin de semana importado sobre el actual: nunca deja secciones ni
+   `parrafos` con un tipo inesperado. */
+function mergeWeekend(w){
+  if(!w||typeof w!=="object"||Array.isArray(w))return null;
+  var out=JSON.parse(JSON.stringify(WEEKEND));
+  ["discursoPublico","atalaya"].forEach(function(sec){
+    var src=w[sec];
+    if(!src||typeof src!=="object"||Array.isArray(src))return;
+    for(var k in src){
+      if(k==="parrafos"){if(Array.isArray(src[k]))out[sec].parrafos=src[k];}
+      else if(typeof src[k]==="string")out[sec][k]=src[k];
+    }
+  });
+  return out;
+}
+function weekSnapshot(){
+  var out={};
+  for(var i=0;i<WEEK_FIELDS.length;i++){var k=WEEK_FIELDS[i];if(typeof WEEK[k]==="string")out[k]=WEEK[k];}
+  return out;
+}
+function validWeekKey(k){
+  if(typeof k!=="string"||k.length!==10||k.charAt(4)!=="-"||k.charAt(7)!=="-")return false;
+  for(var i=0;i<10;i++){
+    if(i===4||i===7)continue;
+    var c=k.charAt(i);
+    if(c<"0"||c>"9")return false;
+  }
+  return true;
+}
 var WEEK_DEFAULT=JSON.parse(JSON.stringify(WEEK));
 var PARTS_DEFAULT=JSON.parse(JSON.stringify(PARTS));
 var WEEKEND_DEFAULT=JSON.parse(JSON.stringify(WEEKEND));
-(function loadWeekData(){var s=lsGet(K_WEEK,null);if(!s)return;if(s.week)Object.assign(WEEK,s.week);if(Array.isArray(s.parts))PARTS=s.parts;if(s.weekend)WEEKEND=s.weekend;})();
+(function loadWeekData(){
+  var s=lsGet(K_WEEK,null);
+  if(!s||typeof s!=="object")return;
+  var w=normalizeWeek(s.week);
+  for(var k in w)WEEK[k]=w[k];
+  var p=normalizeParts(s.parts);if(p)PARTS=p;
+  var wk=mergeWeekend(s.weekend);if(wk)WEEKEND=wk;
+})();
 (function init(){var c=lsGet(K_CUR,null);if(c&&c.weekKey===WEEK.key&&c.v){for(var k in c.v){if(c.v[k]!==""&&c.v[k]!==null&&c.v[k]!==undefined)S.v[k]=c.v[k];}}})();
 var SAVE_BUILD="2026-10-19-v2";
 var persistT=null;
@@ -485,7 +539,7 @@ function buildPerlasRespuesta(){var parts=[];for(var i=0;i<PUNTOS.length;i++){if
 var SHARE_CACHE="reunion-share-inbox",SHARE_KEY="./__share_inbox__";
 function shareKeyURL(){return new URL(SHARE_KEY,location.href).href;}
 function exportBackup(){
-  var data={app:"reunion-semana",version:1,exportedAt:new Date().toISOString(),weekKey:WEEK.key,week:WEEK.shortLabel,v:S.v,saved:savedList(),discursos:discursosList()};
+  var data={app:"reunion-semana",version:2,exportedAt:new Date().toISOString(),weekKey:WEEK.key,week:weekSnapshot(),parts:JSON.parse(JSON.stringify(PARTS)),weekend:JSON.parse(JSON.stringify(WEEKEND)),v:S.v,saved:savedList(),discursos:discursosList()};
   var blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
   var url=URL.createObjectURL(blob);
   var a=document.createElement("a");
@@ -504,22 +558,35 @@ function cleanJsonText(t){
 function applyBackupData(data,source){
   if(!data||typeof data!=="object"||Array.isArray(data))throw new Error("El archivo no contiene un respaldo válido");
   var aplicado=false;
-  if(data.v&&typeof data.v==="object"&&!Array.isArray(data.v)){S.v=Object.assign({},S.v,data.v);persistNow();aplicado=true;}
+  if(data.v&&typeof data.v==="object"&&!Array.isArray(data.v)){S.v=Object.assign({},S.v,data.v);aplicado=true;}
   if(Array.isArray(data.saved)){lsSet(K_SAVED,data.saved);aplicado=true;}
   if(Array.isArray(data.discursos)){lsSet(K_DISC,data.discursos);aplicado=true;}
-  if(data.week||Array.isArray(data.parts)||data.weekend){
-    var payload={};
-    if(data.week)payload.week=data.week;
-    if(Array.isArray(data.parts))payload.parts=data.parts;
-    if(data.weekend)payload.weekend=data.weekend;
-    lsSet(K_WEEK,payload);
-    if(payload.week)Object.assign(WEEK,payload.week);
-    if(payload.parts)PARTS=payload.parts;
-    if(payload.weekend)WEEKEND=payload.weekend;
+  if("week" in data||"parts" in data||"weekend" in data){
+    var week=normalizeWeek(data.week);
+    /* respaldo antiguo: `week` era texto y el dato útil estaba en weekKey */
+    var desdeObjeto=!!week.key;
+    if(!week.key&&validWeekKey(data.weekKey))week.key=data.weekKey;
+    if(week.key&&(!week.label||!week.shortLabel)){
+      var wl=weekLabels(week.key);
+      if(wl){
+        if(!desdeObjeto)week.key=wl.key;
+        if(!week.label)week.label=wl.label;
+        if(!week.shortLabel)week.shortLabel=wl.shortLabel;
+      }
+    }
+    for(var kw in week)WEEK[kw]=week[kw];
+    var parts=normalizeParts(data.parts);if(parts)PARTS=parts;
+    var weekend=mergeWeekend(data.weekend);if(weekend)WEEKEND=weekend;
+    /* se guarda siempre la forma completa y normalizada, para que al recargar
+       loadWeekData la lea sin romperse */
+    lsSet(K_WEEK,{week:weekSnapshot(),parts:PARTS,weekend:WEEKEND});
     aplicado=true;
   }
   if(!aplicado)throw new Error("El archivo no tiene datos de respaldo reconocibles");
-  var campos=0;for(var k in S.v){if(S.v[k])campos++;}
+  /* después de fijar WEEK: si no, K_CUR queda con el weekKey viejo y al
+     recargar se descartarían los datos importados */
+  persistNow();
+  var campos=0;for(var kc in S.v){if(S.v[kc])campos++;}
   render();
   toast("Respaldo importado ✓"+(campos?" ("+campos+" campos)":""));
   return true;
