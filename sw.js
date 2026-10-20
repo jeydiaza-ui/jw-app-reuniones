@@ -1,7 +1,7 @@
 // Service worker: permite abrir la app sin conexión.
 // Estrategia: primero red (para recibir cambios), y si no hay conexión, la copia guardada.
 // También recibe el archivo .json que Android envía por «Compartir» (share_target).
-const CACHE = "reunion-v2";
+const CACHE = "reunion-v3";
 const SHARE_CACHE = "reunion-share-inbox";
 const SHARE_KEY = new URL("./__share_inbox__", self.location.href).href;
 const SHARE_PATH = new URL("./share-target", self.location.href).pathname;
