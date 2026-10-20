@@ -1,0 +1,10 @@
+# Estado local de la herramienta (no forma parte de la app)
+.codewhale/
+
+# Copias de respaldo del editor
+*.bak
+
+# Archivos temporales del sistema
+Thumbs.db
+desktop.ini
+.DS_Store

@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F6E6E">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Reunión de la semana</title>
+<style>
+:root{--bg:#F2F5F7;--card:#FFF;--ink:#1B2A3A;--muted:#5B6B7B;--line:#D5DDE4;--accent:#0F6E6E;--accent-ink:#FFF;--warn:#A8650A;--bad:#B3261E;--ok:#2E7D4F;--soft:#E6EEF0;--src:#E9F1FA;box-sizing:border-box}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121A22;--card:#1B2631;--ink:#E8EEF3;--muted:#9AA9B8;--line:#2E3C4A;--accent:#4FB8B0;--accent-ink:#0B1A1A;--warn:#E3A33B;--bad:#F2877F;--ok:#6CC38C;--soft:#22313D;--src:#1F3042}}
+:root[data-theme="dark"]{--bg:#121A22;--card:#1B2631;--ink:#E8EEF3;--muted:#9AA9B8;--line:#2E3C4A;--accent:#4FB8B0;--accent-ink:#0B1A1A;--warn:#E3A33B;--bad:#F2877F;--ok:#6CC38C;--soft:#22313D;--src:#1F3042}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;min-height:100vh}
+#app{max-width:680px;margin:0 auto;padding:0 14px 120px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;margin:0;line-height:1.25}
+h1{font-size:26px}h2{font-size:21px}h3{font-size:17px}
+a{color:var(--accent);word-break:break-word}
+.top{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line);margin-bottom:14px}
+.top h2{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.src{background:var(--src);border-radius:10px;padding:10px 12px;margin:10px 0;font-size:15px}
+.src b.t,.mine b.t{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:4px}
+.mine{border-left:3px solid var(--warn);padding:2px 0 2px 10px;margin:10px 0;font-size:15px}
+.muted{color:var(--muted);font-size:14px}.small{font-size:13px}
+.btn{appearance:none;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:700;padding:12px 14px;border-radius:12px;min-height:48px;cursor:pointer}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.danger{color:var(--bad);border-color:var(--bad)}
+.btn.armed{background:var(--bad);color:#fff;border-color:var(--bad)}
+.btn.sm{min-height:40px;padding:8px 12px;font-size:14px}
+.btn.block{display:block;width:100%}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.grow{flex:1;min-width:0}
+label{display:block;font-size:14px;font-weight:700;margin:12px 0 4px}
+textarea,input[type=text]{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:110px;resize:vertical}
+textarea:focus,.btn:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.badge{display:inline-block;background:var(--soft);color:var(--muted);border-radius:99px;padding:2px 10px;font-size:12px;font-weight:600}
+.badge.ok{background:var(--ok);color:#fff}
+.badge.warn{background:var(--warn);color:#fff}
+.sec{font-family:Georgia,serif;font-size:15px;font-weight:700;color:var(--accent);margin:20px 0 8px;letter-spacing:.01em}
+.num{font-variant-numeric:tabular-nums}
+details{margin-top:10px}summary{cursor:pointer;font-weight:700;padding:10px 0;color:var(--accent)}
+ul.tight{margin:6px 0 6px 18px;padding:0}ul.tight li{margin-bottom:6px}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:8px;padding:2px 8px;font-size:13px;margin:2px 4px 2px 0}
+.notice{font-size:13px;color:var(--muted);border-left:3px solid var(--accent);padding:4px 10px;margin:10px 0}
+.warnbox{border:1px solid var(--warn);border-radius:10px;padding:10px 12px;font-size:14px;margin:10px 0}
+.infobox{border:1px solid var(--accent);border-radius:10px;padding:10px 12px;font-size:13px;margin:10px 0;background:var(--src)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:24px;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:99px;font-weight:700;z-index:40;font-size:14px}
+.pick{display:flex;gap:8px;align-items:center;font-weight:700;margin:0}
+.pick input{width:22px;height:22px}
+.pn{display:flex;gap:10px;align-items:baseline}
+.pn .n{font-family:Georgia,serif;font-size:22px;font-weight:700;color:var(--accent)}
+.edit-hint{background:#FFF7E6;border:1px solid #E3A33B;border-radius:10px;padding:10px 12px;font-size:14px;margin:10px 0;color:#5B3D00;font-weight:600}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .edit-hint{background:#3A2E12;color:#F0D28B;border-color:#5B4519}}
+.field-wrap{position:relative;margin:8px 0}
+.field-wrap textarea,.field-wrap input[type=text]{border:1.5px dashed var(--line);background:var(--card);padding:12px;font-size:16px;line-height:1.55;transition:border-color .15s,background .15s}
+.field-wrap textarea:focus,.field-wrap input[type=text]:focus{border-style:solid;border-color:var(--accent);background:var(--bg)}
+.field-wrap .edit-badge{position:absolute;top:-10px;right:10px;background:var(--accent);color:var(--accent-ink);font-size:11px;font-weight:700;padding:2px 8px;border-radius:99px;letter-spacing:.02em}
+.disc-sec-title{display:flex;align-items:center;gap:6px;font-family:Georgia,serif;font-size:14px;color:var(--accent);font-weight:700;letter-spacing:.03em;margin-bottom:6px}
+.bible-box{background:var(--soft);border-left:3px solid var(--accent);padding:12px 14px;border-radius:8px;font-family:Georgia,serif;font-size:16px;line-height:1.6;margin:8px 0}
+.apoyo-box{background:#FAF3E0;border-left:3px solid var(--warn);padding:10px 12px;border-radius:8px;font-size:14px;line-height:1.55;margin:8px 0;font-style:italic}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .apoyo-box{background:#2E2415}}
+.lesson-reminder{background:#E8F1EC;border-left:3px solid var(--ok);padding:10px 12px;border-radius:8px;font-size:14px;margin:10px 0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .lesson-reminder{background:#1A2E22;border-color:#6CC38C}}
+.tabs{display:flex;gap:6px;margin-bottom:14px}
+.tabs button{flex:1;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-weight:700;font-size:14px;cursor:pointer}
+.tabs button.active{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+#timerbox{position:fixed;z-index:30;display:none;width:74px;height:74px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-family:Georgia,serif;font-weight:700;font-size:15px;align-items:center;justify-content:center;box-shadow:0 6px 22px rgba(0,0,0,.28);cursor:grab;user-select:none;touch-action:none;font-variant-numeric:tabular-nums;letter-spacing:.02em;border:2px solid rgba(255,255,255,.25)}
+#timerbox.show{display:flex}
+#timerbox.over{background:var(--bad);color:#fff;animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 6px 22px rgba(179,38,30,.5)}50%{box-shadow:0 6px 22px rgba(179,38,30,.9)}}
+#timerbox.expanded{width:min(300px,82vw);height:auto;border-radius:16px;padding:12px 14px;background:var(--card);color:var(--ink);border:1px solid var(--line);flex-direction:column;align-items:stretch}
+#timerbox .tbig{font-family:Georgia,serif;font-size:34px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.02em;line-height:1}
+#timerbox.over .tbig{color:var(--bad)}
+#timerbox .tmini{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+#timerbox .tgrid{display:flex;gap:12px;align-items:center}
+#timerbox .grow{flex:1;min-width:0}
+#timerbox .ttitle{font-size:12px;color:var(--muted);font-weight:700;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#timerbox .tclose{position:absolute;top:6px;right:8px;background:none;border:0;color:var(--muted);font-size:20px;line-height:1;padding:4px;cursor:pointer}
+@media print{body > *:not(#printOverlay){display:none !important}#printOverlay{position:static !important;padding:0 !important}.print-toolbar{display:none !important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="timerbox"></div>
+<div id="toastbox"></div>
+
+<script>
+(function(){
+"use strict";
+
+var W="https://wol.jw.org/es/wol";
+var WK=W+"/d/r4/lp-s/202026256";
+function pc(n){return W+"/pc/r4/lp-s/202026256/"+n;}
+function bc(n){return W+"/bc/r4/lp-s/202026256/"+n;}
+
+var WEEK={key:"2026-10-19",label:"19–25 de octubre de 2026",shortLabel:"19–25 octubre 2026",reading:"JEREMÍAS 45, 46",fetched:"6 de octubre de 2026",program:"Guía de actividades mwb26 septiembre–octubre, págs. 10-11",url:WK};
+
+var PARTS=[
+  {id:"p0",section:"INICIO",title:"Canción 33 y oración | Palabras de introducción",min:1,refs:[{t:"Canción 33",u:pc("/0/0")}]},
+  {id:"p1",section:"TESOROS DE LA BIBLIA",num:1,title:"Tengamos un punto de vista equilibrado de la protección de Jehová",min:10},
+  {id:"p2",section:"TESOROS DE LA BIBLIA",num:2,title:"Busquemos perlas escondidas",min:10},
+  {id:"p3",section:"TESOROS DE LA BIBLIA",num:3,title:"Lectura de la Biblia",min:4,refs:[{t:"Jer 40:1-10",u:bc("/6/0")},{t:"th lección 2",u:pc("/5/0")}]},
+  {id:"p4",section:"SEAMOS MEJORES MAESTROS",num:4,title:"Empiece conversaciones",min:2,raw:"DE CASA EN CASA.",refs:[{t:"lmd lección 2 punto 3",u:pc("/6/0")}]},
+  {id:"p5",section:"SEAMOS MEJORES MAESTROS",num:5,title:"Empiece conversaciones",min:2,raw:"PREDICACIÓN INFORMAL.",refs:[{t:"lmd lección 2 punto 5",u:pc("/7/0")}]},
+  {id:"p6",section:"SEAMOS MEJORES MAESTROS",num:6,title:"Empiece conversaciones",min:4,raw:"PREDICACIÓN PÚBLICA. Una persona se queda mirando el carrito.",refs:[{t:"lmd lección 5 punto 3",u:pc("/8/0")}]},
+  {id:"p7",section:"SEAMOS MEJORES MAESTROS",num:7,title:"Explique sus creencias",min:3,raw:"Escenificación. Tema: ¿Quién es Jehová?",refs:[{t:"ijwbq artículo 103",u:pc("/9/0")},{t:"th lección 17",u:pc("/10/0")}]},
+  {id:"p8",section:"NUESTRA VIDA CRISTIANA",num:8,title:"Jehová protege a las viudas",min:15,raw:"Análisis con el auditorio. Video: A pesar de perder a mi esposo, vuelvo a ser feliz."},
+  {id:"p9",section:"NUESTRA VIDA CRISTIANA",num:9,title:"Estudio bíblico de la congregación",min:30,refs:[{t:"Libro de estudio — cap. 11",u:pc("/13/0")}]},
+  {id:"p10",section:"NUESTRA VIDA CRISTIANA",title:"Palabras de conclusión | Canción 38 y oración",min:3,refs:[{t:"Canción 38",u:pc("/14/0")}]}
+];
+
+var WEEKEND={
+  discursoPublico:{title:"(Título del discurso público)",speaker:"(Orador invitado)"},
+  atalaya:{title:"(Artículo de La Atalaya — se carga automáticamente)",openingSong:"",baseText:"",closingSong:"",url:"",parrafos:[]}
+};
+
+var SRC={
+  guia:{t:"Guía de actividades 5-11 octubre",u:WK},
+  jr:{t:"jr cap. 15",u:W+"/d/r4/lp-s/1102010154"},
+  cl:{t:"cl cap. 7",u:W+"/d/r4/lp-s/1102002029"},
+  w06:{t:"La Atalaya 15/6/2006",u:W+"/d/r4/lp-s/2006444"},
+  w80:{t:"La Atalaya 15/10/1980",u:W+"/d/r4/lp-s/1980164"},
+  itG:{t:"Perspicacia «Guedalías»",u:W+"/d/r4/lp-s/1200001632"},
+  itI:{t:"Perspicacia «Ismael»",u:W+"/d/r4/lp-s/1200002215"},
+  itB:{t:"Perspicacia «Baalís»",u:W+"/d/r4/lp-s/1200000516"},
+  itBa:{t:"Perspicacia «Barba»",u:W+"/d/r4/lp-s/1200000590"},
+  itK:{t:"Perspicacia «Kimham»",u:W+"/d/r4/lp-s/1200000957"},
+  j40:{t:"Biblia estudio Jer 40",u:W+"/b/r4/lp-s/nwtsty/24/40"},
+  j41:{t:"Biblia estudio Jer 41",u:W+"/b/r4/lp-s/nwtsty/24/41"},
+  r40:{t:"Biblia con refs Jer 40",u:W+"/b/r4/lp-s/Rbi8/24/40"},
+  th2:{t:"th lección 2",u:pc("/5/0")},
+  lmd2:{t:"lmd lección 2",u:pc("/6/0")},
+  lmd5:{t:"lmd lección 5",u:pc("/8/0")},
+  ijwbq103:{t:"ijwbq 103",u:pc("/9/0")},
+  th17:{t:"th lección 17",u:pc("/10/0")},
+  video:{t:"Video — A pesar de perder a mi esposo",u:"https://www.jw.org/finder?lank=pub-jwbvod26_2_VIDEO&wtlocale=S"}
+};
+
+/* ============ DISCURSO 1 — NUEVA ESTRUCTURA ============
+   Cada punto tiene UN texto bíblico principal (literal) y notas de apoyo (paráfrasis). */
+var DISCURSO_T1 = {
+  title:"La esperanza es clave para estar contentos",
+  duration:10,
+  intro:"Hermanos, ¿alguna vez han sentido que la asignación que tienen es demasiado pesada? ¿O que otros reciben oportunidades que ustedes desearían tener? Esta semana la lectura es Jeremías 45 y 46. El capítulo 45 es el más corto del libro: cinco versículos. Y es muy especial, porque no es un mensaje para toda la nación, sino para una sola persona: Baruc, el secretario del profeta Jeremías. Baruc era un hombre fiel. Escribió dos veces el rollo de los mensajes de Jeremías, acompañó al profeta durante años y hasta fue con él a Egipto. Pero hubo un momento en que se sintió agotado y descontento. Lo que Jehová le dijo a él nos ayuda a todos nosotros. Veamos por qué la esperanza es clave para estar contentos.",
+  desarrollo:[
+    {
+      titulo:"Primer punto: El descontento de Baruc",
+      texto:{
+        ref:"Jer 45:1-3",
+        intro:"Leamos el contexto. Fijémonos primero en la fecha: el cuarto año de Jehoiaquim, es decir, el año 605 antes de nuestra era. En ese momento Babilonia estaba creciendo como potencia mundial. Para Judá eran días de mucha tensión. Y Baruc no era un hombre cualquiera: su hermano Seraíah ocupaba un puesto importante en la corte (Jeremías 51:59). Es probable que Baruc hubiera podido tener una vida cómoda y un cargo de prestigio. Pero su asignación era otra: escribir y transmitir un mensaje de condena contra una nación desobediente. Imagínese la presión: copiar a mano, durante meses, palabras que enfurecían a los líderes del país.",
+        lectura:"En el cuarto año de Jehoiaquim hijo de Josías —el rey de Judá—, cuando Baruc hijo de Nerías escribía en un libro las palabras que el profeta Jeremías le dictaba, Jeremías le dijo las siguientes palabras: “Esto es lo que Jehová, el Dios de Israel, dice sobre ti, Baruc: ‘Tú dijiste: «¡Pobre de mí, porque Jehová le ha añadido tristeza a mi dolor! Estoy agotado de tanto suspirar, y no encuentro alivio»’”.»",
+        explicacion:"Por eso dijo: «Jehová le ha añadido tristeza a mi dolor». Es interesante que no culpó a los babilonios ni al rey: sintió que Jehová le había añadido peso. Se estaba agotando, y «no encontraba alivio». ¿Y qué le dijo Jehová? Leamos Jeremías 45:4, 5: «Debes decirle a él: “Esto es lo que dice Jehová: ‘¡Mira! Voy a derrumbar lo que he edificado y voy a arrancar lo que he plantado, el país entero. Pero tú andas buscando cosas grandes para ti. Deja de buscar esas cosas. Porque voy a mandarle una calamidad a toda la gente —afirma Jehová—, pero a ti te daré tu vida como botín de guerra vayas donde vayas’”». Notemos el tono: Jehová no lo destruyó ni lo humilló. Le habló con franqueza, como un padre cariñoso: «Deja de buscar esas cosas»."
+      },
+      apoyo:"La Atalaya de julio de 2025, página 22 párrafos 8 y 9, explica que Baruc perdió de vista lo más importante: concentrarse en lo que Jehová quería que hiciera. Empezó a pensar demasiado en sí mismo y en lo que él quería hacer. ¿Cuáles eran esas «cosas grandes»? No lo sabemos con exactitud. Quizá un puesto de honor, seguridad económica, reconocimiento, o simplemente una vida tranquila sin persecución. Lo cierto es que Baruc estaba midiendo su situación con la vara equivocada.",
+      leccion:"Si dejamos de estar contentos con lo que tenemos, podemos perder la alegría y tomar malas decisiones (La Atalaya, julio de 2025, página 20 párrafo 2). Piense en lo que pasó con Baruc: no abandonó a Jeremías. Aceptó la corrección y siguió sirviendo. Eso fue lo que lo salvó."
+    },
+    {
+      titulo:"Segundo punto: El peligro de dejar de estar contentos",
+      texto:{
+        ref:"1 Cor 4:6, 7",
+        intro:"¿Por qué es tan peligroso el descontento? Porque no se queda en un simple sentimiento. Crece y puede llevarnos a decisiones que dañan nuestra amistad con Jehová. La Atalaya menciona algunos ejemplos reales: hay quienes trabajan muchísimas horas extra para comprar cosas que en realidad no necesitan, y otros han llegado a robar dinero o bienes porque pensaron: «Me lo merezco», «Ya me cansé de esperar» o «Puedo llevarme esto ahora y devolverlo después».",
+        lectura:"Hermanos, he dicho estas cosas usándome a mí y a Apolos como ejemplos para su beneficio, para que aprendan de nosotros esta regla: “No vayan más allá de las cosas que están escritas”. Así no se llenarán de orgullo y no se pondrán a favor de uno y en contra de otro. Pues ¿quién hace que tú seas diferente a los demás? En realidad, ¿qué tienes tú que no hayas recibido? Entonces, si lo recibiste, ¿por qué vas presumiendo como si no lo hubieras recibido?».",
+        explicacion:"Esa es la clave: todo lo que tenemos lo hemos recibido. Los talentos, la congregación donde servimos, las asignaciones, la salud, el tiempo: todo es un regalo de Jehová por su bondad inmerecida. Romanos 12:3 y 6 lo confirma: «Por la bondad inmerecida que se me ha mostrado, le digo a cada uno de ustedes que no piense de sí mismo más de lo que debe pensar, sino que piense de un modo que demuestre buen juicio, según la medida de fe que Dios le haya dado. [...] Así que tenemos distintos dones según la bondad inmerecida que se nos ha mostrado». Y Efesios 2:8, 9 añade: «Por esta bondad inmerecida, ustedes han sido salvados mediante la fe. Pero no ha sido por sus propios méritos, sino que es un regalo de Dios. En efecto, no es por las obras, para que nadie tenga motivos para presumir»."
+      },
+      apoyo:"Proverbios 30:9 muestra adónde puede llevar ese razonamiento: «No sea que me sacie y reniegue de ti diciendo “¿Quién es Jehová?”, o termine en la pobreza y robe, deshonrando así el nombre de mi Dios». Robar es robar, aunque nos convenzamos de que tenemos razones. Y hay algo todavía más serio: algunos se han sentido tan decepcionados por no recibir cierta responsabilidad que han dejado de servir a Jehová. Gálatas 6:9 nos advierte: «Así que no dejemos de hacer lo que está bien, porque al debido tiempo cosecharemos si no nos cansamos».",
+      leccion:"Nadie «se gana» una asignación. Jehová no nos debe nada. Cuando entendemos eso, dejamos de mirar lo que otros tienen y empezamos a valorar lo que nosotros tenemos. ¿Cómo puede un siervo dedicado llegar al punto de dejar de servir? Poco a poco: primero deja de estar contento; después empieza a compararse; luego se aísla; y al final toma decisiones que nunca habría imaginado."
+    },
+    {
+      titulo:"Tercer punto: La esperanza corrige el rumbo",
+      texto:{
+        ref:"Jer 45:5",
+        intro:"Ahora bien, Jehová no solo corrigió a Baruc: le dio algo que le levantó el ánimo. Le dijo: «a ti te daré tu vida como botín de guerra vayas donde vayas». En medio de una calamidad nacional, Jehová le garantizó a Baruc lo más valioso: la vida. No le prometió riquezas ni un puesto importante. Le prometió que sobreviviría.",
+        lectura:"«Pero tú andas buscando cosas grandes para ti. Deja de buscar esas cosas. Porque voy a mandarle una calamidad a toda la gente —afirma Jehová—, pero a ti te daré tu vida como botín de guerra vayas donde vayas».",
+        explicacion:"La Atalaya de julio de 2025, página 24 párrafos 13 y 14, explica por qué la esperanza es tan importante hoy. Vivimos en «los últimos días» y todos tenemos problemas que son «difíciles de soportar» (2 Timoteo 3:1). Jehová nos ayuda cada día dándonos guía, fuerzas y apoyo (Salmo 145:14). Pero además nos da una esperanza que puede sostenernos en los peores momentos. Pensemos en algunas promesas concretas: «los pobres no serán olvidados para siempre; la esperanza de los mansos no desaparecerá jamás» (Salmo 9:18); él «rescatará al pobre que grita por ayuda» y «les salvará la vida» (Salmo 72:12-14); «les secará toda lágrima de sus ojos, y la muerte ya no existirá, ni habrá más tristeza ni llanto ni dolor» (Apocalipsis 21:3, 4)."
+      },
+      apoyo:"2 Corintios 4:17, 18: «Porque, aunque las dificultades son momentáneas y livianas, producen en nosotros una gloria de una grandeza cada vez más extraordinaria, una gloria eterna, mientras mantenemos la vista fija en las cosas que no se ven, y no en las cosas que se ven. Porque las cosas que se ven son temporales, pero las que no se ven son eternas». La Atalaya compara la esperanza con un par de gafas que nos ayudan a ver más claramente el futuro Paraíso. Si estamos agobiados por problemas económicos, podemos imaginarnos la vida cuando ya no existan ni el dinero ni las deudas ni la pobreza. Si nos sentimos decepcionados porque no recibimos cierta asignación, podemos pensar en lo poco que nos importará eso cuando seamos perfectos y llevemos miles de años sirviendo a Jehová. 1 Timoteo 6:19 dice que así nos conseguimos «un tesoro, unos buenos cimientos para el futuro».",
+      leccion:"La esperanza no es un consuelo vacío: es lo que corrige el rumbo cuando el descontento nos desvía. Si la alimentamos todos los días, nos ayuda a estar contentos ahora y a mantenernos fieles hasta el final."
+    }
+  ],
+  aplicacion:"Hermanos, ¿qué «cosas grandes» podríamos estar buscando nosotros? Un puesto, el reconocimiento de los hermanos, más dinero, una vida sin sacrificios. Si notamos que el descontento está creciendo, hagamos lo que hizo Baruc: aceptar la corrección y volver a mirar la esperanza. Tres preguntas para llevarnos esta semana: 1) ¿Estoy contento con lo que Jehová me ha dado? 2) ¿Estoy alimentando mi esperanza todos los días? 3) ¿Estoy tratando a los hermanos como amigos, o los estoy comparando conmigo?",
+  conclusion:"Baruc aceptó la corrección, y Jehová le conservó la vida. Su historia está en la Biblia no para avergonzarlo, sino para enseñarnos algo: la esperanza es clave para estar contentos. Que nosotros también podamos decir, como el salmista: «Jehová sostiene a todos los que están a punto de caer y levanta a todos los que están encorvados» (Salmo 145:14). Nuestras pruebas son momentáneas. Lo que Jehová tiene preparado es eterno."
+};
+
+/* ============ PERLAS ============ */
+var PERLA1={
+  q:"Jer 40:12. ¿Cómo demuestra este versículo que Jehová le dio a su pueblo la buena tierra descrita en Deuteronomio 8:6-8?",
+  verses:[{t:"Jer 40:12",u:bc("/4/0")},{t:"Dt 8:6-8",u:bc("/5/0")}],
+  pubs:[{t:"w06 15/6 16 párr. 4",u:pc("/4/0")}],
+  found:[
+    "w06 15/6 pág. 16, párr. 4: Moisés prometió a Israel una tierra de vides, higos y granadas (Dt 8:8). Las vides eran tan abundantes y productivas que, incluso en 607 a. E.C., cuando los ejércitos de Nabucodonosor devastaron Judá, los que quedaron en la tierra recogieron vino y fruta de verano en gran cantidad (Jer 40:12; 52:16).",
+    "Jer 40:10-12: Guedalías animó a recoger vino, fruta de verano y aceite, y los judíos dispersos volvieron a Judá y recogieron mucho vino y mucha fruta."
+  ],
+  draft:"Dt 8:6-8 describe una tierra buena, con vides, higos y granadas. Jer 40:12 muestra que, incluso después de la devastación de Judá, la tierra seguía siendo tan fértil que los judíos que volvieron recogieron mucho vino y fruta de verano. Así se ve que Jehová sí les dio la buena tierra que había prometido (w06 15/6 pág. 16, párr. 4)."
+};
+var PERLA2_Q="¿Qué perlas espirituales ha encontrado en la lectura bíblica de esta semana?";
+
+var PUNTOS=[
+ {v:"Jer 40:2, 3",vu:bc("/1/0"),idea:"Nebuzaradán, jefe de la guardia babilonio, le dice a Jeremías que Jehová había anunciado esta calamidad y que le sobrevino al pueblo por pecar contra Él y no obedecer su voz.",fuentes:["j40","w80"],ref:"Biblia de estudio, Jer 40:2, 3; La Atalaya 15/10/1980, párr. 3.",aprendemos:"Lo que Jehová anuncia se cumple.",aplicar:"Esto nos enseña una lección muy práctica. Jehová nos advierte por amor, pero muchas veces no queremos esperar a ver el cumplimiento para obedecer. Hoy recibimos advertencias claras en la Biblia: evitar malas compañías, cuidar lo que vemos y escuchamos, mantenernos separados del mundo. A veces pensamos «a mí no me va a pasar nada», pero la historia de Judá nos recuerda que las advertencias de Jehová siempre se cumplen. ¿Verdad que queremos ser de los que escuchan desde el principio y no de los que aprenden por las malas? Tomemos en serio cada consejo, porque siempre busca nuestro bien."},
+ {v:"Jer 40:4-6",vu:bc("/1/0"),idea:"Soltado de las esposas, Jeremías puede elegir adónde ir; decide quedarse con Guedalías en Mizpá, y el jefe de la guardia le da víveres y un regalo.",fuentes:["j40","jr","r40"],ref:"Biblia de estudio, Jer 40:4-6; jr cap. 15, párr. 16.",aprendemos:"Jehová puede usar a cualquiera para cuidar de sus siervos.",aplicar:"Qué consolador es este detalle. Jehová no solo liberó a Jeremías; también se aseguró de que tuviera alimento y hasta un regalo para el camino. Y lo hizo mediante un oficial extranjero, alguien que ni siquiera adoraba a Jehová. Esto nos enseña que nuestro Dios puede usar a quien sea para cuidar de sus siervos. Quizás hoy sea un vecino, un compañero de trabajo, un médico o hasta un desconocido. Cuando pasamos por una necesidad, no nos desanimemos pensando que nadie nos ayudará. Más bien, orémosle a Jehová con confianza, porque él puede mover los corazones en la dirección correcta. Y cuando tengamos oportunidad, seamos también ese instrumento para ayudar a un hermano necesitado."},
+ {v:"Jer 40:7-10",vu:bc("/1/0"),idea:"Guedalías, hijo de Ahicam y nieto de Safán, fue puesto al mando por el rey de Babilonia. Les juró a los jefes militares que les iría bien si servían a los caldeos y los animó a recoger vino, fruta de verano y aceite.",fuentes:["itG","w80"],ref:"Perspicacia, vol. 1, «Guedalías» núm. 4; La Atalaya 15/10/1980, párr. 9.",aprendemos:"La dirección de Jehová no siempre es la que esperamos, pero siempre es la mejor.",aplicar:"Aquí hay una lección para nosotros. Jehová, por medio de Jeremías, había dicho que se quedaran en la tierra y sirvieran a Babilonia. Puede que esa no fuera la respuesta que esperaban, pero era la que les convenía. Nosotros también recibimos dirección que a veces no es la que esperábamos: cuando se nos anima a ser pacientes con un hermano difícil, a esperar en Jehová en vez de tomar venganza, o a no aceptar un trabajo que nos impide asistir a las reuniones. En esos momentos, ¿vamos a confiar en que Jehová sabe más que nosotros? Recordemos que su dirección siempre busca nuestro bien. Obedezcamos aunque el camino no sea el que hubiéramos elegido."},
+ {v:"Jer 40:13-16",vu:bc("/1/0"),idea:"Johanán y los jefes del ejército avisan a Guedalías del plan de Baalís e Ismael. Guedalías no les cree y rechaza que Johanán actúe en secreto.",fuentes:["itG","itI","r40"],ref:"Perspicacia, vol. 1, «Guedalías» núm. 4 e «Ismael» núm. 5.",aprendemos:"Rechazar una advertencia por orgullo puede costar muy caro.",aplicar:"Este pasaje nos advierte sobre algo serio: rechazar una advertencia por orgullo o por exceso de confianza en nosotros mismos. Guedalías no creyó que un miembro de la familia real pudiera traicionarlo. Quizás pensó que conocía bien a Ismael, o que nadie se atrevería. Pero se equivocó, y costó muchas vidas. Nosotros también podemos ser advertidos: cuando un anciano nos aconseja sobre una amistad, cuando un hermano maduro nos hace una observación, o cuando leemos un consejo bíblico que no nos gusta. ¿Cómo reaccionamos? ¿Con humildad, o pensando «yo ya sé lo que hago»? Seamos humildes. Aceptemos los consejos y verifiquemos las advertencias. La humildad puede salvarnos de muchas tristezas."},
+ {v:"Jer 40:14",vu:bc("/1/0"),idea:"Baalís es el rey de Ammón que envió a Ismael. En 1984 se halló en Tell el-ʽUmeiri (Jordania) un sello con el nombre Baʽalyishʽa, de fines del siglo VII a. E.C.; es posible que se trate del Baalís de la Biblia.",fuentes:["itB","w80"],ref:"Perspicacia, vol. 1, «Baalís»; La Atalaya 15/10/1980, párr. 11.",aprendemos:"La Biblia habla de personas y lugares reales.",aplicar:"Este detalle nos fortalece de una manera especial. Muchos critican la Biblia diciendo que es un libro de leyendas. Pero mira lo que ha pasado: en 1984 se encontró en Jordania un sello con el nombre Baʽalyishʽa, muy parecido al rey Baalís del que habla la Biblia. ¿Casualidad? No. Es una confirmación más de que la Biblia habla de personas reales, en lugares reales, en tiempos reales. Esto nos da confianza. Cuando alguien cuestione la exactitud de la Biblia, podemos mencionar estos descubrimientos con tranquilidad. Y sobre todo, nos recuerda que si podemos confiar en los detalles históricos, mucho más podemos confiar en sus promesas y en sus consejos para nuestra vida."},
+ {v:"Jer 41:1",vu:bc("/2/0"),idea:"Ismael era de linaje real y uno de los hombres principales del rey. La Atalaya sugiere que pudo haberse resentido de que Guedalías, que no era de la familia real, fuera el gobernador, y que Baalís lo usó como instrumento.",fuentes:["j41","w80"],ref:"Biblia de estudio, Jer 41:1; La Atalaya 15/10/1980, párr. 11.",aprendemos:"El resentimiento puede llevar a alguien a traicionar.",aplicar:"Esta es una advertencia que todos necesitamos. Ismael era de la familia real y probablemente creía que él merecía ser gobernador, no Guedalías. Ese resentimiento lo llevó a conspirar y finalmente a asesinar. ¡Cuánto daño puede hacer un corazón resentido! Nosotros podríamos pensar: «¿yo? ¿resentido? Jamás». Pero pensemos: ¿qué sentimos cuando otro hermano recibe un privilegio que nosotros deseábamos? ¿Nos alegramos sinceramente, o sentimos un poquito de celos? Seamos honestos. Pidámosle a Jehová que nos ayude a ver a nuestros hermanos con el mismo cariño con que él los ve. Alegrémonos sinceramente por ellos."},
+ {v:"Jer 40:10; 41:1",vu:bc("/1/0"),idea:"Guedalías animó a recoger la cosecha. La Atalaya explica que se acercaba la fiesta de las cabañas, pero no había templo en Jerusalén y no la celebraron; el asesinato de Guedalías ocurrió en el séptimo mes, el de esa fiesta.",fuentes:["w80","r40"],ref:"La Atalaya 15/10/1980, párrs. 7, 8, 12.",aprendemos:"No debemos descuidar las ocasiones de adorar a Jehová.",aplicar:"Fíjese en el contraste. Aquí vemos a un grupo de judíos que podían haberse reunido para adorar a Jehová en la fiesta de las cabañas, pero no lo hicieron. Y justo en esos días ocurrió la tragedia. Nosotros hoy tenemos reuniones, asambleas, predicación, estudio personal. ¿Las consideramos valiosas o las vemos como una rutina? Puede que a veces digamos: «estoy cansado, mejor me quedo en casa». Pero ¿nos damos cuenta de que esas ocasiones de adoración son un regalo de Jehová? Son momentos para fortalecernos, para animarnos unos a otros, para recibir dirección. No dejemos pasar esas oportunidades. Prioricemos siempre la adoración, porque Jehová bendice a los que lo ponen primero."},
+ {v:"Jer 41:2, 3",vu:bc("/2/0"),idea:"Ismael y 10 hombres mataron a Guedalías mientras comían con él, y también a los judíos y soldados caldeos que estaban allí. Guedalías no había tomado precauciones.",fuentes:["j41","itG","w80"],ref:"Biblia de estudio, Jer 41:2, 3; Perspicacia, «Guedalías» núm. 4.",aprendemos:"La prudencia y la bondad no están reñidas.",aplicar:"Esta escena es terrible: la traición ocurrió mientras comían juntos. Guedalías había recibido a Ismael con hospitalidad, y este pagó con asesinato. ¿Qué aprendemos? Que la prudencia y la bondad no están reñidas. Podemos ser hospitalarios, bondadosos, abiertos, pero también prudentes. Por ejemplo, en la predicación, en las redes sociales, en los negocios, hay personas que pueden querer aprovecharse de nuestra bondad. No hay que volverse desconfiados ni fríos, pero sí usar buen juicio. Y en el caso de Guedalías, él desatendió una advertencia directa. La lección es clara: escuchemos, evaluemos y seamos prudentes sin dejar de ser cristianos bondadosos."},
+ {v:"Jer 41:5",vu:bc("/2/0"),idea:"Ochenta hombres de Siquem, Siló y Samaria llegaron con ofrendas para la casa de Jehová, con la barba afeitada, la ropa rasgada y cortaduras. Perspicacia indica que las cortaduras estaban prohibidas por la Ley (Le 19:28; 21:5).",fuentes:["j41","itBa"],ref:"Biblia de estudio, Jer 41:5; Perspicacia, vol. 1, «Barba».",aprendemos:"No basta con querer adorar a Jehová; hay que adorarlo como él pide.",aplicar:"Aquí vemos a ochenta hombres que querían adorar a Jehová. Venían con ofrendas a la casa de Jehová. Su intención era buena, sin duda. Pero la Biblia menciona que traían la barba afeitada y cortaduras en el cuerpo. La Ley de Moisés prohibía esas prácticas, porque imitaban costumbres paganas. Esto nos enseña algo importante: no basta con querer adorar a Jehová; tenemos que adorarlo como él pide. Hoy podríamos caer en la misma trampa si mezclamos la adoración pura con costumbres o ideas del mundo. Revisemos siempre nuestras prácticas: ¿están en armonía con lo que la Biblia enseña, o las hacemos porque «siempre se ha hecho así»? Jehová merece una adoración limpia."},
+ {v:"Jer 41:11-15",vu:bc("/2/0"),idea:"Cuando Johanán y los jefes supieron de las atrocidades de Ismael, fueron a pelear con él y lo hallaron junto a las grandes aguas de Gabaón. Los cautivos se alegraron al verlos y regresaron con Johanán; Ismael y ocho hombres escaparon a Ammón.",fuentes:["j41","itI","w80"],ref:"Biblia de estudio, Jer 41:11-15; Perspicacia, «Ismael» núm. 5.",aprendemos:"Ayudar a un hermano en dificultad puede ser la manera en que Jehová actúa.",aplicar:"Qué escena tan emotiva. Cuando Johanán y sus hombres aparecieron, los cautivos que Ismael llevaba se llenaron de alegría. Habían sido rescatados. Nosotros también podemos ser como esos cautivos necesitados de ayuda, o como Johanán dispuesto a actuar. Pensemos: ¿cuándo fue la última vez que ayudamos a un hermano que estaba pasando por un momento difícil? ¿Visitamos a alguien enfermo? ¿Apoyamos a una familia que pasó por una pérdida? A veces basta con una llamada, un mensaje, una visita corta. Y si nosotros somos los que estamos en necesidad, no nos aislemos. Permitamos que los hermanos nos ayuden. Así como Jehová usó a Johanán, también puede usar a cualquier hermano para rescatarnos del desánimo."},
+ {v:"Jer 41:16-18",vu:bc("/2/0"),idea:"Por miedo a los caldeos, Johanán y los suyos se detuvieron en el lugar de hospedaje de Kimham, cerca de Belén, para seguir a Egipto. La Atalaya explica que pidieron consejo a Jeremías, prometieron obedecer lo que Jehová dijera y luego rechazaron su mensaje (Jer 42:1–43:3).",fuentes:["j41","itK","w80"],ref:"Biblia de estudio, Jer 41:16-18; La Atalaya 15/10/1980, párrs. 13, 14.",aprendemos:"Orar pidiendo dirección solo sirve si estamos dispuestos a obedecer.",aplicar:"Este último ejemplo nos da mucho en qué pensar. Johanán y sus hombres pidieron consejo a Jeremías. Le dijeron: «Jehová sea testigo de que haremos todo lo que él diga». Pero cuando Jehová respondió que se quedaran en la tierra, no les gustó la respuesta y se fueron a Egipto. ¿Cuántas veces nos pasa algo parecido? Orar pidiendo dirección, pero en el fondo ya tener decidido lo que queremos hacer. Solo queremos que Jehová confirme. Aprendamos a orar con el corazón abierto, dispuestos a obedecer cualquier respuesta. Antes de orar, preguntémonos: «¿estoy dispuesto a hacer lo que Jehová diga, aunque no me guste?». Si la respuesta es sí, nuestra oración tendrá el poder que debe tener."}
+];
+
+var MAESTROS={
+  p4:{marco:"Casa en casa. El publicador llega a una casa, saluda con amabilidad a una persona que abre la puerta. El objetivo es iniciar una conversación sobre el sufrimiento. Duración: 2 minutos.",leccion:"lmd lección 2 punto 3 — Iniciar conversaciones. Escuchar primero, mostrar interés sincero, presentar una sola idea clara.",objetivo:"Iniciar una conversación breve y amable en la predicación de casa en casa.",tema:"Presentar una verdad sencilla de la Biblia que invite a seguir hablando.",texto:"Romanos 5:12 — el pecado entró en el mundo y con él la muerte.",dialogo:"PUBLICADOR: Buenos días, ¿cómo está? Estamos hablando brevemente con los vecinos sobre una pregunta que muchos se hacen: ¿por qué hay tanto sufrimiento?\n\nAMO DE CASA: Sí, a veces uno se lo pregunta.\n\nPUBLICADOR: Mire lo que dice la Biblia aquí en Romanos 5:12. (Lee el texto.) ¿Sabía que la Biblia promete que pronto el sufrimiento terminará?\n\nAMO DE CASA: No lo sabía.\n\nPUBLICADOR: Me gustaría mostrarle cómo. ¿Le parece si en otra ocasión lo vemos con más calma?",demostrar:["Saludo amable y natural","Interés sincero por la persona","Una sola idea clara, no varias","Leer un texto directamente de la Biblia","Ofrecer una visita de seguimiento"],conclusion:"Terminar con una pregunta abierta o un ofrecimiento, no con un monólogo."},
+  p5:{marco:"Predicación informal. El publicador está en una situación cotidiana (parada de bus, fila, mercado) y aprovecha una conversación casual. Duración: 2 minutos.",leccion:"lmd lección 2 punto 5 — Predicación informal. Escuchar el tema que la persona toca, adaptarse a él, ser breve.",objetivo:"Aprovechar una conversación informal para despertar interés espiritual.",tema:"Una verdad bíblica que responda a algo que la persona ya haya mencionado.",texto:"El texto que se ajuste al tema surgido (por ejemplo, Salmo 37:11).",dialogo:"PUBLICADOR: (Tras un comentario casual) Qué interesante lo que dice. ¿Sabía que la Biblia habla de eso?\n\nAMO DE CASA: ¿En serio?\n\nPUBLICADOR: Sí. Mire lo que dice aquí. (Lee el texto.) Fíjese en lo que promete.\n\nAMO DE CASA: Eso suena bien.\n\nPUBLICADOR: ¿Le gustaría que en otra ocasión lo viéramos con más calma?",demostrar:["Escuchar primero, hablar después","Aprovechar el tema que la persona ya tocó","Ser breve: no convertir la charla en un discurso","Un solo texto bíblico bien explicado"],conclusion:"Dejar la puerta abierta sin presionar."},
+  p6:{marco:"Predicación pública. El publicador está en el carrito de publicaciones. Una persona se detiene y observa los títulos. Duración: 4 minutos.",leccion:"lmd lección 5 punto 3 — Predicación pública. Buen uso del carrito, invitar con calidez, ofrecer una sola publicación.",objetivo:"Iniciar una conversación con alguien que se detiene en el carrito.",tema:"Una verdad atractiva para el transeúnte.",texto:"Un texto breve que responda al interés mostrado.",dialogo:"PUBLICADOR: Buenas tardes. ¿Le llama la atención alguna de estas publicaciones?\n\nAMO DE CASA: Sí, esa. ¿De qué trata?\n\nPUBLICADOR: Trata de algo que quizás le interese: por qué hay tanto sufrimiento. ¿Se lo ha preguntado alguna vez?\n\nAMO DE CASA: Todos nos lo preguntamos.\n\nPUBLICADOR: La Biblia responde. Mire esto. (Lee.) ¿Le gustaría llevarse esta revista? Es gratuita.\n\nAMO DE CASA: Sí, gracias.",demostrar:["Buena presentación personal","Puesto ordenado y bien ubicado","Invitación cálida a detenerse","Usar la publicación como puente, no como fin","Ofrecer una sola publicación"],conclusion:"Agradecer y dejar la puerta abierta para otra visita al carrito."},
+  p7:{marco:"Escenificación. Explique sus creencias. Tema: ¿Quién es Jehová? Duración: 3 minutos.",leccion:"th lección 17 — Explicar con claridad. Usar la Biblia como autoridad, responder con sencillez, invitar a seguir estudiando.",objetivo:"Explicar con claridad la respuesta bíblica a una pregunta de creencias.",tema:"¿Quién es Jehová?",texto:"Salmo 83:18 — el nombre de Jehová. Revelación 4:11 — Jehová es el Creador.",dialogo:"AMO DE CASA: Yo creo en Dios, pero nunca he entendido bien quién es exactamente.\n\nPUBLICADOR: Es una buena pregunta. La Biblia nos dice que Jehová es el Creador de todo (Rev 4:11), y le da un nombre propio, que aparece miles de veces en el texto original. ¿Sabía que él mismo quiere que lo conozcamos por su nombre?\n\nAMO DE CASA: No lo sabía.\n\nPUBLICADOR: Además de ser todopoderoso, la Biblia dice que Jehová es amor (1Jn 4:8), y quiere que todos lo conozcan. ¿Le gustaría aprender más sobre él?",demostrar:["Escuchar la pregunta completa antes de responder","Usar la Biblia como autoridad","Responder con claridad, sin tecnicismos","Invitar a seguir estudiando"],conclusion:"Terminar confirmando amablemente la respuesta y ofreciendo más información."}
+};
+
+var VIDA_P8={
+  introGuion:"Análisis con el auditorio. Vamos a ver cómo Jehová protege a las viudas. La Biblia dice en Salmo 68:5 que Jehová es «padre de los huérfanos y defensor de las viudas». Hoy veremos tres cosas: cómo lo hizo en tiempos bíblicos, cómo lo hace hoy, y qué podemos hacer nosotros para honrarlas. Antes de empezar, veamos el video «A pesar de perder a mi esposo, vuelvo a ser feliz».",
+  video:{t:"A pesar de perder a mi esposo, vuelvo a ser feliz",u:"https://www.jw.org/finder?lank=pub-jwbvod26_2_VIDEO&wtlocale=S"},
+  preguntas:[
+    {q:"Use las herramientas de investigación disponibles en su idioma para encontrar uno o dos relatos bíblicos que hablen sobre alguna viuda. ¿Cómo nos muestran estas historias que Jehová quiere y protege a las viudas?",respuesta:"En la Biblia hay varios ejemplos. Rut, la moabita, quedó viuda y acompañó a Noemí; Jehová la recompensó con un nuevo hogar y llegó a formar parte del linaje del Mesías (Rut 4:13-17). La viuda de Sarepta fue sostenida por Jehová mediante el profeta Elías, y no le faltó alimento durante la sequía (1Re 17:8-16). Jesús resucitó al hijo único de la viuda de Naín, y movido a compasión se lo devolvió vivo (Luc 7:11-15). Todas estas historias muestran que Jehová no olvida a las viudas y actúa a favor de ellas."},
+    {q:"(Después del video) ¿Qué le enseña este video sobre cómo Jehová cuida y protege a las viudas hoy en día?",respuesta:"El video muestra que Jehová cuida a las viudas principalmente mediante la hermandad: los ancianos, los publicadores y los hermanos en general pueden convertirse en un apoyo real. Salmo 68:5 llama a Jehová «padre de los huérfanos y defensor de las viudas», y ese papel lo cumple hoy por medio de su pueblo."},
+    {q:"¿Cómo podemos honrar a las viudas hoy en día?",respuesta:"Santiago 1:27 dice que la religión pura incluye cuidar de las viudas. Podemos honrarlas invitándolas a nuestras casas, ofreciéndoles ayuda práctica, escuchándolas, incluyéndolas en actividades de la congregación, y respetando el papel que ellas mismas quieren desempeñar. También podemos apoyarlas en la predicación y asegurarnos de que no se sientan solas, sobre todo en fechas señaladas."}
+  ],
+  aplicacion:"Como congregación, podemos ser ese apoyo real. No se trata solo de palabras, sino de acciones concretas: incluir, visitar, escuchar, ayudar. Cuando lo hacemos, estamos reflejando el cariño de Jehová por las viudas.",
+  cierre:"Jehová es el defensor de las viudas. Y nos da el privilegio de ser sus manos y sus pies para cuidarlas. ¿Verdad que queremos estar atentos a las viudas de nuestra congregación y demostrarles ese mismo cariño?"
+};
+
+var ESTUDIO_P9={
+  fuente:{t:"Libro de estudio — cap. 11",u:pc("/13/0")},
+  libro:"(Se cargará automáticamente desde jw.org)",
+  textosDestacados:[
+    {ref:"(Texto corto 1)",texto:"(Pendiente de cargar)"},
+    {ref:"(Texto corto 2)",texto:"(Pendiente de cargar)"}
+  ],
+  preguntas:[
+    {q:"(Pregunta 1 del capítulo)",a:""},
+    {q:"(Pregunta 2 del capítulo)",a:""},
+    {q:"(Pregunta 3 del capítulo)",a:""}
+  ]
+};
+
+var LECTURA_P3={
+  pasaje:"Jeremías 40:1-10",
+  textoCompleto:"1 Palabra que le vino a Jeremías procedente de Jehová después que Nebuzaradán el jefe de la guardia lo envió desde Ramá, cuando lo había tomado estando él atado con esposas en medio de todos los desterrados de Jerusalén y de Judá que iban siendo llevados al destierro a Babilonia: 2 Y el jefe de la guardia tomó a Jeremías y le dijo: «Jehová tu Dios ha hablado esta calamidad contra este lugar, 3 y ha venido Jehová e hizo tal como había dicho, porque ustedes pecaron contra Jehová y no obedecieron su voz, y esto les ha sucedido. 4 Y ahora, mira, te he soltado hoy de las esposas que están en tus manos. Si es bueno a tus ojos venir conmigo a Babilonia, ven, y yo velaré por ti. Pero si es malo a tus ojos venir conmigo a Babilonia, no vengas. Mira, toda la tierra está delante de ti. Adonde te parezca bueno y adonde sea recto a tus ojos ir, ve.» 5 Y como él aún no se volvía, [dijo:] «Vuelve también a Guedalías hijo de Ahicam hijo de Safán, a quien el rey de Babilonia ha nombrado sobre las ciudades de Judá, y mora con él en medio del pueblo; o a todo lugar que sea recto a tus ojos ir, ve.» Y el jefe de la guardia le dio un regalo y lo envió. 6 Y Jeremías vino a Guedalías hijo de Ahicam en Mizpá y siguió morando con él en medio del pueblo que quedaba en el país. 7 Y sucedió que todos los jefes de las fuerzas militares que estaban en el campo, ellos y sus hombres, oyeron que el rey de Babilonia había nombrado a Guedalías hijo de Ahicam sobre el país, y que le había encomendado los hombres y las mujeres y los pequeñuelos, y de los de la tierra baja que no habían sido llevados al destierro a Babilonia. 8 Entonces vinieron a Guedalías en Mizpá: Ismael hijo de Netanías, y Johanán y Jonatán hijos de Carea, y Seraías hijo de Tanhumet, y los hijos de Efai el netofatita, y Jezanías hijo del maacatita, ellos y sus hombres. 9 Y Guedalías hijo de Ahicam hijo de Safán les juró a ellos y a sus hombres, diciendo: «No tengan miedo de servir a los caldeos. Moren en la tierra y sirvan al rey de Babilonia, y les irá bien. 10 Y en cuanto a mí, voy a morar en Mizpá para estar de pie delante de los caldeos que vengan a nosotros. Y ustedes, recojan vino y fruta de verano y aceite, y pónganlos en sus vasijas, y moren en sus ciudades que han tomado.»",
+  leccion:"Folleto th, lección 2 — Aplicar el consejo: leer con claridad, dar énfasis, pausas correctas, ritmo natural.",
+  consejos:[
+    "Lea el pasaje completo primero, sin detenerse, para captar el sentido general.",
+    "Marque las palabras clave que llevan el énfasis principal.",
+    "Practique las pausas: después de una coma breve, después de un punto más larga.",
+    "Cuidado con los nombres propios: Nebuzaradán, Guedalías, Ahicam, Safán, Mizpá, Ismael, Johanán, Jonatán, Carea, Seraías, Tanhumet, Efai, netofatita, Jezanías, maacatita.",
+    "No corra: el pasaje tiene muchos nombres y detalles. Mejor lento y claro.",
+    "Al terminar, haga una pausa breve antes de continuar."
+  ]
+};
+
+var ATALAYA={intro:"",parrafos:[{num:"1",texto:"",pregunta:"",respuesta:""},{num:"2",texto:"",pregunta:"",respuesta:""},{num:"3",texto:"",pregunta:"",respuesta:""}]};
+
+/* ============ ESTADO ============ */
+var S={v:{},view:"home",id:null,demo:false,tabWeek:"weekday"};
+var K_CUR="prep2:actual",K_SAVED="prep2:guardadas",K_DISC="prep2:discursos",K_LIVE="prep2:live";
+
+function lsGet(k,d){try{var x=localStorage.getItem(k);return x?JSON.parse(x):d;}catch(e){return d;}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+var K_WEEK="prep2:semana";
+var WEEK_DEFAULT=JSON.parse(JSON.stringify(WEEK));
+var PARTS_DEFAULT=JSON.parse(JSON.stringify(PARTS));
+var WEEKEND_DEFAULT=JSON.parse(JSON.stringify(WEEKEND));
+(function loadWeekData(){var s=lsGet(K_WEEK,null);if(!s)return;if(s.week)Object.assign(WEEK,s.week);if(Array.isArray(s.parts))PARTS=s.parts;if(s.weekend)WEEKEND=s.weekend;})();
+(function init(){var c=lsGet(K_CUR,null);if(c&&c.weekKey===WEEK.key)S.v=c.v||{};})();
+var persistT=null;
+function persist(){clearTimeout(persistT);persistT=setTimeout(function(){lsSet(K_CUR,{weekKey:WEEK.key,v:S.v});},100);}
+function persistNow(){clearTimeout(persistT);lsSet(K_CUR,{weekKey:WEEK.key,v:S.v});}
+function val(k,def){return (k in S.v)?S.v[k]:(def||"");}
+S.live=lsGet(K_LIVE,null);S.loading=false;S.liveErr="";
+
+/* ============ CRONÓMETRO ============ */
+var K_TIMER="prep2:timer",K_TICK="prep2:timerpos";
+var TIMER=lsGet(K_TIMER,{running:false,startAt:0,accumulated:0,assigned:600,label:""});
+var TPOS=lsGet(K_TICK,null);
+var TIMER_INT=null,TIMER_EXPANDED=false;
+function timerElapsedMs(){if(TIMER.running)return TIMER.accumulated+(Date.now()-TIMER.startAt);return TIMER.accumulated;}
+function fmtMs(ms){if(ms<0)ms=0;var s=Math.floor(ms/1000),m=Math.floor(s/60);s=s%60;return (m<10?"0":"")+m+":"+(s<10?"0":"")+s;}
+function ensurePos(){if(TPOS)return;var w=window.innerWidth,h=window.innerHeight;TPOS={x:Math.max(8,w-90),y:Math.max(8,h-220)};lsSet(K_TICK,TPOS);}
+function clampPos(box){var w=window.innerWidth,h=window.innerHeight;var bw=box.offsetWidth||74,bh=box.offsetHeight||74;TPOS.x=Math.max(6,Math.min(w-bw-6,TPOS.x));TPOS.y=Math.max(6,Math.min(h-bh-6,TPOS.y));}
+function applyPos(box){ensurePos();clampPos(box);box.style.left=TPOS.x+"px";box.style.top=TPOS.y+"px";box.style.right="auto";box.style.bottom="auto";}
+function timerTick(){
+  lsSet(K_TIMER,TIMER);
+  var box=document.getElementById("timerbox");if(!box)return;
+  if(!TIMER.label){box.classList.remove("show");return;}
+  box.classList.add("show");
+  var el=timerElapsedMs();var remain=TIMER.assigned*1000-el;var over=remain<0;
+  box.classList.toggle("over",over);
+  if(TIMER_EXPANDED){
+    box.classList.add("expanded");
+    box.innerHTML='<button class="tclose" data-act="t-close">×</button><div class="ttitle">'+esc(TIMER.label)+'</div><div class="tgrid"><div class="tbig">'+fmtMs(el)+'</div><div class="grow"><div class="tmini">Asignado: <b>'+fmtMs(TIMER.assigned*1000)+'</b></div><div class="tmini">Restante: <b>'+(over?'+'+fmtMs(-remain):fmtMs(remain))+'</b></div></div></div><div class="row" style="margin-top:10px">'+(TIMER.running?'<button class="btn sm primary grow" data-act="t-pause">PAUSAR</button>':(TIMER.accumulated>0?'<button class="btn sm primary grow" data-act="t-resume">CONTINUAR</button>':'<button class="btn sm primary grow" data-act="t-start">INICIAR</button>'))+'<button class="btn sm grow" data-act="t-reset">REINICIAR</button></div>';
+  }else{box.classList.remove("expanded");box.textContent=fmtMs(el);}
+  attachDrag(box);applyPos(box);
+}
+function attachDrag(box){
+  if(box.dataset.dragInit==="1")return;box.dataset.dragInit="1";
+  var sx,sy,sl,st,dragging=false,moved=false;
+  box.addEventListener("pointerdown",function(e){if(e.target.closest("button"))return;dragging=true;moved=false;sx=e.clientX;sy=e.clientY;sl=TPOS.x;st=TPOS.y;try{box.setPointerCapture(e.pointerId);}catch(err){}e.preventDefault();});
+  box.addEventListener("pointermove",function(e){if(!dragging)return;var dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)+Math.abs(dy)>8)moved=true;TPOS.x=sl+dx;TPOS.y=st+dy;clampPos(box);box.style.left=TPOS.x+"px";box.style.top=TPOS.y+"px";});
+  box.addEventListener("pointerup",function(){if(!dragging)return;dragging=false;lsSet(K_TICK,TPOS);if(!moved){TIMER_EXPANDED=!TIMER_EXPANDED;timerTick();}});
+  box.addEventListener("pointercancel",function(){dragging=false;});
+}
+function timerEnsureInterval(){if(TIMER_INT)return;TIMER_INT=setInterval(timerTick,250);}
+function timerOpen(label,assignedMin){TIMER.label=label;TIMER.assigned=(assignedMin||10)*60;if(!TIMER.running&&TIMER.accumulated===0)TIMER.startAt=0;TIMER_EXPANDED=false;timerEnsureInterval();timerTick();}
+function timerStart(){TIMER.running=true;TIMER.startAt=Date.now();timerTick();}
+function timerPause(){if(TIMER.running){TIMER.accumulated+=Date.now()-TIMER.startAt;TIMER.running=false;}timerTick();}
+function timerReset(){TIMER.running=false;TIMER.accumulated=0;TIMER.startAt=0;timerTick();}
+function timerClose(){TIMER.running=false;TIMER.accumulated=0;TIMER.startAt=0;TIMER.label="";TIMER_EXPANDED=false;timerTick();}
+if(TIMER.label)timerEnsureInterval();
+
+/* ============ UTILIDADES ============ */
+function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function link(o){return '<a href="'+esc(o.u)+'" target="_blank" rel="noopener">'+esc(o.t)+'</a>';}
+function links(arr){return (arr||[]).map(function(o){return '<span class="pill">'+link(o)+'</span>';}).join("");}
+function toast(msg){var b=document.getElementById("toastbox");b.innerHTML='<div class="toast">'+esc(msg)+'</div>';clearTimeout(toast._t);toast._t=setTimeout(function(){b.innerHTML="";},1800);}
+var MESES=["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+function pad(n){return (n<10?"0":"")+n;}
+function weekInfo(d){var x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()-((x.getDay()+6)%7));var e=new Date(x.getFullYear(),x.getMonth(),x.getDate()+6);var key=x.getFullYear()+"-"+pad(x.getMonth()+1)+"-"+pad(x.getDate());var label=(x.getMonth()===e.getMonth())?x.getDate()+"–"+e.getDate()+" de "+MESES[x.getMonth()]+" de "+x.getFullYear():x.getDate()+" de "+MESES[x.getMonth()]+" – "+e.getDate()+" de "+MESES[e.getMonth()]+" de "+e.getFullYear();return {key:key,label:label};}
+function srcList(keys){return '<div class="small" style="margin-top:6px"><b>Fuentes:</b> '+keys.map(function(k){return '<span class="pill">'+link(SRC[k])+'</span>';}).join("")+'</div>';}
+function field(k,def,label,rows){return (label?'<label for="f-'+esc(k)+'">'+esc(label)+'</label>':'')+'<div class="field-wrap"><span class="edit-badge">✏️ editable</span><textarea id="f-'+esc(k)+'" data-k="'+esc(k)+'"'+(rows?' style="min-height:'+rows+'px"':'')+'>'+esc(val(k,def))+'</textarea></div>';}
+function inputField(k,def,label){return (label?'<label for="f-'+esc(k)+'">'+esc(label)+'</label>':'')+'<div class="field-wrap"><span class="edit-badge">✏️ editable</span><input type="text" id="f-'+esc(k)+'" data-k="'+esc(k)+'" value="'+esc(val(k,def))+'"></div>';}
+function partNote(id){var any=false;for(var k in S.v){if(k.indexOf(id+".")===0&&S.v[k]&&S.v[k]!=="")any=true;}return any;}
+function topbar(title,back,right){return '<div class="top"><button class="btn sm" data-act="go" data-id="'+back+'">←</button><h2>'+esc(title)+'</h2>'+(right||"")+'</div>';}
+function detectType(p){
+  if(!/^p([0-9]|10)$/.test(p.id))return {k:"otra",label:"otra parte"};
+  var s=p.section,t=(p.title+" "+(p.raw||"")).toLowerCase();
+  if(s==="INICIO")return {k:"inicio",label:"Canción, oración y palabras de introducción"};
+  if(s==="TESOROS DE LA BIBLIA"){
+    if(/perlas escondidas/.test(t))return {k:"perlas",label:"Busquemos perlas escondidas"};
+    if(/lectura de la biblia/.test(t))return {k:"lectura",label:"Lectura de la Biblia"};
+    return {k:"tesoros",label:"Tesoros de la Biblia (discurso)"};
+  }
+  if(s==="SEAMOS MEJORES MAESTROS"){
+    if(/de casa en casa/.test(t))return {k:"maestros",sub:"p4",label:"De casa en casa"};
+    if(/predicación informal/.test(t))return {k:"maestros",sub:"p5",label:"Predicación informal"};
+    if(/predicación pública/.test(t))return {k:"maestros",sub:"p6",label:"Predicación pública"};
+    if(/explique sus creencias/.test(t))return {k:"maestros",sub:"p7",label:"Explique sus creencias"};
+    return {k:"maestros",sub:"p4",label:"Otra asignación"};
+  }
+  if(s==="NUESTRA VIDA CRISTIANA"){
+    if(/estudio bíblico de la congregación/.test(t))return {k:"estudio",label:"Estudio bíblico"};
+    if(/video|auditorio|viudas/.test(t))return {k:"vida",label:"Análisis con el auditorio (con video)"};
+    if(/conclusión/.test(t))return {k:"inicio",label:"Palabras de conclusión"};
+    return {k:"vida",label:"Otra actividad"};
+  }
+  return {k:"otra",label:"Otra parte"};
+}
+
+/* ============ GUARDADO ============ */
+function savedList(){return lsGet(K_SAVED,[]);}
+function discursosList(){return lsGet(K_DISC,[]);}
+function discSeedFields(){
+  var out={};
+  out["p1.d.titulo"]=DISCURSO_T1.title;
+  out["p1.d.duracion"]=DISCURSO_T1.duration;
+  out["p1.d.intro"]=DISCURSO_T1.intro;
+  DISCURSO_T1.desarrollo.forEach(function(d,i){
+    out["p1.d.p"+i+".titulo"]=d.titulo;
+    if(d.texto){
+      out["p1.d.p"+i+".t.ref"]=d.texto.ref;
+      out["p1.d.p"+i+".t.intro"]=d.texto.intro;
+      out["p1.d.p"+i+".t.lectura"]=d.texto.lectura;
+      out["p1.d.p"+i+".t.explicacion"]=d.texto.explicacion;
+    }
+    out["p1.d.p"+i+".apoyo"]=d.apoyo;
+    out["p1.d.p"+i+".leccion"]=d.leccion;
+  });
+  out["p1.d.aplicacion"]=DISCURSO_T1.aplicacion;
+  out["p1.d.conclusion"]=DISCURSO_T1.conclusion;
+  return out;
+}
+function collectDefaults(){var v=JSON.parse(JSON.stringify(S.v));var seed=discSeedFields();for(var k in seed){if(!(k in v)||v[k]==="")v[k]=seed[k];}return v;}
+function saveMeeting(){S.v=collectDefaults();persistNow();var list=savedList().filter(function(x){return x.weekKey!==WEEK.key;});list.push({weekKey:WEEK.key,label:WEEK.shortLabel+" — Reunión",savedAt:Date.now(),v:JSON.parse(JSON.stringify(S.v))});lsSet(K_SAVED,list);toast("Reunión guardada ✓");render();}
+function duplicateMeeting(){var m=savedList().filter(function(x){return x.weekKey===WEEK.key;})[0];var base=m?m.v:collectDefaults();var newKey=WEEK.key+"-copia-"+Date.now();var list=savedList();list.push({weekKey:newKey,label:WEEK.shortLabel+" — copia",savedAt:Date.now(),v:JSON.parse(JSON.stringify(base))});lsSet(K_SAVED,list);toast("Copia creada");render();}
+
+function buildDiscursoTexto(){
+  var L=[];
+  L.push("TÍTULO: "+val("p1.d.titulo",DISCURSO_T1.title));
+  L.push("DURACIÓN: "+val("p1.d.duracion",DISCURSO_T1.duration)+" min");
+  L.push("");
+  L.push("INTRODUCCIÓN");
+  L.push(val("p1.d.intro",DISCURSO_T1.intro));
+  DISCURSO_T1.desarrollo.forEach(function(d,i){
+    L.push("");
+    L.push("=== "+val("p1.d.p"+i+".titulo",d.titulo).toUpperCase()+" ===");
+    if(d.texto){
+      L.push("");
+      L.push("Texto principal: "+val("p1.d.p"+i+".t.ref",d.texto.ref));
+      L.push("");
+      L.push("Introducción al texto:");
+      L.push(val("p1.d.p"+i+".t.intro",d.texto.intro));
+      L.push("");
+      L.push("Lectura:");
+      L.push(val("p1.d.p"+i+".t.lectura",d.texto.lectura));
+      L.push("");
+      L.push("Explicación:");
+      L.push(val("p1.d.p"+i+".t.explicacion",d.texto.explicacion));
+    }
+    L.push("");
+    L.push("Apoyo (paráfrasis):");
+    L.push(val("p1.d.p"+i+".apoyo",d.apoyo));
+    L.push("");
+    L.push("Lección: "+val("p1.d.p"+i+".leccion",d.leccion));
+  });
+  L.push("");
+  L.push("APLICACIÓN");
+  L.push(val("p1.d.aplicacion",DISCURSO_T1.aplicacion));
+  L.push("");
+  L.push("CONCLUSIÓN");
+  L.push(val("p1.d.conclusion",DISCURSO_T1.conclusion));
+  return L.join("\n");
+}
+function saveDiscursoActual(){
+  var title=val("p1.d.titulo",DISCURSO_T1.title);
+  var dur=val("p1.d.duracion",DISCURSO_T1.duration);
+  var d={id:"d-"+Date.now(),title:title,duration:parseInt(dur,10)||10,date:new Date().toISOString(),text:buildDiscursoTexto(),sources:["guia","jr","cl","j40","j41"],status:"borrador"};
+  var list=discursosList();list.push(d);lsSet(K_DISC,list);
+  toast("Discurso guardado en «Discursos»");render();
+}
+function buildPerlasRespuesta(){var parts=[];for(var i=0;i<PUNTOS.length;i++){if(S.v["p2.pick."+i]){var pt=PUNTOS[i];parts.push("• "+pt.v+" — "+pt.idea+" "+pt.aprendemos+" "+pt.aplicar);}}return parts.join("\n\n");}
+
+/* ============ EXPORTAR / IMPORTAR RESPALDO ============ */
+function exportBackup(){
+  var data={exportedAt:new Date().toISOString(),weekKey:WEEK.key,week:WEEK.shortLabel,v:S.v,saved:savedList(),discursos:discursosList()};
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement("a");
+  a.href=url;a.download="respaldo-reunion-"+WEEK.key+".json";
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(url);},1000);
+  toast("Respaldo descargado");
+}
+function importBackup(){
+  var inp=document.createElement("input");
+  inp.type="file";inp.accept=".json,application/json";
+  inp.onchange=function(e){
+    var f=e.target.files[0];if(!f)return;
+    var r=new FileReader();
+    r.onload=function(){
+      try{
+        var data=JSON.parse(r.result);
+        if(data.v){S.v=data.v;persistNow();}
+        if(data.saved)lsSet(K_SAVED,data.saved);
+        if(data.discursos)lsSet(K_DISC,data.discursos);
+        toast("Respaldo importado ✓");render();
+      }catch(err){toast("Archivo inválido");}
+    };
+    r.readAsText(f);
+  };
+  inp.click();
+}
+
+/* ============ CARGA AUTOMÁTICA DESDE JW.ORG ============ */
+function generarRespuestaBorrador(pregunta,parrafo){
+  if(!parrafo)return "";
+  var oraciones=parrafo.split(/(?<=[.!?])\s+/).filter(function(o){return o.length>25;});
+  var base=oraciones.slice(0,2).join(" ").trim();
+  if(!base)base=parrafo.slice(0,220);
+  return base;
+}
+/* ============ EDITOR DE SEMANA ============ */
+function weekLabels(key){
+  var p=key.split("-");var x=new Date(+p[0],+p[1]-1,+p[2]);
+  if(isNaN(x.getTime()))return null;
+  x.setDate(x.getDate()-((x.getDay()+6)%7));
+  var e=new Date(x.getFullYear(),x.getMonth(),x.getDate()+6);
+  var same=(x.getMonth()===e.getMonth());
+  var label=same?x.getDate()+"–"+e.getDate()+" de "+MESES[x.getMonth()]+" de "+x.getFullYear():x.getDate()+" de "+MESES[x.getMonth()]+" – "+e.getDate()+" de "+MESES[e.getMonth()]+" de "+e.getFullYear();
+  var shortLabel=same?x.getDate()+"–"+e.getDate()+" "+MESES[x.getMonth()]+" "+x.getFullYear():x.getDate()+" "+MESES[x.getMonth()]+" – "+e.getDate()+" "+MESES[e.getMonth()]+" "+e.getFullYear();
+  return {key:x.getFullYear()+"-"+pad(x.getMonth()+1)+"-"+pad(x.getDate()),label:label,shortLabel:shortLabel};
+}
+function saveWeekData(){lsSet(K_WEEK,{week:{key:WEEK.key,label:WEEK.label,shortLabel:WEEK.shortLabel,reading:WEEK.reading,program:WEEK.program},parts:PARTS,weekend:WEEKEND});}
+function wkInput(k,label,v){return '<label for="w-'+esc(k)+'">'+esc(label)+'</label><input type="text" id="w-'+esc(k)+'" data-wk="'+esc(k)+'" value="'+esc(v==null?"":v)+'">';}
+function wkArea(k,label,v){return '<label for="w-'+esc(k)+'">'+esc(label)+'</label><textarea id="w-'+esc(k)+'" data-wk="'+esc(k)+'" style="min-height:70px">'+esc(v==null?"":v)+'</textarea>';}
+/* Lee los campos del editor en memoria (no guarda). Devuelve false si hay un dato inválido. */
+function weekFromDOM(){
+  var g=function(k,def){var el=document.querySelector('[data-wk="'+k+'"]');return el?el.value:def;};
+  var raw=String(g("key",WEEK.key)||"").trim();
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(raw)){toast("La fecha debe tener formato AAAA-MM-DD");return false;}
+  var wl=weekLabels(raw);
+  if(!wl){toast("Fecha no válida");return false;}
+  WEEK.key=wl.key;WEEK.label=wl.label;WEEK.shortLabel=wl.shortLabel;
+  WEEK.reading=g("reading",WEEK.reading);WEEK.program=g("program",WEEK.program);
+  PARTS.forEach(function(p,i){
+    p.section=g("p"+i+".section",p.section);
+    var n=String(g("p"+i+".num","")).trim();if(n)p.num=n;else delete p.num;
+    p.title=g("p"+i+".title",p.title);
+    p.min=Math.max(1,parseInt(g("p"+i+".min",p.min),10)||1);
+    var r=String(g("p"+i+".raw","")||"");if(r.trim())p.raw=r;else delete p.raw;
+  });
+  WEEKEND.discursoPublico.title=g("wk.dp.title",WEEKEND.discursoPublico.title);
+  WEEKEND.discursoPublico.speaker=g("wk.dp.speaker",WEEKEND.discursoPublico.speaker);
+  WEEKEND.atalaya.title=g("wk.at.title",WEEKEND.atalaya.title);
+  WEEKEND.atalaya.openingSong=g("wk.at.open",WEEKEND.atalaya.openingSong);
+  WEEKEND.atalaya.baseText=g("wk.at.base",WEEKEND.atalaya.baseText);
+  WEEKEND.atalaya.closingSong=g("wk.at.close",WEEKEND.atalaya.closingSong);
+  return true;
+}
+function viewSemana(){
+  var h=topbar("Editar semana","home",'<button class="btn sm primary" data-act="week-save">Guardar</button>');
+  h+='<div class="infobox">💡 Cambia la semana, las partes de entre semana y el fin de semana. Pulsa «Guardar» al terminar. Se guarda en este dispositivo.</div>';
+  h+='<div class="card"><div class="disc-sec-title">SEMANA</div>'
+    +wkInput("key","Fecha del lunes de la semana (AAAA-MM-DD)",WEEK.key)
+    +wkInput("reading","Lectura de la Biblia",WEEK.reading)
+    +wkInput("program","Programa / guía",WEEK.program)+'</div>';
+  h+='<div class="sec">REUNIÓN DE ENTRE SEMANA</div>';
+  PARTS.forEach(function(p,i){
+    h+='<div class="card"><div class="row"><b class="grow">Parte '+(i+1)+'</b>'
+      +'<button class="btn sm" data-act="week-up" data-id="'+i+'">↑</button>'
+      +'<button class="btn sm" data-act="week-down" data-id="'+i+'">↓</button></div>'
+      +wkInput("p"+i+".section","Sección",p.section)
+      +wkInput("p"+i+".num","Número",p.num==null?"":p.num)
+      +wkInput("p"+i+".title","Título",p.title)
+      +wkInput("p"+i+".min","Minutos",p.min)
+      +wkArea("p"+i+".raw","Texto de apoyo (opcional)",p.raw||"")
+      +'<button class="btn danger block" style="margin-top:10px" data-confirm="1" data-act="week-del" data-id="'+i+'">Eliminar parte</button></div>';
+  });
+  h+='<button class="btn block" data-act="week-add">+ Añadir parte</button>';
+  h+='<div class="sec">REUNIÓN DE FIN DE SEMANA</div><div class="card">'
+    +wkInput("wk.dp.title","Discurso público: título",WEEKEND.discursoPublico.title)
+    +wkInput("wk.dp.speaker","Discurso público: orador",WEEKEND.discursoPublico.speaker)
+    +wkInput("wk.at.title","La Atalaya: título del artículo",WEEKEND.atalaya.title)
+    +wkInput("wk.at.open","La Atalaya: canción inicial",WEEKEND.atalaya.openingSong)
+    +wkInput("wk.at.base","La Atalaya: texto base",WEEKEND.atalaya.baseText)
+    +wkInput("wk.at.close","La Atalaya: canción final",WEEKEND.atalaya.closingSong)+'</div>';
+  h+='<button class="btn primary block" style="min-height:56px;margin-top:14px" data-act="week-save">GUARDAR SEMANA</button>';
+  h+='<button class="btn danger block" style="margin-top:10px" data-confirm="1" data-act="week-reset">Restaurar semana original</button>';
+  return h;
+}
+
+/* ============ VISTAS ============ */
+function viewHome(){
+  var now=weekInfo(new Date());
+  var match=true;
+  var saved=savedList().filter(function(x){return x.weekKey===WEEK.key;})[0];
+  var h='<div style="padding:20px 0 12px"><h1>Reunión de la semana</h1><p class="muted" style="margin:6px 0 0">Vida y Ministerio Cristianos</p></div>';
+  h+='<div class="card"><div class="muted">Semana de esta reunión</div><h2 style="margin-top:4px">'+esc(WEEK.label)+'</h2></div>';
+  h+='<div class="card"><h3>'+esc(WEEK.reading)+'</h3><div class="muted small" style="margin-top:6px">'+esc(WEEK.program)+'. <a href="'+esc(WEEK.url)+'" target="_blank" rel="noopener">Abrir en jw.org</a></div>'+(saved?'<div style="margin-top:8px"><span class="badge ok">Guardada el '+new Date(saved.savedAt).toLocaleString("es")+'</span></div>':'')+'</div>';
+  h+='<button class="btn block" style="margin-bottom:12px" data-act="go" data-id="semana">✏️ Editar semana (partes y fin de semana)</button>';
+  h+='<div class="tabs"><button class="'+(S.tabWeek==="weekday"?"active":"")+'" data-act="tab" data-id="weekday">Reunión de entre semana</button><button class="'+(S.tabWeek==="weekend"?"active":"")+'" data-act="tab" data-id="weekend">Reunión de fin de semana</button></div>';
+  if(S.tabWeek==="weekend")return h+viewWeekend();
+  var last="";
+  PARTS.forEach(function(p){
+    if(p.section!==last){h+='<div class="sec">'+esc(p.section)+'</div>';last=p.section;}
+    var d=detectType(p);
+    h+='<div class="card"><div class="row"><div class="grow"><b>'+(p.num?p.num+". ":"")+esc(p.title)+'</b></div><span class="muted num">'+p.min+' min</span></div>'
+      +'<div style="margin:6px 0"><span class="badge">'+esc(d.label)+'</span> '+(partNote(p.id)?'<span class="badge ok">con preparación</span>':'')+'</div>'
+      +(p.raw?'<div class="muted small">'+esc(p.raw)+'</div>':'')
+      +'<div style="margin:6px 0 10px">'+links(p.refs)+'</div>'
+      +'<button class="btn primary block" data-act="prep" data-id="'+p.id+'">PREPARAR</button></div>';
+  });
+  h+='<button class="btn primary block" style="min-height:60px;font-size:18px;margin-top:6px" data-act="save">GUARDAR REUNIÓN</button>';
+  h+='<div class="row" style="margin-top:10px"><button class="btn grow" data-act="duplicate">Duplicar</button><button class="btn grow" data-act="go" data-id="saved">Mis reuniones</button><button class="btn grow" data-act="go" data-id="discursos">Discursos</button></div>';
+  h+='<div class="card" style="border:1px dashed var(--line);background:transparent"><div class="infobox">💾 <b>Tus datos se guardan en este dispositivo.</b> Para llevarlos a otro teléfono, usa «Exportar respaldo».</div><div class="row"><button class="btn sm grow" data-act="export-backup">📥 Exportar respaldo</button><button class="btn sm grow" data-act="import-backup">📤 Importar respaldo</button></div></div>';
+  return h;
+}
+
+function viewWeekend(){
+  var h='';
+  h+='<div class="card"><div class="muted small">DISCURSO PÚBLICO</div><h3 style="margin:6px 0">'+esc(WEEKEND.discursoPublico.title)+'</h3><div class="muted small">'+esc(WEEKEND.discursoPublico.speaker)+'</div></div>';
+  h+='<div class="card"><b>ESTUDIO DE LA ATALAYA</b><h3 style="margin:6px 0">'+esc(WEEKEND.atalaya.title)+'</h3>'
+    +'<div class="muted small">Canción inicial: '+esc(WEEKEND.atalaya.openingSong||"—")+' · Texto base: '+esc(WEEKEND.atalaya.baseText||"—")+' · Canción final: '+esc(WEEKEND.atalaya.closingSong||"—")+'</div>'
+    +'<div style="margin-top:10px"><button class="btn primary block" data-act="prep" data-id="atalaya">PREPARAR ATALAYA</button></div></div>';
+  return h;
+}
+
+function viewSaved(){
+  var list=savedList();
+  var h=topbar("Mis reuniones","home","");
+  if(!list.length)return h+'<div class="card muted" style="text-align:center">Aún no has guardado ninguna reunión.</div>';
+  list.sort(function(a,b){return b.savedAt-a.savedAt;});
+  list.forEach(function(m){var n=0;for(var k in m.v){if(m.v[k])n++;}h+='<div class="card"><h3>'+esc(m.label)+'</h3><div class="muted small" style="margin:4px 0 10px">'+new Date(m.savedAt).toLocaleString("es")+' · '+n+' campos</div><div class="row"><button class="btn primary grow" data-act="open-saved" data-id="'+esc(m.weekKey)+'">Abrir</button><button class="btn danger" data-confirm="1" data-act="del-saved" data-id="'+esc(m.weekKey)+'">Eliminar</button></div></div>';});
+  return h;
+}
+
+function viewDiscursos(){
+  var list=discursosList();
+  var h=topbar("Discursos guardados","home","");
+  if(!list.length)return h+'<div class="card muted" style="text-align:center">Aún no has guardado discursos.</div>';
+  list.sort(function(a,b){return new Date(b.date)-new Date(a.date);});
+  list.forEach(function(d){
+    h+='<div class="card"><h3>'+esc(d.title)+'</h3><div class="muted small" style="margin:4px 0 6px">'+esc(d.duration)+' min · '+esc(new Date(d.date).toLocaleString("es"))+'</div>'
+      +'<details><summary>Ver texto</summary><div class="src" style="white-space:pre-wrap;font-family:Georgia,serif">'+esc(d.text)+'</div></details>'
+      +'<div class="row" style="margin-top:8px"><button class="btn primary grow" data-act="timer-open-disc" data-id="'+esc(d.id)+'">Cronómetro</button><button class="btn grow" data-act="copy-disc" data-id="'+esc(d.id)+'">Copiar</button><button class="btn grow" data-act="pdf-disc" data-id="'+esc(d.id)+'">PDF</button></div>'
+      +'<button class="btn danger block" style="margin-top:6px" data-confirm="1" data-act="del-disc" data-id="'+esc(d.id)+'">Eliminar</button></div>';
+  });
+  return h;
+}
+
+function partHeader(p,d){
+  return '<div class="card"><div class="muted small">'+esc(p.section)+'</div><h3 style="margin:2px 0 6px">'+(p.num?p.num+". ":"")+esc(p.title)+'</h3><div class="muted num">'+p.min+' min</div><div style="margin:8px 0"><span class="badge">'+esc(d.label)+'</span></div>'+(p.raw?'<div class="muted small">'+esc(p.raw)+'</div>':'')+'<div style="margin-top:6px">'+links(p.refs)+'</div><div class="row" style="margin-top:10px"><button class="btn sm grow" data-act="timer-open-part" data-id="'+esc(p.id)+'">⏱️ Cronómetro</button><button class="btn sm grow" data-act="copy-part" data-id="'+esc(p.id)+'">📋 Copiar</button><button class="btn sm grow" data-act="pdf-part" data-id="'+esc(p.id)+'">📄 PDF</button></div></div>';
+}
+
+function viewPart(){
+  if(S.id==="atalaya")return viewAtalaya();
+  var p=PARTS.filter(function(x){return x.id===S.id;})[0];
+  if(!p)return topbar("Error","home","");
+  var d=detectType(p);
+  var h=topbar("Preparar","home",'<button class="btn sm primary" data-act="save">Guardar</button>');
+  h+=partHeader(p,d);
+  if(d.k==="tesoros")h+=viewTesoros(p);
+  else if(d.k==="perlas")h+=viewPerlas(p);
+  else if(d.k==="lectura")h+=viewLectura(p);
+  else if(d.k==="maestros")h+=viewMaestros(p,d);
+  else if(d.k==="vida")h+=viewVida(p);
+  else if(d.k==="estudio")h+=viewEstudio(p);
+  else if(d.k==="inicio")h+=viewInicio(p);
+  else h+=viewGenerico(p,d);
+  return h;
+}
+
+/* ---- TESOROS (REESCRITO) ---- */
+function viewTesoros(p){
+  var h='<div class="edit-hint">💡 Toca cualquier recuadro para editarlo. Se guarda solo en este dispositivo.</div>';
+  h+='<div class="card"><div class="disc-sec-title">✏️ TÍTULO</div>'+inputField("p1.d.titulo",DISCURSO_T1.title,"")
+    +'<div class="disc-sec-title" style="margin-top:12px">✏️ DURACIÓN (min)</div>'+inputField("p1.d.duracion",DISCURSO_T1.duration,"")
+    +'<div class="row" style="margin-top:10px"><button class="btn sm primary grow" data-act="timer-open-t1">⏱️ INICIAR CRONÓMETRO</button></div></div>';
+  h+='<div class="card"><div class="disc-sec-title">✏️ INTRODUCCIÓN</div>'+field("p1.d.intro",DISCURSO_T1.intro,"",260)+'</div>';
+  DISCURSO_T1.desarrollo.forEach(function(dv,i){
+    var card='<div class="card"><div class="sec" style="margin-top:0">Punto '+(i+1)+'</div><div class="disc-sec-title">✏️ TÍTULO DEL PUNTO</div>'+field("p1.d.p"+i+".titulo",dv.titulo,"",60);
+    if(dv.texto){
+      card+='<div class="disc-sec-title" style="margin-top:16px">📖 TEXTO BÍBLICO PRINCIPAL — '+esc(dv.texto.ref)+'</div>'
+        +'<div class="muted small" style="margin-bottom:4px">1) Introducción al texto</div>'
+        +field("p1.d.p"+i+".t.intro",dv.texto.intro,"",140)
+        +'<div class="muted small" style="margin:10px 0 4px">2) Lectura (texto bíblico)</div>'
+        +field("p1.d.p"+i+".t.lectura",dv.texto.lectura,"",260)
+        +'<div class="muted small" style="margin:10px 0 4px">3) Explicación del texto</div>'
+        +field("p1.d.p"+i+".t.explicacion",dv.texto.explicacion,"",170);
+    }
+    card+='<div class="disc-sec-title" style="margin-top:16px">📝 APOYO — paráfrasis de otras fuentes</div>'
+      +'<div class="muted small" style="margin-bottom:4px">Textos de apoyo en paráfrasis (no se leen literalmente, se cuentan con tus palabras)</div>'
+      +field("p1.d.p"+i+".apoyo",dv.apoyo,"",200)
+      +'<div class="disc-sec-title" style="margin-top:16px">🎯 LECCIÓN DEL PUNTO</div>'
+      +field("p1.d.p"+i+".leccion",dv.leccion,"",90)+'</div>';
+    h+=card;
+  });
+  h+='<div class="card"><div class="disc-sec-title">✏️ APLICACIÓN</div>'+field("p1.d.aplicacion",DISCURSO_T1.aplicacion,"",260)+'</div>';
+  h+='<div class="card"><div class="disc-sec-title">✏️ CONCLUSIÓN</div>'+field("p1.d.conclusion",DISCURSO_T1.conclusion,"",220)+'</div>';
+  h+='<div class="card"><button class="btn primary block" data-act="show-full">👁️ Ver discurso completo</button>'
+    +'<button class="btn block" style="margin-top:8px" data-act="save-disc">💾 Guardar en «Discursos»</button>'
+    +'<div class="infobox" style="margin-top:10px"><b>¿Dónde se guarda?</b><br>• «Guardar» arriba (o «Guardar reunión» en la pantalla principal) lo guarda en este dispositivo.<br>• «Guardar en Discursos» crea una copia separada en Discursos.<br>• «PDF» o «Copiar» te permite llevarlo a otro teléfono o computador.</div>'
+    +'<div id="full-disc"></div></div>';
+  h+='<div class="card">'+field("p1.d.notas","","Notas personales",110)+'</div>';
+  return h;
+}
+
+/* ---- PERLAS ---- */
+function pickedCount(){var n=0;for(var i=0;i<PUNTOS.length;i++){if(S.v["p2.pick."+i])n++;}return n;}
+function viewPerlas(p){
+  var h='<div class="notice">Preguntas oficiales de la Guía.</div>';
+  h+='<div class="card"><div class="muted small">Pregunta oficial 1</div><b>'+esc(PERLA1.q)+'</b>'
+    +'<div style="margin-top:8px"><span class="muted small">Versículos:</span> '+links(PERLA1.verses)+'</div>'
+    +'<div><span class="muted small">Publicación:</span> '+links(PERLA1.pubs)+'</div>'
+    +'<details open><summary>Ver lo encontrado</summary>'
+    +'<div class="src"><ul class="tight">'+PERLA1.found.map(function(f){return '<li>'+esc(f)+'</li>';}).join("")+'</ul>'+srcList(["w06","j40"])+'</div>'
+    +field("p2.q1.draft",PERLA1.draft,"Mi respuesta",160)
+    +field("p2.q1.notes","","Notas personales",80)+'</details></div>';
+  h+='<div class="card"><div class="muted small">Pregunta oficial 2</div><b>'+esc(PERLA2_Q)+'</b>'
+    +'<div style="margin-top:10px"><span class="badge ok">'+PUNTOS.length+' puntos</span> <span class="badge">Tu selección: <b id="pickN">'+pickedCount()+'</b></span></div></div>';
+  PUNTOS.forEach(function(pt,i){
+    h+='<div class="card"><div class="pn"><span class="n">'+(i+1)+'</span><div class="grow"><b><a href="'+esc(pt.vu)+'" target="_blank" rel="noopener">'+esc(pt.v)+'</a></b></div></div>'
+      +'<div class="src"><b class="t">IDEA</b>'+esc(pt.idea)+'</div>'
+      +'<div class="small"><b>Fuente:</b> '+pt.fuentes.map(function(k){return '<span class="pill">'+link(SRC[k])+'</span>';}).join("")+'</div>'
+      +'<div class="mine"><b class="t">¿QUÉ APRENDEMOS?</b>'+esc(pt.aprendemos)+'</div>'
+      +'<div class="mine"><b class="t">¿CÓMO APLICARLO? (30-40 seg)</b>'+esc(pt.aplicar)+'</div>'
+      +'<label class="pick"><input type="checkbox" data-k="p2.pick.'+i+'"'+(S.v["p2.pick."+i]?' checked':'')+'> Usar este punto</label>'
+      +field("p2.p"+i+".notes","","Notas personales",70)+'</div>';
+  });
+  h+='<div class="card"><h3 style="margin-top:0">MI RESPUESTA PREPARADA</h3><button class="btn sm primary block" data-act="gen-perlas" style="margin-bottom:8px">Generar con los puntos seleccionados</button>'+field("p2.respuesta","","",240)+'</div>';
+  return h;
+}
+
+/* ---- LECTURA ---- */
+function viewLectura(p){
+  var h='<div class="notice">Pasaje: '+esc(LECTURA_P3.pasaje)+' — Traducción del Nuevo Mundo</div>';
+  h+='<div class="card"><div class="disc-sec-title">📖 TEXTO COMPLETO DE LA LECTURA</div><div class="bible-box" style="max-height:400px;overflow:auto">'+esc(LECTURA_P3.textoCompleto)+'</div><div class="muted small" style="margin-top:6px">Fuente: <a href="'+esc(bc("/6/0"))+'" target="_blank" rel="noopener">wol.jw.org — Jeremías 40</a></div></div>';
+  h+='<div class="card"><div class="disc-sec-title">📚 '+esc(LECTURA_P3.leccion)+'</div><ul class="tight">'+LECTURA_P3.consejos.map(function(c){return '<li>'+esc(c)+'</li>';}).join("")+'</ul><div class="small" style="margin-top:6px"><b>Fuente:</b> '+links([SRC.th2])+'</div></div>';
+  h+='<div class="card">'+field("p3.notes","","Mis notas personales de práctica",140)+'</div>';
+  return h;
+}
+
+/* ---- MAESTROS ---- */
+function viewMaestros(p,d){
+  var M=MAESTROS[d.sub]||MAESTROS.p4;
+  var pre=p.id+".";
+  var h='<div class="notice">Escenificación — '+p.min+' minutos.</div>';
+  h+='<div class="lesson-reminder"><b>📌 Lección a demostrar:</b><br>'+esc(M.leccion)+'</div>';
+  h+='<div class="card"><div class="disc-sec-title">🎬 MARCO DE CIRCUNSTANCIAS</div>'+field(pre+"marco",M.marco,"",120)+'</div>';
+  h+='<div class="card"><div class="disc-sec-title">✏️ OBJETIVO</div>'+field(pre+"objetivo",M.objetivo,"",70)+'<div class="disc-sec-title" style="margin-top:12px">✏️ TEMA</div>'+field(pre+"tema",M.tema,"",60)+'<div class="disc-sec-title" style="margin-top:12px">✏️ TEXTO BÍBLICO</div>'+field(pre+"texto",M.texto,"",60)+'</div>';
+  h+='<div class="card"><div class="disc-sec-title">💬 CONVERSACIÓN</div><div class="hint muted small">Publicador y Amo de casa. Textos integrados.</div>'+field(pre+"dialogo",M.dialogo,"",500)+'</div>';
+  h+='<div class="card"><div class="disc-sec-title">✓ PUNTOS A DEMOSTRAR</div>'+M.demostrar.map(function(x){return '<div class="small">✓ '+esc(x)+'</div>';}).join("")+'</div>';
+  h+='<div class="card"><div class="disc-sec-title">🏁 CIERRE</div>'+field(pre+"conclusion",M.conclusion,"",80)+'</div>';
+  h+='<div class="card">'+field(pre+"notas","","Notas personales",100)+'</div>';
+  return h;
+}
+
+/* ---- VIDA ---- */
+function viewVida(p){
+  var h='';
+  if(p.id==="p8"){
+    h+='<div class="notice">Análisis con el auditorio. Video incluido.</div>';
+    h+='<div class="card"><div class="disc-sec-title">🎬 INTRODUCCIÓN DEL CONDUCTOR</div>'+field(p.id+".introGuion",VIDA_P8.introGuion,"",140)+'</div>';
+    h+='<div class="card"><div class="disc-sec-title">🎥 VIDEO</div><div>'+link(VIDA_P8.video)+'</div></div>';
+    VIDA_P8.preguntas.forEach(function(qa,i){h+='<div class="card"><div class="muted small">Pregunta guiada '+(i+1)+'</div><b>'+esc(qa.q)+'</b>'+field(p.id+".a"+i,qa.respuesta,"Respuesta modelo",180)+'</div>';});
+    h+='<div class="card"><div class="disc-sec-title">✏️ APLICACIÓN PRÁCTICA</div>'+field(p.id+".aplicacion",VIDA_P8.aplicacion,"",140)+'</div>';
+    h+='<div class="card"><div class="disc-sec-title">✏️ CIERRE</div>'+field(p.id+".cierre",VIDA_P8.cierre,"",120)+'</div>';
+  }
+  h+='<div class="card">'+field(p.id+".notes","","Notas personales",100)+'</div>';
+  return h;
+}
+
+/* ---- ESTUDIO ---- */
+function viewEstudio(p){
+  var h='<div class="notice">Estudio bíblico de la congregación.</div>';
+  h+='<div class="card"><div class="disc-sec-title">📚 FUENTE</div><div>'+link(ESTUDIO_P9.fuente)+'</div><div class="muted small" style="margin-top:6px">'+esc(ESTUDIO_P9.libro)+'</div></div>';
+  h+='<div class="card"><div class="disc-sec-title">📖 TEXTOS DESTACADOS PARA EL AUDITORIO</div><div class="hint muted small">1 o 2 textos cortos para el auditorio.</div>';
+  ESTUDIO_P9.textosDestacados.forEach(function(t,i){h+='<div class="disc-sec-title" style="margin-top:10px">Texto '+(i+1)+'</div>'+inputField(p.id+".t"+i+".ref",t.ref,"")+field(p.id+".t"+i+".texto",t.texto,"",90);});
+  h+='</div>';
+  ESTUDIO_P9.preguntas.forEach(function(qa,i){h+='<div class="card"><div class="disc-sec-title">PREGUNTA '+(i+1)+'</div>'+field(p.id+".q"+i,qa.q,"",80)+field(p.id+".a"+i,qa.a,"Respuesta para dirigir el estudio",140)+'</div>';});
+  h+='<div class="card">'+field(p.id+".notas","","Notas personales",110)+'</div>';
+  return h;
+}
+
+/* ---- ATALAYA ---- */
+function viewAtalaya(){
+  var h=topbar("Estudio de La Atalaya","home",'<button class="btn sm primary" data-act="save-atalaya">Guardar</button>');
+  h+='<div class="infobox">💡 Escribe o pega el texto de cada párrafo. Las respuestas se pueden editar libremente.</div>';
+  h+='<div class="card"><div class="disc-sec-title">📖 TÍTULO DEL ARTÍCULO</div>'+inputField("atalaya.titulo",val("atalaya.titulo",WEEKEND.atalaya.title),"")
+    +'<div class="disc-sec-title" style="margin-top:12px">Texto base</div>'+inputField("atalaya.textoBase",val("atalaya.textoBase",WEEKEND.atalaya.baseText),"")
+    +'<div class="disc-sec-title" style="margin-top:12px">Canción inicial y final</div>'+inputField("atalaya.canciones",val("atalaya.canciones","Canción inicial: · Canción final:"),"")+'</div>';
+  var n=Math.max(3,ATALAYA.parrafos.length);
+  for(var i=0;i<n;i++){
+    var pr=ATALAYA.parrafos[i]||{num:String(i+1),texto:"",pregunta:"",respuesta:""};
+    h+='<div class="card"><div class="disc-sec-title">PÁRRAFO '+(i+1)+'</div>'
+      +field("atalaya.p"+i+".texto",val("atalaya.p"+i+".texto",pr.texto),"Texto del párrafo",140)
+      +field("atalaya.p"+i+".pregunta",val("atalaya.p"+i+".pregunta",pr.pregunta),"Pregunta",90)
+      +field("atalaya.p"+i+".respuesta",val("atalaya.p"+i+".respuesta",pr.respuesta),"Respuesta preparada (borrador editable)",160)+'</div>';
+  }
+  h+='<div class="row" style="margin-bottom:12px"><button class="btn grow" data-act="atalaya-add">+ Añadir párrafo</button><button class="btn grow" data-act="atalaya-del">− Quitar último</button></div>';
+  h+='<div class="card"><div class="disc-sec-title">✏️ APLICACIÓN Y CIERRE</div>'+field("atalaya.aplicacion",val("atalaya.aplicacion",""),"Aplicación práctica",140)+field("atalaya.cierre",val("atalaya.cierre",""),"Cierre del conductor",120)+'</div>';
+  h+='<div class="card"><button class="btn sm primary block" data-act="timer-open-atalaya">⏱️ Cronómetro del estudio (60 min)</button></div>';
+  return h;
+}
+
+function viewInicio(p){return '<div class="card"><div class="muted">Esta parte no se prepara. Solo se anuncia la canción y la oración.</div></div>';}
+
+function viewGenerico(p,d){
+  var h='<div class="card">';
+  if(p.questions)p.questions.forEach(function(q,i){h+='<div style="margin-top:10px"><div class="src" style="margin:0 0 4px">'+esc(q)+'</div>'+field(p.id+".q"+i,"","Mi respuesta",100)+'</div>';});
+  h+=field(p.id+".notes","","Notas personales",110);
+  h+='<div class="warnbox">El método específico para «'+esc(d.label)+'» aún no está construido.</div></div>';
+  return h;
+}
+
+/* ============ EXPORTAR Y COPIAR ============ */
+function collectPartText(p){
+  var out=[];out.push(p.section.toUpperCase());out.push((p.num?p.num+". ":"")+p.title);out.push("Duración: "+p.min+" min");out.push("");
+  var pre=p.id+".",found=false;
+  for(var k in S.v){if(k.indexOf(pre)===0&&S.v[k]){found=true;out.push("-- "+k.substring(pre.length)+" --");out.push(S.v[k]);out.push("");}}
+  if(!found)out.push("(Sin contenido preparado todavía)");
+  return out.join("\n");
+}
+function copyToClipboard(text){
+  var ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.left="-9999px";
+  document.body.appendChild(ta);ta.select();try{document.execCommand("copy");}catch(e){}
+  document.body.removeChild(ta);toast("Texto copiado ✓");
+}
+function openPrint(title,text){
+  var old=document.getElementById("printOverlay");if(old&&old.parentNode)old.parentNode.removeChild(old);
+  var ov=document.createElement("div");ov.id="printOverlay";
+  ov.style.cssText="position:fixed;top:0;left:0;right:0;bottom:0;background:#FFF;color:#1B2A3A;z-index:100;padding:20px;overflow:auto;";
+  var bar=document.createElement("div");bar.className="print-toolbar";
+  bar.style.cssText="position:sticky;top:0;background:#FFF;padding:10px;border-bottom:1px solid #D5DDE4;text-align:right;margin-bottom:20px;";
+  var bP=document.createElement("button");bP.textContent="Guardar como PDF";
+  bP.style.cssText="font:inherit;font-weight:700;padding:10px 16px;border-radius:8px;border:0;background:#0F6E6E;color:#FFF;cursor:pointer;margin-right:8px;";
+  bP.onclick=function(){window.print();};
+  var bC=document.createElement("button");bC.textContent="Cerrar";
+  bC.style.cssText="font:inherit;font-weight:700;padding:10px 16px;border-radius:8px;border:1px solid #D5DDE4;background:#FFF;color:#1B2A3A;cursor:pointer;";
+  bC.onclick=function(){if(ov.parentNode)ov.parentNode.removeChild(ov);};
+  bar.appendChild(bP);bar.appendChild(bC);
+  var h1=document.createElement("h1");h1.style.cssText="font-family:Georgia,serif;font-size:22px;margin:0 0 16px;color:#1B2A3A;";h1.textContent=title;
+  var pre=document.createElement("pre");pre.style.cssText="white-space:pre-wrap;font-family:Georgia,serif;font-size:15px;line-height:1.6;margin:0;color:#1B2A3A;";pre.textContent=text;
+  var foot=document.createElement("div");foot.style.cssText="font-size:12px;color:#5B6B7B;margin-top:30px;";foot.textContent="Reunión Vida y Ministerio Cristianos · "+WEEK.shortLabel+" · Fuentes: wol.jw.org";
+  ov.appendChild(bar);ov.appendChild(h1);ov.appendChild(pre);ov.appendChild(foot);document.body.appendChild(ov);
+}
+
+/* ============ RENDER Y EVENTOS ============ */
+function render(){
+  var h="";
+  if(S.view==="home")h=viewHome();
+  else if(S.view==="part")h=viewPart();
+  else if(S.view==="saved")h=viewSaved();
+  else if(S.view==="discursos")h=viewDiscursos();
+  else if(S.view==="semana")h=viewSemana();
+  document.getElementById("app").innerHTML=h;
+  timerTick();
+}
+function go(v,id){S.view=v;S.id=id||null;render();window.scrollTo(0,0);}
+
+function saveAtalaya(){S.v=collectDefaults();persistNow();toast("Atalaya guardada ✓");}
+function atalayaAddParrafo(){var i=ATALAYA.parrafos.length;ATALAYA.parrafos.push({num:String(i+1),texto:"",pregunta:"",respuesta:""});S.v["atalaya.total"]=ATALAYA.parrafos.length;persistNow();render();toast("Párrafo añadido");}
+function atalayaDelParrafo(){if(ATALAYA.parrafos.length<=1){toast("Debe quedar al menos 1");return;}ATALAYA.parrafos.pop();S.v["atalaya.total"]=ATALAYA.parrafos.length;persistNow();render();toast("Párrafo quitado");}
+
+var actions={
+  go:function(b){go(b.dataset.id);},
+  prep:function(b){go("part",b.dataset.id);},
+  demo:function(){S.demo=true;render();},
+  save:function(){saveMeeting();},
+  duplicate:function(){duplicateMeeting();},
+  tab:function(b){S.tabWeek=b.dataset.id;render();window.scrollTo(0,0);},
+  "open-saved":function(b){var m=savedList().filter(function(x){return x.weekKey===b.dataset.id;})[0];if(m){S.v=JSON.parse(JSON.stringify(m.v));persistNow();S.demo=true;}go("home");toast("Reunión abierta");},
+  "del-saved":function(b){lsSet(K_SAVED,savedList().filter(function(x){return x.weekKey!==b.dataset.id;}));toast("Eliminada");render();},
+  "del-disc":function(b){lsSet(K_DISC,discursosList().filter(function(x){return x.id!==b.dataset.id;}));toast("Eliminado");render();},
+  "week-save":function(){if(weekFromDOM()){saveWeekData();toast("Semana guardada ✓");render();}},
+  "week-add":function(){if(!weekFromDOM())return;PARTS.push({id:"n"+Date.now(),section:"SECCIÓN NUEVA",title:"Nueva parte",min:5});saveWeekData();render();window.scrollTo(0,0);},
+  "week-up":function(b){if(!weekFromDOM())return;var i=+b.dataset.id;if(i>0){var t=PARTS[i];PARTS[i]=PARTS[i-1];PARTS[i-1]=t;saveWeekData();render();}},
+  "week-down":function(b){if(!weekFromDOM())return;var i=+b.dataset.id;if(i<PARTS.length-1){var t=PARTS[i];PARTS[i]=PARTS[i+1];PARTS[i+1]=t;saveWeekData();render();}},
+  "week-del":function(b){if(!weekFromDOM())return;PARTS.splice(+b.dataset.id,1);saveWeekData();render();},
+  "week-reset":function(){Object.assign(WEEK,JSON.parse(JSON.stringify(WEEK_DEFAULT)));PARTS=JSON.parse(JSON.stringify(PARTS_DEFAULT));WEEKEND=JSON.parse(JSON.stringify(WEEKEND_DEFAULT));lsSet(K_WEEK,null);toast("Semana original restaurada");render();},
+  "export-backup":function(){exportBackup();},
+  "import-backup":function(){importBackup();},
+  "save-disc":function(){saveDiscursoActual();},
+  "save-atalaya":function(){saveAtalaya();},
+  "atalaya-add":function(){atalayaAddParrafo();},
+  "atalaya-del":function(){atalayaDelParrafo();},
+  "show-full":function(){var box=document.getElementById("full-disc");if(!box)return;box.innerHTML='<div class="src" style="white-space:pre-wrap;font-family:Georgia,serif;font-size:15px;margin-top:12px">'+esc(buildDiscursoTexto())+'</div>';box.scrollIntoView({behavior:"smooth",block:"start"});},
+  "gen-perlas":function(){var t=buildPerlasRespuesta();S.v["p2.respuesta"]=t;var f=document.querySelector('[data-k="p2.respuesta"]');if(f)f.value=t;persist();toast("Respuesta generada");},
+  "timer-open-t1":function(){timerOpen("Discurso: "+val("p1.d.titulo",DISCURSO_T1.title),parseInt(val("p1.d.duracion",DISCURSO_T1.duration),10)||10);},
+  "timer-open-part":function(b){var p=PARTS.filter(function(x){return x.id===b.dataset.id;})[0];if(p)timerOpen(p.num?(p.num+". "+p.title):p.title,p.min);},
+  "timer-open-disc":function(b){var d=discursosList().filter(function(x){return x.id===b.dataset.id;})[0];if(d)timerOpen(d.title,d.duration);},
+  "timer-open-atalaya":function(){timerOpen("Estudio de La Atalaya",60);},
+  "t-start":function(){timerStart();},
+  "t-pause":function(){timerPause();},
+  "t-resume":function(){timerStart();},
+  "t-reset":function(){timerReset();},
+  "t-close":function(){timerClose();},
+  "copy-part":function(b){var p=PARTS.filter(function(x){return x.id===b.dataset.id;})[0];if(!p)return;var txt=(p.id==="p1")?buildDiscursoTexto():collectPartText(p);copyToClipboard(txt);},
+  "pdf-part":function(b){var p=PARTS.filter(function(x){return x.id===b.dataset.id;})[0];if(!p)return;var txt=(p.id==="p1")?buildDiscursoTexto():collectPartText(p);openPrint(p.title,txt);},
+  "copy-disc":function(b){var d=discursosList().filter(function(x){return x.id===b.dataset.id;})[0];if(d)copyToClipboard(d.text);},
+  "pdf-disc":function(b){var d=discursosList().filter(function(x){return x.id===b.dataset.id;})[0];if(d)openPrint(d.title,d.text);}
+};
+
+document.addEventListener("click",function(e){
+  var b=e.target.closest("[data-act]");if(!b)return;
+  if(b.dataset.confirm&&!b.dataset.armed){
+    b.dataset.armed="1";b.dataset.label=b.textContent;b.textContent="¿Seguro? Toca otra vez";b.classList.add("armed");
+    setTimeout(function(){if(b.isConnected&&b.dataset.armed){delete b.dataset.armed;b.textContent=b.dataset.label;b.classList.remove("armed");}},3000);
+    return;
+  }
+  var fn=actions[b.dataset.act];if(fn)fn(b);
+});
+
+function onField(e){
+  var el=e.target,k=el.dataset&&el.dataset.k;if(!k)return;
+  if(el.type==="checkbox"){S.v[k]=el.checked?"1":"";var n=document.getElementById("pickN");if(n)n.textContent=pickedCount();}
+  else{S.v[k]=el.value;}
+  persist();
+}
+function onFieldBlur(e){
+  var el=e.target;if(el.dataset&&el.dataset.k){persistNow();}
+}
+document.addEventListener("input",onField);
+document.addEventListener("change",onField);
+document.addEventListener("blur",onFieldBlur,true);
+
+(function seed(){var seed=discSeedFields();for(var k in seed){if(!(k in S.v))S.v[k]=seed[k];}})();
+(function restoreAtalaya(){var t=parseInt(S.v["atalaya.total"],10)||0;while(ATALAYA.parrafos.length<t){var i=ATALAYA.parrafos.length;ATALAYA.parrafos.push({num:String(i+1),texto:"",pregunta:"",respuesta:""});}})();
+
+render();
+if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}
+})();
+</script>
+</body>
+</html>
