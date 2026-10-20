@@ -150,7 +150,7 @@ var SRC={
 var DISCURSO_T1 = {
   title:"La esperanza es clave para estar contentos",
   duration:10,
-  intro:"Imaginen que salen de excursión con una mochila. Al principio casi no pesa. Pero en el camino vamos metiendo cosas: una preocupación, una comparación, una decepción, un cansancio que no le contamos a nadie. Nadie lo nota de golpe. Un día, simplemente, sentimos que ya no podemos más. ¿Alguna vez les ha pasado? Quizás no fue una gran crisis. Fue un cansancio que se fue acumulando: las mismas responsabilidades, los mismos problemas, y la sensación de que otros reciben más oportunidades. Si levantamos la mano mentalmente, sabemos de lo que hablo.",
+  intro:"Hermanos, ¿alguna vez han sentido que la asignación que tienen es demasiado pesada? ¿O que otros reciben oportunidades que ustedes desearían tener? Esta semana la lectura es Jeremías 45 y 46. El capítulo 45 es el más corto del libro: cinco versículos. Y es muy especial, porque no es un mensaje para toda la nación, sino para una sola persona: Baruc, el secretario del profeta Jeremías. Baruc era un hombre fiel. Escribió dos veces el rollo de los mensajes de Jeremías, acompañó al profeta durante años y hasta fue con él a Egipto. Pero hubo un momento en que se sintió agotado y descontento. Lo que Jehová le dijo a él nos ayuda a todos nosotros. Veamos por qué la esperanza es clave para estar contentos.",
   desarrollo:[
     {
       titulo:"Primer punto: El descontento de Baruc",
@@ -298,64 +298,10 @@ var K_CUR="prep2:actual",K_SAVED="prep2:guardadas",K_DISC="prep2:discursos",K_LI
 function lsGet(k,d){try{var x=localStorage.getItem(k);return x?JSON.parse(x):d;}catch(e){return d;}}
 function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
 var K_WEEK="prep2:semana";
-/* Campos de texto válidos de la semana. Un respaldo antiguo guarda `week` como
-   texto (solo la etiqueta): pasarlo a Object.assign esparciría sus caracteres. */
-var WEEK_FIELDS=["key","label","shortLabel","reading","fetched","program","url"];
-function normalizeWeek(w){
-  var out={};
-  if(w&&typeof w==="object"&&!Array.isArray(w)){
-    for(var i=0;i<WEEK_FIELDS.length;i++){var k=WEEK_FIELDS[i];if(typeof w[k]==="string")out[k]=w[k];}
-  }else if(typeof w==="string"){
-    out.shortLabel=w;
-  }
-  return out;
-}
-function normalizeParts(p){
-  if(!Array.isArray(p))return null;
-  var out=[];
-  for(var i=0;i<p.length;i++){if(p[i]&&typeof p[i]==="object"&&!Array.isArray(p[i]))out.push(p[i]);}
-  return out.length?out:null;
-}
-/* Combina el fin de semana importado sobre el actual: nunca deja secciones ni
-   `parrafos` con un tipo inesperado. */
-function mergeWeekend(w){
-  if(!w||typeof w!=="object"||Array.isArray(w))return null;
-  var out=JSON.parse(JSON.stringify(WEEKEND));
-  ["discursoPublico","atalaya"].forEach(function(sec){
-    var src=w[sec];
-    if(!src||typeof src!=="object"||Array.isArray(src))return;
-    for(var k in src){
-      if(k==="parrafos"){if(Array.isArray(src[k]))out[sec].parrafos=src[k];}
-      else if(typeof src[k]==="string")out[sec][k]=src[k];
-    }
-  });
-  return out;
-}
-function weekSnapshot(){
-  var out={};
-  for(var i=0;i<WEEK_FIELDS.length;i++){var k=WEEK_FIELDS[i];if(typeof WEEK[k]==="string")out[k]=WEEK[k];}
-  return out;
-}
-function validWeekKey(k){
-  if(typeof k!=="string"||k.length!==10||k.charAt(4)!=="-"||k.charAt(7)!=="-")return false;
-  for(var i=0;i<10;i++){
-    if(i===4||i===7)continue;
-    var c=k.charAt(i);
-    if(c<"0"||c>"9")return false;
-  }
-  return true;
-}
 var WEEK_DEFAULT=JSON.parse(JSON.stringify(WEEK));
 var PARTS_DEFAULT=JSON.parse(JSON.stringify(PARTS));
 var WEEKEND_DEFAULT=JSON.parse(JSON.stringify(WEEKEND));
-(function loadWeekData(){
-  var s=lsGet(K_WEEK,null);
-  if(!s||typeof s!=="object")return;
-  var w=normalizeWeek(s.week);
-  for(var k in w)WEEK[k]=w[k];
-  var p=normalizeParts(s.parts);if(p)PARTS=p;
-  var wk=mergeWeekend(s.weekend);if(wk)WEEKEND=wk;
-})();
+(function loadWeekData(){var s=lsGet(K_WEEK,null);if(!s)return;if(s.week)Object.assign(WEEK,s.week);if(Array.isArray(s.parts))PARTS=s.parts;if(s.weekend)WEEKEND=s.weekend;})();
 (function init(){var c=lsGet(K_CUR,null);if(c&&c.weekKey===WEEK.key&&c.v){for(var k in c.v){if(c.v[k]!==""&&c.v[k]!==null&&c.v[k]!==undefined)S.v[k]=c.v[k];}}})();
 var SAVE_BUILD="2026-10-19-v2";
 var persistT=null;
@@ -445,38 +391,24 @@ function detectType(p){
 /* ============ GUARDADO ============ */
 function savedList(){return lsGet(K_SAVED,[]);}
 function discursosList(){return lsGet(K_DISC,[]);}
-/* Acceso validado al discurso de la semana: nunca devuelve una estructura vacía. */
-function discursoActual(){
-  var d=(typeof DISCURSO_T1!=="undefined"&&DISCURSO_T1)?DISCURSO_T1:{};
-  var desarrollo=Array.isArray(d.desarrollo)?d.desarrollo:[];
-  return {
-    title:d.title||"Discurso de esta semana",
-    duration:d.duration||10,
-    intro:d.intro||"",
-    aplicacion:d.aplicacion||"",
-    conclusion:d.conclusion||"",
-    desarrollo:desarrollo
-  };
-}
 function discSeedFields(){
-  var d=discursoActual();
   var out={};
-  out["p1.d.titulo"]=d.title;
-  out["p1.d.duracion"]=d.duration;
-  out["p1.d.intro"]=d.intro;
-  d.desarrollo.forEach(function(dv,i){
-    out["p1.d.p"+i+".titulo"]=dv.titulo||"";
-    if(dv.texto){
-      out["p1.d.p"+i+".t.ref"]=dv.texto.ref||"";
-      out["p1.d.p"+i+".t.intro"]=dv.texto.intro||"";
-      out["p1.d.p"+i+".t.lectura"]=dv.texto.lectura||"";
-      out["p1.d.p"+i+".t.explicacion"]=dv.texto.explicacion||"";
+  out["p1.d.titulo"]=DISCURSO_T1.title;
+  out["p1.d.duracion"]=DISCURSO_T1.duration;
+  out["p1.d.intro"]=DISCURSO_T1.intro;
+  DISCURSO_T1.desarrollo.forEach(function(d,i){
+    out["p1.d.p"+i+".titulo"]=d.titulo;
+    if(d.texto){
+      out["p1.d.p"+i+".t.ref"]=d.texto.ref;
+      out["p1.d.p"+i+".t.intro"]=d.texto.intro;
+      out["p1.d.p"+i+".t.lectura"]=d.texto.lectura;
+      out["p1.d.p"+i+".t.explicacion"]=d.texto.explicacion;
     }
-    out["p1.d.p"+i+".apoyo"]=dv.apoyo||"";
-    out["p1.d.p"+i+".leccion"]=dv.leccion||"";
+    out["p1.d.p"+i+".apoyo"]=d.apoyo;
+    out["p1.d.p"+i+".leccion"]=d.leccion;
   });
-  out["p1.d.aplicacion"]=d.aplicacion;
-  out["p1.d.conclusion"]=d.conclusion;
+  out["p1.d.aplicacion"]=DISCURSO_T1.aplicacion;
+  out["p1.d.conclusion"]=DISCURSO_T1.conclusion;
   return out;
 }
 function collectDefaults(){var v=JSON.parse(JSON.stringify(S.v));var seed=discSeedFields();for(var k in seed){if(!(k in v)||v[k]==="")v[k]=seed[k];}return v;}
@@ -484,15 +416,13 @@ function saveMeeting(){S.v=collectDefaults();persistNow();var list=savedList().f
 function duplicateMeeting(){var m=savedList().filter(function(x){return x.weekKey===WEEK.key;})[0];var base=m?m.v:collectDefaults();var newKey=WEEK.key+"-copia-"+Date.now();var list=savedList();list.push({weekKey:newKey,label:WEEK.shortLabel+" — copia",savedAt:Date.now(),v:JSON.parse(JSON.stringify(base))});lsSet(K_SAVED,list);toast("Copia creada");render();}
 
 function buildDiscursoTexto(){
-  var D=discursoActual();
   var L=[];
-  L.push("TÍTULO: "+val("p1.d.titulo",D.title));
-  L.push("DURACIÓN: "+val("p1.d.duracion",D.duration)+" min");
-  L.push("SEMANA: "+WEEK.label);
+  L.push("TÍTULO: "+val("p1.d.titulo",DISCURSO_T1.title));
+  L.push("DURACIÓN: "+val("p1.d.duracion",DISCURSO_T1.duration)+" min");
   L.push("");
   L.push("INTRODUCCIÓN");
-  L.push(val("p1.d.intro",D.intro));
-  D.desarrollo.forEach(function(d,i){
+  L.push(val("p1.d.intro",DISCURSO_T1.intro));
+  DISCURSO_T1.desarrollo.forEach(function(d,i){
     L.push("");
     L.push("=== "+val("p1.d.p"+i+".titulo",d.titulo).toUpperCase()+" ===");
     if(d.texto){
@@ -516,30 +446,24 @@ function buildDiscursoTexto(){
   });
   L.push("");
   L.push("APLICACIÓN");
-  L.push(val("p1.d.aplicacion",D.aplicacion));
+  L.push(val("p1.d.aplicacion",DISCURSO_T1.aplicacion));
   L.push("");
   L.push("CONCLUSIÓN");
-  L.push(val("p1.d.conclusion",D.conclusion));
+  L.push(val("p1.d.conclusion",DISCURSO_T1.conclusion));
   return L.join("\n");
 }
 function saveDiscursoActual(){
-  var title=val("p1.d.titulo",discursoActual().title);
-  var dur=val("p1.d.duracion",discursoActual().duration);
-  var text=buildDiscursoTexto();
-  var list=discursosList();
-  var dup=list.filter(function(x){return x.title===title&&x.text===text;})[0];
-  if(dup){toast("Ese discurso ya está guardado");return;}
-  var d={id:"d-"+Date.now(),title:title,duration:parseInt(dur,10)||10,date:new Date().toISOString(),text:text,sources:["guia","w0722","w0720","w0724","j45"],status:"borrador"};
-  list.push(d);lsSet(K_DISC,list);
+  var title=val("p1.d.titulo",DISCURSO_T1.title);
+  var dur=val("p1.d.duracion",DISCURSO_T1.duration);
+  var d={id:"d-"+Date.now(),title:title,duration:parseInt(dur,10)||10,date:new Date().toISOString(),text:buildDiscursoTexto(),sources:["guia","w0722","w0720","w0724","j45"],status:"borrador"};
+  var list=discursosList();list.push(d);lsSet(K_DISC,list);
   toast("Discurso guardado en «Discursos»");render();
 }
 function buildPerlasRespuesta(){var parts=[];for(var i=0;i<PUNTOS.length;i++){if(S.v["p2.pick."+i]){var pt=PUNTOS[i];parts.push("• "+pt.v+" — "+pt.idea+" "+pt.aprendemos+" "+pt.aplicar);}}return parts.join("\n\n");}
 
 /* ============ EXPORTAR / IMPORTAR RESPALDO ============ */
-var SHARE_CACHE="reunion-share-inbox",SHARE_KEY="./__share_inbox__";
-function shareKeyURL(){return new URL(SHARE_KEY,location.href).href;}
 function exportBackup(){
-  var data={app:"reunion-semana",version:2,exportedAt:new Date().toISOString(),weekKey:WEEK.key,week:weekSnapshot(),parts:JSON.parse(JSON.stringify(PARTS)),weekend:JSON.parse(JSON.stringify(WEEKEND)),v:S.v,saved:savedList(),discursos:discursosList()};
+  var data={exportedAt:new Date().toISOString(),weekKey:WEEK.key,week:WEEK.shortLabel,v:S.v,saved:savedList(),discursos:discursosList()};
   var blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
   var url=URL.createObjectURL(blob);
   var a=document.createElement("a");
@@ -548,129 +472,24 @@ function exportBackup(){
   setTimeout(function(){URL.revokeObjectURL(url);},1000);
   toast("Respaldo descargado");
 }
-/* Quita el BOM y espacios iniciales: JSON.parse falla con \uFEFF. */
-function cleanJsonText(t){
-  t=String(t==null?"":t);
-  if(t.charCodeAt(0)===0xFEFF)t=t.slice(1);
-  return t.replace(/^\s+/,"");
-}
-/* Acepta tanto el respaldo propio como el volcado de semana ({week,parts,weekend}). */
-function applyBackupData(data,source){
-  if(!data||typeof data!=="object"||Array.isArray(data))throw new Error("El archivo no contiene un respaldo válido");
-  var aplicado=false;
-  if(data.v&&typeof data.v==="object"&&!Array.isArray(data.v)){S.v=Object.assign({},S.v,data.v);aplicado=true;}
-  if(Array.isArray(data.saved)){lsSet(K_SAVED,data.saved);aplicado=true;}
-  if(Array.isArray(data.discursos)){lsSet(K_DISC,data.discursos);aplicado=true;}
-  if("week" in data||"parts" in data||"weekend" in data){
-    var week=normalizeWeek(data.week);
-    /* respaldo antiguo: `week` era texto y el dato útil estaba en weekKey */
-    var desdeObjeto=!!week.key;
-    if(!week.key&&validWeekKey(data.weekKey))week.key=data.weekKey;
-    if(week.key&&(!week.label||!week.shortLabel)){
-      var wl=weekLabels(week.key);
-      if(wl){
-        if(!desdeObjeto)week.key=wl.key;
-        if(!week.label)week.label=wl.label;
-        if(!week.shortLabel)week.shortLabel=wl.shortLabel;
-      }
-    }
-    for(var kw in week)WEEK[kw]=week[kw];
-    var parts=normalizeParts(data.parts);if(parts)PARTS=parts;
-    var weekend=mergeWeekend(data.weekend);if(weekend)WEEKEND=weekend;
-    /* se guarda siempre la forma completa y normalizada, para que al recargar
-       loadWeekData la lea sin romperse */
-    lsSet(K_WEEK,{week:weekSnapshot(),parts:PARTS,weekend:WEEKEND});
-    aplicado=true;
-  }
-  if(!aplicado)throw new Error("El archivo no tiene datos de respaldo reconocibles");
-  /* después de fijar WEEK: si no, K_CUR queda con el weekKey viejo y al
-     recargar se descartarían los datos importados */
-  persistNow();
-  var campos=0;for(var kc in S.v){if(S.v[kc])campos++;}
-  render();
-  toast("Respaldo importado ✓"+(campos?" ("+campos+" campos)":""));
-  return true;
-}
-function importBackupText(text,sourceName){
-  var data;
-  try{data=JSON.parse(cleanJsonText(text));}
-  catch(err){toast("Archivo inválido: no es un JSON válido");return false;}
-  if(S.v&&Object.keys(S.v).some(function(k){return S.v[k];})){
-    if(!window.confirm("Se reemplazarán los datos de esta semana en este dispositivo.\n\n¿Importar "+(sourceName||"el respaldo")+"?"))return false;
-  }
-  try{return applyBackupData(data,sourceName);}
-  catch(err){toast("Archivo inválido: "+err.message);return false;}
-}
-function readFileAsText(file,onDone){
-  var r=new FileReader();
-  var done=false;
-  function finish(ok,payload){
-    if(done)return;done=true;
-    try{r.abort();}catch(e){}
-    onDone(ok,payload);
-  }
-  r.onload=function(){
-    var text=r.result;
-    if(typeof text!=="string"){
-      try{text=new TextDecoder("utf-8").decode(text);}catch(e){text=String(text||"");}
-    }
-    finish(true,text);
-  };
-  r.onerror=function(){finish(false,"No se pudo leer el archivo");};
-  r.onabort=function(){finish(false,"Lectura cancelada");};
-  try{r.readAsText(file,"utf-8");}
-  catch(err){finish(false,"El navegador no pudo abrir el archivo");}
-}
 function importBackup(){
   var inp=document.createElement("input");
-  inp.type="file";
-  /* accept amplio: en Android el selector oculta .json si solo se declara application/json */
-  inp.accept=".json,application/json,application/octet-stream,text/plain,text/*,*/*";
-  inp.multiple=false;
-  inp.setAttribute("aria-label","Selecciona el archivo de respaldo");
-  inp.style.cssText="position:fixed;left:-9999px;top:0;width:1px;height:1px;opacity:0;";
-  var cleaned=false;
-  function cleanup(){if(cleaned)return;cleaned=true;if(inp.parentNode)inp.parentNode.removeChild(inp);}
-  inp.addEventListener("change",function(){
-    var f=inp.files&&inp.files[0];
-    inp.value="";           /* permite volver a elegir el mismo archivo */
-    if(!f){cleanup();return;}
-    readFileAsText(f,function(ok,text){
-      cleanup();
-      if(!ok){toast("Archivo inválido: "+(text||"no se pudo leer"));return;}
-      importBackupText(text,f.name);
-    });
-  });
-  inp.addEventListener("cancel",cleanup);
-  document.body.appendChild(inp);
+  inp.type="file";inp.accept=".json,application/json";
+  inp.onchange=function(e){
+    var f=e.target.files[0];if(!f)return;
+    var r=new FileReader();
+    r.onload=function(){
+      try{
+        var data=JSON.parse(r.result);
+        if(data.v){S.v=data.v;persistNow();}
+        if(data.saved)lsSet(K_SAVED,data.saved);
+        if(data.discursos)lsSet(K_DISC,data.discursos);
+        toast("Respaldo importado ✓");render();
+      }catch(err){toast("Archivo inválido");}
+    };
+    r.readAsText(f);
+  };
   inp.click();
-}
-/* Recibe el JSON que Android envía por «Compartir» (share_target del manifest). */
-function consumeSharedBackup(){
-  if(!("caches" in window))return;
-  caches.open(SHARE_CACHE).then(function(c){
-    return c.match(shareKeyURL()).then(function(res){
-      if(!res)return;
-      return res.text().then(function(text){
-        try{history.replaceState(null,"",location.pathname+location.hash);}catch(e){}
-        var ok=importBackupText(text,"el archivo compartido");
-        /* solo se vacía la bandeja si la importación se aplicó */
-        if(ok)c.delete(shareKeyURL());
-      });
-    });
-  }).catch(function(){});
-}
-/* Escritorio: abrir el .json con la app (file_handlers del manifest). */
-function consumeLaunchedFiles(){
-  if(!("launchQueue" in window)||!window.launchQueue.setConsumer)return;
-  window.launchQueue.setConsumer(function(params){
-    if(!params||!params.files||!params.files.length)return;
-    var f=params.files[0];
-    Promise.resolve(f.getFile?f.getFile():f).then(function(file){
-      if(file&&file.text)return file.text();
-      return new Promise(function(resolve,reject){readFileAsText(file,function(ok,t){ok?resolve(t):reject(new Error(t));});});
-    }).then(function(text){importBackupText(text,f.name||"archivo");}).catch(function(){toast("No se pudo abrir el archivo");});
-  });
 }
 
 /* ============ CARGA AUTOMÁTICA DESDE JW.ORG ============ */
@@ -798,23 +617,8 @@ function viewSaved(){
 
 function viewDiscursos(){
   var list=discursosList();
-  var D=discursoActual();
-  var hasPuntos=D.desarrollo.length>0;
-  var h=topbar("Discursos","home",'<button class="btn sm primary" data-act="prep" data-id="p1">Editar</button>');
-  h+='<div class="sec">DISCURSO DE ESTA SEMANA</div>';
-  h+='<div class="card"><div class="muted small">'+esc(WEEK.label)+'</div>'
-    +'<h3 style="margin:4px 0 6px">'+esc(val("p1.d.titulo",D.title))+'</h3>'
-    +'<div class="muted small">'+esc(val("p1.d.duracion",D.duration))+' min · Discurso 1 (Tesoros de la Biblia)'+(hasPuntos?' · '+D.desarrollo.length+' puntos':'')+'</div>';
-  if(hasPuntos){
-    h+='<ul class="tight" style="margin:10px 0">'+D.desarrollo.map(function(dv,i){return '<li><b>'+(i+1)+'.</b> '+esc(val("p1.d.p"+i+".titulo",dv.titulo))+'</li>';}).join("")+'</ul>';
-  }else{
-    h+='<div class="warnbox">El discurso de esta semana no tiene puntos cargados. Revisa la parte 1 en «Editar semana».</div>';
-  }
-  h+='<details><summary>Ver discurso completo</summary><div class="src" style="white-space:pre-wrap;font-family:Georgia,serif">'+esc(buildDiscursoTexto())+'</div></details>'
-    +'<div class="row" style="margin-top:10px"><button class="btn sm grow" data-act="copy-cur-disc">📋 Copiar</button><button class="btn sm grow" data-act="pdf-cur-disc">📄 PDF</button><button class="btn sm grow primary" data-act="share-cur-disc">📤 Compartir</button></div>'
-    +'<button class="btn block" style="margin-top:8px" data-act="save-disc">💾 Guardar una copia en «Discursos»</button></div>';
-  h+='<div class="sec">COPIAS GUARDADAS</div>';
-  if(!list.length)return h+'<div class="card muted" style="text-align:center">Todavía no has guardado copias. El discurso de esta semana siempre está disponible arriba.</div>';
+  var h=topbar("Discursos guardados","home","");
+  if(!list.length)return h+'<div class="card muted" style="text-align:center">Aún no has guardado discursos.</div>';
   list.sort(function(a,b){return new Date(b.date)-new Date(a.date);});
   list.forEach(function(d){
     h+='<div class="card"><h3>'+esc(d.title)+'</h3><div class="muted small" style="margin:4px 0 6px">'+esc(d.duration)+' min · '+esc(new Date(d.date).toLocaleString("es"))+'</div>'
@@ -849,17 +653,12 @@ function viewPart(){
 
 /* ---- TESOROS (REESCRITO) ---- */
 function viewTesoros(p){
-  var D=discursoActual();
   var h='<div class="edit-hint">💡 Toca cualquier recuadro para editarlo. Se guarda solo en este dispositivo.</div>';
-  if(!D.desarrollo.length){
-    return h+'<div class="warnbox"><b>El discurso de esta semana no tiene contenido cargado.</b><br>Revisa la parte 1 en «Editar semana» y vuelve a abrir esta pantalla.</div>'
-      +'<div class="card">'+field("p1.d.notas","","Notas personales",110)+'</div>';
-  }
-  h+='<div class="card"><div class="disc-sec-title">✏️ TÍTULO</div>'+inputField("p1.d.titulo",D.title,"")
-    +'<div class="disc-sec-title" style="margin-top:12px">✏️ DURACIÓN (min)</div>'+inputField("p1.d.duracion",D.duration,"")
+  h+='<div class="card"><div class="disc-sec-title">✏️ TÍTULO</div>'+inputField("p1.d.titulo",DISCURSO_T1.title,"")
+    +'<div class="disc-sec-title" style="margin-top:12px">✏️ DURACIÓN (min)</div>'+inputField("p1.d.duracion",DISCURSO_T1.duration,"")
     +'<div class="row" style="margin-top:10px"><button class="btn sm primary grow" data-act="timer-open-t1">⏱️ INICIAR CRONÓMETRO</button></div></div>';
-  h+='<div class="card"><div class="disc-sec-title">✏️ INTRODUCCIÓN</div>'+field("p1.d.intro",D.intro,"",260)+'</div>';
-  D.desarrollo.forEach(function(dv,i){
+  h+='<div class="card"><div class="disc-sec-title">✏️ INTRODUCCIÓN</div>'+field("p1.d.intro",DISCURSO_T1.intro,"",260)+'</div>';
+  DISCURSO_T1.desarrollo.forEach(function(dv,i){
     var card='<div class="card"><div class="sec" style="margin-top:0">Punto '+(i+1)+'</div><div class="disc-sec-title">✏️ TÍTULO DEL PUNTO</div>'+field("p1.d.p"+i+".titulo",dv.titulo,"",60);
     if(dv.texto){
       card+='<div class="disc-sec-title" style="margin-top:16px">📖 TEXTO BÍBLICO PRINCIPAL — '+esc(dv.texto.ref)+'</div>'
@@ -877,8 +676,8 @@ function viewTesoros(p){
       +field("p1.d.p"+i+".leccion",dv.leccion,"",90)+'</div>';
     h+=card;
   });
-  h+='<div class="card"><div class="disc-sec-title">✏️ APLICACIÓN</div>'+field("p1.d.aplicacion",D.aplicacion,"",260)+'</div>';
-  h+='<div class="card"><div class="disc-sec-title">✏️ CONCLUSIÓN</div>'+field("p1.d.conclusion",D.conclusion,"",220)+'</div>';
+  h+='<div class="card"><div class="disc-sec-title">✏️ APLICACIÓN</div>'+field("p1.d.aplicacion",DISCURSO_T1.aplicacion,"",260)+'</div>';
+  h+='<div class="card"><div class="disc-sec-title">✏️ CONCLUSIÓN</div>'+field("p1.d.conclusion",DISCURSO_T1.conclusion,"",220)+'</div>';
   h+='<div class="card"><button class="btn primary block" data-act="show-full">👁️ Ver discurso completo</button>'
     +'<button class="btn block" style="margin-top:8px" data-act="save-disc">💾 Guardar en «Discursos»</button>'
     +'<div class="infobox" style="margin-top:10px"><b>¿Dónde se guarda?</b><br>• «Guardar» arriba (o «Guardar reunión» en la pantalla principal) lo guarda en este dispositivo.<br>• «Guardar en Discursos» crea una copia separada en Discursos.<br>• «PDF» o «Copiar» te permite llevarlo a otro teléfono o computador.</div>'
@@ -1187,7 +986,7 @@ var actions={
   "atalaya-del":function(){atalayaDelParrafo();},
   "show-full":function(){var box=document.getElementById("full-disc");if(!box)return;box.innerHTML='<div class="src" style="white-space:pre-wrap;font-family:Georgia,serif;font-size:15px;margin-top:12px">'+esc(buildDiscursoTexto())+'</div>';box.scrollIntoView({behavior:"smooth",block:"start"});},
   "gen-perlas":function(){var t=buildPerlasRespuesta();S.v["p2.respuesta"]=t;var f=document.querySelector('[data-k="p2.respuesta"]');if(f)f.value=t;persist();toast("Respuesta generada");},
-  "timer-open-t1":function(){var D=discursoActual();timerOpen("Discurso: "+val("p1.d.titulo",D.title),parseInt(val("p1.d.duracion",D.duration),10)||10);},
+  "timer-open-t1":function(){timerOpen("Discurso: "+val("p1.d.titulo",DISCURSO_T1.title),parseInt(val("p1.d.duracion",DISCURSO_T1.duration),10)||10);},
   "timer-open-part":function(b){var p=PARTS.filter(function(x){return x.id===b.dataset.id;})[0];if(p)timerOpen(p.num?(p.num+". "+p.title):p.title,p.min);},
   "timer-open-disc":function(b){var d=discursosList().filter(function(x){return x.id===b.dataset.id;})[0];if(d)timerOpen(d.title,d.duration);},
   "timer-open-atalaya":function(){timerOpen("Estudio de La Atalaya",60);},
@@ -1202,9 +1001,6 @@ var actions={
   "copy-atalaya":function(){copyToClipboard(atalayaText());},
   "pdf-atalaya":function(){openPrint(val("atalaya.titulo",WEEKEND.atalaya.title),atalayaText());},
   "share-atalaya":function(){shareText(val("atalaya.titulo",WEEKEND.atalaya.title),atalayaText());},
-  "copy-cur-disc":function(){copyToClipboard(buildDiscursoTexto());},
-  "pdf-cur-disc":function(){openPrint(val("p1.d.titulo",discursoActual().title),buildDiscursoTexto());},
-  "share-cur-disc":function(){var D=discursoActual();shareText(val("p1.d.titulo",D.title),buildDiscursoTexto());},
   "copy-disc":function(b){var d=discursosList().filter(function(x){return x.id===b.dataset.id;})[0];if(d)copyToClipboard(d.text);},
   "pdf-disc":function(b){var d=discursosList().filter(function(x){return x.id===b.dataset.id;})[0];if(d)openPrint(d.title,d.text);},
   "share-disc":function(b){var d=discursosList().filter(function(x){return x.id===b.dataset.id;})[0];if(d)shareText(d.title,d.text);}
@@ -1237,19 +1033,7 @@ document.addEventListener("blur",onFieldBlur,true);
 (function restoreAtalaya(){var t=parseInt(S.v["atalaya.total"],10)||0;while(ATALAYA.parrafos.length<t){var i=ATALAYA.parrafos.length;ATALAYA.parrafos.push({num:String(i+1),texto:"",pregunta:"",respuesta:""});}})();
 
 render();
-if("serviceWorker" in navigator){
-  window.addEventListener("load",function(){
-    navigator.serviceWorker.register("sw.js").then(function(reg){
-      /* recoger el archivo compartido en cuanto el SW controle la página */
-      if(navigator.serviceWorker.controller)consumeSharedBackup();
-      else if(reg&&reg.active)reg.active.postMessage({type:"ping"});
-    }).catch(function(){});
-    navigator.serviceWorker.addEventListener("controllerchange",consumeSharedBackup);
-  });
-}
-/* al abrir desde «Compartir» en Android, Android añade el archivo antes de cargar la página */
-window.addEventListener("load",function(){consumeSharedBackup();});
-consumeLaunchedFiles();
+if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}
 })();
 </script>
 </body>
