@@ -82,7 +82,7 @@ ul.tight{margin:6px 0 6px 18px;padding:0}ul.tight li{margin-bottom:6px}
 #timerbox .grow{flex:1;min-width:0}
 #timerbox .ttitle{font-size:12px;color:var(--muted);font-weight:700;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #timerbox .tclose{position:absolute;top:6px;right:8px;background:none;border:0;color:var(--muted);font-size:20px;line-height:1;padding:4px;cursor:pointer}
-@media print{body > *:not(#printOverlay){display:none !important}#printOverlay{position:static !important;padding:0 !important}.print-toolbar{display:none !important}}
+@media print{body:has(#printOverlay) > *:not(#printOverlay){display:none !important}#printOverlay{position:static !important;padding:0 !important}.print-toolbar{display:none !important}}
 </style>
 </head>
 <body>
@@ -302,11 +302,12 @@ var WEEK_DEFAULT=JSON.parse(JSON.stringify(WEEK));
 var PARTS_DEFAULT=JSON.parse(JSON.stringify(PARTS));
 var WEEKEND_DEFAULT=JSON.parse(JSON.stringify(WEEKEND));
 (function loadWeekData(){var s=lsGet(K_WEEK,null);if(!s)return;if(s.week)Object.assign(WEEK,s.week);if(Array.isArray(s.parts))PARTS=s.parts;if(s.weekend)WEEKEND=s.weekend;})();
-(function init(){var c=lsGet(K_CUR,null);if(c&&c.weekKey===WEEK.key)S.v=c.v||{};})();
+(function init(){var c=lsGet(K_CUR,null);if(c&&c.weekKey===WEEK.key&&c.v){for(var k in c.v){if(c.v[k]!==""&&c.v[k]!==null&&c.v[k]!==undefined)S.v[k]=c.v[k];}}})();
+var SAVE_BUILD="2026-10-19-v2";
 var persistT=null;
 function persist(){clearTimeout(persistT);persistT=setTimeout(function(){lsSet(K_CUR,{weekKey:WEEK.key,v:S.v});},100);}
 function persistNow(){clearTimeout(persistT);lsSet(K_CUR,{weekKey:WEEK.key,v:S.v});}
-function val(k,def){return (k in S.v)?S.v[k]:(def||"");}
+function val(k,def){var v=S.v[k];if(v===undefined||v===null||v==="")return (def==null?"":def);return v;}
 S.live=lsGet(K_LIVE,null);S.loading=false;S.liveErr="";
 
 /* ============ CRONÓMETRO ============ */
@@ -622,14 +623,14 @@ function viewDiscursos(){
   list.forEach(function(d){
     h+='<div class="card"><h3>'+esc(d.title)+'</h3><div class="muted small" style="margin:4px 0 6px">'+esc(d.duration)+' min · '+esc(new Date(d.date).toLocaleString("es"))+'</div>'
       +'<details><summary>Ver texto</summary><div class="src" style="white-space:pre-wrap;font-family:Georgia,serif">'+esc(d.text)+'</div></details>'
-      +'<div class="row" style="margin-top:8px"><button class="btn primary grow" data-act="timer-open-disc" data-id="'+esc(d.id)+'">Cronómetro</button><button class="btn grow" data-act="copy-disc" data-id="'+esc(d.id)+'">Copiar</button><button class="btn grow" data-act="pdf-disc" data-id="'+esc(d.id)+'">PDF</button></div>'
+      +'<div class="row" style="margin-top:8px"><button class="btn primary grow" data-act="timer-open-disc" data-id="'+esc(d.id)+'">Cronómetro</button><button class="btn grow" data-act="copy-disc" data-id="'+esc(d.id)+'">Copiar</button><button class="btn grow" data-act="pdf-disc" data-id="'+esc(d.id)+'">PDF</button><button class="btn grow" data-act="share-disc" data-id="'+esc(d.id)+'">Compartir</button></div>'
       +'<button class="btn danger block" style="margin-top:6px" data-confirm="1" data-act="del-disc" data-id="'+esc(d.id)+'">Eliminar</button></div>';
   });
   return h;
 }
 
 function partHeader(p,d){
-  return '<div class="card"><div class="muted small">'+esc(p.section)+'</div><h3 style="margin:2px 0 6px">'+(p.num?p.num+". ":"")+esc(p.title)+'</h3><div class="muted num">'+p.min+' min</div><div style="margin:8px 0"><span class="badge">'+esc(d.label)+'</span></div>'+(p.raw?'<div class="muted small">'+esc(p.raw)+'</div>':'')+'<div style="margin-top:6px">'+links(p.refs)+'</div><div class="row" style="margin-top:10px"><button class="btn sm grow" data-act="timer-open-part" data-id="'+esc(p.id)+'">⏱️ Cronómetro</button><button class="btn sm grow" data-act="copy-part" data-id="'+esc(p.id)+'">📋 Copiar</button><button class="btn sm grow" data-act="pdf-part" data-id="'+esc(p.id)+'">📄 PDF</button></div></div>';
+  return '<div class="card"><div class="muted small">'+esc(p.section)+'</div><h3 style="margin:2px 0 6px">'+(p.num?p.num+". ":"")+esc(p.title)+'</h3><div class="muted num">'+p.min+' min</div><div style="margin:8px 0"><span class="badge">'+esc(d.label)+'</span></div>'+(p.raw?'<div class="muted small">'+esc(p.raw)+'</div>':'')+'<div style="margin-top:6px">'+links(p.refs)+'</div><div class="row" style="margin-top:10px"><button class="btn sm grow" data-act="timer-open-part" data-id="'+esc(p.id)+'">⏱️ Cronómetro</button><button class="btn sm grow" data-act="copy-part" data-id="'+esc(p.id)+'">📋 Copiar</button><button class="btn sm grow" data-act="pdf-part" data-id="'+esc(p.id)+'">📄 PDF</button><button class="btn sm grow primary" data-act="share-part" data-id="'+esc(p.id)+'">📤 Compartir</button></div></div>';
 }
 
 function viewPart(){
@@ -714,7 +715,7 @@ function viewPerlas(p){
 /* ---- LECTURA ---- */
 function viewLectura(p){
   var h='<div class="notice">Pasaje: '+esc(LECTURA_P3.pasaje)+' — Traducción del Nuevo Mundo</div>';
-  h+='<div class="card"><div class="disc-sec-title">📖 TEXTO COMPLETO DE LA LECTURA</div><div class="bible-box" style="max-height:400px;overflow:auto">'+esc(LECTURA_P3.textoCompleto)+'</div><div class="muted small" style="margin-top:6px">Fuente: <a href="'+esc(bc("/6/0"))+'" target="_blank" rel="noopener">wol.jw.org — Jeremías 40</a></div></div>';
+  h+='<div class="card"><div class="disc-sec-title">📖 TEXTO COMPLETO DE LA LECTURA</div><div class="bible-box" style="max-height:400px;overflow:auto">'+esc(LECTURA_P3.textoCompleto)+'</div><div class="muted small" style="margin-top:6px">Fuente: <a href="'+esc(bible(24,46))+'" target="_blank" rel="noopener">wol.jw.org — '+esc(LECTURA_P3.pasaje)+'</a></div></div>';
   h+='<div class="card"><div class="disc-sec-title">📚 '+esc(LECTURA_P3.leccion)+'</div><ul class="tight">'+LECTURA_P3.consejos.map(function(c){return '<li>'+esc(c)+'</li>';}).join("")+'</ul><div class="small" style="margin-top:6px"><b>Fuente:</b> '+links([SRC.th10])+'</div></div>';
   h+='<div class="card">'+field("p3.notes","","Mis notas personales de práctica",140)+'</div>';
   return h;
@@ -765,10 +766,11 @@ function viewEstudio(p){
 /* ---- ATALAYA ---- */
 function viewAtalaya(){
   var h=topbar("Estudio de La Atalaya","home",'<button class="btn sm primary" data-act="save-atalaya">Guardar</button>');
+  h+='<div class="row" style="margin-bottom:10px"><button class="btn sm grow" data-act="copy-atalaya">📋 Copiar</button><button class="btn sm grow" data-act="pdf-atalaya">📄 PDF</button><button class="btn sm grow primary" data-act="share-atalaya">📤 Compartir</button></div>';
   h+='<div class="infobox">💡 Escribe o pega el texto de cada párrafo. Las respuestas se pueden editar libremente.</div>';
   h+='<div class="card"><div class="disc-sec-title">📖 TÍTULO DEL ARTÍCULO</div>'+inputField("atalaya.titulo",val("atalaya.titulo",WEEKEND.atalaya.title),"")
     +'<div class="disc-sec-title" style="margin-top:12px">Texto base</div>'+inputField("atalaya.textoBase",val("atalaya.textoBase",WEEKEND.atalaya.baseText),"")
-    +'<div class="disc-sec-title" style="margin-top:12px">Canción inicial y final</div>'+inputField("atalaya.canciones",val("atalaya.canciones","Canción inicial: · Canción final:"),"")+'</div>';
+    +'<div class="disc-sec-title" style="margin-top:12px">Canción inicial y final</div>'+inputField("atalaya.canciones",val("atalaya.canciones","Canción inicial: "+WEEKEND.atalaya.openingSong+" · Canción final: "+WEEKEND.atalaya.closingSong),"")+'</div>';
   var n=Math.max(3,ATALAYA.parrafos.length);
   for(var i=0;i<n;i++){
     var pr=ATALAYA.parrafos[i]||{num:String(i+1),texto:"",pregunta:"",respuesta:""};
@@ -793,20 +795,135 @@ function viewGenerico(p,d){
   return h;
 }
 
-/* ============ EXPORTAR Y COPIAR ============ */
-function collectPartText(p){
-  var out=[];out.push(p.section.toUpperCase());out.push((p.num?p.num+". ":"")+p.title);out.push("Duración: "+p.min+" min");out.push("");
-  var pre=p.id+".",found=false;
-  for(var k in S.v){if(k.indexOf(pre)===0&&S.v[k]){found=true;out.push("-- "+k.substring(pre.length)+" --");out.push(S.v[k]);out.push("");}}
-  if(!found)out.push("(Sin contenido preparado todavía)");
-  return out.join("\n");
+/* ============ EXPORTAR Y COPIAR ============
+   Una sola fuente de texto por sección: lo editado por el usuario (S.v) con respaldo
+   en las constantes de la semana. Así Copiar, PDF y Compartir nunca salen vacíos. */
+function pushRefs(L,p){if(p.refs&&p.refs.length)L.push("Referencias: "+p.refs.map(function(r){return r.t;}).join(" · "));}
+function pushNotes(L,pre){var n=val(pre+"notas","");if(n){L.push("");L.push("NOTAS PERSONALES");L.push(n);}}
+function headerLines(p){
+  var L=[p.section.toUpperCase(),(p.num?p.num+". ":"")+p.title,"Duración: "+p.min+" min"];
+  if(p.raw)L.push(p.raw);
+  pushRefs(L,p);
+  return L;
+}
+function perlasText(p){
+  var L=headerLines(p);
+  L.push("");L.push("PREGUNTA 1: "+PERLA1.q);
+  L.push("Versículos: "+PERLA1.verses.map(function(v){return v.t;}).join("; "));
+  L.push("Publicación: "+PERLA1.pubs.map(function(v){return v.t;}).join("; "));
+  L.push("");L.push("MI RESPUESTA");L.push(val("p2.q1.draft",PERLA1.draft));
+  L.push("");L.push("INFORMACIÓN ENCONTRADA");
+  PERLA1.found.forEach(function(f){L.push("• "+f);});
+  L.push("");L.push("PREGUNTA 2: "+PERLA2_Q);
+  var picks=[];
+  for(var i=0;i<PUNTOS.length;i++){if(S.v["p2.pick."+i])picks.push(i);}
+  if(!picks.length){for(var j=0;j<PUNTOS.length;j++)picks.push(j);L.push("(Se incluyen todos los puntos; todavía no has marcado ninguno.)");}
+  picks.forEach(function(idx){var pt=PUNTOS[idx];L.push("");L.push(idx+1+") "+pt.v+" — "+pt.idea);L.push("Aprendemos: "+pt.aprendemos);L.push("Aplicación: "+pt.aplicar);L.push("Fuente: "+pt.ref);});
+  var r=val("p2.respuesta","");if(r){L.push("");L.push("MI RESPUESTA PREPARADA");L.push(r);}
+  pushNotes(L,p.id+".");
+  return L.join("\n");
+}
+function lecturaText(p){
+  var L=headerLines(p);
+  L.push("");L.push("PASAJE: "+LECTURA_P3.pasaje+" (Traducción del Nuevo Mundo)");
+  L.push("");L.push(LECTURA_P3.textoCompleto);
+  L.push("");L.push("LECCIÓN: "+LECTURA_P3.leccion);
+  LECTURA_P3.consejos.forEach(function(c){L.push("• "+c);});
+  pushNotes(L,p.id+".");
+  return L.join("\n");
+}
+function maestrosText(p){
+  var M=MAESTROS[p.id]||MAESTROS.p4,pre=p.id+".";
+  var L=headerLines(p);
+  L.push("");L.push("LECCIÓN A DEMOSTRAR");L.push(M.leccion);
+  L.push("");L.push("MARCO DE CIRCUNSTANCIAS");L.push(val(pre+"marco",M.marco));
+  L.push("");L.push("OBJETIVO");L.push(val(pre+"objetivo",M.objetivo));
+  L.push("");L.push("TEMA");L.push(val(pre+"tema",M.tema));
+  L.push("");L.push("TEXTO BÍBLICO");L.push(val(pre+"texto",M.texto));
+  L.push("");L.push("CONVERSACIÓN");L.push(val(pre+"dialogo",M.dialogo));
+  L.push("");L.push("PUNTOS A DEMOSTRAR");M.demostrar.forEach(function(x){L.push("✓ "+x);});
+  L.push("");L.push("CIERRE");L.push(val(pre+"conclusion",M.conclusion));
+  pushNotes(L,pre);
+  return L.join("\n");
+}
+function vidaText(p){
+  var pre=p.id+".";
+  var L=headerLines(p);
+  L.push("");L.push("INTRODUCCIÓN DEL CONDUCTOR");L.push(val(pre+"introGuion",VIDA_P8.introGuion));
+  L.push("");L.push("VIDEO: "+VIDA_P8.video.t);L.push(VIDA_P8.video.u);
+  VIDA_P8.preguntas.forEach(function(qa,i){L.push("");L.push("PREGUNTA "+(i+1)+": "+qa.q);L.push("Respuesta: "+val(pre+"a"+i,qa.respuesta));});
+  L.push("");L.push("APLICACIÓN PRÁCTICA");L.push(val(pre+"aplicacion",VIDA_P8.aplicacion));
+  L.push("");L.push("CIERRE");L.push(val(pre+"cierre",VIDA_P8.cierre));
+  pushNotes(L,pre);
+  return L.join("\n");
+}
+function estudioText(p){
+  var pre=p.id+".";
+  var L=headerLines(p);
+  L.push("");L.push("FUENTE: "+ESTUDIO_P9.fuente.t);L.push(ESTUDIO_P9.libro);
+  L.push("");L.push("TEXTOS DESTACADOS");
+  ESTUDIO_P9.textosDestacados.forEach(function(t,i){L.push((i+1)+") "+val(pre+"t"+i+".ref",t.ref));L.push(val(pre+"t"+i+".texto",t.texto));L.push("");});
+  L.push("PREGUNTAS PARA DIRIGIR EL ESTUDIO");
+  ESTUDIO_P9.preguntas.forEach(function(qa,i){L.push("");L.push("Pregunta "+(i+1)+": "+val(pre+"q"+i,qa.q));L.push("Respuesta: "+val(pre+"a"+i,qa.a));});
+  pushNotes(L,pre);
+  return L.join("\n");
+}
+function parteSimpleText(p){
+  var L=headerLines(p);
+  pushNotes(L,p.id+".");
+  return L.join("\n");
+}
+function partText(p){
+  if(!p)return "";
+  if(p.id==="p1")return buildDiscursoTexto();
+  if(p.id==="p2")return perlasText(p);
+  if(p.id==="p3")return lecturaText(p);
+  if(p.id==="p8")return vidaText(p);
+  if(p.id==="p9")return estudioText(p);
+  if(MAESTROS[p.id])return maestrosText(p);
+  return parteSimpleText(p);
+}
+function atalayaText(){
+  var L=["ESTUDIO DE LA ATALAYA","Semana del "+WEEK.label];
+  L.push("Artículo: "+val("atalaya.titulo",WEEKEND.atalaya.title));
+  L.push("Texto base: "+val("atalaya.textoBase",WEEKEND.atalaya.baseText));
+  L.push("Canciones: "+val("atalaya.canciones","Canción inicial: "+WEEKEND.atalaya.openingSong+" · Canción final: "+WEEKEND.atalaya.closingSong));
+  if(ATALAYA.intro){L.push("");L.push(ATALAYA.intro);}
+  ATALAYA.parrafos.forEach(function(pr,i){
+    L.push("");L.push("Párrafo "+(pr.num||i+1));
+    L.push(val("atalaya.p"+i+".texto",pr.texto));
+    L.push("Pregunta: "+val("atalaya.p"+i+".pregunta",pr.pregunta));
+    L.push("Respuesta preparada: "+val("atalaya.p"+i+".respuesta",pr.respuesta));
+  });
+  var ap=val("atalaya.aplicacion",""),ci=val("atalaya.cierre","");
+  if(ap){L.push("");L.push("APLICACIÓN PRÁCTICA");L.push(ap);}
+  if(ci){L.push("");L.push("CIERRE");L.push(ci);}
+  return L.join("\n");
 }
 function copyToClipboard(text){
   var ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.left="-9999px";
   document.body.appendChild(ta);ta.select();try{document.execCommand("copy");}catch(e){}
   document.body.removeChild(ta);toast("Texto copiado ✓");
 }
+function whatsappShare(title,text){
+  var msg=text;if(title&&text.indexOf(title)!==0)msg=title+"\n\n"+text;
+  var url="https://wa.me/?text="+encodeURIComponent(msg);
+  var w=window.open(url,"_blank");
+  if(!w)toast("Permite las ventanas emergentes para compartir");
+}
+function shareText(title,text){
+  if(!text||!String(text).replace(/\s+/g,"").length){toast("No hay texto para compartir");return;}
+  if(navigator.share){
+    try{
+      var pr=navigator.share({title:title,text:text});
+      if(pr&&pr.catch)pr.catch(function(err){if(err&&err.name==="AbortError")return;whatsappShare(title,text);});
+      return;
+    }catch(e){/* sigue al respaldo */}
+  }
+  whatsappShare(title,text);
+}
 function openPrint(title,text){
+  if(!text||!String(text).replace(/\s+/g,"").length)text="(No hay texto para mostrar en esta sección.)";
   var old=document.getElementById("printOverlay");if(old&&old.parentNode)old.parentNode.removeChild(old);
   var ov=document.createElement("div");ov.id="printOverlay";
   ov.style.cssText="position:fixed;top:0;left:0;right:0;bottom:0;background:#FFF;color:#1B2A3A;z-index:100;padding:20px;overflow:auto;";
@@ -818,7 +935,10 @@ function openPrint(title,text){
   var bC=document.createElement("button");bC.textContent="Cerrar";
   bC.style.cssText="font:inherit;font-weight:700;padding:10px 16px;border-radius:8px;border:1px solid #D5DDE4;background:#FFF;color:#1B2A3A;cursor:pointer;";
   bC.onclick=function(){if(ov.parentNode)ov.parentNode.removeChild(ov);};
-  bar.appendChild(bP);bar.appendChild(bC);
+  var bS=document.createElement("button");bS.textContent="Compartir";
+  bS.style.cssText="font:inherit;font-weight:700;padding:10px 16px;border-radius:8px;border:0;background:#2E7D4F;color:#FFF;cursor:pointer;margin-right:8px;";
+  bS.onclick=function(){shareText(title,text);};
+  bar.appendChild(bP);bar.appendChild(bS);bar.appendChild(bC);
   var h1=document.createElement("h1");h1.style.cssText="font-family:Georgia,serif;font-size:22px;margin:0 0 16px;color:#1B2A3A;";h1.textContent=title;
   var pre=document.createElement("pre");pre.style.cssText="white-space:pre-wrap;font-family:Georgia,serif;font-size:15px;line-height:1.6;margin:0;color:#1B2A3A;";pre.textContent=text;
   var foot=document.createElement("div");foot.style.cssText="font-size:12px;color:#5B6B7B;margin-top:30px;";foot.textContent="Reunión Vida y Ministerio Cristianos · "+WEEK.shortLabel+" · Fuentes: wol.jw.org";
@@ -875,10 +995,15 @@ var actions={
   "t-resume":function(){timerStart();},
   "t-reset":function(){timerReset();},
   "t-close":function(){timerClose();},
-  "copy-part":function(b){var p=PARTS.filter(function(x){return x.id===b.dataset.id;})[0];if(!p)return;var txt=(p.id==="p1")?buildDiscursoTexto():collectPartText(p);copyToClipboard(txt);},
-  "pdf-part":function(b){var p=PARTS.filter(function(x){return x.id===b.dataset.id;})[0];if(!p)return;var txt=(p.id==="p1")?buildDiscursoTexto():collectPartText(p);openPrint(p.title,txt);},
+  "copy-part":function(b){var p=PARTS.filter(function(x){return x.id===b.dataset.id;})[0];if(!p)return;copyToClipboard(partText(p));},
+  "pdf-part":function(b){var p=PARTS.filter(function(x){return x.id===b.dataset.id;})[0];if(!p)return;openPrint(p.title,partText(p));},
+  "share-part":function(b){var p=PARTS.filter(function(x){return x.id===b.dataset.id;})[0];if(!p)return;shareText((p.num?p.num+". ":"")+p.title,partText(p));},
+  "copy-atalaya":function(){copyToClipboard(atalayaText());},
+  "pdf-atalaya":function(){openPrint(val("atalaya.titulo",WEEKEND.atalaya.title),atalayaText());},
+  "share-atalaya":function(){shareText(val("atalaya.titulo",WEEKEND.atalaya.title),atalayaText());},
   "copy-disc":function(b){var d=discursosList().filter(function(x){return x.id===b.dataset.id;})[0];if(d)copyToClipboard(d.text);},
-  "pdf-disc":function(b){var d=discursosList().filter(function(x){return x.id===b.dataset.id;})[0];if(d)openPrint(d.title,d.text);}
+  "pdf-disc":function(b){var d=discursosList().filter(function(x){return x.id===b.dataset.id;})[0];if(d)openPrint(d.title,d.text);},
+  "share-disc":function(b){var d=discursosList().filter(function(x){return x.id===b.dataset.id;})[0];if(d)shareText(d.title,d.text);}
 };
 
 document.addEventListener("click",function(e){
@@ -904,7 +1029,7 @@ document.addEventListener("input",onField);
 document.addEventListener("change",onField);
 document.addEventListener("blur",onFieldBlur,true);
 
-(function seed(){var seed=discSeedFields();for(var k in seed){if(!(k in S.v))S.v[k]=seed[k];}})();
+(function seed(){var seed=discSeedFields();for(var k in seed){if(!(k in S.v)||S.v[k]==="")S.v[k]=seed[k];}})();
 (function restoreAtalaya(){var t=parseInt(S.v["atalaya.total"],10)||0;while(ATALAYA.parrafos.length<t){var i=ATALAYA.parrafos.length;ATALAYA.parrafos.push({num:String(i+1),texto:"",pregunta:"",respuesta:""});}})();
 
 render();
