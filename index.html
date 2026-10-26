@@ -253,6 +253,7 @@ var ESTUDIO_P9={
 
 var LECTURA_P3={
   pasaje:"Jeremías 48:1-13",
+  libro:24,capitulo:48,leccionKey:"th11",
   textoCompleto:"1 Para Moab, esto es lo que dice Jehová de los ejércitos, el Dios de Israel: “¡Ay de Nebo, porque ha sido destruida! Han avergonzado y conquistado Quiryataim. Han avergonzado y destrozado el refugio seguro. 2 Ya nadie alaba a Moab. En Hesbón han tramado su caída: ‘Vengan, hagamos que desaparezca como nación’. Oh, Madmén, tú también deberías guardar silencio, porque la espada te persigue. 3 Desde Horonaim se oyen gritos de destrucción y desastre total. 4 Moab ha sido demolida. Sus pequeños lloran a gritos. 5 La gente llora sin parar mientras sube a Luhit. En la bajada de Horonaim se oyen los gritos de angustia por la catástrofe. 6 ¡Corran, huyan por su vida! Tienen que llegar a ser como un enebro en el desierto. 7 Por confiar en tus obras y en tus tesoros, tú también serás conquistada. Y Kemós irá al destierro, junto con sus sacerdotes y sus príncipes. 8 El destructor invadirá todas las ciudades y ninguna de ellas escapará. El valle morirá y la tierra llana será destruida, tal como ha dicho Jehová. 9 Pónganle a Moab una marca señalizadora, porque al quedar en ruinas ella huirá, y sus ciudades se convertirán en motivo de horror, se quedarán sin habitantes. 10 ¡Maldito el que lleve a cabo la misión de Jehová sin ganas! ¡Maldito el que se retraiga de derramar sangre con su espada! 11 Los moabitas han estado tranquilos desde su juventud, como el vino que se deja reposar sobre sus sedimentos. No los han pasado de una vasija a otra, y nunca han ido al destierro. Por eso su sabor sigue siendo el mismo y su aroma no ha cambiado. 12 »Por lo tanto, mira, se acercan los días —afirma Jehová— en que enviaré hombres para volcarlos. Los van a volcar y vaciarán sus vasijas, y harán pedazos sus jarras grandes. 13 Y los moabitas se avergonzarán de Kemós, tal como los de la casa de Israel se avergüenzan de Betel, que era su confianza.",
   leccion:"th lección 11 — Hablar con entusiasmo",
   consejos:[
@@ -525,7 +526,7 @@ function saveDiscursoActual(){
   var list=discursosList();
   var dup=list.filter(function(x){return x.title===title&&x.text===text;})[0];
   if(dup){toast("Ese discurso ya está guardado");return;}
-  var d={id:"d-"+Date.now(),title:title,duration:parseInt(dur,10)||10,date:new Date().toISOString(),text:text,sources:["guia","w0722","w0720","w0724","j45"],status:"borrador"};
+  var d={id:"d-"+Date.now(),title:title,duration:parseInt(dur,10)||10,date:new Date().toISOString(),text:text,sources:["guia","itMoab22","itMoab24","w240517","j48"],status:"borrador"};
   list.push(d);lsSet(K_DISC,list);
   toast("Discurso guardado en «Discursos»");render();
 }
@@ -891,7 +892,7 @@ function viewPerlas(p){
     +'<div style="margin-top:8px"><span class="muted small">Versículos:</span> '+links(PERLA1.verses)+'</div>'
     +'<div><span class="muted small">Publicación:</span> '+links(PERLA1.pubs)+'</div>'
     +'<details open><summary>Ver lo encontrado</summary>'
-    +'<div class="src"><ul class="tight">'+PERLA1.found.map(function(f){return '<li>'+esc(f)+'</li>';}).join("")+'</ul>'+srcList(["itVoz","j46"])+'</div>'
+    +'<div class="src"><ul class="tight">'+PERLA1.found.map(function(f){return '<li>'+esc(f)+'</li>';}).join("")+'</ul>'+srcList(["itEnebro","j48"])+'</div>'
     +field("p2.q1.draft",PERLA1.draft,"Mi respuesta",160)
     +field("p2.q1.notes","","Notas personales",80)+'</details></div>';
   h+='<div class="card"><div class="muted small">Pregunta oficial 2</div><b>'+esc(PERLA2_Q)+'</b>'
@@ -912,8 +913,8 @@ function viewPerlas(p){
 /* ---- LECTURA ---- */
 function viewLectura(p){
   var h='<div class="notice">Pasaje: '+esc(LECTURA_P3.pasaje)+' — Traducción del Nuevo Mundo</div>';
-  h+='<div class="card"><div class="disc-sec-title">📖 TEXTO COMPLETO DE LA LECTURA</div><div class="bible-box" style="max-height:400px;overflow:auto">'+esc(LECTURA_P3.textoCompleto)+'</div><div class="muted small" style="margin-top:6px">Fuente: <a href="'+esc(bible(24,46))+'" target="_blank" rel="noopener">wol.jw.org — '+esc(LECTURA_P3.pasaje)+'</a></div></div>';
-  h+='<div class="card"><div class="disc-sec-title">📚 '+esc(LECTURA_P3.leccion)+'</div><ul class="tight">'+LECTURA_P3.consejos.map(function(c){return '<li>'+esc(c)+'</li>';}).join("")+'</ul><div class="small" style="margin-top:6px"><b>Fuente:</b> '+links([SRC.th10])+'</div></div>';
+  h+='<div class="card"><div class="disc-sec-title">📖 TEXTO COMPLETO DE LA LECTURA</div><div class="bible-box" style="max-height:400px;overflow:auto">'+esc(LECTURA_P3.textoCompleto)+'</div><div class="muted small" style="margin-top:6px">Fuente: <a href="'+esc(bible(LECTURA_P3.libro,LECTURA_P3.capitulo))+'" target="_blank" rel="noopener">wol.jw.org — '+esc(LECTURA_P3.pasaje)+'</a></div></div>';
+  h+='<div class="card"><div class="disc-sec-title">📚 '+esc(LECTURA_P3.leccion)+'</div><ul class="tight">'+LECTURA_P3.consejos.map(function(c){return '<li>'+esc(c)+'</li>';}).join("")+'</ul><div class="small" style="margin-top:6px"><b>Fuente:</b> '+links([SRC[LECTURA_P3.leccionKey]||SRC.guia])+'</div></div>';
   h+='<div class="card">'+field("p3.notes","","Mis notas personales de práctica",140)+'</div>';
   return h;
 }
