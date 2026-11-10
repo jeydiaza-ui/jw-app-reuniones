@@ -100,207 +100,585 @@ function pc(n){return W+"/pc/r4/lp-s/202026402/"+n;}
 function bc(n){return W+"/bc/r4/lp-s/202026402/"+n;}
 function bible(b,c){return W+"/b/r4/lp-s/nwtsty/"+b+"/"+c;}
 
-var WEEK={key:"2026-11-09",label:"9–15 de noviembre de 2026",shortLabel:"9–15 noviembre 2026",reading:"JEREMÍAS 51, 52",fetched:"9 de noviembre de 2026",program:"Guía de actividades mwb26 noviembre–diciembre de 2026",url:WK};
+var WEEK={
+  key: "2026-11-09",
+  label: "9–15 de noviembre de 2026",
+  shortLabel: "9–15 noviembre 2026",
+  reading: "JEREMÍAS 51, 52",
+  fetched: "9 de noviembre de 2026",
+  program: "Guía de actividades mwb26 noviembre–diciembre de 2026",
+  url: "https://wol.jw.org/es/wol/d/r4/lp-s/202026402"
+};
 
 var PARTS=[
-  {id:"p0",section:"INICIO",title:"Canción 98 y oración | Palabras de introducción",min:1,refs:[{t:"Canción 98",u:pc("/0/0")}]},
-  {id:"p1",section:"TESOROS DE LA BIBLIA",num:1,title:"No seamos como Sedequías",min:10,refs:[{t:"Dios nos habla mediante Jeremías, cap. 2",u:pc("/1/0")},{t:"La Atalaya, octubre de 2017, págs. 21-25",u:pc("/2/0")},{t:"Jer 52:1, 2",u:bible(24,52)}]},
-  {id:"p2",section:"TESOROS DE LA BIBLIA",num:2,title:"Busquemos perlas escondidas",min:10,raw:"Jer 51:6, 7, 36. ¿En qué se parecen la advertencia que Jeremías anunció y la advertencia que nosotros damos hoy?",refs:[{t:"Jer 51:6, 7, 36",u:bible(24,51)},{t:"Dios nos habla mediante Jeremías, págs. 165, 167",u:pc("/4/0")}]},
-  {id:"p3",section:"TESOROS DE LA BIBLIA",num:3,title:"Lectura de la Biblia",min:4,refs:[{t:"Jer 52:6-20",u:bible(24,52)},{t:"th lección 5",u:pc("/5/0")}]},
-  {id:"p4",section:"SEAMOS MEJORES MAESTROS",num:4,title:"Empecemos conversaciones",min:3,raw:"DE CASA EN CASA. Ofrece un curso bíblico de forma directa. (lmd lección 3 punto 3)",refs:[{t:"lmd lección 3 punto 3",u:pc("/6/0")}]},
-  {id:"p5",section:"SEAMOS MEJORES MAESTROS",num:5,title:"Empecemos conversaciones",min:4,raw:"DE CASA EN CASA. En la conversación, mencionas que Jesús es el Hijo de Dios. La persona te dice que no está de acuerdo. (lmd lección 3 punto 4)",refs:[{t:"lmd lección 3 punto 4",u:pc("/7/0")}]},
-  {id:"p6",section:"SEAMOS MEJORES MAESTROS",num:6,title:"Discurso",min:5,raw:"lmd apéndice A punto 21. Título: El Reino de Dios es un gobierno real que está en el cielo (th lección 7).",refs:[{t:"lmd apéndice A punto 21",u:pc("/8/0")},{t:"th lección 7",u:pc("/9/0")},{t:"Daniel 2:44",u:bible(27,2)}]},
-  {id:"p7",section:"NUESTRA VIDA CRISTIANA",num:7,title:"Nuestras donaciones le dan gloria al gran nombre de Jehová",min:15,raw:"Análisis con el auditorio a cargo de un anciano. Se pone el video y después se comentan las preguntas. Canción 10.",refs:[{t:"Canción 10",u:pc("/10/0")},{t:"1 Crónicas 29:8-10",u:bible(13,29)}]},
-  {id:"p8",section:"NUESTRA VIDA CRISTIANA",num:8,title:"Estudio bíblico de la congregación",min:30,raw:"Barac y Débora: «Claro que iré contigo» (wcg capítulo 16).",refs:[{t:"wcg cap. 16",u:pc("/11/0")},{t:"Jueces 4",u:bible(7,4)}]},
-  {id:"p9",section:"NUESTRA VIDA CRISTIANA",title:"Palabras de conclusión | Canción 150 y oración",min:3,refs:[{t:"Canción 150",u:pc("/12/0")}]}
+  {
+    id: "p0",
+    section: "INICIO",
+    title: "Canción 98 y oración | Palabras de introducción",
+    min: 1,
+    refs: [
+      {t: "Canción 98", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//0/0"}
+    ]
+  },
+  {
+    id: "p1",
+    section: "TESOROS DE LA BIBLIA",
+    num: 1,
+    title: "No seamos como Sedequías",
+    min: 10,
+    refs: [
+      {t: "Dios nos habla mediante Jeremías, cap. 2", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//1/0"},
+      {t: "La Atalaya, octubre de 2017, págs. 21-25", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//2/0"},
+      {t: "Jer 52:1, 2", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/52"}
+    ]
+  },
+  {
+    id: "p2",
+    section: "TESOROS DE LA BIBLIA",
+    num: 2,
+    title: "Busquemos perlas escondidas",
+    min: 10,
+    raw: "Jer 51:6, 7, 36. ¿En qué se parecen la advertencia que Jeremías anunció y la advertencia que nosotros damos hoy?",
+    refs: [
+      {t: "Jer 51:6, 7, 36", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/51"},
+      {
+        t: "Dios nos habla mediante Jeremías, págs. 165, 167",
+        u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//4/0"
+      }
+    ]
+  },
+  {
+    id: "p3",
+    section: "TESOROS DE LA BIBLIA",
+    num: 3,
+    title: "Lectura de la Biblia",
+    min: 4,
+    refs: [
+      {t: "Jer 52:6-20", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/52"},
+      {t: "th lección 5", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//5/0"}
+    ]
+  },
+  {
+    id: "p4",
+    section: "SEAMOS MEJORES MAESTROS",
+    num: 4,
+    title: "Empecemos conversaciones",
+    min: 3,
+    raw: "DE CASA EN CASA. Ofrece un curso bíblico de forma directa. (lmd lección 3 punto 3)",
+    refs: [
+      {t: "lmd lección 3 punto 3", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//6/0"}
+    ]
+  },
+  {
+    id: "p5",
+    section: "SEAMOS MEJORES MAESTROS",
+    num: 5,
+    title: "Empecemos conversaciones",
+    min: 4,
+    raw: "DE CASA EN CASA. En la conversación, mencionas que Jesús es el Hijo de Dios. La persona te dice que no está de acuerdo. (lmd lección 3 punto 4)",
+    refs: [
+      {t: "lmd lección 3 punto 4", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//7/0"}
+    ]
+  },
+  {
+    id: "p6",
+    section: "SEAMOS MEJORES MAESTROS",
+    num: 6,
+    title: "Discurso",
+    min: 5,
+    raw: "lmd apéndice A punto 21. Título: El Reino de Dios es un gobierno real que está en el cielo (th lección 7).",
+    refs: [
+      {t: "lmd apéndice A punto 21", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//8/0"},
+      {t: "th lección 7", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//9/0"},
+      {t: "Daniel 2:44", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/27/2"}
+    ]
+  },
+  {
+    id: "p7",
+    section: "NUESTRA VIDA CRISTIANA",
+    num: 7,
+    title: "Nuestras donaciones le dan gloria al gran nombre de Jehová",
+    min: 15,
+    raw: "Análisis con el auditorio a cargo de un anciano. Se pone el video y después se comentan las preguntas. Canción 10.",
+    refs: [
+      {t: "Canción 10", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//10/0"},
+      {t: "1 Crónicas 29:8-10", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/13/29"}
+    ]
+  },
+  {
+    id: "p8",
+    section: "NUESTRA VIDA CRISTIANA",
+    num: 8,
+    title: "Estudio bíblico de la congregación",
+    min: 30,
+    raw: "Barac y Débora: «Claro que iré contigo» (wcg capítulo 16).",
+    refs: [
+      {t: "wcg cap. 16", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//11/0"},
+      {t: "Jueces 4", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/7/4"}
+    ]
+  },
+  {
+    id: "p9",
+    section: "NUESTRA VIDA CRISTIANA",
+    title: "Palabras de conclusión | Canción 150 y oración",
+    min: 3,
+    refs: [
+      {t: "Canción 150", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//12/0"}
+    ]
+  }
 ];
 
 var WEEKEND={
-  discursoPublico:{title:"(Título del discurso público)",speaker:"(Orador invitado)"},
-  atalaya:{title:"Cómo cultivar «un corazón obediente»",openingSong:"Canción 36",baseText:"1 Reyes 3:9",closingSong:"Canción 88",url:"",parrafos:[]}
+  discursoPublico: {title: "(Título del discurso público)", speaker: "(Orador invitado)"},
+  atalaya: {
+    title: "Cómo cultivar «un corazón obediente»",
+    openingSong: "Canción 36",
+    baseText: "1 Reyes 3:9",
+    closingSong: "Canción 88",
+    url: "",
+    parrafos: []
+  }
 };
 
 var SRC={
-  guia:{t:"Guía de actividades 9-15 noviembre",u:WK},
-  can98:{t:"Canción 98 «Las Escrituras están inspiradas por Dios»",u:pc("/0/0")},
-  jr2:{t:"Dios nos habla mediante Jeremías, cap. 2 (págs. 14-31)",u:pc("/1/0")},
-  w1710:{t:"La Atalaya, octubre de 2017, págs. 21-25, párrs. 9-12",u:pc("/2/0")},
-  jr13:{t:"Dios nos habla mediante Jeremías, cap. 13 (págs. 154-167), párrs. 21, 25",u:pc("/4/0")},
-  th5:{t:"th lección 5 — Leer con exactitud",u:pc("/5/0")},
-  lmd3:{t:"lmd lección 3 — Bondad",u:pc("/6/0")},
-  lmdA:{t:"lmd apéndice A punto 21",u:pc("/8/0")},
-  th7:{t:"th lección 7 — Usar información exacta y convincente",u:pc("/9/0")},
-  can10:{t:"Canción 10 «¡Alabemos a nuestro Dios, Jehová!»",u:pc("/10/0")},
-  wcg16:{t:"wcg cap. 16 — «Claro que iré contigo» (págs. 78-81)",u:pc("/11/0")},
-  can150:{t:"Canción 150 «¡Jehová será tu Salvador!»",u:pc("/12/0")},
-  jer51:{t:"Biblia de estudio Jer 51",u:bible(24,51)},
-  jer52:{t:"Biblia de estudio Jer 52",u:bible(24,52)},
-  jdg4:{t:"Biblia de estudio Jueces 4",u:bible(7,4)},
-  jdg5:{t:"Biblia de estudio Jueces 5",u:bible(7,5)},
-  heb11:{t:"Biblia de estudio Hebreos 11",u:bible(58,11)},
-  sal106:{t:"Biblia de estudio Salmo 106",u:bible(19,106)},
-  jer23:{t:"Biblia de estudio Jer 23",u:bible(24,23)},
-  rey3:{t:"Biblia de estudio 1 Reyes 3",u:bible(11,3)},
-  cron29:{t:"Biblia de estudio 1 Crónicas 29",u:bible(13,29)},
-  exo12:{t:"Biblia de estudio Éxodo 12",u:bible(2,12)},
-  exo14:{t:"Biblia de estudio Éxodo 14",u:bible(2,14)},
-  cron20:{t:"Biblia de estudio 2 Crónicas 20",u:bible(14,20)},
-  dan2:{t:"Biblia de estudio Daniel 2",u:bible(27,2)},
-  mat6:{t:"Biblia de estudio Mateo 6",u:bible(40,6)},
-  apo11:{t:"Biblia de estudio Apocalipsis 11",u:bible(66,11)}
+  guia: {t: "Guía de actividades 9-15 noviembre", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026402"},
+  can98: {
+    t: "Canción 98 «Las Escrituras están inspiradas por Dios»",
+    u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//0/0"
+  },
+  jr2: {
+    t: "Dios nos habla mediante Jeremías, cap. 2 (págs. 14-31)",
+    u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//1/0"
+  },
+  w1710: {
+    t: "La Atalaya, octubre de 2017, págs. 21-25, párrs. 9-12",
+    u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//2/0"
+  },
+  jr13: {
+    t: "Dios nos habla mediante Jeremías, cap. 13 (págs. 154-167), párrs. 21, 25",
+    u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//4/0"
+  },
+  th5: {t: "th lección 5 — Leer con exactitud", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//5/0"},
+  lmd3: {t: "lmd lección 3 — Bondad", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//6/0"},
+  lmdA: {t: "lmd apéndice A punto 21", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//8/0"},
+  th7: {
+    t: "th lección 7 — Usar información exacta y convincente",
+    u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//9/0"
+  },
+  can10: {
+    t: "Canción 10 «¡Alabemos a nuestro Dios, Jehová!»",
+    u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//10/0"
+  },
+  wcg16: {
+    t: "wcg cap. 16 — «Claro que iré contigo» (págs. 78-81)",
+    u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//11/0"
+  },
+  can150: {t: "Canción 150 «¡Jehová será tu Salvador!»", u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//12/0"},
+  jer51: {t: "Biblia de estudio Jer 51", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/51"},
+  jer52: {t: "Biblia de estudio Jer 52", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/52"},
+  jdg4: {t: "Biblia de estudio Jueces 4", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/7/4"},
+  jdg5: {t: "Biblia de estudio Jueces 5", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/7/5"},
+  heb11: {t: "Biblia de estudio Hebreos 11", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/58/11"},
+  sal106: {t: "Biblia de estudio Salmo 106", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/19/106"},
+  jer23: {t: "Biblia de estudio Jer 23", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/23"},
+  rey3: {t: "Biblia de estudio 1 Reyes 3", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/11/3"},
+  cron29: {t: "Biblia de estudio 1 Crónicas 29", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/13/29"},
+  exo12: {t: "Biblia de estudio Éxodo 12", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/2/12"},
+  exo14: {t: "Biblia de estudio Éxodo 14", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/2/14"},
+  cron20: {t: "Biblia de estudio 2 Crónicas 20", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/14/20"},
+  dan2: {t: "Biblia de estudio Daniel 2", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/27/2"},
+  mat6: {t: "Biblia de estudio Mateo 6", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/40/6"},
+  apo11: {t: "Biblia de estudio Apocalipsis 11", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/66/11"}
 };
 
 /* ============ DISCURSO 1 — NUEVA ESTRUCTURA ============
    Cada punto tiene UN texto bíblico principal (literal) y notas de apoyo (paráfrasis). */
 var DISCURSO_T1 = {
-  title:"No seamos como Sedequías",
-  duration:10,
-  fuentes:["guia","jr2","w1710","jer52"],
-  intro:"Hermanos, la lectura de esta semana nos lleva a Jeremías 51 y 52. El capítulo 51 es el más largo del libro, y el 52 es como el apéndice: nos cuenta cómo terminó todo. Y termina mal. Termina con la ciudad quemada, el templo destruido y un rey encadenado en Babilonia. Ese rey es Sedequías. Fue el último rey que gobernó en Jerusalén, y su historia es una de las más tristes de la Biblia porque no fue un hombre malvado de principio a fin: fue un hombre que sabía lo que estaba bien y aun así no lo hizo. Y eso, hermanos, es lo que nos debe hacer pensar, porque a todos nos puede pasar. Hoy vamos a ver tres cosas de la vida de este rey: primera, que no hizo lo correcto a los ojos de Jehová; segunda, que rompió el juramento que había hecho en el nombre de Dios; y tercera, que no pudo librarse de las consecuencias de sus actos. Y en cada punto vamos a preguntarnos: ¿en qué me parezco yo a él, y qué puedo hacer para no ser como él?",
-  desarrollo:[
+  title: "No seamos como Sedequías",
+  duration: 10,
+  fuentes: ["guia", "jr2", "w1710", "jer52"],
+  intro: "Hay una escena en la Biblia que cuesta leer. Es de noche. Un rey sale por un portillo del jardín, con la cara cubierta, huyendo de una ciudad que se está quemando. Detrás de él queda el templo, lo que fue el orgullo de su pueblo. Delante, solo el desierto. Ese rey se llamaba Sedequías. Y lo llamativo no es que huyera: cualquiera habría huido. Lo llamativo es que sabía perfectamente lo que tenía que hacer, y aun así no lo hizo. Y eso, más que la huida, es lo que nos tiene que hacer pensar, porque a nosotros nos puede pasar exactamente lo mismo.",
+  desarrollo: [
     {
-      titulo:"Primer punto: Sedequías no hizo lo correcto a los ojos de Jehová",
-      texto:{
-        ref:"Jer 52:1, 2",
-        intro:"Fíjense cómo empieza el capítulo 52. Antes de contarnos la tragedia, el escritor nos da el veredicto. Y lo da en dos versículos muy cortos. Escuchemos lo que dice de este rey.",
-        lectura:"«Sedequías tenía 21 años cuando se convirtió en rey, y reinó 11 años en Jerusalén. Su madre se llamaba Hamutal hija de Jeremías de Libná. Él hacía lo que estaba mal a los ojos de Jehová, tal como lo había hecho Jehoiaquim».",
-        explicacion:"Note la frase: «tal como lo había hecho Jehoiaquim». No es un detalle pequeño. Jehoiaquim había sido un rey que quemó el rollo de Jeremías, que mandó matar al profeta y que se burló de la palabra de Dios. Y Sedequías, que había visto con sus propios ojos lo que le pasó a ese rey y a su familia, repitió el mismo camino. Eso es lo que la Biblia llama no aprender la lección. Y fíjese en algo más: tenía 21 años cuando empezó a reinar, y reinó 11 años. Es decir, tuvo tiempo. Tuvo años para cambiar, para escuchar a Jeremías, para corregir el rumbo. No fue un error de un día; fue una dirección de vida. Y por eso Jehová lo evalúa igual que a su antecesor.",
-        ref2:""
+      titulo: "Sabía lo que estaba bien, y no lo hizo",
+      texto: {
+        ref: "Jer 52:1, 2",
+        intro: "Fíjese en cómo empieza el capítulo 52. Antes de contarnos la tragedia, nos da el veredicto. Y lo da en dos versículos muy cortos.",
+        lectura: "«Sedequías tenía 21 años cuando se convirtió en rey, y reinó 11 años en Jerusalén. Su madre se llamaba Hamutal hija de Jeremías de Libná. Él hacía lo que estaba mal a los ojos de Jehová, tal como lo había hecho Jehoiaquim».",
+        explicacion: "Hay una frase ahí que no es un detalle: «tal como lo había hecho Jehoiaquim». Jehoiaquim fue el rey que quemó el rollo de Jeremías y que mandó perseguir al profeta. Y Sedequías, que había visto con sus propios ojos cómo terminó ese rey y cómo terminó su familia, repitió el mismo camino. Eso es no aprender. Y tenía tiempo para aprender: 21 años cuando empezó, 11 años de reinado. No fue un error de un día; fue una dirección de vida. Por eso Jehová lo evalúa igual que a su antecesor."
       },
-      apoyo:"El libro Dios nos habla mediante Jeremías, en la página 29, describe a Sedequías con una frase que lo dice todo: fue un gobernante débil y vacilante, dominado por sus príncipes y por sus propios miedos. Y esto es interesante, porque no era un hombre que despreciara a Jehová. Durante la parte final del sitio de Jerusalén recurrió a Jeremías para buscar la guía de Dios. Incluso lo consultó en secreto, para no molestar a sus príncipes. Pero cuando el profeta le dijo lo que no quería oír, lo mandó a prisión. Y cuando los príncipes quisieron matar a Jeremías, Sedequías consintió diciendo: «Está en la mano de ustedes. Porque no hay absolutamente nada en que el rey mismo pueda prevalecer contra ustedes». Es decir, sabía qué era lo correcto, pero no tuvo el valor de sostenerlo. Segundo de las Crónicas 36:12 dice que «no se humilló a causa de Jeremías el profeta», y añade que «siguió poniendo tiesa su cerviz y endureciendo su corazón para no volverse a Jehová».",
-      leccion:"Aquí está la primera lección, y es seria: no basta con consultar a Jehová; hay que obedecer lo que nos dice. Sedequías preguntaba, pero no aceptaba la respuesta. Nosotros podemos hacer lo mismo cuando leemos la Biblia y ya sabemos de antemano qué queremos hacer. Preguntémonos: ¿estoy dispuesto a cambiar de opinión cuando la Palabra de Dios me corrige, o solo busco que me confirme lo que ya decidí?"
+      apoyo: "El libro Dios nos habla mediante Jeremías, página 29, lo describe con una frase que lo dice todo: fue un gobernante débil y vacilante, dominado por sus príncipes y por sus propios miedos. Y esto es lo interesante: no era un hombre que despreciara a Jehová. Durante el sitio de Jerusalén consultó a Jeremías, incluso en secreto, para no molestar a sus príncipes. Pero cuando el profeta le dijo lo que no quería oír, lo mandó a prisión. Y cuando los príncipes quisieron matar a Jeremías, consintió diciendo: «Está en la mano de ustedes». Sabía qué era lo correcto y no tuvo el valor de sostenerlo. Segundo de las Crónicas 36:12 lo resume: «no se humilló a causa de Jeremías el profeta [...] y siguió poniendo tiesa su cerviz y endureciendo su corazón para no volverse a Jehová».",
+      leccion: "No basta con preguntarle a Jehová. Hay que obedecerle cuando responde."
     },
     {
-      titulo:"Segundo punto: rompió el juramento que había hecho en el nombre de Dios",
-      texto:{
-        ref:"Jer 52:3",
-        intro:"El versículo 3 es corto, pero contiene la razón de fondo de toda la tragedia. Léalo con atención, porque la última frase parece casi un detalle sin importancia, y sin embargo es la clave.",
-        lectura:"«Estas cosas pasaron en Jerusalén y Judá porque Jehová estaba furioso, y acabó quitándolos de su vista. Y Sedequías se rebeló contra el rey de Babilonia».",
-        explicacion:"«Sedequías se rebeló contra el rey de Babilonia». ¿Y eso qué tiene de malo? A fin de cuenta, ¿no era Babilonia un enemigo pagano? Pues aquí está el asunto: Sedequías no se había sometido a Babilonia por gusto; se había sometido con un juramento, y lo había hecho en el nombre de Jehová. Ese es el problema. La Biblia dice en Ezequiel 17:16 que Sedequías «despreció su juramento» y «quebrantó su pacto». Y Segundo de las Crónicas 36:13 lo repite: había jurado en el nombre de Dios, y aun así se rebeló. Jehová esperaba que respetara ese juramento. Pero Sedequías le pidió ayuda a Egipto para librarse del dominio babilonio, y eso no sirvió de nada.",
-        ref2:""
+      titulo: "Rompió una promesa hecha en el nombre de Dios",
+      texto: {
+        ref: "Jer 52:3",
+        intro: "El versículo 3 es corto, pero ahí está la razón de fondo de toda la tragedia. La última frase parece casi un detalle sin importancia, y es la clave.",
+        lectura: "«Estas cosas pasaron en Jerusalén y Judá porque Jehová estaba furioso, y acabó quitándolos de su vista. Y Sedequías se rebeló contra el rey de Babilonia».",
+        explicacion: "¿Qué tenía de grave rebelarse contra Babilonia? Que Sedequías no lo había prometido a Babilonia: lo había jurado en el nombre de Jehová. Dios lo había puesto como testigo de esa promesa. Y romperla no era solo un problema político; era faltar a la palabra dada a Dios. Por eso Jehová lo tomó como algo personal. La lección es incómoda pero clara: cuando damos nuestra palabra, y sobre todo cuando se la damos a Jehová, él la escucha."
       },
-      apoyo:"La Atalaya de octubre de 2017, páginas 23 y 24, párrafos 9 a 12, lo explica con mucha claridad. Hacer un juramento en el nombre de Jehová es un asunto muy serio. Y el punto que más nos toca es este: Jehová también escucha los votos o promesas que hacemos nosotros, se los toma en serio y debemos respetarlos para tener su aprobación. La dedicación a Dios es el voto más importante que podemos hacer. Cuando dedicamos nuestra vida a Jehová, le prometemos de manera solemne que le serviremos no importa lo que ocurra. Y fíjese en cómo se cumple ese voto: no se cumple en un momento heroico, sino en lo pequeño. Si alguien del trabajo o de la escuela coquetea con nosotros, ¿rechazamos sus atenciones? Si somos los únicos siervos de Dios en nuestra familia, ¿le pedimos que nos ayude a portarnos siempre como cristianos? ¿Oramos todos los días? ¿Sacamos tiempo para leer la Biblia? Cuando nos dedicamos, le prometimos que haríamos todas estas cosas. Cumplir con nuestra dedicación significa ser obedientes, y nuestro servicio a Jehová es una manera de vivir, no un simple formalismo.",
-      leccion:"Segunda lección: a Jehová no se le promete a medias. Y no hace falta ser un rey para romper un juramento hecho en su nombre; basta con faltar a lo prometido cuando nadie nos ve, o cuando nos conviene. Nuestra dedicación es un voto que se renueva cada día, en las decisiones pequeñas."
+      apoyo: "La Atalaya de octubre de 2017, párrafos 9 a 12, explica que hacer un juramento en el nombre de Jehová es un asunto muy serio, y que él también escucha los votos o promesas que hacemos nosotros. El voto más importante es nuestra dedicación. Y fíjese en dónde se cumple: no en un momento heroico, sino en lo de todos los días. En rechazar una insinuación en el trabajo. En portarnos como cristianos cuando somos los únicos de la familia que sirven a Jehová. En orar y en leer la Biblia aunque nadie nos vea. Cuando nos dedicamos, prometimos esas cosas. Cumplirlas es una manera de vivir, no un formalismo.",
+      leccion: "A Jehová no se le promete a medias."
     },
     {
-      titulo:"Tercer punto: no pudo librarse de las consecuencias de sus actos",
-      texto:{
-        ref:"Jer 52:8-11",
-        intro:"Y ahora viene lo que ningún rey quiere oír. Sedequías había calculado todo: las alianzas, la estrategia, la salida por el río. Pero hay algo que no se puede calcular: las consecuencias. Escuche cómo termina su historia.",
-        lectura:"«Pero el ejército caldeo persiguió al rey Sedequías y lo alcanzó en las llanuras desérticas de Jericó. Todos sus soldados fueron dispersados. Entonces capturaron al rey, lo subieron a Riblá, en la tierra de Hamat, y lo llevaron ante el rey de Babilonia, quien lo sentenció. Y el rey de Babilonia mató a los hijos de Sedequías ante sus propios ojos, y también mató a todos los príncipes de Judá allí en Riblá. Luego el rey de Babilonia cegó a Sedequías, lo sujetó con grilletes de cobre, se lo llevó a Babilonia y lo tuvo preso hasta el día de su muerte».",
-        explicacion:"Esta es la parte más dura de toda la lectura, y no conviene suavizarla. Sedequías huyó de noche, por la puerta del jardín del rey, y creyó que se había escapado. Lo alcanzaron en las llanuras de Jericó. Lo llevaron a Riblá, lo juzgaron y lo sentenciaron. Y antes de cegarlo, le hicieron ver la muerte de sus hijos y de sus príncipes. La última imagen que Sedequías vio en su vida fue la de su propia familia destruida por las decisiones que él tomó. Murió preso en Babilonia. Todo lo que había intentado evitar con su rebeldía es exactamente lo que le sucedió.",
-        ref2:""
+      titulo: "No pudo escapar de las consecuencias",
+      texto: {
+        ref: "Jer 52:8-11",
+        intro: "Y ahora viene lo que ningún rey quiere oír. Sedequías había calculado todo: las alianzas, la estrategia, la salida por el jardín. Pero hay algo que no se calcula: las consecuencias.",
+        lectura: "«Pero el ejército caldeo persiguió al rey Sedequías y lo alcanzó en las llanuras desérticas de Jericó. Todos sus soldados fueron dispersados. Entonces capturaron al rey, lo subieron a Riblá, en la tierra de Hamat, y lo llevaron ante el rey de Babilonia, quien lo sentenció. Y el rey de Babilonia mató a los hijos de Sedequías ante sus propios ojos, y también mató a todos los príncipes de Judá allí en Riblá. Luego el rey de Babilonia cegó a Sedequías, lo sujetó con grilletes de cobre, se lo llevó a Babilonia y lo tuvo preso hasta el día de su muerte».",
+        explicacion: "Esta es la parte más dura del pasaje, y no conviene suavizarla. Sedequías había intentado librarse de un dominio que le molestaba, y lo perdió todo: a sus hijos, sus príncipes, sus ojos, su libertad, su ciudad. La última imagen que vio en su vida fue la de su propia familia destruida por las decisiones que él había tomado. Todo lo que quiso evitar con su rebeldía fue exactamente lo que le sucedió."
       },
-      apoyo:"La Atalaya de octubre de 2017, párrafo 12, saca la lección práctica: nuestra manera de reaccionar ante las pruebas, sean grandes o pequeñas, demuestra si nos tomamos en serio o no la promesa solemne de servir a Jehová «día tras día». Y añade una idea muy consoladora: cumplir con nuestra promesa es para nuestro bien, porque Dios les promete un futuro maravilloso a los fieles. Fíjese en la diferencia: Sedequías quiso librarse de un dominio molesto y lo perdió todo; nosotros, cuando somos fieles, aunque perdamos algo de momento, ganamos el futuro que Jehová promete. Deuteronomio 10:12, 13 lo resume así: se nos pide que temamos a Jehová, que andemos en sus caminos, que lo amemos y que sirvamos con todo el corazón, y Jehová añade: «para tu bien».",
-      leccion:"Tercera lección: las consecuencias no se negocian. Podemos engañar a los demás, incluso a nosotros mismos, pero no a Jehová. Y aun así, la historia de Sedequías no está escrita para asustarnos, sino para que aprendamos a tiempo. Él tuvo a Jeremías al lado durante años. Nosotros tenemos la Biblia entera y una organización que nos advierte con amor. La pregunta es la misma de siempre: ¿vamos a escuchar?"
+      apoyo: "La misma Atalaya, en el párrafo 12, saca la lección práctica: la manera de reaccionar ante las pruebas demuestra si nos tomamos en serio o no la promesa de servir a Jehová «día tras día». Y añade algo consolador: cumplir esa promesa es para nuestro bien. Deuteronomio 10:12, 13 lo resume: se nos pide que temamos a Jehová, que andemos en sus caminos, que lo amemos y que sirvamos con todo el corazón, y él añade: «para tu bien». Fíjese en la diferencia. Sedequías quiso librarse de un dominio molesto y lo perdió todo. Nosotros, cuando somos fieles, a veces perdemos algo de momento, pero ganamos el futuro que Jehová promete.",
+      leccion: "Las consecuencias no se negocian."
     }
   ],
-  aplicacion:"Hermanos, tres preguntas concretas para esta semana. Primera: ¿hay algo que le estoy preguntando a Jehová sabiendo de antemano que no voy a obedecer la respuesta? Como Sedequías, que consultaba al profeta y luego hacía lo que quería. Segunda: ¿estoy cumpliendo el voto de mi dedicación en las cosas pequeñas, las de todos los días, o solo cuando me ven? Tercera: ¿hay alguna decisión que estoy tomando ahora mismo de la que sé que tendrá consecuencias malas, y estoy fingiendo que no las tendrá? No esperemos a que lleguen. Cambiemos hoy, mientras todavía se puede.",
-  conclusion:"La historia de Sedequías es triste, pero no es inútil. Nos enseña que saber lo correcto no basta, que los juramentos hechos a Jehová son sagrados y que las consecuencias llegan. Pero nos enseña algo más: Jehová no nos deja solos para que acertemos. Nos habla, nos advierte, nos da tiempo, como se lo dio a Sedequías durante once años. Aprovechemos ese tiempo. No seamos como Sedequías: escuchemos, humillémonos y obedezcamos mientras todavía es el día."
+  aplicacion: "Todo esto se puede resumir en una pregunta muy concreta: ¿hay algo que le estoy preguntando a Jehová sabiendo de antemano que no voy a obedecer la respuesta? Sedequías consultaba al profeta y luego hacía lo que quería. Nosotros podemos leer la Biblia con la misma actitud, buscando que nos confirme lo que ya decidimos. Si nos pasa, hagamos lo que él no hizo: inclinarnos. Y no hace falta esperar a una gran decisión; casi siempre empieza en algo pequeño, en una sola ocasión en la que sabemos lo que está bien y elegimos lo contrario.",
+  conclusion: "La historia de Sedequías es triste, pero no es inútil. Nos enseña tres cosas: que saber lo correcto no basta, que las promesas hechas a Jehová son sagradas y que las consecuencias llegan. Pero hay algo más que la historia nos da: tiempo. Jehová le dio a Sedequías 11 años para cambiar. A nosotros nos sigue dando tiempo hoy. Aprovechémoslo. Que no nos pase lo que a él, que tuvo al profeta a su lado y no escuchó. Tenemos la Biblia entera y una organización que nos advierte con cariño. Escuchemos mientras todavía se puede."
 };
 
 /* ============ PERLAS ============ */
 var PERLA1={
-  q:"Jer 51:6, 7, 36. ¿En qué se parecen la advertencia que Jeremías anunció y la advertencia que nosotros damos hoy?",
-  verses:[{t:"Jer 51:6, 7",u:bible(24,51)},{t:"Jer 51:36",u:bible(24,51)}],
-  pubs:[{t:"Dios nos habla mediante Jeremías, pág. 165 párr. 21; pág. 167 párr. 25",u:pc("/4/0")}],
-  fuentes:["jr13","jer51"],
-  found:[
+  q: "Jer 51:6, 7, 36. ¿En qué se parecen la advertencia que Jeremías anunció y la advertencia que nosotros damos hoy?",
+  verses: [
+    {t: "Jer 51:6, 7", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/51"},
+    {t: "Jer 51:36", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/51"}
+  ],
+  pubs: [
+    {
+      t: "Dios nos habla mediante Jeremías, pág. 165 párr. 21; pág. 167 párr. 25",
+      u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//4/0"
+    }
+  ],
+  fuentes: ["jr13", "jer51"],
+  found: [
     "Dios nos habla mediante Jeremías, pág. 165 párr. 21: el apóstol Juan aludió a las profecías de Jeremías sobre el fin de Babilonia en 539 a.e.c. Revelación traza paralelismos entre aquel suceso y lo que está por ocurrir a mayor escala.",
     "Entre las profecías de Jeremías ya cumplidas figura la caída de un gran imperio: el imperio mundial de la religión falsa, «Babilonia la Grande» (Apocalipsis 14:8; 17:1, 2, 5; Jeremías 50:2; 51:8).",
     "El pueblo de Dios tendría que «salir de ella» para no correr su misma suerte (Apocalipsis 18:2, 4; Jeremías 51:6). Las aguas de aquella ciudad, símbolo de sus devotos, «se secarían» (Jeremías 51:36; Apocalipsis 16:12).",
     "Dios nos habla mediante Jeremías, pág. 167 párr. 25: nuestros tiempos son tan difíciles como los de Jeremías, y hoy, como entonces, la reacción de la gente al mensaje de Jehová significa vida o muerte.",
     "No somos profetas ni se nos ha inspirado para añadir nada a la Biblia, pero sí hemos sido comisionados para predicar las buenas nuevas del Reino todos los días hasta la conclusión del sistema de cosas (Mateo 28:19, 20)."
   ],
-  draft:"Se parecen en tres cosas. Primera, en el contenido: Jeremías anunció que Babilonia iba a caer y que había que salir de ella para no morir con ella; nosotros anunciamos que Babilonia la Grande va a caer y que hay que salir de la religión falsa. Segunda, en la urgencia: no era un aviso cultural ni una curiosidad histórica, era una advertencia de vida o muerte, y el versículo 6 lo dice dos veces: «huyan por su vida». Tercera, en el efecto: la reacción de la gente significa vida o muerte, igual que hoy. Y hay una diferencia que nos honra: Jeremías hablaba como profeta inspirado; nosotros no añadimos nada a la Biblia, solo repetimos lo que ya está escrito. Por eso nuestra labor es la misma que la suya: no ocultar nada."
+  draft: "Se parecen en lo esencial. Jeremías avisó de que Babilonia iba a caer y de que había que salir a tiempo; nosotros avisamos de que Babilonia la Grande también va a caer, y por eso invitamos a la gente a salir de la religión falsa. Fíjese en la urgencia del versículo 6: «huyan por su vida». No era una curiosidad histórica; era una advertencia de vida o muerte, y hoy pasa igual. La diferencia está en el papel: Jeremías hablaba como profeta inspirado y nosotros no añadimos nada, solo repetimos lo que ya está en la Biblia. Y eso hace que nuestra labor sea igual de seria: no ocultar nada de lo que Jehová nos ha dicho."
 };
 var PERLA2_Q="¿Qué perlas espirituales ha encontrado en la lectura bíblica de esta semana?";
 
 var PUNTOS=[
- {v:"Jer 51:6",vu:bible(24,51),idea:"Dos veces seguidas: «Huyan de Babilonia, huyan por su vida. No mueran por culpa del error de ella».",fuentes:["jer51"],ref:"Biblia de estudio, Jer 51:6.",aprendemos:"La salvación exige salir, y salir a tiempo.",aplicar:"La repetición no es un descuido del escritor: es urgencia. Cuando algo se repite dos veces, es porque hay peligro de no hacerlo. Y note la razón que da Jehová: «no mueran por culpa del error de ella». Es decir, nadie tiene por qué morir por un error ajeno. En nuestros días pasa igual: el que conoce la verdad y se queda en la religión falsa por lealtad a la familia, a la tradición o a la costumbre, carga con un error que no es suyo. Huyamos, y ayudemos a otros a huir."},
- {v:"Jer 51:10",vu:bible(24,51),idea:"«Jehová nos ha hecho justicia. Vengan, hablemos en Sion de las obras de Jehová nuestro Dios».",fuentes:["jer51"],ref:"Biblia de estudio, Jer 51:10.",aprendemos:"Cuando Jehová nos defiende, el resultado natural es hablar de él.",aplicar:"Fíjese en el orden: primero Jehová actúa, y después su pueblo habla. No al revés. Y el impulso es contagioso: «vengan», dice, no «voy». El que ha sentido la justicia de Jehová no se queda callado, invita. Esto nos da una medida muy práctica para nuestra predicación: si hablar de Jehová se nos hace siempre cuesta arriba, quizá hemos perdido de vista lo que él ha hecho por nosotros. Repasemos su bondad y las ganas de hablar vuelven."},
- {v:"Jer 51:13",vu:bible(24,51),idea:"Babilonia vivía «sobre muchas aguas» y tenía «muchos tesoros», pero llegó el límite de sus ganancias.",fuentes:["jer51"],ref:"Biblia de estudio, Jer 51:13.",aprendemos:"La abundancia material no compra un solo día de protección.",aplicar:"Babilonia estaba rodeada de agua, que era su defensa natural, y tenía tesoros que la hacían sentir segura. Y Jehová dice: «ha llegado tu fin, el límite de tus ganancias». Ninguna riqueza puso una piedra más en esa muralla. Nosotros vivimos en un mundo que nos dice lo contrario: que el dinero es la seguridad. Este versículo nos ayuda a tener la cabeza fría: trabajemos, seamos responsables, pero no pongamos la confianza en lo que se puede perder en una noche."},
- {v:"Jer 51:17, 18",vu:bible(24,51),idea:"Las imágenes talladas son «un engaño» y «obras ridículas»; cuando llegue su día, desaparecerán.",fuentes:["jer51"],ref:"Biblia de estudio, Jer 51:17, 18.",aprendemos:"Todo lo que sustituye a Jehová termina siendo un engaño.",aplicar:"Hoy no solemos postrarnos ante estatuas, pero fabricamos nuestras propias imágenes: la carrera, el prestigio, el dinero, incluso una persona a la que admiramos demasiado. Todas tienen algo en común: prometen mucho y no pueden dar nada, porque «no hay espíritu en ellas». El día del ajuste de cuentas las deja al descubierto. ¿Qué imagen me está prometiendo una felicidad que solo Jehová puede dar?"},
- {v:"Jer 51:36",vu:bible(24,51),idea:"«Estoy defendiendo tu caso legal y te vengaré»: Jehová mismo toma el caso de su pueblo.",fuentes:["jer51","jr13"],ref:"Biblia de estudio, Jer 51:36; Dios nos habla mediante Jeremías, pág. 165 párr. 21.",aprendemos:"No tenemos que vengarnos: tenemos un Abogado.",aplicar:"La expresión es jurídica: Jehová no dice «yo te vengaré» sin más, dice primero «estoy defendiendo tu caso legal». Él se involucra como parte interesada. Y luego añade algo que parece pequeño: «Secaré el mar y los pozos de ella», es decir, iba a cortarle el agua a una ciudad que vivía de un río. Dios no solo gana el caso, también desarma al opresor. Si alguien te ha tratado injustamente, deja el expediente en sus manos: él sabe llevarlo."},
- {v:"Jer 51:50",vu:bible(24,51),idea:"«Acuérdense de Jehová estando lejos y tengan a Jerusalén en el corazón».",fuentes:["jer51"],ref:"Biblia de estudio, Jer 51:50.",aprendemos:"Se puede servir a Jehová lejos de casa, si él sigue en el corazón.",aplicar:"Estas palabras eran para los judíos que iban al destierro: lejos de su tierra, lejos del templo, lejos de todo lo que conocían. Y Jehová no les dice «olvídense», les dice «acuérdense». Cuántos hermanos hoy viven lejos de su congregación de siempre, o se han mudado a un lugar donde son los únicos testigos. Este versículo es para ellos: la distancia no rompe la relación si el corazón sigue en Jerusalén, es decir, en la adoración pura."},
- {v:"Jer 52:31-34",vu:bible(24,52),idea:"En el año 37 del destierro, Evil-Merodac sacó a Joaquín de la prisión y lo trató con bondad hasta el día de su muerte.",fuentes:["jer52"],ref:"Biblia de estudio, Jer 52:31-34.",aprendemos:"El libro que empezó con una ciudad en llamas termina con un rey sentado a la mesa.",aplicar:"El capítulo 52 comienza con la peor noticia y termina con la mejor: Joaquín, el rey desterrado, es liberado y come a la mesa del rey de Babilonia. Es un detalle pequeño, casi doméstico, pero es la prueba de que Jehová no había terminado con la línea de David. En medio del juicio más severo, Dios dejaba una puerta abierta para el Mesías. Cuando todo parezca perdido, recuerde cómo termina este capítulo: Jehová siempre deja una puerta abierta."}
+  {
+    v: "Jer 51:6",
+    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/51",
+    idea: "Dos veces seguidas: «Huyan de Babilonia, huyan por su vida. No mueran por culpa del error de ella».",
+    fuentes: ["jer51"],
+    ref: "Biblia de estudio, Jer 51:6.",
+    aprendemos: "La salvación exige salir, y salir a tiempo.",
+    aplicar: "La repetición no es un descuido del escritor: es urgencia. Cuando algo se repite dos veces, es porque hay peligro de no hacerlo. Y note la razón que da Jehová: «no mueran por culpa del error de ella». Es decir, nadie tiene por qué morir por un error ajeno. En nuestros días pasa igual: el que conoce la verdad y se queda en la religión falsa por lealtad a la familia, a la tradición o a la costumbre, carga con un error que no es suyo. Huyamos, y ayudemos a otros a huir."
+  },
+  {
+    v: "Jer 51:10",
+    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/51",
+    idea: "«Jehová nos ha hecho justicia. Vengan, hablemos en Sion de las obras de Jehová nuestro Dios».",
+    fuentes: ["jer51"],
+    ref: "Biblia de estudio, Jer 51:10.",
+    aprendemos: "Cuando Jehová nos defiende, el resultado natural es hablar de él.",
+    aplicar: "Fíjese en el orden: primero Jehová actúa, y después su pueblo habla. No al revés. Y el impulso es contagioso: «vengan», dice, no «voy». El que ha sentido la justicia de Jehová no se queda callado, invita. Esto nos da una medida muy práctica para nuestra predicación: si hablar de Jehová se nos hace siempre cuesta arriba, quizá hemos perdido de vista lo que él ha hecho por nosotros. Repasemos su bondad y las ganas de hablar vuelven."
+  },
+  {
+    v: "Jer 51:13",
+    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/51",
+    idea: "Babilonia vivía «sobre muchas aguas» y tenía «muchos tesoros», pero llegó el límite de sus ganancias.",
+    fuentes: ["jer51"],
+    ref: "Biblia de estudio, Jer 51:13.",
+    aprendemos: "La abundancia material no compra un solo día de protección.",
+    aplicar: "Babilonia estaba rodeada de agua, que era su defensa natural, y tenía tesoros que la hacían sentir segura. Y Jehová dice: «ha llegado tu fin, el límite de tus ganancias». Ninguna riqueza puso una piedra más en esa muralla. Nosotros vivimos en un mundo que nos dice lo contrario: que el dinero es la seguridad. Este versículo nos ayuda a tener la cabeza fría: trabajemos, seamos responsables, pero no pongamos la confianza en lo que se puede perder en una noche."
+  },
+  {
+    v: "Jer 51:17, 18",
+    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/51",
+    idea: "Las imágenes talladas son «un engaño» y «obras ridículas»; cuando llegue su día, desaparecerán.",
+    fuentes: ["jer51"],
+    ref: "Biblia de estudio, Jer 51:17, 18.",
+    aprendemos: "Todo lo que sustituye a Jehová termina siendo un engaño.",
+    aplicar: "Hoy no solemos postrarnos ante estatuas, pero fabricamos nuestras propias imágenes: la carrera, el prestigio, el dinero, incluso una persona a la que admiramos demasiado. Todas tienen algo en común: prometen mucho y no pueden dar nada, porque «no hay espíritu en ellas». El día del ajuste de cuentas las deja al descubierto. ¿Qué imagen me está prometiendo una felicidad que solo Jehová puede dar?"
+  },
+  {
+    v: "Jer 51:36",
+    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/51",
+    idea: "«Estoy defendiendo tu caso legal y te vengaré»: Jehová mismo toma el caso de su pueblo.",
+    fuentes: ["jer51", "jr13"],
+    ref: "Biblia de estudio, Jer 51:36; Dios nos habla mediante Jeremías, pág. 165 párr. 21.",
+    aprendemos: "No tenemos que vengarnos: tenemos un Abogado.",
+    aplicar: "La expresión es jurídica: Jehová no dice «yo te vengaré» sin más, dice primero «estoy defendiendo tu caso legal». Él se involucra como parte interesada. Y luego añade algo que parece pequeño: «Secaré el mar y los pozos de ella», es decir, iba a cortarle el agua a una ciudad que vivía de un río. Dios no solo gana el caso, también desarma al opresor. Si alguien te ha tratado injustamente, deja el expediente en sus manos: él sabe llevarlo."
+  },
+  {
+    v: "Jer 51:50",
+    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/51",
+    idea: "«Acuérdense de Jehová estando lejos y tengan a Jerusalén en el corazón».",
+    fuentes: ["jer51"],
+    ref: "Biblia de estudio, Jer 51:50.",
+    aprendemos: "Se puede servir a Jehová lejos de casa, si él sigue en el corazón.",
+    aplicar: "Estas palabras eran para los judíos que iban al destierro: lejos de su tierra, lejos del templo, lejos de todo lo que conocían. Y Jehová no les dice «olvídense», les dice «acuérdense». Cuántos hermanos hoy viven lejos de su congregación de siempre, o se han mudado a un lugar donde son los únicos testigos. Este versículo es para ellos: la distancia no rompe la relación si el corazón sigue en Jerusalén, es decir, en la adoración pura."
+  },
+  {
+    v: "Jer 52:31-34",
+    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/24/52",
+    idea: "En el año 37 del destierro, Evil-Merodac sacó a Joaquín de la prisión y lo trató con bondad hasta el día de su muerte.",
+    fuentes: ["jer52"],
+    ref: "Biblia de estudio, Jer 52:31-34.",
+    aprendemos: "El libro que empezó con una ciudad en llamas termina con un rey sentado a la mesa.",
+    aplicar: "El capítulo 52 comienza con la peor noticia y termina con la mejor: Joaquín, el rey desterrado, es liberado y come a la mesa del rey de Babilonia. Es un detalle pequeño, casi doméstico, pero es la prueba de que Jehová no había terminado con la línea de David. En medio del juicio más severo, Dios dejaba una puerta abierta para el Mesías. Cuando todo parezca perdido, recuerde cómo termina este capítulo: Jehová siempre deja una puerta abierta."
+  }
 ];
 
 var MAESTROS={
-  p4:{marco:"De casa en casa. El publicador conversa brevemente con la persona y le ofrece un curso bíblico de forma directa, sin rodeos y con bondad. Duración: 3 minutos.",leccion:"lmd lección 3 punto 3 — Bondad: ofrezca el curso bíblico de forma directa. No dé vueltas ni se disculpe por ofrecerlo. Explique en dos frases en qué consiste, cuánto dura y qué se necesita, y deje que la persona decida sin presión.",objetivo:"Ofrecer el curso bíblico de manera clara y directa, con bondad.",tema:"El curso bíblico es un regalo; se ofrece con bondad y sin vergüenza.",texto:"Isaías 55:1 — «Vengan, todos los que tienen sed... sin dinero y sin precio».",dialogo:"PUBLICADOR: Buenas tardes. Estoy visitando a los vecinos para hablar de la Biblia. ¿Le gustaría saber qué promete Dios para el futuro?\n\nSEÑORA: Bueno, uno nunca sabe.\n\nPUBLICADOR: Le entiendo. Mire, le voy a ser sincero: además de esta conversación, ofrecemos un curso gratuito de la Biblia, en su propia casa o por videollamada, de unos 30 minutos a la semana. No tiene ningún compromiso. ¿Le gustaría probar?\n\nSEÑORA: ¿Y qué estudiarían?\n\nPUBLICADOR: Empezaríamos con lo básico: por qué sufrimos, qué pasa cuando morimos y cuál es el propósito de Dios para la Tierra. Con la Biblia y un folleto, nada más. ¿Qué día le vendría bien?\n\nSEÑORA: Es que trabajo mucho.\n\nPUBLICADOR: Lo entiendo perfectamente. También puede ser un sábado por la tarde o por videollamada, cuando usted pueda. ¿Le parece si paso el sábado y lo vemos con calma?",demostrar:["Ofrecer el curso sin rodeos ni disculpas","Explicarlo en dos frases: qué es, cuánto dura, qué se necesita","Adaptarse al horario de la persona","Mostrar bondad, sin presionar","Dejar una cita concreta"],conclusion:"Confirmar el día y la hora, y agradecer la confianza."},
-  p5:{marco:"De casa en casa. En la conversación, el publicador menciona que Jesús es el Hijo de Dios. La persona dice que no está de acuerdo. Duración: 4 minutos.",leccion:"lmd lección 3 punto 4 — Bondad: responda con respeto cuando la persona no esté de acuerdo. No discuta ni trate de ganar el argumento. Agradezca su sinceridad, busque un punto en común y use un solo texto bien elegido, con calma.",objetivo:"Mantener la conversación y el respeto cuando la persona rechaza una verdad bíblica.",tema:"La bondad abre más puertas que el argumento más brillante.",texto:"2 Timoteo 2:24, 25 — el esclavo del Señor debe ser amable con todos y enseñar con apacibilidad.",dialogo:"PUBLICADOR: ...y por eso la Biblia dice que Jesús es el Hijo de Dios, no el Dios Todopoderoso.\n\nSEÑOR: No, mire, yo no creo eso. Para mí Jesús es Dios mismo. Esa es mi fe.\n\nPUBLICADOR: Se lo agradezco de veras, porque es bueno que uno diga lo que cree. ¿Me permite preguntarle algo, sin ánimo de discutir? Si Jesús fuera Dios mismo, ¿por qué él oraba a su Padre y decía que el Padre era mayor que él?\n\nSEÑOR: Bueno... hay muchos misterios.\n\nPUBLICADOR: Puede ser. Y yo no quiero convencerlo de nada hoy. Solo quería compartirle lo que la Biblia dice, y que usted lo revise con calma. ¿Me permite dejárselo por escrito para que lo lea cuando quiera?\n\nSEÑOR: Déjemelo, y lo leo.\n\nPUBLICADOR: Con mucho gusto. Y si algún día quiere comentarlo, aquí estaré.",demostrar:["Agradecer la sinceridad de la persona","No discutir ni interrumpir","Hacer una pregunta, no una afirmación","Usar un solo texto, con respeto","Dejar material y la puerta abierta"],conclusion:"Despedirse con bondad, sin dejar la impresión de que hubo un ganador y un perdedor."},
-  p6:{marco:"Discurso de 5 minutos ante el auditorio: «El Reino de Dios es un gobierno real que está en el cielo». Basado en lmd apéndice A punto 21 y th lección 7 (usar información exacta y convincente). Duración: 5 minutos.",leccion:"th lección 7 — Usar información exacta y convincente: cite los textos con exactitud, lea las palabras clave y no exagere ni añada ideas que la Biblia no dice. Sea claro y breve.",objetivo:"Demostrar con la Biblia que el Reino es un gobierno real, actual y con un Rey nombrado por Dios.",tema:"El Reino no es un sentimiento en el corazón: es un gobierno celestial con un Rey, un territorio y súbditos.",texto:"Daniel 2:44; Daniel 7:13, 14; Mateo 6:9, 10; Apocalipsis 11:15.",dialogo:"GUION DEL DISCURSO:\n\n1. Introducción (30 segundos). Pregunta al auditorio: ¿cuándo fue la última vez que oró el padrenuestro? Todos lo hemos dicho. Y en esa oración pedimos que venga el Reino de Dios. Pero ¿qué es exactamente lo que estamos pidiendo?\n\n2. Un gobierno real (1 minuto). Lea Daniel 2:44. Fíjese en las palabras exactas: «el Dios del cielo establecerá un reino». No dice un sentimiento, ni una manera de vivir, ni una esperanza vaga: dice un reino, un gobierno. Y añade que «no será nunca destruido» y que «destruirá todos estos reinos y permanecerá para siempre». Un gobierno que destruye a otros gobiernos tiene que ser un gobierno de verdad.\n\n3. Un Rey nombrado por Dios (1,5 minutos). Lea Daniel 7:13, 14. Aquí aparece alguien «como un hijo de hombre» que recibe «dominio, gloria y reino». Ese es Jesucristo. Note que recibe el Reino, es decir, no lo toma por su cuenta: se lo da el Anciano de Días. Y fíjese en la descripción: «para que todos los pueblos, naciones y lenguas le sirvan». Eso es exactamente lo que hace un gobierno: administra pueblos.\n\n4. Dónde está y qué hace (1 minuto). Lea Apocalipsis 11:15: «El reino del mundo ha llegado a ser el reino de nuestro Señor y de su Cristo». Es un gobierno celestial, por eso Jesús pudo decir que su Reino «no es parte de este mundo». Y ya está funcionando: tiene un Rey entronizado y súbditos en la Tierra que obedecen sus leyes.\n\n5. Conclusión (1 minuto). Cuando oramos «venga tu Reino», estamos pidiendo que ese gobierno real actúe. No es una frase bonita: es la petición más importante que podemos hacer. Y podemos ser súbditos de ese Rey desde hoy.",demostrar:["Leer los textos con exactitud, sin parafrasear de más","Señalar las palabras clave de cada versículo","Usar cuatro textos como máximo, bien explicados","Mantener el contacto visual y hablar con convicción","Terminar con una aplicación práctica para el auditorio"],conclusion:"Repetir en una frase la idea central: el Reino es un gobierno real, con un Rey real, y ya está en marcha."}
+  p4: {
+    marco: "De casa en casa. El publicador conversa brevemente con un señor mayor que lo escucha con desconfianza, y le ofrece el curso bíblico de forma directa. Duración: 3 minutos.",
+    leccion: "lmd lección 3 punto 3 — Bondad: ofrezca el curso bíblico de forma directa. No le dé vueltas ni se disculpe por ofrecerlo. Explique en dos frases en qué consiste, cuánto dura y qué se necesita, y deje que la persona decida sin presión.",
+    objetivo: "Ofrecer el curso bíblico con claridad y bondad, y sin vergüenza.",
+    tema: "El curso es un regalo: se ofrece con sencillez y se deja decidir.",
+    texto: "Isaías 55:1 — «Vengan, todos los que tienen sed [...] sin dinero y sin precio».",
+    dialogo: "PUBLICADOR: Buenas tardes. Ando conversando con los vecinos sobre la Biblia. ¿Le parece si le hago una pregunta?\n\nSEÑOR: Dígame.\n\nPUBLICADOR: ¿Usted cree que algún día se arreglará todo esto?\n\nSEÑOR: Ojalá. Yo tengo mis dudas.\n\nPUBLICADOR: Yo también las tuve. Por eso empecé a leer la Biblia. Y le voy a decir algo sin rodeos: damos un curso gratuito, en su casa o por videollamada, unos 30 minutos a la semana.\n\nSEÑOR: ¿Y qué me va a vender?\n\nPUBLICADOR: Nada. No se vende nada. Se lee la Biblia y se conversa. Empezaríamos con lo básico: por qué hay tanto sufrimiento y qué promete Dios para el futuro.\n\nSEÑOR: Es que yo no sé leer mucho.\n\nPUBLICADOR: No se preocupe por eso. Se lo leo yo y lo comentamos. ¿Le parece si paso el sábado y lo vemos con calma?",
+    demostrar: [
+      "Ofrecer el curso de forma directa, sin disculparse",
+      "Explicar en dos frases: qué es, cuánto dura, qué se necesita",
+      "No prometer nada que no sea la Biblia",
+      "Responder con bondad a la desconfianza",
+      "Dejar la decisión en sus manos y fijar un día"
+    ],
+    conclusion: "Confirmar el día y agradecer la confianza, sin presionar."
+  },
+  p5: {
+    marco: "De casa en casa. En la conversación el publicador menciona que Jesús es el Hijo de Dios, y la persona dice que no está de acuerdo. Duración: 4 minutos.",
+    leccion: "lmd lección 3 punto 4 — Bondad: responda con respeto cuando la persona no esté de acuerdo. No discuta ni trate de ganar el argumento. Agradezca su sinceridad, busque un punto en común y use un solo texto bien elegido.",
+    objetivo: "Mantener la conversación y el respeto cuando la persona rechaza una verdad bíblica.",
+    tema: "La bondad abre más puertas que el argumento más brillante.",
+    texto: "2 Timoteo 2:24, 25 — el esclavo del Señor debe ser amable con todos y enseñar con apacibilidad.",
+    dialogo: "PUBLICADOR: ...y por eso la Biblia presenta a Jesús como el Hijo de Dios.\n\nSEÑOR: No, ahí no estoy de acuerdo. Jesús es Dios. Eso lo aprendí desde niño.\n\nPUBLICADOR: Se lo agradezco, y me parece muy bien que me lo diga. La verdad es que mucha gente piensa igual.\n\nSEÑOR: Es que es lo que enseña la iglesia.\n\nPUBLICADOR: Entiendo. ¿Me permite solo mostrarle un texto y me dice qué opina? (Abre la Biblia.) En Juan 17:3, Jesús ora a su Padre y lo llama «el único Dios verdadero». Si Jesús fuera ese Dios, ¿a quién le estaba orando?\n\nSEÑOR: Bueno... tendría que pensarlo.\n\nPUBLICADOR: Yo también tuve que pensarlo. No quiero convencerlo de nada hoy. ¿Le dejo esto por escrito y lo revisa con calma?",
+    demostrar: [
+      "Agradecer la sinceridad en vez de corregir de entrada",
+      "No discutir ni elevar el tono",
+      "Buscar un punto en común",
+      "Usar un solo texto, bien leído, y hacer una pregunta sencilla",
+      "Dejar material y retirarse sin presión"
+    ],
+    conclusion: "Despedirse con bondad, sin que nadie quede como perdedor."
+  },
+  p6: {
+    marco: "Discurso de 5 minutos ante el auditorio: «El Reino de Dios es un gobierno real que está en el cielo». Basado en lmd apéndice A punto 21 y th lección 7. Duración: 5 minutos.",
+    leccion: "th lección 7 — Usar información exacta y convincente: cite los textos con exactitud, lea las palabras clave y no exagere ni añada ideas que la Biblia no dice. Sea claro y breve.",
+    objetivo: "Demostrar con la Biblia que el Reino es un gobierno real, actual y con un Rey nombrado por Dios.",
+    tema: "El Reino no es un sentimiento: es un gobierno con un Rey, un territorio y súbditos.",
+    texto: "Daniel 2:44; Daniel 7:13, 14; Mateo 6:9, 10; Apocalipsis 11:15.",
+    dialogo: "Muchos hemos orado el padrenuestro desde niños. «Venga tu Reino». Lo hemos dicho cientos de veces. Pero ¿qué estamos pidiendo exactamente? ¿Un sentimiento? ¿Una manera de vivir? ¿Una esperanza vaga? La Biblia responde con una palabra muy concreta: un gobierno.\n\nVamos a Daniel 2:44. Léalo conmigo. Fíjese en las palabras: «el Dios del cielo establecerá un reino». No dice que inspirará un reino, ni que pondrá el Reino en el corazón de las personas. Dice que establecerá un reino. Y añade dos cosas que solo puede hacer un gobierno de verdad: «no será nunca destruido» y «destruirá todos estos reinos y permanecerá para siempre». Para destruir a otros gobiernos hay que ser un gobierno.\n\nAhora Daniel 7:13, 14. Aquí aparece alguien «como un hijo de hombre» que recibe «dominio, gloria y reino». Ese es Jesucristo. Y note un detalle: recibe el Reino. No lo toma por su cuenta; se lo da el Anciano de Días. Y la descripción sigue: «para que todos los pueblos, naciones y lenguas le sirvan». Eso es lo que hace un gobierno: administrar pueblos.\n\n¿Dónde está ese gobierno? Apocalipsis 11:15 dice: «El reino del mundo ha llegado a ser el reino de nuestro Señor y de su Cristo». Es celestial. Por eso Jesús pudo decir que su Reino «no es parte de este mundo». Pero ya funciona: tiene un Rey entronizado desde 1914 y tiene súbditos en la Tierra que obedecen sus leyes.\n\nAsí que cuando oramos «venga tu Reino», no estamos diciendo una frase bonita. Estamos pidiendo que ese gobierno real actúe. Y podemos ser súbditos de ese Rey desde hoy.",
+    demostrar: [
+      "Citar los textos con exactitud y leer las palabras clave",
+      "Distinguir reino como gobierno de reino como sentimiento",
+      "Mostrar que el Rey recibe el Reino, no lo toma",
+      "Ubicar el Reino en el cielo y ya en funcionamiento",
+      "Cerrar con una aplicación directa"
+    ],
+    conclusion: "El Reino es un gobierno real, con un Rey real, y ya está en marcha."
+  }
 };
 
 var VIDA_P8={
-  activa:true,
-  introGuion:"Análisis con el auditorio (15 minutos). El tema de esta parte es «Nuestras donaciones le dan gloria al gran nombre de Jehová». Vamos a ver un video y después comentaremos las preguntas. La idea de fondo es muy sencilla: cuando los israelitas construyeron el templo, no todos pudieron poner piedras; pero a todos se les dio la oportunidad de dar con generosidad, y eso también era adoración. Con nosotros pasa exactamente igual. No todos participamos directamente en las obras de construcción y en los proyectos de la organización, pero todos podemos apoyarlos con nuestras donaciones. Y hay algo que nos ayuda mucho: los informes que se publican en jw.org. No son cifras frías; son la prueba de que Jehová está bendiciendo la obra y de que nuestro apoyo llega donde tiene que llegar. Vamos a ver el video y luego lo comentamos.",
-  video:{t:"Video «Nuestras donaciones le dan gloria a Jehová» (ver el enlace de la guía de actividades de esta semana)",u:WK},
-  preguntas:[
-    {q:"¿Cómo alaban a Jehová nuestras donaciones?",respuesta:"Primero, porque reconocen que todo lo que tenemos viene de él. David lo dijo así en 1 Crónicas 29:14: «porque todo viene de ti, y de lo que hemos recibido de tu mano te hemos dado». Segundo, porque las donaciones hacen posible una obra que nos supera: la construcción de Salones del Reino, la impresión de publicaciones, la ayuda humanitaria. Tercero, porque son voluntarias: nadie nos obliga, y precisamente por eso demuestran amor. Un hermano que da de lo suyo, aunque sea poco, está diciendo con hechos que el nombre de Jehová es lo más importante para él."},
-    {q:"¿Cómo te han ayudado los informes de jw.org y las cartas de agradecimiento que has recibido?",respuesta:"Nos ayudan de dos maneras. Primero, nos dan confianza: sabemos cómo van las obras y cómo se usan los fondos, y eso es una salvaguarda contra cualquier sospecha. Segundo, nos animan: cuando leemos que se terminó un Salón del Reino en un país donde los hermanos estaban años sin un lugar digno, o que llegó ayuda humanitaria después de un desastre, entendemos que nuestra pequeña aportación forma parte de algo mucho más grande. Y eso produce gratitud, como la del pueblo en 1 Crónicas 29:20, que «se puso a alabar a Jehová»."},
-    {q:"¿Qué proyectos en particular aprecias más?",respuesta:"Esta pregunta es para conversar con el auditorio, y conviene dejar que varios hermanos participen. Normalmente salen tres respuestas: las construcciones, la obra de predicación y la ayuda humanitaria. Un buen punto para cerrar: todos esos proyectos tienen la misma meta, que el nombre de Jehová reciba gloria. Y cuando el auditorio participa, conviene recordar Isaías 12:5: «Canten alabanzas a Jehová, porque ha hecho cosas grandiosas»."},
-    {q:"¿Y si yo no puedo dar dinero?",respuesta:"Esa es una pregunta que muchos hermanos se callan. La respuesta es clara: las donaciones son voluntarias y nadie está obligado a dar. Hay hermanos que pueden apoyar con tiempo, con trabajo en la construcción, con hospitalidad, con su atención a los enfermos. Y hay algo que todos podemos dar siempre: oración y ánimo. Jehová no mide el monto; mira el corazón, como dijo Jesús con la viuda que dio dos moneditas."}
+  activa: true,
+  introGuion: "Análisis con el auditorio (15 minutos). El tema es «Nuestras donaciones le dan gloria al gran nombre de Jehová». Vamos a ver el video y después comentamos las preguntas. Antes de empezar, quiero que pensemos en algo sencillo: cuando el pueblo de Israel construyó el templo, no todos pusieron piedras. Muchos dieron oro, plata, bronce, y otros dieron lo que tenían. Y todo aquello fue adoración. Con nosotros pasa igual. No todos vamos a estar en una obra de construcción, pero todos podemos apoyar de alguna manera. Vamos a ver el video y luego conversamos.",
+  video: {
+    t: "Video «Nuestras donaciones le dan gloria a Jehová» (ver el enlace de la guía de actividades de esta semana)",
+    u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026402"
+  },
+  preguntas: [
+    {
+      q: "¿Cómo alaban a Jehová nuestras donaciones?",
+      respuesta: "Cuando damos, estamos diciendo con hechos que Jehová es lo primero. David lo expresó así: «todo viene de ti, y de lo que hemos recibido de tu mano te hemos dado». Fíjese: no damos de lo nuestro, devolvemos algo de lo que ya es suyo."
+    },
+    {
+      q: "¿Cómo te han ayudado los informes de jw.org y las cartas de agradecimiento que has recibido?",
+      respuesta: "A mí me dan tranquilidad. Cuando uno lee que se terminó un Salón del Reino o que llegó ayuda después de un desastre, entiende que su aportación no se perdió en el aire. Y eso anima a seguir."
+    },
+    {
+      q: "¿Qué proyectos en particular aprecias más?",
+      respuesta: "Aquí conviene dejar que varios hermanos participen. Suelen salir tres: las construcciones, la predicación y la ayuda humanitaria. Podemos cerrar recordando que todos buscan lo mismo: que el nombre de Jehová reciba gloria."
+    },
+    {
+      q: "¿Y si yo no puedo dar dinero?",
+      respuesta: "Entonces hay otras formas, y todas cuentan. Tiempo en la construcción, hospitalidad, acompañar a un hermano enfermo, orar por la obra. Jehová no mira el monto; mira el corazón."
+    }
   ],
-  aplicacion:"Esta semana hagamos dos cosas concretas. Primera: entremos a jw.org y leamos un informe reciente sobre cómo se usan las donaciones, y luego demos gracias a Jehová por lo que está haciendo. Segunda: pensemos con oración si podemos apoyar de algún modo la obra, sin compararnos con nadie y sin sentir presión. Lo que damos no es para una organización humana: es para el nombre de Jehová.",
-  cierre:"Las donaciones no son una cuota ni una obligación: son una forma de adoración. Cuando damos con gusto, le damos gloria al nombre de Jehová, y él se encarga de que nada de lo que hacemos por amor a él se pierda."
+  aplicacion: "Esta semana hagamos algo pequeño y concreto: entremos a jw.org y leamos un informe reciente sobre cómo se usan las donaciones. Después, demos gracias a Jehová por lo que está haciendo. Y si podemos apoyar de algún modo, hagámoslo sin compararnos con nadie.",
+  cierre: "Las donaciones no son una cuota. Son una forma de adoración. Cuando damos con gusto, le damos gloria al nombre de Jehová.",
+  preguntaIntro: "¿Cómo alaban a Jehová nuestras donaciones?"
 };
 
 var ESTUDIO_P9={
-  fuente:{t:"Seamos valientes al andar con Dios — cap. 16 (págs. 78-81)",u:pc("/11/0")},
-  libro:"wcg cap. 16 — «Barac y Débora: “Claro que iré contigo”»",
-  textosDestacados:[
-    {ref:"Jueces 4:4, 5",texto:"«En aquella época, Débora, una profetisa, esposa de Lapidot, juzgaba a Israel. Solía sentarse bajo la palmera de Débora, entre Ramá y Betel, en la región montañosa de Efraín. Y los israelitas acudían a ella para juicio»."},
-    {ref:"Jueces 5:7",texto:"«Los campesinos de Israel no estaban, no estaban, hasta que surgí yo, Débora, hasta que surgí como una madre para Israel»."},
-    {ref:"Jueces 5:20",texto:"«Desde el cielo pelearon las estrellas, desde sus órbitas pelearon contra Sísara»."}
+  fuente: {
+    t: "Seamos valientes al andar con Dios — cap. 16 (págs. 78-81)",
+    u: "https://wol.jw.org/es/wol/pc/r4/lp-s/202026402//11/0"
+  },
+  libro: "wcg cap. 16 — «Barac y Débora: “Claro que iré contigo”»",
+  textosDestacados: [
+    {
+      ref: "Jueces 4:4, 5",
+      texto: "«En aquella época, Débora, una profetisa, esposa de Lapidot, juzgaba a Israel. Solía sentarse bajo la palmera de Débora, entre Ramá y Betel, en la región montañosa de Efraín. Y los israelitas acudían a ella para juicio»."
+    },
+    {
+      ref: "Jueces 5:7",
+      texto: "«Los campesinos de Israel no estaban, no estaban, hasta que surgí yo, Débora, hasta que surgí como una madre para Israel»."
+    },
+    {
+      ref: "Jueces 5:20",
+      texto: "«Desde el cielo pelearon las estrellas, desde sus órbitas pelearon contra Sísara»."
+    }
   ],
-  preguntas:[
-    {q:"¿Cómo era la vida para los israelitas cuando Sísara los dominaba?",a:"Era una vida de terror. El ejército de Sísara tenía 900 carros equipados con armas de hierro, y durante 20 años sembró el caos. Parece que cuando atacaban un pueblo raptaban a las jóvenes y las violaban, por eso la gente tenía pánico. Los caminos estaban desiertos y las aldeas vacías, y la mayoría de los israelitas no tenían armas ni forma de defenderse. La canción de Débora lo confirma: viajar por la nación era casi imposible y la gente tenía que esconderse en los bosques y las colinas, sin poder cultivar sus campos."},
-    {q:"¿Por qué normalmente no se incluye a Débora entre los 12 jueces?",a:"Porque a Débora primero se le llama profetisa, y estuvo relacionada con el juez Barac, quien en particular tomó la delantera en librar al pueblo. Los 12 jueces fueron hombres que Jehová levantó de manera especial como salvadores, desde Otniel hasta Sansón. Débora y Elí oficiaron como jueces, pero su función principal fue otra: ella profetisa, él sumo sacerdote. Por eso hay base para no alistarlos entre esos 12."},
-    {q:"¿En qué sentido fue Débora «una madre para Israel»?",a:"En el sentido de que Jehová la escogió para cuidar de la nación como una madre cuida de sus hijos. Se sentaba bajo la palmera de Débora, entre Ramá y Betel, y los israelitas acudían a ella para que juzgara y resolviera casos difíciles. Y no solo daba sentencias: mandó llamar a Barac y le transmitió las instrucciones de Jehová para enfrentarse a Sísara. Es decir, guio, protegió y animó, que es exactamente lo que hace una buena madre."},
-    {q:"¿A qué se referían Débora y Barac cuando cantaron que las estrellas «pelearon contra Sísara»?",a:"La Biblia no dice exactamente cómo ocurrió. Pudo haber ayuda angelical, o meteoritos que los sabios de Sísara interpretaron como malos augurios, o predicciones astrológicas que resultaron falsas. Lo que está claro es que hubo algún tipo de intervención divina. Y el resultado lo conocemos: Jehová confundió al ejército cananeo, hizo caer un tremendo aguacero y los carros quedaron atrapados en el lodo. La batalla no era de Barac, era de Jehová."},
-    {q:"¿De qué maneras demostraron valor Barac y Débora?",a:"Barac demostró valor de dos formas. Primero, aceptando la guía de Jehová aunque llegara por medio de una mujer: no se ofendió ni se sintió humillado, y pidió que Débora lo acompañara porque sabía que Jehová la estaba usando. Segundo, obedeciendo la orden de atacar: bajó corriendo con 10.000 hombres hacia el llano, contra carros que eran auténticas máquinas de matar. Débora demostró valor al aceptar acompañarlo, sabiendo el riesgo, y al decir con sencillez: «Claro que iré contigo». Los dos confiaron en Jehová más que en sus propias fuerzas."},
-    {q:"¿Qué nos enseña este relato sobre Jehová?",a:"Que él ve el valor de su pueblo y lo bendice. Barac y Débora estaban, desde un punto de vista militar, perdidos; pero Jehová vio su valor y por eso los bendijo. También nos enseña que él valora la humildad: Barac no se creyó demasiado importante para aceptar ayuda, y Débora no se creyó demasiado pequeña para dar el paso. Y nos enseña que Jehová no olvida a los que confían en él: siglos después, Pablo incluyó a Barac en la lista de hombres y mujeres de gran fe."}
+  preguntas: [
+    {
+      q: "¿Cómo era la vida para los israelitas cuando Sísara los dominaba?",
+      a: "Porque la Ley de Jehová incluía la rebusca: durante la cosecha, el pobre podía entrar al campo y recoger lo que los segadores dejaban. En el resto del antiguo Oriente Próximo eso no existía; una viuda sin hijos normalmente terminaba esclava o mendigando. Rut encontró en Israel algo que no había conocido en Moab."
+    },
+    {
+      q: "¿Por qué normalmente no se incluye a Débora entre los 12 jueces?",
+      a: "Por dos razones. Primera, estaba siguiendo una costumbre de la época que hoy no entendemos del todo. Y segunda, la reacción de Boaz lo dice todo: la vio como una mujer casta y digna de elogio. Él mismo le dijo que había mostrado bondad amorosa al no ir tras los jóvenes, ricos o pobres."
+    },
+    {
+      q: "¿En qué sentido fue Débora «una madre para Israel»?",
+      a: "Porque era un término de cariño, no de desprecio. Jesús lo usó con la mujer que llevaba doce años enferma: «Ten ánimo, hija». Rut era extranjera y estaba rebuscando en un campo ajeno; llamarla así la hizo sentir segura y bienvenida. Es un ejemplo para los ancianos, que deben animar con ternura."
+    },
+    {
+      q: "¿A qué se referían Débora y Barac cuando cantaron que las estrellas «pelearon contra Sísara»?",
+      a: "Fulano pensó en su herencia y se echó atrás: «No puedo recomprarlo, porque arruinaría mi propia herencia». Boaz hizo lo contrario. Se casó con Rut y lo hizo «para que el nombre del difunto permanezca sobre su herencia». Renunció a lo suyo para proteger el nombre de otro, y Jehová lo bendijo."
+    },
+    {
+      q: "¿De qué maneras demostraron valor Barac y Débora?",
+      a: "De Rut aprendemos que el amor leal no abandona: pudo quedarse en Moab y no lo hizo. De Noemí, que hay que aceptar ayuda cuando uno está quebrado. A veces el dolor nos cierra; ella dejó que Rut la sostuviera. Las dos nos enseñan a cargar juntos los momentos difíciles."
+    },
+    {
+      q: "¿Qué nos enseña este relato sobre Jehová?",
+      a: "Le dio mucho más de lo que había perdido. Rut tuvo un hogar y un hijo, Obed, y Noemí lo crió como suyo. Y siglos después, de esa familia salió el rey David y, más tarde, el propio Mesías. Jehová no olvidó el amor leal de aquellas dos mujeres."
+    }
   ]
 };
 
 var LECTURA_P3={
-  pasaje:"Jeremías 52:6-20",
-  libro:24,capitulo:52,leccionKey:"th5",
-  textoCompleto:"6 En el cuarto mes, el día nueve del mes, el hambre en la ciudad era terrible, y no había comida para la gente del país. 7 Al final, se abrió brecha en la muralla de la ciudad y, de noche, todos los soldados huyeron de la ciudad por la puerta que había entre las dos murallas junto al jardín del rey, mientras los caldeos rodeaban la ciudad. Y continuaron por el camino del Arabá. 8 Pero el ejército caldeo persiguió al rey Sedequías y lo alcanzó en las llanuras desérticas de Jericó. Todos sus soldados fueron dispersados. 9 Entonces capturaron al rey, lo subieron a Riblá, en la tierra de Hamat, y lo llevaron ante el rey de Babilonia, quien lo sentenció. 10 Y el rey de Babilonia mató a los hijos de Sedequías ante sus propios ojos, y también mató a todos los príncipes de Judá allí en Riblá. 11 Luego el rey de Babilonia cegó a Sedequías, lo sujetó con grilletes de cobre, se lo llevó a Babilonia y lo tuvo preso hasta el día de su muerte. 12 El día 10 del quinto mes —en el año 19 del rey Nabucodonosor, el rey de Babilonia—, entró en Jerusalén Nebuzaradán, el jefe de la guardia, que era un ayudante del rey de Babilonia. 13 Quemó la casa de Jehová, la casa del rey y todas las casas de Jerusalén, y también todas las casas grandes. 14 Todo el ejército caldeo que estaba con el jefe de la guardia derribó las murallas que rodeaban Jerusalén. 15 Nebuzaradán, el jefe de la guardia, se llevó al destierro a una parte de la gente humilde y al resto de la gente que quedaba en la ciudad. También se llevó a los desertores que se habían pasado al bando del rey de Babilonia y al resto de los artesanos expertos. 16 Pero Nebuzaradán, el jefe de la guardia, dejó allí a algunas de las personas más pobres del país para que cuidaran las viñas e hicieran trabajos forzados. 17 Y los caldeos hicieron pedazos las columnas de cobre de la casa de Jehová, así como los carritos y el Mar de cobre que había en la casa de Jehová, y se llevaron todo el cobre a Babilonia. 18 También se llevaron los baldes, las palas, los apagadores, los tazones, las copas y todos los utensilios de cobre usados para servir en el templo. 19 El jefe de la guardia se llevó los recipientes, los braserillos, los tazones, los baldes, los candelabros, las copas y los tazones que eran de oro y plata genuinos. 20 En cuanto a las dos columnas, el Mar, los 12 toros de cobre que estaban debajo del Mar y los carritos que el rey Salomón había hecho para la casa de Jehová, el cobre de todos estos objetos era tanto que no se podía pesar.",
-  leccion:"th lección 5 — Leer con exactitud",
-  consejos:[
-    "Lea primero el pasaje completo en silencio, y luego en voz alta al menos dos veces. Es un relato de tragedia: el tono debe ser sobrio, no dramático.",
-    "Preste atención a la exactitud de los números: día nueve del cuarto mes, día 10 del quinto mes, año 19 de Nabucodonosor. Léalos despacio y sin equivocarse.",
-    "Los nombres propios son el punto más difícil: Nebuzaradán, Nabucodonosor, Sedequías, Riblá, Hamat, Arabá. Practíquelos antes de leer.",
-    "Haga una pausa breve después del versículo 11. Es el final de la historia de Sedequías; conviene dejar que el silencio lo diga.",
-    "A partir del versículo 12 cambia la escena: se pasa del rey a la ciudad. Marque ese cambio con una pausa y un tono distinto.",
-    "En los versículos 17 al 20 hay una lista de objetos del templo. No corra: la acumulación de detalles es intencional, muestra la magnitud de la pérdida.",
-    "Cuide la pronunciación de palabras menos comunes: braserillos, apagadores, capiteles, granadas.",
-    "Termine el versículo 20 despacio, con el peso de la última frase: «el cobre de todos estos objetos era tanto que no se podía pesar».",
-    "No añada comentarios ni explicaciones durante la lectura; los puntos de enseñanza van antes o después."
+  pasaje: "Jeremías 52:6-20",
+  libro: 24,
+  capitulo: 52,
+  leccionKey: "th5",
+  textoCompleto: "6 En el cuarto mes, el día nueve del mes, el hambre en la ciudad era terrible, y no había comida para la gente del país. 7 Al final, se abrió brecha en la muralla de la ciudad y, de noche, todos los soldados huyeron de la ciudad por la puerta que había entre las dos murallas junto al jardín del rey, mientras los caldeos rodeaban la ciudad. Y continuaron por el camino del Arabá. 8 Pero el ejército caldeo persiguió al rey Sedequías y lo alcanzó en las llanuras desérticas de Jericó. Todos sus soldados fueron dispersados. 9 Entonces capturaron al rey, lo subieron a Riblá, en la tierra de Hamat, y lo llevaron ante el rey de Babilonia, quien lo sentenció. 10 Y el rey de Babilonia mató a los hijos de Sedequías ante sus propios ojos, y también mató a todos los príncipes de Judá allí en Riblá. 11 Luego el rey de Babilonia cegó a Sedequías, lo sujetó con grilletes de cobre, se lo llevó a Babilonia y lo tuvo preso hasta el día de su muerte. 12 El día 10 del quinto mes —en el año 19 del rey Nabucodonosor, el rey de Babilonia—, entró en Jerusalén Nebuzaradán, el jefe de la guardia, que era un ayudante del rey de Babilonia. 13 Quemó la casa de Jehová, la casa del rey y todas las casas de Jerusalén, y también todas las casas grandes. 14 Todo el ejército caldeo que estaba con el jefe de la guardia derribó las murallas que rodeaban Jerusalén. 15 Nebuzaradán, el jefe de la guardia, se llevó al destierro a una parte de la gente humilde y al resto de la gente que quedaba en la ciudad. También se llevó a los desertores que se habían pasado al bando del rey de Babilonia y al resto de los artesanos expertos. 16 Pero Nebuzaradán, el jefe de la guardia, dejó allí a algunas de las personas más pobres del país para que cuidaran las viñas e hicieran trabajos forzados. 17 Y los caldeos hicieron pedazos las columnas de cobre de la casa de Jehová, así como los carritos y el Mar de cobre que había en la casa de Jehová, y se llevaron todo el cobre a Babilonia. 18 También se llevaron los baldes, las palas, los apagadores, los tazones, las copas y todos los utensilios de cobre usados para servir en el templo. 19 El jefe de la guardia se llevó los recipientes, los braserillos, los tazones, los baldes, los candelabros, las copas y los tazones que eran de oro y plata genuinos. 20 En cuanto a las dos columnas, el Mar, los 12 toros de cobre que estaban debajo del Mar y los carritos que el rey Salomón había hecho para la casa de Jehová, el cobre de todos estos objetos era tanto que no se podía pesar.",
+  leccion: "th lección 5 — Leer con exactitud",
+  consejos: [
+    "Lea primero el pasaje en silencio para sentir el tono: es un lamento por una ciudad destruida.",
+    "Note los cambios de voz: el narrador cuenta, el rey habla, Jehová dice su parte.",
+    "Hable más despacio en los versículos 10 y 11: ahí está el momento más duro del pasaje.",
+    "Practique los nombres propios antes de leer: Sedequías, Riblá, Hamutal, Libná."
   ]
 };
 
-var ATALAYA={intro:"Artículo de estudio para la semana del 9 al 15 de noviembre de 2026. Texto base: 1 Reyes 3:9. Tema: qué nos ayudará a obedecer de corazón a Jehová. Canción inicial: 36. Canción final: 88.",parrafos:[
-  {num:"1",texto:"Algunas personas obedecen porque otros las están observando o para evitar un castigo. Otras porque quieren impresionar a los demás. En la época de Jesús, los líderes religiosos hacían alardes de su obediencia a Dios para parecer más importantes. Nosotros obedecemos a Jehová, entre otras razones, porque sabemos que es por nuestro bien. Y ese es un buen motivo, pero hay otro todavía más importante.",pregunta:"1. ¿Por qué suelen obedecer algunas personas?",respuesta:"Porque otros las observan, para evitar un castigo o para impresionar a los demás. Los líderes religiosos de la época de Jesús lo hacían para parecer importantes. Nosotros tenemos un motivo mejor: sabemos que obedecer a Jehová es por nuestro bien."},
-  {num:"2",texto:"La razón principal por la que obedecemos a Jehová es que lo amamos profundamente. Ese amor nos motiva a ser «obedientes de corazón». Por eso hacemos todo lo posible por aplicar sus normas en todo momento, y no solo cuando otros nos observan o cuando vemos los beneficios de inmediato. Claro, no debemos olvidar que nuestro corazón es traicionero, así que a veces nos resultará difícil obedecer. Este artículo usará dos relatos bíblicos: el de los israelitas liberados de Egipto y el del rey Jehosafat de Judá.",pregunta:"2. ¿Cuál es la razón principal por la que obedecemos a Jehová?",respuesta:"Que lo amamos profundamente. Ese amor nos hace «obedientes de corazón», y por eso aplicamos sus normas en todo momento, no solo cuando nos observan o cuando vemos beneficios inmediatos."},
-  {num:"3",texto:"Antes de liberar a los israelitas de Egipto, Jehová les mandó sacrificar un cordero o un cabrito y salpicar con su sangre el marco de las puertas para evitar la décima plaga. Cuando el ángel viera la sangre, pasaría por alto esas casas. Aquel mandato pudo poner a prueba su obediencia, porque los corderos eran animales sagrados en Egipto y tal vez temieran represalias. En cualquier caso, entendieron que era vital obedecer, y «se pusieron a hacer exactamente lo que Jehová les había mandado».",pregunta:"3. ¿Por qué es posible que el mandato de salpicar con sangre los marcos pusiera a prueba la obediencia de los israelitas?",respuesta:"Porque los corderos eran animales sagrados en Egipto, y quizá temieran que los egipcios tomaran represalias. Aun así obedecieron sin condiciones, y Jehová bendijo su obediencia salvando a sus primogénitos."},
-  {num:"4",texto:"Esa noche los israelitas salieron de Egipto. Jehová los guio hasta el extremo norte del mar Rojo y luego les dio una instrucción que parecía ilógica: que dieran la vuelta, se dirigieran al sur y acamparan entre el mar y las montañas. Desde el punto de vista humano, iban a quedar acorralados. Aun así, volvieron a obedecer. Sin embargo, cuando vieron que los egipcios se acercaban, «les dio muchísimo miedo» y hasta acusaron a Moisés de llevarlos a la muerte.",pregunta:"4. ¿Qué instrucción sorprendente les dio Jehová a los israelitas?",respuesta:"Que dieran la vuelta y acamparan entre el mar y las montañas, una posición que parecía no tener salida. Al principio obedecieron, pero cuando vieron acercarse al ejército del faraón se llenaron de miedo y se quejaron contra Moisés."},
-  {num:"5",texto:"La Biblia dice que en el mar Rojo los israelitas «no apreciaron» las maravillosas obras de Jehová ni «recordaron» su amor leal. Aunque habían visto cómo protegió a los primogénitos, no comprendieron cuánto los amaba ni confiaron en que los salvaría de nuevo. Como Dios sabía lo que tenían en su corazón, dijo: «Se rebelaron junto al mar Rojo». Es cierto que siguieron a Moisés y cruzaron el mar, pero no corrigieron su actitud. Finalmente Jehová rechazó a toda aquella generación.",pregunta:"5. ¿Qué no hicieron los israelitas en el mar Rojo?",respuesta:"No apreciaron las maravillosas obras de Jehová ni recordaron su amor leal. Siguieron a Moisés y cruzaron el mar, pero con el corazón rebelde, y por eso Jehová rechazó a toda aquella generación."},
-  {num:"6",texto:"Este relato nos muestra que es importante pensar en por qué obedecemos a Jehová y a quienes ha nombrado para dirigir a su pueblo. ¿Somos obedientes solo cuando vemos los beneficios de inmediato? ¿Somos obedientes sin importar lo que otros hagan? Si tenemos un corazón obediente, confiaremos en Jehová y en quienes ha puesto sobre nosotros para dirigirnos. Seguiremos sus instrucciones incluso si no entendemos por completo las razones o si provocamos la ira de quienes odian a Jehová.",pregunta:"6. ¿Qué haremos si tenemos un corazón obediente?",respuesta:"Confiaremos en Jehová y en quienes ha puesto para dirigirnos, y seguiremos sus instrucciones aunque no entendamos todas las razones o aunque eso provoque la ira de quienes odian a Jehová."},
-  {num:"7",texto:"Fortalezcamos nuestro amor por Jehová. Cuando la organización nos da una instrucción, puede resultarnos difícil obedecer si no vemos enseguida las ventajas o si nos parece que traerá dificultades. En esos casos es importante recordar que obedecemos sobre todo porque lo queremos y confiamos en él. Ese amor nos ayudará a ser pacientes y a reconocer que a veces hay que esperar para ver los buenos resultados de nuestra obediencia.",pregunta:"7. ¿Por qué nos resultará más fácil obedecer si fortalecemos nuestro amor por Jehová?",respuesta:"Porque el amor es el motor de la obediencia. Si amamos a Jehová y confiamos en él, podemos ser pacientes cuando no vemos las ventajas de inmediato y esperar con calma los buenos resultados."},
-  {num:"8",texto:"Muchos hermanos han obedecido instrucciones aunque no vieran enseguida las ventajas, y nos han dado buen ejemplo. Cuando empezó la pandemia del COVID-19, el Cuerpo Gobernante pidió que se celebraran las reuniones por videoconferencia. Un anciano del Perú recuerda: «Al principio pensé que esa instrucción no funcionaría en nuestra zona». Aun así, estaba decidido a obedecer a Dios y confiar en él. Y añade: «Vi que Jehová nos recompensa cuando somos obedientes. La congregación terminó más unida y fortalecida».",pregunta:"8. ¿Cómo demostraron dos Testigos que estaban decididos a ser obedientes?",respuesta:"Un anciano del Perú obedeció aunque pensó que la instrucción no funcionaría en su zona, y vio que la congregación quedó más unida y fortalecida. Y una hermana de Japón, cuando su grupo se iba a disolver, dijo que sería obediente, que no criticaría el cambio y que tenía ganas de ver los beneficios."},
-  {num:"9",texto:"Preparémonos para afrontar oposición. Tenemos que estar preparados para seguir predicando el Reino cuando otros traten de detenernos. Las buenas noticias que predicamos incluyen el mensaje de que Dios pronto destruirá este sistema malvado, y seguiremos anunciándolo hasta justo antes del Armagedón. Durante la gran tribulación, puede que la predicación se vuelva más directa y contundente, y las personas tendrán que decidir si se ponen a favor o en contra del Reino. Quienes odian a Jehová tal vez vean nuestro mensaje como una plaga «excepcionalmente grande» y se enfurezcan como el faraón. Estaremos preparados si desde ahora obedecemos el mandato de predicar.",pregunta:"9. ¿Cómo podemos prepararnos para ser obedientes cuando afrontemos oposición en el futuro?",respuesta:"Obedeciendo ya el mandato de predicar, aunque algunos reaccionen mal. La obediencia de hoy nos entrena para la oposición de mañana, cuando el mensaje sea más directo y la gente tenga que decidir a favor o en contra del Reino."},
-  {num:"10",texto:"En la Biblia también encontramos ejemplos de personas obedientes. Uno fue Jehosafat, un rey de Judá. Tres naciones se unieron para luchar contra él. Tanto el rey como el pueblo sintieron miedo, pero él no permitió que ese miedo lo paralizara.",pregunta:"10. ¿Cómo se sintió el rey Jehosafat cuando tres naciones lo amenazaron?",respuesta:"Sintió miedo, como todo el pueblo, pero no permitió que el miedo lo paralizara. Reaccionó de inmediato, y su reacción es la que vamos a estudiar."},
-  {num:"11",texto:"Resolvámonos a buscar a Jehová y obedecerlo. Cuando Jehosafat sintió miedo, primero «se resolvió a buscar a Jehová». En muchas ocasiones anteriores ya había buscado su guía, pero ante esta situación tan angustiosa fortaleció más que nunca su determinación. Después le oró y le suplicó su ayuda con estas palabras: «Nosotros no podemos contra esta gran multitud que viene a atacarnos, y no sabemos qué hacer, pero nuestros ojos miran hacia ti».",pregunta:"11. ¿Qué hizo Jehosafat cuando sintió miedo?",respuesta:"Se resolvió a buscar a Jehová, como había hecho otras veces, pero con más determinación que nunca; y luego le oró, reconociendo con humildad que no sabía qué hacer y que solo podía mirar hacia él."},
-  {num:"12",texto:"Aumentemos nuestro conocimiento bíblico. La oración de Jehosafat refleja el gran conocimiento que tenía. Sabía que Jehová había cumplido la promesa que le hizo a Abrahán de darle a Israel una tierra como herencia, y también conocía la oración que hizo Salomón cuando se inauguró el templo, pues sus palabras fueron muy parecidas. El conocimiento que tenía fortaleció su confianza en Jehová y su determinación de obedecerlo. De manera parecida, si seguimos añadiendo verdades al «tesoro» de conocimiento que ya poseemos, fortaleceremos nuestra determinación de obedecer siempre.",pregunta:"12. ¿Cómo fortaleceremos nuestra determinación de obedecer a Jehová?",respuesta:"Aumentando nuestro conocimiento bíblico. Cuanto más conocemos a Jehová y sus promesas cumplidas, más confianza tenemos en él y más decididos estamos a obedecerlo, incluso en situaciones difíciles."},
-  {num:"13",texto:"Seamos siempre humildes. La oración de Jehosafat también demostró que era humilde. Aunque era rey, no confió en sus fuerzas y su ejército para hacer frente a la amenaza. Más bien, en la oración que hizo ante el pueblo, admitió con humildad que Judá necesitaba contar con el apoyo de Jehová. Como era humilde, le resultó más fácil aceptar la guía de Dios. Igualmente, la humildad nos ayudará a tener un corazón obediente pase lo que pase.",pregunta:"13. ¿Cómo nos ayuda la humildad?",respuesta:"Nos hace reconocer que necesitamos a Jehová y que no podemos solos. Al humilde le resulta más fácil aceptar la guía de Dios, porque no tiene que defender su propio criterio ni su prestigio."},
-  {num:"14",texto:"Pensemos en cómo influye en los demás lo que hacemos. Jehová respondió la oración de Jehosafat por medio del profeta Jahaziel, y le dio instrucciones claras: «Ocupen sus puestos, estense quietos y vean cómo los salva Jehová». De inmediato, «Jehosafat se inclinó rostro a tierra» y todos los habitantes de la nación hicieron lo mismo «para adorar a Jehová». Al día siguiente, cuando salieron al encuentro de sus enemigos, el rey animó al pueblo: «Tengan fe en Jehová» y «Tengan fe en los profetas de él».",pregunta:"14. ¿Qué hizo Jehosafat cuando Jehová le dio instrucciones?",respuesta:"Las obedeció enseguida: se inclinó rostro a tierra y adoró a Jehová, y todo el pueblo hizo lo mismo. Al día siguiente animó a la gente a tener fe en Jehová y en sus profetas. Su obediencia arrastró a toda la nación."},
-  {num:"15",texto:"Jehosafat estaba seguro de que Jehová cumpliría su promesa y lucharía por su pueblo. Animó a los demás para que también confiaran en Jehová y fueran obedientes. «Después de consultarlo con la gente», todos estuvieron de acuerdo en seleccionar hombres para que fueran «delante de los hombres armados» cantándole alabanzas a Dios. Así demostraron la gran fe que tenían, y Jehová recompensó su fe y obediencia haciendo que los enemigos se mataran unos a otros.",pregunta:"15. ¿Cómo demostró Jehosafat que era un hombre de gran fe?",respuesta:"Poniendo a los cantores delante del ejército, en lugar de los soldados, porque confiaba en que Jehová pelearía por ellos. Y Jehová recompensó esa fe y esa obediencia haciendo que los enemigos se mataran unos a otros."},
-  {num:"16",texto:"Con su obediencia, Jehosafat fue una influencia positiva para quienes estaban bajo su cuidado. También fue humilde y escuchó al profeta de Jehová. Antes de tomar una decisión importante, consultó a otros. Además, animó al pueblo a obedecer las instrucciones de Dios. Su ejemplo nos recuerda al del rey Salomón, que pidió un corazón obediente para cuidar del pueblo y juzgarlo bien. Como Jehosafat, los ancianos tienen que apoyarse en Jehová para cuidar bien de la congregación: son humildes y consultan la Palabra de Dios, nuestras publicaciones y a otros ancianos antes de tomar decisiones. Y los padres también deben recordar que, si se esfuerzan por ser obedientes, sus hijos seguramente harán lo mismo.",pregunta:"16. ¿Qué pueden aprender de Jehosafat quienes tienen autoridad?",respuesta:"Que la obediencia propia influye en los demás. Los ancianos deben apoyarse en Jehová, ser humildes y consultar la Palabra de Dios, las publicaciones y a otros ancianos antes de decidir. Los padres deben recordar que su ejemplo de obediencia educa a sus hijos más que sus palabras."},
-  {num:"17",texto:"En definitiva, si cultivamos y mantenemos un corazón obediente, podemos estar seguros de que Jehová nos cuidará y guiará en cualquier situación que afrontemos. Sabemos que para ello se valdrá de sus representantes humanos, tal como hizo en el pasado. Y no nos preocupemos si a veces no comprendemos las razones que hay detrás de sus instrucciones. Recordemos que Jehová es infinitamente más sabio y poderoso que nosotros. Así pues, nunca dejemos de cultivar un corazón obediente.",pregunta:"17. ¿Por qué debemos cultivar y mantener un corazón obediente?",respuesta:"Porque así podemos estar seguros de que Jehová nos cuidará y guiará en cualquier situación, valiéndose de sus representantes humanos. Y aunque no entendamos todas las razones de sus instrucciones, sabemos que él es infinitamente más sabio y poderoso que nosotros."}
-]};
+var ATALAYA={
+  intro: "Artículo de estudio para la semana del 9 al 15 de noviembre de 2026. Texto base: 1 Reyes 3:9. Tema: qué nos ayudará a obedecer de corazón a Jehová. Canción inicial: 36. Canción final: 88.",
+  parrafos: [
+    {
+      num: "1",
+      texto: "Algunas personas obedecen porque otros las están observando o para evitar un castigo. Otras porque quieren impresionar a los demás. En la época de Jesús, los líderes religiosos hacían alardes de su obediencia a Dios para parecer más importantes. Nosotros obedecemos a Jehová, entre otras razones, porque sabemos que es por nuestro bien. Y ese es un buen motivo, pero hay otro todavía más importante.",
+      pregunta: "1. ¿Por qué suelen obedecer algunas personas?",
+      respuesta: "Porque a veces uno obedece solo por lo que dirán, o por miedo al castigo, o para quedar bien. Los líderes religiosos de la época de Jesús lo hacían para parecer importantes. Nosotros tenemos un motivo mejor, y es que obedecer a Jehová nos hace bien."
+    },
+    {
+      num: "2",
+      texto: "La razón principal por la que obedecemos a Jehová es que lo amamos profundamente. Ese amor nos motiva a ser «obedientes de corazón». Por eso hacemos todo lo posible por aplicar sus normas en todo momento, y no solo cuando otros nos observan o cuando vemos los beneficios de inmediato. Claro, no debemos olvidar que nuestro corazón es traicionero, así que a veces nos resultará difícil obedecer. Este artículo usará dos relatos bíblicos: el de los israelitas liberados de Egipto y el del rey Jehosafat de Judá.",
+      pregunta: "2. ¿Cuál es la razón principal por la que obedecemos a Jehová?",
+      respuesta: "Que lo amamos. Y ese amor no es un sentimiento vago: nos lleva a ser obedientes de corazón, en todo momento. No obedecemos solo cuando nos ven ni solo cuando vemos el beneficio enseguida."
+    },
+    {
+      num: "3",
+      texto: "Antes de liberar a los israelitas de Egipto, Jehová les mandó sacrificar un cordero o un cabrito y salpicar con su sangre el marco de las puertas para evitar la décima plaga. Cuando el ángel viera la sangre, pasaría por alto esas casas. Aquel mandato pudo poner a prueba su obediencia, porque los corderos eran animales sagrados en Egipto y tal vez temieran represalias. En cualquier caso, entendieron que era vital obedecer, y «se pusieron a hacer exactamente lo que Jehová les había mandado».",
+      pregunta: "3. ¿Por qué es posible que el mandato de salpicar con sangre los marcos pusiera a prueba la obediencia de los israelitas?",
+      respuesta: "Porque los corderos eran animales sagrados en Egipto, y quizá pensaron que los egipcios se vengarían. Aun así obedecieron sin poner condiciones, y Jehová los protegió."
+    },
+    {
+      num: "4",
+      texto: "Esa noche los israelitas salieron de Egipto. Jehová los guio hasta el extremo norte del mar Rojo y luego les dio una instrucción que parecía ilógica: que dieran la vuelta, se dirigieran al sur y acamparan entre el mar y las montañas. Desde el punto de vista humano, iban a quedar acorralados. Aun así, volvieron a obedecer. Sin embargo, cuando vieron que los egipcios se acercaban, «les dio muchísimo miedo» y hasta acusaron a Moisés de llevarlos a la muerte.",
+      pregunta: "4. ¿Qué instrucción sorprendente les dio Jehová a los israelitas?",
+      respuesta: "Que dieran la vuelta y acamparan entre el mar y las montañas. Visto desde fuera, los metía en una trampa. Obedecieron primero, pero el miedo les ganó después."
+    },
+    {
+      num: "5",
+      texto: "La Biblia dice que en el mar Rojo los israelitas «no apreciaron» las maravillosas obras de Jehová ni «recordaron» su amor leal. Aunque habían visto cómo protegió a los primogénitos, no comprendieron cuánto los amaba ni confiaron en que los salvaría de nuevo. Como Dios sabía lo que tenían en su corazón, dijo: «Se rebelaron junto al mar Rojo». Es cierto que siguieron a Moisés y cruzaron el mar, pero no corrigieron su actitud. Finalmente Jehová rechazó a toda aquella generación.",
+      pregunta: "5. ¿Qué no hicieron los israelitas en el mar Rojo?",
+      respuesta: "No valoraron lo que Jehová había hecho ni recordaron su amor leal. Cruzaron el mar, sí, pero con el corazón quejumbroso. Y eso, al final, les costó caro."
+    },
+    {
+      num: "6",
+      texto: "Este relato nos muestra que es importante pensar en por qué obedecemos a Jehová y a quienes ha nombrado para dirigir a su pueblo. ¿Somos obedientes solo cuando vemos los beneficios de inmediato? ¿Somos obedientes sin importar lo que otros hagan? Si tenemos un corazón obediente, confiaremos en Jehová y en quienes ha puesto sobre nosotros para dirigirnos. Seguiremos sus instrucciones incluso si no entendemos por completo las razones o si provocamos la ira de quienes odian a Jehová.",
+      pregunta: "6. ¿Qué haremos si tenemos un corazón obediente?",
+      respuesta: "Confiaremos en Jehová y en quienes él ha puesto para dirigirnos. Y seguiremos sus instrucciones aunque no entendamos todas las razones."
+    },
+    {
+      num: "7",
+      texto: "Fortalezcamos nuestro amor por Jehová. Cuando la organización nos da una instrucción, puede resultarnos difícil obedecer si no vemos enseguida las ventajas o si nos parece que traerá dificultades. En esos casos es importante recordar que obedecemos sobre todo porque lo queremos y confiamos en él. Ese amor nos ayudará a ser pacientes y a reconocer que a veces hay que esperar para ver los buenos resultados de nuestra obediencia.",
+      pregunta: "7. ¿Por qué nos resultará más fácil obedecer si fortalecemos nuestro amor por Jehová?",
+      respuesta: "Porque el amor es lo que nos sostiene cuando no vemos resultados. Si amo a Jehová, puedo esperar con paciencia y confiar en que él sabe lo que hace."
+    },
+    {
+      num: "8",
+      texto: "Muchos hermanos han obedecido instrucciones aunque no vieran enseguida las ventajas, y nos han dado buen ejemplo. Cuando empezó la pandemia del COVID-19, el Cuerpo Gobernante pidió que se celebraran las reuniones por videoconferencia. Un anciano del Perú recuerda: «Al principio pensé que esa instrucción no funcionaría en nuestra zona». Aun así, estaba decidido a obedecer a Dios y confiar en él. Y añade: «Vi que Jehová nos recompensa cuando somos obedientes. La congregación terminó más unida y fortalecida».",
+      pregunta: "8. ¿Cómo demostraron dos Testigos que estaban decididos a ser obedientes?",
+      respuesta: "Un anciano del Perú obedeció aunque pensó que la instrucción no funcionaría en su zona, y después vio que la congregación quedó más unida. Y una hermana de Japón dijo que sería obediente y no criticaría el cambio. Los dos decidieron antes de ver los resultados."
+    },
+    {
+      num: "9",
+      texto: "Preparémonos para afrontar oposición. Tenemos que estar preparados para seguir predicando el Reino cuando otros traten de detenernos. Las buenas noticias que predicamos incluyen el mensaje de que Dios pronto destruirá este sistema malvado, y seguiremos anunciándolo hasta justo antes del Armagedón. Durante la gran tribulación, puede que la predicación se vuelva más directa y contundente, y las personas tendrán que decidir si se ponen a favor o en contra del Reino. Quienes odian a Jehová tal vez vean nuestro mensaje como una plaga «excepcionalmente grande» y se enfurezcan como el faraón. Estaremos preparados si desde ahora obedecemos el mandato de predicar.",
+      pregunta: "9. ¿Cómo podemos prepararnos para ser obedientes cuando afrontemos oposición en el futuro?",
+      respuesta: "Obedeciendo ya. Cada vez que predicamos, aunque alguien reaccione mal, nos estamos entrenando para el día en que el mensaje sea mucho más directo."
+    },
+    {
+      num: "10",
+      texto: "En la Biblia también encontramos ejemplos de personas obedientes. Uno fue Jehosafat, un rey de Judá. Tres naciones se unieron para luchar contra él. Tanto el rey como el pueblo sintieron miedo, pero él no permitió que ese miedo lo paralizara.",
+      pregunta: "10. ¿Cómo se sintió el rey Jehosafat cuando tres naciones lo amenazaron?",
+      respuesta: "Sintió miedo, igual que todo el pueblo. Pero no se quedó paralizado: reaccionó enseguida. Y esa reacción es la que vale la pena mirar."
+    },
+    {
+      num: "11",
+      texto: "Resolvámonos a buscar a Jehová y obedecerlo. Cuando Jehosafat sintió miedo, primero «se resolvió a buscar a Jehová». En muchas ocasiones anteriores ya había buscado su guía, pero ante esta situación tan angustiosa fortaleció más que nunca su determinación. Después le oró y le suplicó su ayuda con estas palabras: «Nosotros no podemos contra esta gran multitud que viene a atacarnos, y no sabemos qué hacer, pero nuestros ojos miran hacia ti».",
+      pregunta: "11. ¿Qué hizo Jehosafat cuando sintió miedo?",
+      respuesta: "Primero se resolvió a buscar a Jehová, y lo hizo con más determinación que nunca. Después oró, y reconoció con humildad que no sabía qué hacer y que solo podía mirar hacia él."
+    },
+    {
+      num: "12",
+      texto: "Aumentemos nuestro conocimiento bíblico. La oración de Jehosafat refleja el gran conocimiento que tenía. Sabía que Jehová había cumplido la promesa que le hizo a Abrahán de darle a Israel una tierra como herencia, y también conocía la oración que hizo Salomón cuando se inauguró el templo, pues sus palabras fueron muy parecidas. El conocimiento que tenía fortaleció su confianza en Jehová y su determinación de obedecerlo. De manera parecida, si seguimos añadiendo verdades al «tesoro» de conocimiento que ya poseemos, fortaleceremos nuestra determinación de obedecer siempre.",
+      pregunta: "12. ¿Cómo fortaleceremos nuestra determinación de obedecer a Jehová?",
+      respuesta: "Añadiendo verdades al tesoro de conocimiento que ya tenemos. Cuanto más conocemos a Jehová y sus promesas cumplidas, más fácil nos resulta confiar y obedecer."
+    },
+    {
+      num: "13",
+      texto: "Seamos siempre humildes. La oración de Jehosafat también demostró que era humilde. Aunque era rey, no confió en sus fuerzas y su ejército para hacer frente a la amenaza. Más bien, en la oración que hizo ante el pueblo, admitió con humildad que Judá necesitaba contar con el apoyo de Jehová. Como era humilde, le resultó más fácil aceptar la guía de Dios. Igualmente, la humildad nos ayudará a tener un corazón obediente pase lo que pase.",
+      pregunta: "13. ¿Cómo nos ayuda la humildad?",
+      respuesta: "Nos hace reconocer que solos no podemos. Al humilde le resulta más fácil aceptar la guía de Dios, porque no tiene que defender su propio criterio ni quedar bien."
+    },
+    {
+      num: "14",
+      texto: "Pensemos en cómo influye en los demás lo que hacemos. Jehová respondió la oración de Jehosafat por medio del profeta Jahaziel, y le dio instrucciones claras: «Ocupen sus puestos, estense quietos y vean cómo los salva Jehová». De inmediato, «Jehosafat se inclinó rostro a tierra» y todos los habitantes de la nación hicieron lo mismo «para adorar a Jehová». Al día siguiente, cuando salieron al encuentro de sus enemigos, el rey animó al pueblo: «Tengan fe en Jehová» y «Tengan fe en los profetas de él».",
+      pregunta: "14. ¿Qué hizo Jehosafat cuando Jehová le dio instrucciones?",
+      respuesta: "Obedeció de inmediato: se inclinó rostro a tierra y adoró a Jehová, y todo el pueblo hizo lo mismo. Al día siguiente animó a la gente a tener fe en Jehová y en sus profetas. Su obediencia arrastró a la nación entera."
+    },
+    {
+      num: "15",
+      texto: "Jehosafat estaba seguro de que Jehová cumpliría su promesa y lucharía por su pueblo. Animó a los demás para que también confiaran en Jehová y fueran obedientes. «Después de consultarlo con la gente», todos estuvieron de acuerdo en seleccionar hombres para que fueran «delante de los hombres armados» cantándole alabanzas a Dios. Así demostraron la gran fe que tenían, y Jehová recompensó su fe y obediencia haciendo que los enemigos se mataran unos a otros.",
+      pregunta: "15. ¿Cómo demostró Jehosafat que era un hombre de gran fe?",
+      respuesta: "Poniendo a los cantores delante del ejército en lugar de los soldados. Humanamente era absurdo, pero él confiaba en que Jehová pelearía por ellos. Y Jehová lo hizo."
+    },
+    {
+      num: "16",
+      texto: "Con su obediencia, Jehosafat fue una influencia positiva para quienes estaban bajo su cuidado. También fue humilde y escuchó al profeta de Jehová. Antes de tomar una decisión importante, consultó a otros. Además, animó al pueblo a obedecer las instrucciones de Dios. Su ejemplo nos recuerda al del rey Salomón, que pidió un corazón obediente para cuidar del pueblo y juzgarlo bien. Como Jehosafat, los ancianos tienen que apoyarse en Jehová para cuidar bien de la congregación: son humildes y consultan la Palabra de Dios, nuestras publicaciones y a otros ancianos antes de tomar decisiones. Y los padres también deben recordar que, si se esfuerzan por ser obedientes, sus hijos seguramente harán lo mismo.",
+      pregunta: "16. ¿Qué pueden aprender de Jehosafat quienes tienen autoridad?",
+      respuesta: "Que la obediencia de uno influye en los demás. Los ancianos necesitan apoyarse en Jehová, consultar su Palabra y a otros ancianos antes de decidir. Y los padres deben recordar que su ejemplo enseña más que sus palabras."
+    },
+    {
+      num: "17",
+      texto: "En definitiva, si cultivamos y mantenemos un corazón obediente, podemos estar seguros de que Jehová nos cuidará y guiará en cualquier situación que afrontemos. Sabemos que para ello se valdrá de sus representantes humanos, tal como hizo en el pasado. Y no nos preocupemos si a veces no comprendemos las razones que hay detrás de sus instrucciones. Recordemos que Jehová es infinitamente más sabio y poderoso que nosotros. Así pues, nunca dejemos de cultivar un corazón obediente.",
+      pregunta: "17. ¿Por qué debemos cultivar y mantener un corazón obediente?",
+      respuesta: "Porque así podemos estar seguros de que Jehová nos cuidará en cualquier situación. No hace falta entender todas sus razones; basta con confiar en que él es muchísimo más sabio que nosotros."
+    }
+  ]
+};
 
 /* ============ ESTADO ============ */
 var S={v:{},view:"home",id:null,demo:false,tabWeek:"weekday"};
