@@ -363,6 +363,11 @@ var WEEKEND_DEFAULT=JSON.parse(JSON.stringify(WEEKEND));
   var s=lsGet(K_WEEK,null);
   if(!s||typeof s!=="object")return;
   var w=normalizeWeek(s.week);
+  /* Lo guardado solo manda si es de ESTA semana o de una posterior.
+     Si es de una semana anterior (o no se puede identificar), se ignora y
+     gana la semana publicada en la app. Sin esto, un respaldo viejo dejaba la
+     fecha nueva del archivo junto con las partes de la semana pasada. */
+  if(!validWeekKey(w.key)||w.key<WEEK.key)return;
   for(var k in w)WEEK[k]=w[k];
   var p=normalizeParts(s.parts);if(p)PARTS=p;
   var wk=mergeWeekend(s.weekend);if(wk)WEEKEND=wk;
