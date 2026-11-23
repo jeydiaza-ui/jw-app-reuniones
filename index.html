@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -95,41 +95,42 @@ ul.tight{margin:6px 0 6px 18px;padding:0}ul.tight li{margin-bottom:6px}
 "use strict";
 
 var W="https://wol.jw.org/es/wol";
-var WK=W+"/d/r4/lp-s/202026403";
-function pc(n){return W+"/pc/r4/lp-s/202026403/"+n;}
-function bc(n){return W+"/bc/r4/lp-s/202026403/"+n;}
+var WK=W+"/d/r4/lp-s/202026404";
+function pc(n){return W+"/pc/r4/lp-s/202026404/"+n;}
+function bc(n){return W+"/bc/r4/lp-s/202026404/"+n;}
 function bible(b,c){return W+"/b/r4/lp-s/nwtsty/"+b+"/"+c;}
 
 var WEEK={
-  key: "2026-11-16",
-  label: "16–22 de noviembre de 2026",
-  shortLabel: "16–22 noviembre 2026",
-  reading: "LAMENTACIONES 1, 2",
-  fetched: "17 de noviembre de 2026",
+  key: "2026-11-23",
+  label: "23–29 de noviembre de 2026",
+  shortLabel: "23–29 noviembre 2026",
+  reading: "LAMENTACIONES 3 A 5",
+  fetched: "23 de noviembre de 2026",
   program: "Guía de actividades mwb26 noviembre–diciembre de 2026",
-  url: "https://wol.jw.org/es/wol/d/r4/lp-s/202026403"
+  url: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"
 };
 
 var PARTS=[
   {
     id: "p0",
     section: "INICIO",
-    title: "Canción 28 y oración | Palabras de introducción",
+    title: "Canción 158 y oración | Palabras de introducción",
     min: 1,
     refs: [
-      {t: "Canción 28", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026403"}
+      {t: "Canción 158", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"}
     ]
   },
   {
     id: "p1",
     section: "TESOROS DE LA BIBLIA",
     num: 1,
-    title: "Una reacción natural ante una situación devastadora",
+    title: "Cuando tengamos problemas, no nos rindamos",
     min: 10,
     refs: [
-      {t: "Guía de actividades 16-22 noviembre", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026403"},
-      {t: "La Atalaya, agosto de 2024, págs. 27, 28", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026403"},
-      {t: "Lam 2:11, 19", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/2"}
+      {t: "Guía de actividades 23-29 noviembre", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"},
+      {t: "La Atalaya, enero de 2024, pág. 30 párr. 16", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"},
+      {t: "La Atalaya, agosto de 2021, pág. 13 párrs. 17-19", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"},
+      {t: "Lam 3:22-24", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/3"}
     ]
   },
   {
@@ -138,10 +139,10 @@ var PARTS=[
     num: 2,
     title: "Busquemos perlas escondidas",
     min: 10,
-    raw: "Lam 2:1. ¿Cómo fue arrojada «la hermosura de Israel desde los cielos a la tierra»?",
+    raw: "Lam 3:27. ¿Por qué es bueno que los jóvenes aprendan a aguantar situaciones difíciles?",
     refs: [
-      {t: "Lam 2:1", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/2"},
-      {t: "La Atalaya, 1 de junio de 2007, pág. 9 párr. 1", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026403"}
+      {t: "Lam 3:27", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/3"},
+      {t: "La Atalaya, 1 de junio de 2007, pág. 11 párr. 4", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"}
     ]
   },
   {
@@ -150,10 +151,10 @@ var PARTS=[
     num: 3,
     title: "Lectura de la Biblia",
     min: 4,
-    raw: "Lamentaciones 1:8-18 (th lección 10)",
+    raw: "Lamentaciones 3:19-42 (th lección 12)",
     refs: [
-      {t: "Lam 1:8-18", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/1"},
-      {t: "th lección 10 — Modular la voz", u: "https://www.jw.org/finder?wtlocale=S&pub=th&srctype=wol"}
+      {t: "Lam 3:19-42", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/3"},
+      {t: "th lección 12 — Mostrar amabilidad y empatía", u: "https://wol.jw.org/es/wol/d/r4/lp-s/1102018452"}
     ]
   },
   {
@@ -162,43 +163,44 @@ var PARTS=[
     num: 4,
     title: "Empecemos conversaciones",
     min: 3,
-    raw: "Predicación informal. Empieza una conversación amigable que termina antes de que puedas predicar. (lmd lección 2 punto 4)",
+    raw: "De casa en casa. Enseña una verdad bíblica del apéndice A del folleto Una obra de amor. (lmd lección 5 punto 4)",
     refs: [
-      {t: "lmd lección 2 punto 4", u: "https://www.jw.org/finder?wtlocale=S&pub=lmd&srctype=wol"}
+      {t: "lmd lección 5 punto 4", u: "https://wol.jw.org/es/wol/d/r4/lp-s/1102023305"}
     ]
   },
   {
     id: "p5",
     section: "SEAMOS MEJORES MAESTROS",
     num: 5,
-    title: "Hagamos revisitas",
+    title: "Empecemos conversaciones",
     min: 4,
-    raw: "Predicación pública. Presenta y analiza un video del kit de enseñanza y ofrece un curso de la Biblia. (lmd lección 9 punto 4)",
+    raw: "Predicación informal. Ofrece un tratado. (lmd lección 4 punto 3)",
     refs: [
-      {t: "lmd lección 9 punto 4", u: "https://www.jw.org/finder?wtlocale=S&pub=lmd&srctype=wol"}
+      {t: "lmd lección 4 punto 3", u: "https://wol.jw.org/es/wol/d/r4/lp-s/1102023304"}
     ]
   },
   {
     id: "p6",
     section: "SEAMOS MEJORES MAESTROS",
     num: 6,
-    title: "¿Qué dirías?",
+    title: "Discurso",
     min: 5,
-    raw: "Análisis con el auditorio. De casa en casa. Repasa lmd lección 1 punto 4b y comenta la imagen: un pasillo con tres puertas, y una de ellas decorada para la Navidad.",
+    raw: "Análisis con el auditorio. «Los mayores son un tesoro para la congregación», de La Atalaya de diciembre de 2025, páginas 26 a 30. (th lección 16)",
     refs: [
-      {t: "lmd lección 1 punto 4b", u: "https://www.jw.org/finder?wtlocale=S&pub=lmd&srctype=wol"}
+      {t: "th lección 16 — Ser edificante y positivo", u: "https://wol.jw.org/es/wol/d/r4/lp-s/1102018456"}
     ]
   },
   {
     id: "p7",
     section: "NUESTRA VIDA CRISTIANA",
     num: 7,
-    title: "No nos olvidemos de nuestros hermanos inactivos",
+    title: "Ayudemos a los cuidadores a no rendirse",
     min: 15,
-    raw: "Análisis con el auditorio. Se pone el video «Animemos a los inactivos» y después se comentan las preguntas. Canción 90.",
+    raw: "Análisis con el auditorio. Se leen Proverbios 20:18 y Filipenses 2:4, se pone el video «Consuelo para los cuidadores» y se comentan las preguntas. Canción 109.",
     refs: [
-      {t: "Canción 90", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026403"},
-      {t: "Gálatas 6:10", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/48/6"}
+      {t: "Canción 109", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"},
+      {t: "Proverbios 20:18", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/20/20"},
+      {t: "Filipenses 2:4", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/50/2"}
     ]
   },
   {
@@ -207,19 +209,19 @@ var PARTS=[
     num: 8,
     title: "Estudio bíblico de la congregación",
     min: 30,
-    raw: "Jael: «La más bendita de las mujeres» (wcg capítulo 17).",
+    raw: "Gedeón: Valiente pero prudente (wcg capítulo 18).",
     refs: [
-      {t: "wcg cap. 17 — «La más bendita de las mujeres»", u: "https://www.jw.org/finder?wtlocale=S&pub=wcg&srctype=wol"},
-      {t: "Jueces 4", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/7/4"}
+      {t: "wcg cap. 18 — «Gedeón: Valiente pero prudente»", u: "https://wol.jw.org/es/wol/d/r4/lp-s/1102025918"},
+      {t: "Jueces 6 a 8", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/7/7"}
     ]
   },
   {
     id: "p9",
     section: "NUESTRA VIDA CRISTIANA",
-    title: "Palabras de conclusión | Canción 75 y oración",
+    title: "Palabras de conclusión | Canción 74 y oración",
     min: 3,
     refs: [
-      {t: "Canción 75", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026403"}
+      {t: "Canción 74", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"}
     ]
   }
 ];
@@ -227,414 +229,470 @@ var PARTS=[
 var WEEKEND={
   discursoPublico: {title: "(Título del discurso público)", speaker: "(Orador invitado)"},
   atalaya: {
-    title: "Predicamos las buenas noticias en «todos los idiomas de las naciones»",
-    openingSong: "Canción 84",
-    baseText: "Zacarías 8:23",
-    closingSong: "Canción 57",
-    url: "",
+    title: "El sacerdocio muestra el amor de Jehová",
+    openingSong: "Canción 107",
+    baseText: "Hebreos 5:1",
+    closingSong: "Canción 16",
+    url: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404",
     parrafos: []
   }
 };
 
 var SRC={
-  guia: {t: "Guía de actividades 16-22 noviembre", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026403"},
-  w2408: {
-    t: "La Atalaya, agosto de 2024, págs. 27, 28, párrs. 7-9 (reproducido en la guía)",
-    u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026403"
+  guia: {t: "Guía de actividades 23-29 noviembre", u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"},
+  w2401: {
+    t: "La Atalaya, enero de 2024, pág. 30 párr. 16 (reproducido en la guía)",
+    u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"
   },
-  w2308: {
-    t: "La Atalaya, agosto de 2023, págs. 29, 30, párrs. 12, 13 (reproducido en la guía)",
-    u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026403"
+  w2108: {
+    t: "La Atalaya, agosto de 2021, pág. 13 párrs. 17-19 (reproducido en la guía)",
+    u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"
   },
   w0706: {
-    t: "La Atalaya, 1 de junio de 2007, pág. 9 párr. 1 (reproducido en la guía)",
-    u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026403"
+    t: "La Atalaya, 1 de junio de 2007, pág. 11 párr. 4 (reproducido en la guía)",
+    u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"
   },
-  th10: {t: "th lección 10 — Modular la voz", u: "https://www.jw.org/finder?wtlocale=S&pub=th&srctype=wol"},
-  lmd1: {t: "lmd lección 1 — Interés sincero (punto 4b)", u: "https://www.jw.org/finder?wtlocale=S&pub=lmd&srctype=wol"},
-  lmd2: {t: "lmd lección 2 — Naturalidad (punto 4)", u: "https://www.jw.org/finder?wtlocale=S&pub=lmd&srctype=wol"},
-  lmd9: {t: "lmd lección 9 — Empatía (punto 4)", u: "https://www.jw.org/finder?wtlocale=S&pub=lmd&srctype=wol"},
-  wcg17: {
-    t: "wcg cap. 17 — «Jael: “La más bendita de las mujeres”»",
-    u: "https://www.jw.org/finder?wtlocale=S&pub=wcg&srctype=wol"
+  w2512: {
+    t: "La Atalaya, diciembre de 2025, págs. 26-30 (reproducido en la guía)",
+    u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"
   },
-  lam1: {t: "Biblia de estudio Lam 1", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/1"},
-  lam2: {t: "Biblia de estudio Lam 2", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/2"},
+  th12: {t: "th lección 12 — Mostrar amabilidad y empatía", u: "https://wol.jw.org/es/wol/d/r4/lp-s/1102018452"},
+  th16: {t: "th lección 16 — Ser edificante y positivo", u: "https://wol.jw.org/es/wol/d/r4/lp-s/1102018456"},
+  lmd4: {t: "lmd lección 4 — Humildad (punto 3)", u: "https://wol.jw.org/es/wol/d/r4/lp-s/1102023304"},
+  lmd5: {t: "lmd lección 5 — Tacto (punto 4)", u: "https://wol.jw.org/es/wol/d/r4/lp-s/1102023305"},
+  wcg18: {
+    t: "wcg cap. 18 — «Gedeón: Valiente pero prudente»",
+    u: "https://wol.jw.org/es/wol/d/r4/lp-s/1102025918"
+  },
   lam3: {t: "Biblia de estudio Lam 3", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/3"},
+  lam4: {t: "Biblia de estudio Lam 4", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/4"},
   lam5: {t: "Biblia de estudio Lam 5", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/5"},
-  sal34: {t: "Biblia de estudio Salmo 34", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/19/34"},
-  sal83: {t: "Biblia de estudio Salmo 83", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/19/83"},
-  sal103: {t: "Biblia de estudio Salmo 103", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/19/103"},
+  mat6: {t: "Biblia de estudio Mateo 6", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/40/6"},
+  mat11: {t: "Biblia de estudio Mateo 11", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/40/11"},
+  heb12: {t: "Biblia de estudio Hebreos 12", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/58/12"},
+  heb4: {t: "Biblia de estudio Hebreos 4", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/58/4"},
+  heb5: {t: "Biblia de estudio Hebreos 5", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/58/5"},
+  juan5: {t: "Biblia de estudio Juan 5", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/43/5"},
   prov20: {t: "Biblia de estudio Proverbios 20", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/20/20"},
-  isa55: {t: "Biblia de estudio Isaías 55", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/23/55"},
-  luc2: {t: "Biblia de estudio Lucas 2", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/42/2"},
-  luc15: {t: "Biblia de estudio Lucas 15", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/42/15"},
-  rom14: {t: "Biblia de estudio Romanos 14", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/45/14"},
+  fil2: {t: "Biblia de estudio Filipenses 2", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/50/2"},
+  fil25: {t: "Biblia de estudio Proverbios 25", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/20/25"},
+  jdg7: {t: "Biblia de estudio Jueces 7", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/7/7"},
+  jdg8: {t: "Biblia de estudio Jueces 8", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/7/8"},
+  sal34: {t: "Biblia de estudio Salmo 34", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/19/34"},
+  sal37: {t: "Biblia de estudio Salmo 37", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/19/37"},
+  isa41: {t: "Biblia de estudio Isaías 41", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/23/41"},
+  ecle4: {t: "Biblia de estudio Eclesiastés 4", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/21/4"},
   gal6: {t: "Biblia de estudio Gálatas 6", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/48/6"},
-  jdg4: {t: "Biblia de estudio Jueces 4", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/7/4"},
-  jdg5: {t: "Biblia de estudio Jueces 5", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/7/5"}
+  tes5: {t: "Biblia de estudio 1 Tesalonicenses 5", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/52/5"}
 };
 
 /* ============ DISCURSO 1 — NUEVA ESTRUCTURA ============
    Cada punto tiene UN texto bíblico principal (literal) y notas de apoyo (paráfrasis). */
 var DISCURSO_T1 = {
-  title: "Una reacción natural ante una situación devastadora",
+  title: "Cuando tengamos problemas, no nos rindamos",
   duration: 10,
-  fuentes: ["guia", "w2408", "w2308", "lam2", "lam3"],
-  intro: "(Se pone el video «Información sobre Lamentaciones».) ¿Alguna vez ha llorado por algo que ya no podía arreglar? No me refiero a una desgracia suya. Me refiero a ver a alguien que uno quiere tomar un camino que le va a hacer daño, y no poder detenerlo. Si le ha pasado, entiende el libro que vamos a leer hoy. Se llama Lamentaciones. Cinco capítulos. Cinco lamentos. Y en ellos no hay una sola victoria, ni un solo milagro. Solo un hombre hablando con Dios sobre una ciudad en ruinas. Cuando los babilonios destruyeron Jerusalén, quedó lo que queda siempre después de una guerra: casas quemadas, niños con hambre, familias separadas. Jeremías lo vio. Él había avisado durante años de que eso iba a pasar. Lo habían golpeado, lo habían puesto en el cepo y hasta lo habían echado a una cisterna de lodo. Y cuando por fin pasó lo que anunció, no dijo «se lo dije». Se sentó a llorar. Hoy quiero fijarme en dos cosas de este libro: en lo que sintió, y en lo que hizo con lo que sentía. Porque el dolor que uno se guarda aplasta, pero el dolor que se lleva a Jehová se convierte en otra cosa.",
+  fuentes: ["guia", "w2401", "w2108", "lam3", "mat6"],
+  intro: "El capítulo 3 de Lamentaciones empieza con una frase que uno no espera encontrar en la Biblia: «Soy el hombre que ha visto el sufrimiento causado por la vara de su furia». En primera persona. En los dos capítulos anteriores el lamento es por la ciudad: Jerusalén misma se lamenta. Aquí el que habla es un hombre, uno de los que sufrieron, y cuenta lo que sintió por dentro mientras todo se caía. Lo cuenta sin adornos: «Me ha encerrado entre paredes para que no me escape». «Cuando grito desesperado por ayuda, él rechaza mi oración». Un hombre al límite, hablando con Dios. Pero en medio de ese túnel hay un giro. No cambian las circunstancias; cambia la mirada. Y de ese giro quiero hablar hoy, porque a nosotros también nos llegan días en que las fuerzas se acaban. Días en que uno piensa en dejar de intentarlo. La guía nos llama a algo concreto: cuando tengamos problemas, no nos rindamos. Veamos tres cosas que hizo este hombre que lo perdió casi todo.",
   desarrollo: [
     {
-      titulo: "Un dolor que se siente en el cuerpo",
+      titulo: "Mirar lo que Jehová ya ha hecho",
       texto: {
-        ref: "Lam 2:11",
-        intro: "Vamos al capítulo 2, versículo 11. Es un solo versículo, pero pesa. Léalo con atención, porque no describe una idea: describe un cuerpo.",
-        lectura: "«Mis ojos están agotados de tanto llorar. Se me revuelven las entrañas. Mi hígado se ha derramado en el suelo por la caída de la hija de mi pueblo, por los niños y los bebés que se desmayan en las plazas del pueblo».",
-        explicacion: "Fíjese en cómo habla. No dice «estoy triste». Dice que sus ojos están agotados de tanto llorar, que se le revuelven las entrañas, que su hígado se ha derramado en el suelo. Para nosotros esa expresión suena extraña; para un israelita era la manera de decir que el dolor le llegaba a lo más hondo, porque el hígado era donde se sentía la pena más grande. Y luego viene la razón, y aquí está lo que a mí más me impresiona: no menciona los carros de guerra, ni las murallas caídas, ni el templo quemado. Menciona a los niños y a los bebés desmayándose en las plazas. Eso es lo que lo quebró. Ahora, ¿es malo sentirse así? A veces pensamos que un siervo de Jehová no debería derrumbarse, que la fe es no llorar. Pero aquí tenemos a un profeta fiel derramándose por dentro, y la Biblia recoge ese lamento como parte de su Palabra. El amor a las personas se parece bastante a eso. Si a uno le da igual lo que les pasa a los demás, no hay dolor; y si no hay dolor, tampoco hay amor."
+        ref: "Lam 3:22",
+        intro: "Vamos al versículo 22. Antes de leerlo, piense dónde está. El hombre acaba de decir que Dios le cerró el paso y que su oración no pasa. Y justo después escribe esto.",
+        lectura: "«Es gracias al amor leal de Jehová que no ha llegado nuestro fin, porque sus muestras de misericordia nunca se acaban».",
+        explicacion: "Mire el orden de la frase. No dice «no hemos llegado a nuestro fin porque somos fuertes». Dice «es gracias al amor leal de Jehová». La razón por la que sigue en pie está fuera de él. Y eso cambia todo cuando uno está hundido, porque el hundido se mira a sí mismo y solo ve lo que le falta. Él hace lo contrario: cuenta lo que todavía tiene. La misericordia de Jehová no se acabó cuando se quemó el templo. Sigue ahí, y sigue siendo suya. Por eso dice que «nunca se acaban». Es como si, después de un incendio, alguien encontrara que la despensa quedó intacta."
       },
-      apoyo: "Y esto no era solo un sentimiento humano. Dos capítulos más adelante, el mismo libro dice de Jehová que «a él no le produce ningún placer causarles sufrimiento ni dolor a los hijos de los hombres» (Lamentaciones 3:33). El sufrimiento de aquella gente no lo dejaba indiferente. Y el salmista lo dice con una imagen que consuela mucho: «Jehová está cerca de los que tienen el corazón destrozado; salva a los que están hundidos en el desánimo» (Salmo 34:18). Piense en lo que eso significa. Jeremías no se estaba alejando de Dios por llorar; se estaba acercando. Estaba sintiendo algo parecido a lo que siente Jehová cuando ve sufrir a los suyos.",
-      leccion: "Un corazón que se duele por otros se parece al de Jehová."
+      apoyo: "La Atalaya de enero de 2024, párrafo 16, aplica este texto a nosotros: también nosotros podemos decir esas palabras cuando llegan las dificultades. Menciona a una hermana a la que su esposo abandonó durante la pandemia. Quedó destrozada. ¿Qué hizo Jehová por ella? No le devolvió a su esposo. Se encargó de que se sintiera querida: le dio amigos que pasaban tiempo con ella, que le llevaban comida y le mandaban mensajes que la animaban. Ella le da gracias a Jehová una y otra vez por esa familia. Y el artículo añade Colosenses 1:11: pedimos ser fortalecidos «para aguantar todo con paciencia y felicidad». Paciencia y felicidad juntas. No es solo resistir; es resistir con ánimo, y el ánimo también lo da él.",
+      leccion: "Cuando las fuerzas se acaban, el amor leal de Jehová no se acaba."
     },
     {
-      titulo: "Lo que hizo con ese dolor",
+      titulo: "Contar con la misericordia de hoy",
       texto: {
-        ref: "Lam 2:19",
-        intro: "El mismo capítulo, unos versículos más adelante, da un giro. Y es un giro que casi no se nota, porque sigue siendo triste. Pero ya no es solo un lamento: es una instrucción.",
-        lectura: "«¡Levántate! Llora durante la noche, al comienzo de las vigilias. Derrama como agua tu corazón delante del rostro de Jehová. Levanta tus manos hacia él por la vida de tus niños, que están desmayándose de hambre por las esquinas de todas las calles».",
-        explicacion: "Mire los verbos: levántate, llora, derrama, levanta. Cuatro órdenes. Jeremías no se queda mirando el desastre; le dice al pueblo qué hacer con él. Y fíjese en la frase central: «derrama como agua tu corazón delante del rostro de Jehová». No dice «compón la cara». No dice «aguanta». Dice derrama. Y añade «al comienzo de las vigilias», es decir, entrada la noche, cuando nadie te ve y las horas se hacen larguísimas. Ese es el momento en que menos ganas hay de orar, y es justo el momento que él señala. Hay algo más que me gusta. Cuando alguien está hundido, le cuesta hasta orar por sí mismo. Y Jeremías no dice «pide por ti». Dice «levanta tus manos por la vida de tus niños». Lo pone a orar por los más débiles. Y eso no es un detalle poético: es una forma de sacarlo de sí mismo sin dejar de tomar en serio su dolor."
+        ref: "Lam 3:23",
+        intro: "El versículo siguiente son tres frases cortas, y cada una es un alivio.",
+        lectura: "«Son nuevas cada mañana; grande es tu fidelidad».",
+        explicacion: "«Son nuevas cada mañana». Fíjese en la palabra nuevas. No dice que hay un depósito lleno para toda la vida. Dice que cada mañana aparece otra vez. Como el maná: el que guardaba para dos días lo perdía. Y eso explica por qué sentimos que no tenemos fuerza para lo que viene: porque todavía no ha llegado el día en que hace falta. Estamos pidiendo hoy la fuerza del mes que viene. Él no la da, no por tacañería, sino porque no la necesitamos todavía. Jesús dijo lo mismo: «nunca se angustien por el día siguiente [...]. Bastante hay con los problemas de cada día» (Mateo 6:34). No promete que no habrá problemas. Promete que no hay que cargarlos antes de tiempo."
       },
-      apoyo: "¿Y por qué orar, si la ciudad ya estaba destruida? Porque todavía se podía volver. La Atalaya de agosto de 2024, párrafos 7 a 9, explica cómo trata Jehová a quien se ha alejado: no se queda de brazos cruzados esperando a que vuelva. Da el primer paso. Le pidió a Oseas que ofreciera reconciliarse con su esposa aunque ella seguía pecando (Oseas 3:1). Y en la parábola del hijo perdido, el padre no esperó a que el muchacho pidiera perdón: «corrió a su encuentro, lo abrazó y lo besó con ternura» (Lucas 15:20). El artículo saca una conclusión que nos incluye a todos: hay que estar atentos a cualquier señal de que alguien ha empezado a arrepentirse. No a la señal de que ya está listo. A la primera señal. Y eso cambia por completo la manera de tratar a quien se ha enfriado.",
-      leccion: "Orar por alguien es la forma más práctica de no darlo por perdido."
+      apoyo: "Y esto no es teoría en este capítulo. Más adelante, el mismo hombre cuenta desde dónde oró: «Invoqué tu nombre, oh, Jehová, desde lo más profundo de la fosa». Y añade: «Tú te acercaste el día que te llamé. Dijiste: “No tengas miedo”» (Lamentaciones 3:55-57). La respuesta no fue un sermón: fue una voz cercana y tres palabras. Eso es lo que hay cada mañana. No la explicación de todo lo que nos pasa, sino la compañía para atravesarlo.",
+      leccion: "Jehová no promete un mañana sin problemas, pero sí da fuerzas para hoy."
+    },
+    {
+      titulo: "Esperar a que él actúe",
+      texto: {
+        ref: "Lam 3:24",
+        intro: "Y llegamos a la frase que sostiene todo el capítulo. Es una frase extraña, y por eso me gusta.",
+        lectura: "«“Jehová es la parte que me corresponde —dije yo—, por eso lo esperaré pacientemente”».",
+        explicacion: "«La parte que me corresponde». Es el lenguaje de la herencia. En Israel, los levitas no recibieron territorio; Jehová les dijo que él mismo sería su parte. Así que este hombre, que ha perdido la ciudad y el templo, dice: me queda mi parte. Y mi parte no es un terreno: es Jehová. Todo lo demás se lo llevaron; a él no. De ahí sale la consecuencia: «por eso lo esperaré pacientemente». La paciencia no es quedarse quieto sin hacer nada. Es seguir confiando cuando el calendario no es el mío. Es seguir orando aunque la respuesta tarde. Es no tomar el atajo que me alejaría de él."
+      },
+      apoyo: "La Atalaya de agosto de 2021, párrafos 17 a 19, ayuda a ver cómo termina esa espera. Cita Isaías 30:18: «Jehová espera pacientemente para mostrarles favor [...]. Felices todos los que lo esperan con anhelo». Y describe lo que viene: nadie volverá a aguantar los problemas de hoy; no habrá injusticias ni dolor (Apocalipsis 21:4), y no faltará lo necesario (Salmo 72:16). Mientras tanto, Jehová nos va preparando, ayudándonos a vencer malas costumbres y a cultivar cualidades cristianas. El artículo termina así: «No nos desanimemos y no nos rindamos. Lo mejor está por llegar».",
+      leccion: "Esperar a Jehová no es perder el tiempo; es pasar el tiempo a su lado."
     }
   ],
-  aplicacion: "Ahora, la pregunta que trae la guía: ¿qué nos ayuda si nos sentimos responsables por las malas decisiones de otras personas? Porque eso también pasa, y duele más que muchas otras cosas. Un hijo que deja la verdad. Un familiar que se enfría. Un amigo que se aleja. Y uno empieza a repasar su propia historia buscando en qué falló. La Atalaya de agosto de 2023, párrafos 12 y 13, responde con dos ideas. La primera: no podemos decidir por otros. Romanos 14:12 dice que «cada uno de nosotros rendirá cuentas de sí mismo a Dios». La segunda: Jehová no espera que carguemos con una culpa que no nos toca. Si un hijo deja la verdad, esa es su decisión. ¿Significa que no revisemos nada? No. Significa que le contemos a Jehová cómo nos sentimos, que le pidamos perdón por lo que de verdad hicimos mal, y que dejemos de intentar volver al pasado para cambiarlo. Proverbios 20:11 lo dice con realismo: «hasta un niño deja ver por sus acciones si su comportamiento es puro y correcto». Los hijos también eligen. Y si alguno vuelve, Lucas 15:18 al 20 nos recuerda cómo lo recibe Jehová: con los brazos abiertos, antes de que termine de hablar.",
-  conclusion: "Lamentaciones no termina bien. Termina con una oración desesperada y preciosa: «Tráenos de vuelta a ti, oh, Jehová, que nosotros enseguida volveremos» (Lamentaciones 5:21). Es la última frase del libro. Sin respuesta, sin aplauso, sin desenlace. Solo una puerta abierta. Y creo que por eso este libro nos sirve tanto. Nos enseña qué hacer cuando no podemos arreglar lo que se rompió: llorar sin vergüenza, orar sin cansarnos y dejar la puerta abierta. El dolor no es el final del relato. Es el lugar donde empezamos a hablar con Jehová."
+  aplicacion: "Ahora, ¿cómo se ve esto un lunes por la mañana? Hay tres cosas que nos hacen querer rendirnos, y todas son normales. Una: el cuerpo, cuando la salud no acompaña. Dos: un problema que lleva años y no se mueve. Tres: el desánimo después de una caída, esa voz que dice «para qué vas a intentarlo otra vez». Con las tres funciona lo mismo que hizo este hombre. Primero, contar: hacer una lista corta de lo que Jehová ya ha hecho, con oraciones contestadas y fuerzas que llegaron a tiempo. Segundo, pedir solo para hoy: «Dame fuerzas para este día, para esta reunión, para esta conversación». Tercero, hacer la siguiente cosa pequeña. No la de dentro de un año; la de hoy. Y algo que conviene recordar: no compare su paso con el de otros. Jehová no está cronometrando; está acompañando.",
+  conclusion: "Este capítulo no termina con un desfile ni con un aplauso. Termina con un hombre que sigue hablando con Dios, y con una frase que ya leímos: «Tú te acercaste el día que te llamé. Dijiste: “No tengas miedo”». Ese es el secreto. No dejó de llamar. Y cuando llamó desde el fondo, Jehová no le mandó un discurso: se acercó. Si esta semana llega un día en el que no pueda más, haga lo que hizo él. Cuente lo que Jehová ya hizo, pida fuerzas solo para ese día, y espere. Todavía no ha amanecido del todo, pero la misericordia de mañana ya está preparada."
 };
 
 /* ============ PERLAS ============ */
 var PERLA1={
-  q: "Lam 2:1. ¿Cómo fue arrojada «la hermosura de Israel desde los cielos a la tierra»?",
+  q: "Lam 3:27. ¿Por qué es bueno que los jóvenes aprendan a aguantar situaciones difíciles?",
   verses: [
-    {t: "Lam 2:1", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/2"},
-    {t: "Isaías 55:9", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/23/55"}
+    {t: "Lam 3:27", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/3"},
+    {t: "Mateo 11:28-30", u: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/40/11"}
   ],
   pubs: [
     {
-      t: "La Atalaya, 1 de junio de 2007, pág. 9 párr. 1",
-      u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026403"
+      t: "La Atalaya, 1 de junio de 2007, pág. 11 párr. 4",
+      u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"
     }
   ],
-  fuentes: ["w0706", "isa55", "lam2"],
+  fuentes: ["w0706", "mat11", "heb12", "lam3"],
   found: [
-    "La Atalaya explica que, como «los cielos son más altos que la tierra», a veces se representa la humillación de las cosas encumbradas diciendo que son «arrojadas del cielo a la tierra» (Isaías 55:9).",
-    "«La hermosura de Israel» era el esplendor y el poder de que gozaba cuando tenía la bendición de Jehová.",
-    "Esa hermosura fue «arrojada» al quedar destruida Jerusalén y desolada la tierra de Judá.",
-    "El mismo versículo añade que Jehová «no se acordó del banquillo para sus pies en el día de su furia». David llamó al arca del pacto «banquillo para los pies de nuestro Dios» (1 Crónicas 28:2), así que la imagen habla de que Jehová retiró su presencia y su protección de aquella ciudad."
+    "El texto dice: «Bueno es para el hombre cargar el yugo durante su juventud» (Lamentaciones 3:27).",
+    "La Atalaya explica que las pruebas de fe que llegan en la juventud quizás impliquen aguantar penalidades y burlas, pero que eso es bueno, porque aprender a llevar el yugo del sufrimiento en la juventud prepara a la persona para afrontar los problemas que surjan más adelante en la vida.",
+    "La palabra «yugo» ayuda a entender la idea. Un yugo no es un castigo: es un instrumento de trabajo. El animal que lo lleva aprende a tirar parejo, y con el tiempo hace más con menos esfuerzo.",
+    "Jesús habló de un yugo, pero del suyo: «Pónganse bajo mi yugo y aprendan de mí, porque soy apacible y humilde de corazón. Conmigo encontrarán alivio. Porque mi yugo es fácil de llevar y mi carga pesa poco» (Mateo 11:29, 30). No todo yugo aplasta; el de él enseña y alivia.",
+    "Y el resultado del entrenamiento se ve después: «Es cierto que en el momento ninguna disciplina resulta agradable, sino que duele. Pero después produce en los que han sido entrenados por ella el fruto pacífico de la justicia» (Hebreos 12:11)."
   ],
-  draft: "Esa expresión es una manera de hablar. Como los cielos están muy por encima de la tierra, decir que algo fue «arrojado del cielo» significa que cayó de lo más alto a lo más bajo. Y eso fue lo que le pasó a Israel: mientras tuvo la bendición de Jehová fue un pueblo fuerte y respetado; cuando la perdió, quedó Jerusalén destruida y la tierra desierta. Lo que me hace pensar es de dónde venía esa hermosura. No era de ellos. Era de Jehová. Y eso me lleva a preguntarme qué es lo que me hace valioso a mí: lo que Jehová me da, o lo que yo consigo. Porque lo primero no se pierde mientras siga cerca de él."
+  draft: "Yo lo veo como un entrenamiento. Un joven que aprende a aguantar una burla por su fe, o a decir que no a algo que todos hacen, no solo pasa esa prueba: se queda con la fuerza para la siguiente. Y siempre viene una siguiente. Lo que me impresiona es que Jehová llama «bueno» algo que duele. No porque le guste vernos sufrir, sino porque ve lo que ese esfuerzo va a producir en nosotros dentro de diez años. Y hay algo práctico: si eres joven y estás pasando por algo difícil ahora, no lo veas como tiempo perdido. Te estás preparando, y el que te está entrenando es un Padre que sabe lo que hace."
 };
 var PERLA2_Q="¿Qué perlas espirituales ha encontrado en la lectura bíblica de esta semana?";
 
 var PUNTOS=[
   {
-    v: "Lam 1:2",
-    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/1",
-    idea: "«De todos sus amantes, ninguno está allí para consolarla. Todos sus amigos la han traicionado; ahora son sus enemigos».",
-    fuentes: ["lam1"],
-    ref: "Biblia de estudio, Lam 1:2.",
-    aprendemos: "Las alianzas de conveniencia duran lo que dura el beneficio.",
-    aplicar: "Jerusalén había buscado apoyo en otras naciones, y en el momento difícil ninguna apareció. Es una lección sobre dónde ponemos la confianza. Cuando uno se apoya en Jehová, tiene a alguien que no cambia de bando cuando llega el problema."
+    v: "Lam 3:8",
+    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/3",
+    idea: "«Y, cuando grito desesperado por ayuda, él rechaza mi oración».",
+    fuentes: ["lam3"],
+    ref: "Biblia de estudio, Lam 3:8.",
+    aprendemos: "El silencio de Dios no es lo mismo que su rechazo.",
+    aplicar: "Casi todos hemos tenido la sensación de que una oración no pasó del techo. El hombre de este capítulo la tuvo y la escribió. Pero unos versículos más adelante cuenta que llamó desde la fosa y que Jehová se acercó. La oración no siempre se contesta cuando uno quiere, pero no se pierde."
   },
   {
-    v: "Lam 1:6",
-    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/1",
-    idea: "«Sus príncipes son como ciervos que no han encontrado pastos, y caminan exhaustos delante del perseguidor».",
-    fuentes: ["lam1"],
-    ref: "Biblia de estudio, Lam 1:6.",
-    aprendemos: "Sin alimento espiritual, hasta el más fuerte se agota.",
-    aplicar: "Un ciervo fuerte que no encuentra qué comer termina agotado, y entonces cualquier perseguidor lo alcanza. Lo mismo pasa en sentido espiritual. Una persona puede tener capacidad y hasta responsabilidades, pero si deja de alimentarse de la Palabra de Dios se debilita sin darse cuenta. El alimento no es un extra: es lo que sostiene la fuerza."
+    v: "Lam 3:21",
+    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/3",
+    idea: "«Recuerdo esto en mi corazón; por eso esperaré pacientemente».",
+    fuentes: ["lam3"],
+    ref: "Biblia de estudio, Lam 3:21.",
+    aprendemos: "A veces el ánimo no viene de mirar adelante, sino de mirar atrás.",
+    aplicar: "La esperanza de este hombre no nació de un optimismo, sino de un recuerdo. Pensó en lo que Jehová ya había hecho, y de ahí sacó fuerzas. Recordar las veces que Jehová nos sostuvo es una forma concreta de orar."
   },
   {
-    v: "Lam 1:9",
-    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/1",
-    idea: "«Ella no pensó en su futuro. Su caída fue impactante; no tiene quien la consuele».",
-    fuentes: ["lam1"],
-    ref: "Biblia de estudio, Lam 1:9.",
-    aprendemos: "Pensar en el futuro es un acto de fe.",
-    aplicar: "Ahí está el resumen de muchas decisiones que salen mal. Nadie planeó caer; simplemente no pensó en el futuro. Y pensar en el futuro es creer que lo que Jehová dice del mañana es más real que lo que me apetece hoy. Antes de una decisión importante conviene preguntarse: ¿en qué me deja esto dentro de cinco años?"
+    v: "Lam 3:30",
+    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/3",
+    idea: "«Que le ponga la mejilla al que lo golpea; que reciba insultos hasta hartarse».",
+    fuentes: ["lam3"],
+    ref: "Biblia de estudio, Lam 3:30.",
+    aprendemos: "Callarse a tiempo también es una forma de valor.",
+    aplicar: "Es una imagen fuerte, y describe algo que cuesta muchísimo: no devolver el golpe. No responder cuando uno tiene con qué. Jesús hizo exactamente eso, y nosotros lo imitamos cuando nos callamos a tiempo."
   },
   {
-    v: "Lam 1:12",
-    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/1",
-    idea: "«Todos ustedes, los que pasan por el camino, ¿acaso les da igual? ¡Miren y vean!».",
-    fuentes: ["lam1"],
-    ref: "Biblia de estudio, Lam 1:12.",
-    aprendemos: "La indiferencia también puede hacer daño dentro de la congregación.",
-    aplicar: "Es la voz de alguien que sufre y siente que los demás siguen de largo. Esa indiferencia existe hoy: el hermano que lleva meses callado, la hermana que sonríe y no cuenta nada. Detenerse, preguntar y escuchar puede ser la diferencia para esa persona. Jehová no pasa de largo; nosotros tampoco deberíamos."
+    v: "Lam 3:37-39",
+    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/3",
+    idea: "«¿Acaso debería alguien quejarse de las consecuencias de su pecado?».",
+    fuentes: ["lam3"],
+    ref: "Biblia de estudio, Lam 3:37-39.",
+    aprendemos: "Ni culpar a Dios de todo ni culparnos de lo que no nos toca.",
+    aplicar: "Aquí hay un equilibrio que nos protege de dos errores. Jehová no es el autor del mal, pero sí permite que nuestra propia siembra dé su fruto. Y cuando lo da, el camino sigue abierto para volver."
   },
   {
-    v: "Lam 1:18",
-    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/1",
-    idea: "«Jehová es justo, porque es contra sus mandatos que yo me he rebelado. Escuchen, pueblos todos, y vean mi dolor».",
-    fuentes: ["lam1"],
-    ref: "Biblia de estudio, Lam 1:18.",
-    aprendemos: "Reconocer que Jehová tiene razón es el primer paso para volver.",
-    aplicar: "Jerusalén no se justifica. No echa la culpa a los babilonios, ni a las circunstancias, ni a los profetas que la engañaron. Reconoce que Jehová tiene razón. Mientras uno se defiende, no puede arrepentirse; cuando uno admite, la puerta se abre."
+    v: "Lam 3:40, 41",
+    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/3",
+    idea: "«Examinemos y analicemos nuestra conducta, y volvamos a Jehová».",
+    fuentes: ["lam3"],
+    ref: "Biblia de estudio, Lam 3:40, 41.",
+    aprendemos: "Un autoexamen sin oración deprime; con oración, corrige.",
+    aplicar: "Fíjese en que no dice «examinemos a los demás». Nos invita a mirarnos a nosotros mismos, y a hacerlo con las manos levantadas, es decir, orando mientras lo hacemos."
   },
   {
-    v: "Lam 2:14",
-    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/2",
-    idea: "«Tus profetas vieron para ti visiones falsas y vacías, y no pusieron al descubierto tu error para así evitar tu cautiverio».",
-    fuentes: ["lam2"],
-    ref: "Biblia de estudio, Lam 2:14.",
-    aprendemos: "El cariño de verdad no esconde lo que conviene saber.",
-    aplicar: "Aquí se ve el daño que hace un mensaje que nunca corrige. A aquellos profetas les habría gustado ser populares, y lo consiguieron. Pero no denunciaron el error, y el pueblo se fue al cautiverio. Nosotros valoramos a quienes nos dicen la verdad aunque no sea agradable, y aprendemos a hacer lo mismo cuando enseñamos."
+    v: "Lam 5:19",
+    vu: "https://wol.jw.org/es/wol/b/r4/lp-s/nwtsty/25/5",
+    idea: "«En cuanto a ti, oh, Jehová, tú estarás en el trono para siempre. Tu trono dura generación tras generación».",
+    fuentes: ["lam5"],
+    ref: "Biblia de estudio, Lam 5:19.",
+    aprendemos: "Todo puede cambiar, menos el trono de Jehová.",
+    aplicar: "El libro termina sin arreglo, pero con una certeza. Todo cambió en Jerusalén, menos una cosa: el trono. Eso es lo que sostiene al pueblo de Dios en cualquier época, incluida la nuestra."
   }
 ];
 
 var MAESTROS={
   p4: {
-    marco: "Predicación informal. En la parada del autobús, el publicador conversa con un joven que vuelve de la obra, y la conversación termina antes de que pueda predicar. Duración: 3 minutos.",
-    leccion: "lmd lección 2 punto 4 — Naturalidad: tenga paciencia. No piense que tiene que hablar de la Biblia enseguida. Espere el momento oportuno y saque el tema de forma natural; quizás tenga que esperar hasta la próxima vez que hable con la persona.",
-    objetivo: "Conversar con naturalidad, mostrar interés sincero y dejar la puerta abierta sin forzar el mensaje.",
-    tema: "Una conversación amable que termina pronto también es predicación.",
-    texto: "Proverbios 15:23 — «¡y qué buena es la palabra dicha en el momento oportuno!». Eclesiastés 3:7 — «un tiempo para quedarse callado y un tiempo para hablar».",
-    dialogo: "PUBLICADOR: Buenas. ¿También espera el 42?\n\nJOVEN: Sí. Y lleva veinte minutos, como siempre.\n\nPUBLICADOR: Yo llevo diez. ¿Trabaja cerca?\n\nJOVEN: En una obra, allí. Estoy saliendo del turno.\n\nPUBLICADOR: Con este calor debe ser duro.\n\nJOVEN: Un poco. Pero se agradece el trabajo.\n\nPUBLICADOR: ¿Y su familia, por aquí?\n\nJOVEN: Mi mamá y mi hermana. Mi papá murió hace dos años.\n\nPUBLICADOR: Lo siento mucho.\n\nJOVEN: Gracias.\n\nPUBLICADOR: ¿Y cómo está su mamá?\n\nJOVEN: Ahí va. Ella es la fuerte. (Se queda callado un momento.) A mí me cuesta más.\n\nPUBLICADOR: Me imagino. Un papá deja un hueco grande.\n\nJOVEN: Sí. Todavía lo busco en la casa, ¿sabe?\n\nPUBLICADOR: (El publicador piensa en hablarle de la resurrección. Decide esperar.) Sé lo que es eso.\n\nJOVEN: Ahí viene el autobús.\n\nPUBLICADOR: Qué bien. Me alegro de haber hablado con usted. Que le vaya bien en la obra.\n\nJOVEN: Igual. Cuídese.",
+    marco: "De casa en casa. El publicador enseña una verdad bíblica del apéndice A del folleto Una obra de amor. Duración: 3 minutos.",
+    leccion: "lmd lección 5 punto 4 — Tacto: no corrija enseguida a la persona. Deje que se exprese con total libertad. Cuando diga algo que no esté de acuerdo con la Biblia, no la contradiga; escuche con atención para entender qué cree y por qué lo cree (Santiago 1:19; Proverbios 20:5).",
+    objetivo: "Enseñar una verdad bíblica sencilla con tacto, escuchando primero y sin corregir de frente lo que la persona cree.",
+    tema: "Primero se escucha lo que la persona cree; después se le muestra lo que dice la Biblia.",
+    texto: "Proverbios 20:5 — «Los pensamientos del hombre son aguas profundas, pero el que tiene discernimiento las saca a la luz». Juan 5:28, 29 — «viene la hora en que todos los que están en las tumbas oirán su voz y saldrán».",
+    dialogo: "PUBLICADOR: Buenas tardes. Estamos saludando a los vecinos y compartiendo una idea de la Biblia. ¿Tiene dos minutos?\n\nHOMBRE: Bueno, dos minutos.\n\nPUBLICADOR: Se lo pregunto de otra manera. ¿Alguna vez ha pensado si volveremos a ver a los que hemos perdido?\n\nHOMBRE: Eso sí lo he pensado. Mi esposa murió hace dos años.\n\nPUBLICADOR: Lo siento mucho.\n\nHOMBRE: Yo sé que Dios se la llevó porque necesitaba otro ángel en el cielo. Eso me consuela.\n\nPUBLICADOR: (El publicador no lo corrige. Lo deja hablar.)\n\nHOMBRE: Aunque a veces me pregunto si de verdad se acuerda de nosotros.\n\nPUBLICADOR: Esa pregunta es muy sincera. ¿Me permite leerle algo que a mí me ayuda con esa misma duda?\n\nHOMBRE: A ver.\n\nPUBLICADOR: (Lee Juan 5:28, 29.) «No se asombren de esto, porque viene la hora en que todos los que están en las tumbas oirán su voz y saldrán».\n\nHOMBRE: ¿Y dónde dice que están?\n\nPUBLICADOR: Ahí mismo: en las tumbas. No dice que estén en el cielo. Dice que él los va a llamar.\n\nHOMBRE: ¿O sea que van a volver aquí?\n\nPUBLICADOR: Eso es lo que promete la Biblia: una resurrección aquí, en la Tierra. Y fíjese en un detalle: Jesús no habla de ángeles. Habla de personas que oyen su voz y salen.\n\nHOMBRE: Eso me gusta más que lo que yo pensaba.\n\nPUBLICADOR: ¿Le puedo dejar este tratado? Tiene dos textos como este, bien explicados. Y si quiere, la próxima vez los miramos juntos.\n\nHOMBRE: Déjelo. Gracias.\n\nPUBLICADOR: Gracias a usted por el tiempo. Y por contarme de su esposa.",
     demostrar: [
-      "Empezar por algo del momento (el autobús, el trabajo), no por un discurso preparado",
-      "Escuchar de verdad y responder con frases cortas",
-      "Mostrar interés sincero cuando aparece un dolor, sin aprovecharlo como puerta de entrada",
-      "No forzar el tema bíblico: esperar el momento oportuno",
-      "Despedirse con calidez y dejar la puerta abierta"
+      "Empezar con una pregunta que toque un tema real, no con un discurso",
+      "Dejar que el hombre exprese su creencia sin corregirlo ni contradecirlo",
+      "Escuchar para entender qué cree y por qué lo cree",
+      "Enseñar una sola verdad bíblica, con un solo pasaje y una pregunta sencilla",
+      "Ofrecer algo concreto para la próxima vez"
     ],
-    conclusion: "La próxima vez que lo vea en la parada, la confianza ya estará ganada; entonces sí habrá un momento oportuno."
+    conclusion: "No hizo falta decirle que estaba equivocado. Bastó con leer lo que dice la Biblia y dejar que él mismo comparara."
   },
   p5: {
-    marco: "Predicación pública. En el carrito de publicaciones, una señora se detiene y pregunta por qué Dios permite tanto sufrimiento. El publicador le presenta un video del kit de enseñanza y le ofrece el curso de la Biblia. Duración: 4 minutos.",
-    leccion: "lmd lección 9 punto 4 — Empatía: piense en la persona. Recuerde lo que han hablado y pregúntese por qué necesita conocer la verdad y cómo mejoraría su vida. Muéstrele cuanto antes cómo el curso de la Biblia puede contestarle sus preguntas.",
-    objetivo: "Escuchar el dolor de la persona, usar un video como ayuda y ofrecer el curso como respuesta a su pregunta concreta.",
-    tema: "Primero la persona, después el mensaje.",
-    texto: "Romanos 12:15 — «Alégrense con los que se alegran; lloren con los que lloran». Marcos 6:34 — Jesús «se conmovió profundamente, porque eran como ovejas sin pastor».",
-    dialogo: "SEÑORA: Perdone. ¿Esto es de una religión?\n\nPUBLICADOR: Sí, somos testigos de Jehová. ¿Le interesa algún tema en particular?\n\nSEÑORA: Es que... hace cinco meses perdí a mi hermano. Y desde entonces no entiendo nada. ¿Por qué permite Dios estas cosas?\n\nPUBLICADOR: Cuánto lo siento.\n\nSEÑORA: Él tenía cincuenta y un años.\n\nPUBLICADOR: Cinco meses es muy poco. ¿Cómo está usted?\n\nSEÑORA: Hay días que bien y días que no.\n\nPUBLICADOR: Me imagino. ¿Le puedo mostrar algo corto? Son unos minutos.\n\nSEÑORA: Bueno.\n\nPUBLICADOR: (Le pone el video del kit de enseñanza sobre por qué permite Dios el sufrimiento. Al terminar, ella sigue mirando la pantalla.)\n\nSEÑORA: Nunca lo había pensado así. Pero una cosa no me queda clara: ¿dónde está él ahora?\n\nPUBLICADOR: La Biblia promete que va a resucitar. ¿Quiere verlo usted misma?\n\nSEÑORA: Sí, pero yo de Biblia no sé nada.\n\nPUBLICADOR: Por eso mismo existe el curso. Es gratuito, una vez a la semana, unos treinta minutos, y empezaríamos justo por esa pregunta.\n\nSEÑORA: ¿Y tengo que ir a su iglesia?\n\nPUBLICADOR: No. Es la Biblia y una conversación, nada más.\n\nSEÑORA: ¿Aquí mismo se puede?\n\nPUBLICADOR: Aquí mismo, o donde usted prefiera. ¿Le viene bien el viernes a esta hora?\n\nSEÑORA: El viernes salgo tarde. ¿El sábado por la mañana?\n\nPUBLICADOR: El sábado. Le anoto la hora y le dejo mi número.",
+    marco: "Predicación informal. En un taller de motos, el publicador conversa con un joven mecánico y le ofrece un tratado. Duración: 4 minutos.",
+    leccion: "lmd lección 4 punto 3 — Humildad: no dé la impresión de sentirse superior. No haga sentir a la persona que usted lo sabe todo y ella nada. Háblele siempre con respeto (Filipenses 2:3).",
+    objetivo: "Conversar de igual a igual, reconocer lo que la persona dice de cierto y ofrecer un tratado sin presión.",
+    tema: "El respeto abre más puertas que la razón.",
+    texto: "Filipenses 2:3 — «humildemente piensen que los demás son superiores a ustedes». Proverbios 25:15 — «con paciencia se persuade a un comandante, y una lengua apacible puede quebrar un hueso».",
+    dialogo: "PUBLICADOR: Buenas. ¿Ya está lista la revisión?\n\nJOVEN: Casi. Diez minutos y se la entrego.\n\nPUBLICADOR: Sin prisa. ¿Mucho trabajo hoy?\n\nJOVEN: Bastante. Y con este calor.\n\nPUBLICADOR: Se agradece igual, ¿verdad?\n\nJOVEN: Sí, eso sí. (Pausa.) ¿Usted es de los que reparten papeles?\n\nPUBLICADOR: Sí, soy testigo de Jehová. Estaba hablando con el señor de al lado.\n\nJOVEN: Ah. Yo con la religión no puedo. Mi tío era muy de iglesia y le hacía la vida imposible a mi mamá.\n\nPUBLICADOR: Entiendo. Cuando alguien usa la religión para portarse mal, uno desconfía de todo.\n\nJOVEN: Exacto. Para mí todos son iguales.\n\nPUBLICADOR: En una cosa tiene razón: hay mucha gente que usa a Dios para sacar provecho. Eso no se lo voy a negar.\n\nJOVEN: ¿Y entonces?\n\nPUBLICADOR: Entonces le digo lo que hago yo. Juzgo a la persona por lo que hace, no por la etiqueta que lleva. Y leo la Biblia para ver qué dice Dios, no qué dice la gente.\n\nJOVEN: ¿Y qué dice?\n\nPUBLICADOR: Que él no tiene nada que ver con esas cosas. La Biblia enseña que Dios no es el que manda el mal; el mal viene de otro lado.\n\nJOVEN: (Se ríe.) Eso está mejor de lo que pensaba.\n\nPUBLICADOR: ¿Le puedo dejar esto? Es un tratado corto, de dos páginas, sobre el futuro que Dios promete. No le pido nada.\n\nJOVEN: ¿Y no me va a decir que tengo que ir a su iglesia?\n\nPUBLICADOR: No. Léalo cuando quiera. Y si no le interesa, no pasa nada.\n\nJOVEN: Bueno. (Lo abre.) «La vida en un pacífico nuevo mundo». Suena bien.\n\nPUBLICADOR: Ese título es una promesa de la Biblia, no mía.\n\nJOVEN: Listo, ya está su moto.\n\nPUBLICADOR: Gracias. Que termine bien el día.",
     demostrar: [
-      "Escuchar antes de enseñar, y reconocer el dolor con una frase sencilla",
-      "No sermonear en la calle; dejar que ella marque el ritmo",
-      "Pensar en la persona y usar el video para responder a su pregunta",
-      "Ofrecer el curso explicando en dos frases qué es y cuánto dura",
-      "Ser claro con las condiciones y dejar que ella elija el día"
+      "Aprovechar un momento cotidiano y hablar como una persona normal",
+      "No sentirse superior ni corregir a la defensiva",
+      "Reconocer lo que hay de cierto en la objeción",
+      "Ser breve al explicar y no discutir",
+      "Ofrecer el tratado sin condiciones ni presión"
     ],
-    conclusion: "Confirmar el día, dar el número y recordarle que la pregunta que trajo será la primera que se estudie."
+    conclusion: "El joven no se llevó una discusión; se llevó dos páginas. Y la próxima vez que vuelva por el taller, la conversación ya tendrá otro tono."
   },
   p6: {
-    marco: "Análisis con el auditorio. De casa en casa. Se repasa brevemente lmd lección 1 punto 4b y se comenta la imagen de la guía: un pasillo con tres puertas en un edificio de viviendas, y una de ellas decorada con una corona, luces y regalos. Duración: 5 minutos.",
-    leccion: "lmd lección 1 punto 4b — Interés sincero: sea observador. Pregúntese qué dicen la ropa, la apariencia y la vivienda de la persona sobre sus creencias o su cultura. Lo que vemos nos ayuda a elegir una pregunta que le interese a ella, no a nosotros.",
-    objetivo: "Enseñar a empezar una conversación a partir de lo que se observa, con respeto y sin suponer.",
-    tema: "La puerta decorada no es un tema para discutir; es una puerta para conversar.",
-    texto: "Lucas 2:10, 11 — «les anuncio buenas noticias que le traerán una gran alegría a todo el pueblo. Porque hoy les nació [...] un salvador, que es Cristo, el Señor».",
-    dialogo: "Vamos a ponernos en el pasillo de la imagen. Tres puertas. Una tiene corona, luces y regalos. Llamamos, y nos abre una señora con delantal y las manos ocupadas. ¿Qué le decimos?\n\nAntes de responder, una pregunta: ¿qué nos dice esa puerta? Nos dice que en esa casa se celebra la Navidad, y probablemente que hay niños. Nos dice que a esa familia le importa la familia, la tradición y la fe. Y nos dice algo más: que si llegamos con un discurso en contra de las fiestas, la conversación se acaba en la puerta.\n\nAsí que empecemos por lo que ella quiere hablar. Algo como: «Buenas tardes, andamos saludando a los vecinos. Veo que ya tiene todo listo para las fiestas». Es una frase sencilla y verdadera. Y luego escuchamos. Si ella dice «sí, me encanta», no la corregimos: le preguntamos qué es lo que más le gusta. Y ahí aparece casi siempre lo mismo: estar con la familia, la paz, los recuerdos. Ese es el punto en común, y es un punto enorme, porque la Biblia habla justamente de una familia que dura para siempre y de una paz que no se acaba.\n\nY ahora, ¿qué texto? Uno solo, y bien elegido. Lucas 2:10, 11 es ideal, porque son palabras que ella ha oído en estas fechas. Leemos: «les anuncio buenas noticias que le traerán una gran alegría a todo el pueblo. Porque hoy les nació [...] un salvador, que es Cristo, el Señor». Y le preguntamos: «¿Se fijó en que el ángel no habla de una fecha, sino de una persona?». Eso no ataca nada. Abre una puerta, y deja que ella misma se pregunte por qué celebramos lo que celebramos.\n\nCon el auditorio podemos practicar dos o tres aperturas distintas y elegir la que suene más natural en cada territorio. La meta no es ganar una discusión en el pasillo. Es que la próxima vez que llamemos, esa puerta se abra un poco más.",
+    marco: "Análisis con el auditorio. Se presenta el artículo «Los mayores son un tesoro para la congregación», de La Atalaya de diciembre de 2025, páginas 26 a 30. Duración: 5 minutos.",
+    leccion: "th lección 16 — Ser edificante y positivo (Job 16:5). Concéntrese en cómo ayudar y en animar a sus oyentes: piense bien de ellos, deje que el amor lo impulse a hablar, limite la información negativa y use bien la Palabra de Dios para infundir esperanza.",
+    objetivo: "Que cada hermano mayor se sienta valorado, y que todos veamos cómo aprovechar su experiencia.",
+    tema: "Jehová no mide lo que usted hacía antes, sino lo que le da ahora.",
+    texto: "Deuteronomio 6:5; Salmo 37:25; Josué 23:14; Lucas 2:25-35; Hebreos 6:10.",
+    dialogo: "Quiero empezar con las palabras de una hermana de 83 años. Se llama Connie, y dijo: «Cuando pienso en todas las cosas que podía hacer cuando era joven, me parece increíble. Ahora la edad me ha hecho bajar el ritmo».\n\n¿Se ha sentido así alguna vez? Yo creo que muchos de nosotros sí. Y no hace falta tener 83 años. Basta con que el cuerpo empiece a no responder como antes. Y entonces llega una comparación que hace mucho daño: la de lo que hacía antes con lo que hago ahora. Connie conocía esa comparación. Y la Biblia tiene una respuesta que tranquiliza.\n\nPiense en lo que Jehová le pide. Deuteronomio 6:5 dice: «Ama a Jehová tu Dios con todo tu corazón, con toda tu alma y con todas tus fuerzas». Léalo otra vez, despacio. «Con todas tus fuerzas». No con las fuerzas de otro. No con las que tenía a los treinta años. Con las que tiene hoy. Jehová nunca ha pedido más de lo que uno puede dar en sus circunstancias.\n\nY aquí está lo que a mí me parece más bonito. Cuando era más joven, ¿qué le daba a Jehová? Lo mejor que podía. ¿Y ahora? También lo mejor que puede. O sea que, en realidad, sigue dando exactamente lo mismo: lo mejor. Lo que cambió fue la cantidad; no cambió la calidad del corazón.\n\nAhora, hay algo que usted puede hacer hoy mejor que nadie: compartir su experiencia. El rey David, ya viejo, escribió: «Fui joven y ahora soy viejo, pero nunca he visto a un justo abandonado ni a sus hijos buscando pan» (Salmo 37:25). Eso no lo puede decir un joven. Lo dice alguien que lo vio durante décadas. Y Josué, al final de su vida, dijo: «Ni una sola palabra de todas las buenas promesas que Jehová su Dios les hizo ha fallado» (Josué 23:14). Sus años le daban peso a esas palabras. Los años de usted también.\n\nCuando alguien que lleva cuarenta años sirviendo a Jehová cuenta cómo lo vio actuar, los demás escuchan distinto. No es teoría: es historia vivida. Y eso anima. El apóstol Pablo lo dijo así: deseaba ver a los hermanos para «compartir con ustedes algún don espiritual» y para que se animaran unos a otros (Romanos 1:11, 12). Animar es un intercambio: usted da, y también recibe.\n\nY hay algo muy sencillo que hace mucho bien: seguir asistiendo a las reuniones en persona, hasta donde sus circunstancias se lo permitan. Connie decía que ir a las reuniones la ayuda a no desanimarse, y que con todo el cariño que le dan los hermanos, ¿cómo va a estar triste? Y añadía que intenta demostrar que los quiere haciendo regalitos. Ahí lo tiene: una hermana que pensaba que ya no podía, y resulta que sigue dando.\n\nPero quizás usted diga: «Hermano, yo ya no puedo hacer casi nada». Mire a Simeón. Era muy mayor cuando Jesús nació. Cada vez que iba al templo, probablemente veía a hombres jóvenes encargados de tareas importantes, y quizás pensaba que Jehová ya no lo tomaba en cuenta. La Biblia dice que era «un hombre justo y devoto», que el espíritu santo estaba sobre él y que tuvo el honor de ver al niño Jesús y de profetizar sobre él (Lucas 2:25-35). Jehová no se fijó en sus achaques. Se fijó en su fe.\n\nEso es lo que él sigue haciendo con usted. Y lo dice con claridad 2 Corintios 8:12: Jehová se alegra cuando damos «en función de lo que tenemos y no de lo que no tenemos». Y Hebreos 6:10 añade: «Dios no es injusto y no se olvida de las obras de ustedes ni del amor que demostraron por su nombre».\n\nPermítame una última idea, muy práctica. Piense en las cosas que sí puede hacer, aunque sean pequeñas. Predicar un ratito. Llamar a un hermano por teléfono. Escribir una notita. En el recuadro del artículo se cuenta el caso de una hermana mayor que estaba en un carrito de publicaciones. Una joven pasó por delante, y la hermana le leyó Jeremías 29:11, donde Jehová promete paz y un futuro de esperanza. La joven se echó a llorar: esa misma mañana le había pedido a Dios una señal de que seguía importándole. Semanas después empezó a estudiar la Biblia. Una conversación de dos minutos, con una hermana que quizás pensaba que ya no servía para mucho.\n\nQuerido hermano, querida hermana: sus años no lo descalifican. Lo acreditan. Jehová valora cada sacrificio, y la congregación necesita su ejemplo. Lo que usted ha vivido no se aprende en un libro: se aprende viviendo. Y ahora le toca a usted contarlo.",
     demostrar: [
-      "Usar lo que se observa para elegir el tema, sin juzgar",
-      "Empezar con una frase amable y verdadera, no con una objeción",
-      "Escuchar y buscar un punto en común antes de enseñar",
-      "Mostrar un solo texto, leerlo con calma y hacer una pregunta sencilla",
-      "Dejar que la persona piense, sin necesidad de cerrar el tema hoy"
+      "Tono positivo de principio a fin y sin dramatizar las limitaciones",
+      "Hablar al corazón del hermano mayor, no de él",
+      "Un solo texto central bien explicado (Deuteronomio 6:5) y los demás como apoyo",
+      "Usar los ejemplos reales del artículo sin convertirlos en sermón",
+      "Cerrar con algo que el auditorio pueda hacer esta semana"
     ],
-    conclusion: "Lo que está en la puerta nos dice por dónde empezar; lo que está en la Biblia nos dice a dónde queremos llegar."
+    conclusion: "Nadie en esta sala ha terminado de servir a Jehová. Mientras haya un día por delante, hay algo que dar."
   }
 };
 
 var VIDA_P8={
   activa: true,
-  introGuion: "Hoy vamos a hablar de alguien que quizá usted conoce. Un hermano que dejó de venir. Al principio faltó una semana, luego un mes, y sin que nadie se diera cuenta pasaron los años. Nadie discutió con él. No se fue enojado. Simplemente se fue apagando. Y aquí hay algo que conviene recordar desde el principio: dedicamos mucho tiempo y esfuerzo a buscar personas que quieran aprender de Jehová. Eso está bien. Pero la guía de hoy nos pide algo más: que no nos olvidemos de «nuestros hermanos en la fe» que ya conocen a Jehová y que ahora están lejos (Gálatas 6:10). No son desconocidos. Son familia. Después de la canción, vamos a ver el video y a conversar.",
+  introGuion: "Hoy vamos a hablar de algo que casi todos conocemos de cerca: una familia que cuida de un ser querido enfermo o mayor. Para los cristianos verdaderos, cuidar de los nuestros es un honor. La Biblia lo presenta así, como una forma de amor, no como una carga. Pero sería poco honesto decir que es fácil. Hay noches sin dormir, citas médicas, papeleo, y un cansancio que no se va con una siesta. Por eso la guía de hoy no nos pide que admiremos a los cuidadores desde lejos. Nos pide que los ayudemos a no rendirse. Y Jehová lo hace, sobre todo, mediante los hermanos de la congregación. Vamos a leer dos textos y a conversar.",
   video: {
-    t: "Video «Animemos a los inactivos» (ver el enlace de la guía de actividades de esta semana)",
-    u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026403"
+    t: "Video «Consuelo para los cuidadores» (ver el enlace de la guía de actividades de esta semana)",
+    u: "https://wol.jw.org/es/wol/d/r4/lp-s/202026404"
   },
   preguntas: [
     {
-      q: "¿Qué pudiera llevar a nuestros hermanos a volverse inactivos?",
-      respuesta: "Casi nunca es una sola cosa. Algunos se enfrascan en el trabajo y las horas se les van sin darse cuenta. Otros se sienten superados por los problemas de la vida, o cargan con una depresión, o tienen una enfermedad que les quita las fuerzas. Y hay un grupo que duele más: los que se sienten culpables por errores del pasado, o los que quedaron heridos porque alguien les dijo algo. Muchos de ellos siguen amando a Jehová. Lo que pasa es que no se sienten dignos de volver."
+      q: "¿Cómo pueden los miembros de una familia poner en práctica Proverbios 20:18 y Filipenses 2:4 al cuidar de sus seres queridos?",
+      respuesta: "Proverbios 20:18 dice: «Cuando hay comunicación, los planes salen bien; haz tu guerra con orientación experta». Y Filipenses 2:4 nos pide buscar «no solo sus propios intereses, sino también los de los demás». Aplicado al cuidado, eso significa hablar antes de que llegue la crisis. Repartir tareas. Decir con claridad quién lleva a las consultas, quién se queda de noche, quién se encarga del dinero. Y algo que se olvida mucho: preguntarle a la persona cuidada qué quiere ella. A veces decidimos por ella con la mejor intención y le quitamos la poca dignidad que le queda."
     },
     {
-      q: "¿Qué aprendiste en este video?",
-      respuesta: "Que lo que más ayuda no es un sermón, sino una presencia. En el video se ve a una hermana escuchando a otra que no viene desde hace tiempo, y lo que hace es escuchar, sin corregir y sin preguntar por qué dejó de venir. Eso me hizo pensar en algo: cuando alguien se siente juzgado, se cierra; cuando se siente querido, se abre."
+      q: "¿Qué implica ser cuidador?",
+      respuesta: "Implica más de lo que se ve. Está la tarea física: bañar, alimentar, levantar, acompañar. Está la carga emocional: ver deteriorarse a alguien que uno quiere. Está el cambio de papel: la hija que de pronto es enfermera, el esposo que aprende a cocinar, el hijo que administra la casa. Y está algo de lo que se habla poco: el duelo que empieza antes de la muerte, cuando la persona ya no es la que era. Todo eso a la vez cansa."
     },
     {
-      q: "¿Y qué puede hacer alguien que no es anciano?",
-      respuesta: "Cosas pequeñas, y todas cuentan. Mandarle un mensaje que no pida explicaciones: «Me acordé de ti», «¿cómo estás?». Invitarlo a comer, sin hablar del tema. Preguntarle por sus hijos. Si un día vuelve a la reunión, sentarse cerca y no hacer ningún comentario sobre su ausencia. Y algo importante: no contar su historia."
+      q: "¿Cómo pueden los cuidadores cuidarse a sí mismos?",
+      respuesta: "Sin culpa. Dormir cuando se pueda. Comer bien. No saltarse sus propias consultas médicas. Aceptar ayuda cuando se la ofrecen, en vez de decir «yo puedo solo». Y hablarlo. Un cuidador que no habla se va aislando, y el aislamiento lo debilita más que el trabajo. También cuenta lo espiritual: una oración corta por la mañana, un texto antes de dormir, escuchar una reunión cuando no se puede ir. Jehová no espera que uno se destruya para cuidar a otro."
     },
     {
-      q: "¿Y si no quiere hablar con nadie?",
-      respuesta: "Entonces se respeta, pero no se abandona. Jehová «sabe bien cómo estamos formados, se acuerda de que somos polvo» (Salmo 103:14). A veces hay que esperar meses y seguir saludando con una sonrisa cada vez que lo vemos. La constancia, sin presión y sin sermones, es lo que más ayuda: que sepa que lo esperamos y que nos alegra verlo."
+      q: "¿Qué puede hacer la congregación para ayudar a los cuidadores?",
+      respuesta: "Cosas concretas, con nombre y fecha. «El jueves te llevo la comida» ayuda más que «avísame si necesitas algo». Acompañarlo a una cita. Quedarse una tarde con la persona enferma para que el cuidador vaya a la reunión o duerma. Mandarle un mensaje que no pida respuesta. Y algo muy importante: no juzgar cómo lo está haciendo. Eclesiastés 4:9, 10 lo resume: «Mejor son dos que uno solo [...]. Si uno de ellos cae, el otro puede ayudar a su compañero a levantarse». Gálatas 6:2 añade: «Sigan llevándose las cargas unos a otros»."
+    },
+    {
+      q: "¿Cómo les ayuda Jehová a los cuidadores a no rendirse?",
+      respuesta: "De varias maneras, y todas reales. Con su Palabra, que sostiene. Con la oración, que no es un trámite sino una conversación. Con la congregación, que es su manera habitual de responder. Y con la esperanza: Isaías 41:10 dice: «No tengas miedo, porque estoy contigo. No te angusties, porque yo soy tu Dios. Yo te daré fuerzas. Sí, yo te ayudaré». Fíjese en que no dice «te quitaré el problema». Dice «yo te ayudaré». Y el salmista añade que Jehová «está cerca de los que tienen el corazón destrozado» (Salmo 34:18). Cerca, no lejos."
     }
   ],
-  aplicacion: "Esta semana hagamos algo concreto y pequeño. Pensemos en una persona de la congregación que hace tiempo no viene. No hace falta una visita ni una conversación larga. Un mensaje de dos líneas, una llamada, una invitación a un café. Sin preguntarle nada incómodo. Solo para que sepa que sigue siendo parte de nosotros. Y oremos por ella por su nombre.",
-  cierre: "Cuando un pecador se arrepiente, hay más felicidad en el cielo que por noventa y nueve justos que no necesitan arrepentirse (Lucas 15:7). Esa alegría es de Jehová, y él nos deja participar en ella. Que ninguno de nuestros hermanos tenga que volver solo.",
-  preguntaIntro: "¿Qué pudiera llevar a nuestros hermanos a volverse inactivos?"
+  aplicacion: "Esta semana, pensemos en un cuidador que conozcamos. Uno solo. Y hagamos algo concreto, con día y hora. Llevarle una comida. Ofrecernos a quedarnos una hora con la persona que cuida. Llamarlo y preguntarle cómo está él, no solo cómo está el enfermo. Y oremos por él por su nombre durante la semana. No hace falta organizar nada grande; hace falta aparecer.",
+  cierre: "Cuidar a alguien hasta el final es una de las cosas más parecidas a Jehová que un ser humano puede hacer. Él cuida de nosotros todos los días, con paciencia, sin rendirse. Que los cuidadores de nuestra congregación sientan algo de ese cuidado a través de nosotros.",
+  preguntaIntro: "¿Cómo pueden los miembros de una familia poner en práctica Proverbios 20:18 y Filipenses 2:4 al cuidar de sus seres queridos?"
 };
 
 var ESTUDIO_P9={
   fuente: {
-    t: "Seamos valientes al andar con Dios — cap. 17",
-    u: "https://www.jw.org/finder?wtlocale=S&pub=wcg&srctype=wol"
+    t: "Seamos valientes al andar con Dios — cap. 18",
+    u: "https://wol.jw.org/es/wol/d/r4/lp-s/1102025918"
   },
-  libro: "wcg cap. 17 — «Jael: “La más bendita de las mujeres”»",
+  libro: "wcg cap. 18 — «Gedeón: Valiente pero prudente»",
   textosDestacados: [
     {
-      ref: "Jueces 4:9",
-      texto: "«Ella le respondió: “Claro que iré contigo. Pero en esta campaña militar la gloria no será para ti, porque será en las manos de una mujer en las que Jehová entregará a Sísara”. Luego Débora se levantó y se fue con Barac a Quedes»."
+      ref: "Jueces 6:14-16",
+      texto: "«Jehová se volvió hacia él y le dijo: “Vete, que con la fuerza que tienes salvarás a Israel de las manos de Madián. ¿Acaso no soy yo el que te envía?”. Y Gedeón le respondió: “Perdón, Jehová, pero ¿cómo voy a salvar yo a Israel? Mira que mi clan es el menos importante de Manasés y yo soy el más insignificante de la casa de mi padre”. Pero Jehová le dijo: “Yo estaré contigo, y por eso derrotarás a los madianitas como si fueran solamente un hombre”»."
     },
     {
-      ref: "Jueces 4:21, 22",
-      texto: "«Pero Jael, la esposa de Héber, agarró una estaca de tienda y un martillo. Y, mientras Sísara estaba profundamente dormido por el agotamiento, ella se le acercó sin hacer ruido y le clavó la estaca en las sienes hasta hundirla en la tierra, y él murió. Cuando Barac llegó buscando a Sísara, Jael salió a su encuentro y le dijo: “Ven. Te mostraré al hombre que estás buscando”»."
+      ref: "Jueces 7:2-7",
+      texto: "«Jehová ahora le dijo a Gedeón: “Tienes demasiados hombres. Así no puedo entregar a los madianitas en manos de ustedes. Si lo hiciera, Israel tal vez se pondría a presumir a costa mía y diría: ‘Mi propia mano me salvó’”. [...] De esta manera, Gedeón los puso a prueba. Al final, 22.000 hombres se fueron y 10.000 se quedaron. Con todo, Jehová le dijo a Gedeón: “Todavía hay demasiados hombres. Diles que bajen al agua, y allí los pondré a prueba por ti”. [...] Y resultó que, en total, los hombres que lamieron el agua llevándose la mano a la boca fueron 300. [...] Jehová entonces le dijo a Gedeón: “Los salvaré con los 300 hombres que lamieron el agua y entregaré a Madián en tus manos”»."
     },
     {
-      ref: "Jueces 5:24",
-      texto: "«La más bendita de las mujeres es Jael, la esposa de Héber el quenita; la más bendita de las mujeres que viven en tiendas»."
+      ref: "Jueces 7:19-22",
+      texto: "«Gedeón y los 100 hombres que estaban con él llegaron al borde del campamento cuando empezaba la segunda vigilia de la noche, justo después del cambio de turno. Y tocaron los cuernos e hicieron pedazos los jarrones que llevaban en la mano. Así que los tres grupos tocaron los cuernos e hicieron pedazos los jarrones. Sostuvieron las antorchas con la mano izquierda, tocaron los cuernos que llevaban en la derecha y gritaron: “¡La espada de Jehová y de Gedeón!”. Los hombres permanecieron quietos en sus puestos alrededor del campamento, pero todo el ejército enemigo salió corriendo, gritando mientras huía. Los 300 siguieron tocando los cuernos, y Jehová hizo que por todo el campamento los hombres se atacaran unos a otros con sus espadas»."
+    },
+    {
+      ref: "Jueces 8:22, 23",
+      texto: "«Más tarde, los hombres de Israel le dijeron a Gedeón: “Gobiérnanos tú, y también tu hijo y tu nieto, porque nos has rescatado de las manos de Madián”. Pero Gedeón les dijo: “No seré yo el que los gobierne ni tampoco mi hijo. Jehová es el que los gobernará”»."
     }
   ],
   preguntas: [
     {
-      q: "¿De qué maneras demostró valor Jael?",
-      a: "En que decidió de qué lado estaba, y lo decidió sola. Sísara llegó a su tienda creyendo que estaba a salvo; ella lo atendió con calma y luego hizo lo que había que hacer. No era profetisa ni soldado, no tenía ejército ni permiso de nadie. Tenía una estaca y un martillo. Y con eso se cumplió lo que Jehová había dicho por medio de Débora."
+      q: "¿De qué maneras demostró valor Gedeón?",
+      a: "Valor no es no tener miedo; es hacer lo que hay que hacer aunque dé miedo. Gedeón estaba desgranando trigo metido en un lagar para que los madianitas no lo vieran. Eso ya era prudencia. Después derribó el altar de Baal de su padre, pero lo hizo de noche porque le temía a su familia y a los hombres de la ciudad. Y aun así lo hizo. Cuando llegó la batalla, se quedó con 300 hombres frente a un ejército enorme y atacó. No era un temerario: pidió señales, y Dios se las dio. Fue valiente y prudente a la vez."
     },
     {
-      q: "¿Qué relación hay entre la batalla de Sísara y la guerra de Armagedón?",
-      a: "Que las dos son guerras de Jehová, y que las dos llevan el nombre de un mismo lugar. Armagedón significa «Montaña de Meguidó», y fue cerca de Meguidó donde Jehová dio victorias imposibles, como esta. Pero hay una diferencia que me impresiona: en Armagedón nosotros no peleamos. Solo tenemos que mantener la calma y confiar en Jehová y en sus ejércitos celestiales."
+      q: "En el sueño del soldado madianita apareció «un pan redondo de cebada». ¿Por qué era un símbolo adecuado del ejército de Gedeón?",
+      a: "Porque la cebada era el grano de la gente humilde; el trigo era mejor. Un pan de cebada es pequeño, duro y barato. Y ese pan, en el sueño, entró rodando y derribó una tienda de campaña. Es una imagen perfecta de lo que era el ejército de Gedeón: 300 hombres salidos de una nación oprimida, sin equipo, contra un campamento lleno de guerreros. Lo pequeño derriba lo grande cuando Jehová está detrás."
     },
     {
-      q: "¿Cuál era el vínculo entre Héber y los israelitas?",
-      a: "Era quenita, y los quenitas estaban emparentados con Moisés: su antepasado Hobab era «de quien Moisés fue yerno». O sea que Héber tenía raíces en el pueblo de Dios. Y aun así prefirió aliarse con Jabín, el rey cananeo. Eso explica por qué Sísara buscó su tienda. Y explica algo bonito: Jael no heredó la neutralidad de su esposo. Ella pensó por sí misma."
+      q: "¿Por qué confundió y asustó a los madianitas el sonido de 300 cuernos?",
+      a: "Porque no eran 300 cuernos sonando desde un solo lugar. Estaban repartidos alrededor de todo el campamento, en tres grupos, y a cada cuerno le acompañaban el estruendo de un jarrón hecho pedazos y una antorcha encendida en la oscuridad. En la noche, aquello sonaba como un ejército innumerable que los rodeaba por todos lados. Y era justo lo que Jehová quería que pensaran: que los había rodeado alguien más grande que ellos."
     },
     {
-      q: "¿De qué manera fortaleció al pueblo de Dios la victoria sobre Sísara y Jabín muchos años después?",
-      a: "Porque se volvió un argumento. Siglos más tarde, el salmista le pidió a Jehová que hiciera con sus enemigos «como a Sísara, como a Jabín en el valle torrencial de Cisón» (Salmo 83:9, 10). Cuando uno recuerda una victoria que Jehová ya dio, le cuesta menos creer que dará la siguiente. Así funciona la memoria de la fe: lo que Jehová hizo una vez es la garantía de lo que hará."
+      q: "¿Qué tuvieron que hacer Gedeón y su ejército para derrotar a los madianitas?",
+      a: "Obedecer al pie de la letra y quedarse quietos. Gedeón les dijo: «Obsérvenme y hagan exactamente lo mismo que yo». Cuando dio la señal, tocaron los cuernos, rompieron los jarrones, levantaron las antorchas y gritaron. Y después, lo más difícil: permanecer en su puesto sin moverse. No pelearon con espadas esa noche; Jehová hizo que el enemigo se atacara a sí mismo. La victoria empezó por una obediencia que no tenía lógica humana."
     },
     {
-      q: "¿Qué podemos destacar de la manera en que Débora honró a Jael?",
-      a: "Que no tuvo envidia. Jael fue la que mató a Sísara, y Débora, que era la profetisa, pudo haberse sentido desplazada. En vez de eso la llamó «la más bendita de las mujeres». Para Débora lo importante era que se cumpliera la palabra de Jehová, no quién se llevaba el crédito. Eso dice muchísimo de ella."
+      q: "¿Cómo pueden los cabezas de familia y los ancianos imitar a Gedeón cuando alguien se molesta con ellos?",
+      a: "Con la respuesta que le dio a Efraín. Ellos llegaron furiosos porque no los había llamado a la batalla, y él no se defendió ni les recordó quién había ganado. Les dio la razón en lo que tenían de razón y les habló con humildad. El resultado fue que se calmaron. Un anciano que responde así no pierde autoridad; la gana. Y en una familia pasa lo mismo: bajar el tono a tiempo evita una guerra que no hacía falta."
     },
     {
-      q: "¿En qué situaciones podría necesitar valor una hermana que tiene un esposo no Testigo?",
-      a: "En cosas que desde fuera parecen pequeñas: pedir permiso para ir a la reunión, decidir cómo educar a los hijos, decir con respeto que no va a participar en cierta costumbre. Y a veces el valor más grande es el de no contestar mal y responder con cariño. No es un valor de una sola vez; es de todos los días."
-    },
-    {
-      q: "¿Qué nos enseña el ejemplo de Jael sobre las limitaciones que tengamos?",
-      a: "Que Jehová no necesita que seamos lo que no somos. Jael no podía reunir un ejército como Barac ni hablar en nombre de Dios como Débora. Podía hacer una cosa, y la hizo. Nosotros a veces nos comparamos con lo que hacen otros y concluimos que no servimos. Su ejemplo nos recuerda que Jehová usa lo que cada uno tiene."
+      q: "¿En qué situaciones puede que tengamos que ser valientes y prudentes a la vez?",
+      a: "En la escuela, por ejemplo, cuando un compañero insiste en que hagas algo que va contra tu conciencia. Ser valiente es decir que no; ser prudente es decirlo sin agrandar el problema, con respeto y sin buscar pelea. También en el trabajo, cuando te piden algo deshonesto o quieren obligarte a participar en una celebración. Y a veces en la familia: hay que ser firme en lo que uno cree, y a la vez cuidadoso con las palabras."
     },
     {
       q: "¿Qué me enseña este relato sobre Jehová?",
-      a: "Que él ve la valentía donde otros no la ven. Durante siglos hubo quienes criticaron a Jael y la llamaron fría y calculadora; Jehová en cambio la llamó bendita, y su historia se sigue contando 32 siglos después. También me enseña que cumple lo que dice: había anunciado que Sísara moriría a manos de una mujer, y así fue."
+      a: "Que él puede hacer mucho con poco. Redujo el ejército de 32.000 a 300 para que nadie pudiera decir que la victoria fue suya. Eso me quita presión: no tengo que ser impresionante para que Jehová me use. Y me enseña algo más sobre su paciencia: Gedeón le pidió señal tras señal, y él se las dio sin regañarlo. Con nosotros tiene la misma paciencia."
+    },
+    {
+      q: "¿Cómo se relaciona este relato con el propósito de Jehová?",
+      a: "Gedeón liberó a Israel de un enemigo que los oprimía, y lo hizo con un ejército diminuto para que quedara claro quién era el libertador. Eso es un anticipo de lo que hará el Reino: Jehová no va a necesitar ejércitos poderosos para acabar con la opresión. Y el nombre de Gedeón aparece en la lista de hombres y mujeres de gran fe de Hebreos 11:32, lo que nos recuerda que él sigue siendo parte de la historia que termina en el nuevo mundo."
     }
   ]
 };
 
 var LECTURA_P3={
-  pasaje: "Lamentaciones 1:8-18",
+  pasaje: "Lamentaciones 3:19-42",
   libro: 25,
-  capitulo: 1,
-  leccionKey: "th10",
-  textoCompleto: "8 Jerusalén ha pecado gravemente. Por eso se ha convertido en algo repugnante. Todos los que antes la honraban ahora la tratan con desprecio, pues han visto su desnudez. Ella misma lanza quejidos y vuelve la espalda avergonzada. 9 Su impureza está en sus faldas. Ella no pensó en su futuro. Su caída fue impactante; no tiene quien la consuele. Oh, Jehová, mira cómo sufro, porque el enemigo se ha dado aires de grandeza. 10 El enemigo echó mano a todos los tesoros de ella. Ella vio entrar naciones en su propio santuario, naciones que tú prohibiste que entraran en tu congregación. 11 Toda su gente está suspirando; anda buscando pan. Han entregado sus cosas valiosas a cambio de algo para comer, tan solo para sobrevivir. Mira, oh, Jehová, fíjate en mí, he acabado como una mujer que no vale nada. 12 Todos ustedes, los que pasan por el camino, ¿acaso les da igual? ¡Miren y vean! ¿Existe algún dolor como el dolor que se me ha causado a mí, el que Jehová me hizo sufrir el día de su furia ardiente? 13 Desde lo alto ha mandado un fuego que se me ha metido en los huesos, y él domina cada uno de ellos. Ha tendido una red para mis pies; me ha obligado a retroceder. Ha hecho de mí una mujer desolada. Estoy enferma todo el día. 14 Mis pecados están amarrados como un yugo, atados por las manos de él. Fueron puestos en mi cuello, y las fuerzas me fallaron. Jehová me ha entregado en manos de aquellos a quienes no puedo hacer frente. 15 Jehová me ha quitado a todos los hombres fuertes que había en medio de mí. Ha convocado contra mí una multitud para aplastar a mis hombres jóvenes. Jehová ha pisoteado a la hija virgen de Judá en el lagar de vino. 16 Estoy llorando por estas cosas; mis ojos se inundan de lágrimas. Porque todos los que podrían consolarme o reconfortarme están lejos de mí. Mis hijos están desolados porque el enemigo ha vencido. 17 Sion ha extendido las manos; no tiene a nadie que la consuele. Jehová les dio una orden contra Jacob a todos los enemigos que lo rodean. Jerusalén se ha convertido en algo repugnante para ellos. 18 Jehová es justo, porque es contra sus mandatos que yo me he rebelado. Escuchen, pueblos todos, y vean mi dolor. Mis muchachas y mis hombres jóvenes se han ido al cautiverio.",
-  leccion: "th lección 10 — Modular la voz",
+  capitulo: 3,
+  leccionKey: "th12",
+  textoCompleto: "19 Acuérdate de que estoy afligido y sin hogar, acuérdate del ajenjo y del amargo veneno. 20 Seguro que te acordarás y te inclinarás hacia mí. 21 Recuerdo esto en mi corazón; por eso esperaré pacientemente. 22 Es gracias al amor leal de Jehová que no ha llegado nuestro fin, porque sus muestras de misericordia nunca se acaban. 23 Son nuevas cada mañana; grande es tu fidelidad. 24 “Jehová es la parte que me corresponde —dije yo—, por eso lo esperaré pacientemente”. 25 Bueno es Jehová con quien pone sus esperanzas en él, con quien no deja de buscarlo. 26 Bueno es esperar en silencio la salvación de Jehová. 27 Bueno es para el hombre cargar el yugo durante su juventud. 28 Que se quede sentado solo y en silencio cuando él se lo ponga encima. 29 Que ponga su boca en el polvo; quizás todavía haya esperanza. 30 Que le ponga la mejilla al que lo golpea; que reciba insultos hasta hartarse. 31 Porque Jehová no nos rechazará para siempre. 32 Aunque haya causado dolor, también mostrará misericordia debido a su gran amor leal. 33 Porque a él no le produce ningún placer causarles sufrimiento ni dolor a los hijos de los hombres. 34 Aplastar con los pies a todos los prisioneros de la tierra, 35 negarle la justicia a un hombre en presencia del Altísimo 36 y perjudicar a un hombre en su pleito legal son cosas que Jehová no tolera. 37 Entonces, ¿quién puede decir algo y hacer que eso suceda a menos que Jehová lo ordene? 38 De la boca del Altísimo no salen cosas malas junto con cosas buenas. 39 ¿Acaso debería alguien quejarse de las consecuencias de su pecado? 40 Examinemos y analicemos nuestra conducta, y volvamos a Jehová. 41 Alcemos nuestro corazón y nuestras manos hacia Dios en los cielos diciendo: 42 “Hemos pecado y nos hemos rebelado, y tú no nos has perdonado.",
+  leccion: "th lección 12 — Mostrar amabilidad y empatía",
   consejos: [
-    "Este es un lamento, no un relato: léalo con un tono más grave y sin prisa.",
-    "Suba el volumen en la queja del versículo 12 («¡Miren y vean!») y bájelo en los versículos 16 y 17.",
-    "Vaya más despacio en el versículo 18: «Jehová es justo» es el reconocimiento final.",
-    "No sea dramático ni exagere; el pasaje ya es fuerte por sí mismo. La meta es que se entienda."
+    "Piense en sus oyentes. Este pasaje no es un informe: es el dolor de una persona. Léalo pensando en quien lo escucha, no en quien lo escribió.",
+    "Elija bien el tono. La lección pide un tono de voz agradable y gestos apropiados. Aquí eso significa leer sin dureza, con calma, como quien acompaña.",
+    "Refleje el sentimiento del relato, pero sin exagerar. En los versículos 19 a 24 hay una subida de la tristeza a la esperanza; que se note en la voz, sin dramatizar.",
+    "Alargue un poco las vocales y no golpee las consonantes. Es un consejo de la lección que suaviza la lectura y la hace más cálida.",
+    "Baje la voz y vaya más despacio en los versículos 40 a 42, que son una confesión. Que la última frase se oiga como lo que es: una puerta abierta."
   ]
 };
 
 var ATALAYA={
-  intro: "Artículo de estudio para la semana del 16 al 22 de noviembre de 2026. Texto base: Zacarías 8:23: «En esos días, 10 hombres de todos los idiomas de las naciones se agarrarán [...] de la túnica de un judío». Tema: cómo está participando el pueblo de Jehová en el cumplimiento de esa profecía. Canción inicial: 84, «Servimos donde se nos necesite». Canción final: 57, «Predicamos a toda clase de personas».",
+  intro: "Artículo de estudio para la semana del 23 al 29 de noviembre de 2026. Texto base: Hebreos 5:1: «Cualquier hombre elegido sumo sacerdote es nombrado para actuar a favor de los hombres». Tema: por qué meditar en el sacerdocio nos acerca más a Jehová. El artículo repasa cómo benefició el sacerdocio a los siervos de Dios en tiempos bíblicos, cómo nos beneficia ahora y cómo lo hará en el futuro. Canción inicial: 107, «Dios nos enseñó a amar». Canción final: 16, «Alabemos a Jehová por su Hijo, el Ungido».",
+  aplicacion: "Meditar en el sacerdocio cambia la manera en que me veo. Si Jehová montó todo un sistema para poder perdonarme y acercarme, entonces el mensaje no es «no sirves», sino «ven». Esta semana puedo demostrarlo orando con más confianza, sobre todo cuando me sienta indigno.",
+  cierre: "El sacerdocio es la prueba de que Jehová no se resignó al abismo. Lo cerró él, a su manera y a su costo. Nuestra parte es sencilla: acercarnos.",
   parrafos: [
     {
       num: "1",
-      texto: "Jehová detuvo a los rebeldes que querían construir la Torre de Babel haciendo que hablaran idiomas diferentes. Los seres humanos se agruparon con los que hablaban el mismo idioma y acabaron esparciéndose por todo el planeta. Sin embargo, el propósito de Dios es reunir «una gran muchedumbre [...] de todas las naciones, tribus, pueblos y lenguas» para que sobreviva a la gran tribulación y entre en el nuevo mundo. Sin duda, esas personas necesitan recibir el mensaje del Reino en un idioma que entiendan, pues solo así podrán invocar el nombre de Jehová durante la gran tribulación. ¿Verdad que es un gran honor participar en esta obra que salva vidas?",
-      pregunta: "1. ¿Por qué es vital predicar las buenas noticias en muchos idiomas?",
-      respuesta: "Porque nadie puede invocar a alguien de quien nunca ha oído hablar. Romanos 10:13, 14 lo presenta como una cadena: para salvarse hay que invocar el nombre de Jehová, para invocarlo hay que tener fe, y para tener fe hay que oír. Y alguien tiene que hablar. Eso hace que usar nuestras publicaciones en otros idiomas no sea un detalle de organización: es parte de que la gente se salve."
+      texto: "Todos los seres humanos, lo sepan o no, están en una situación desesperada por culpa del pecado heredado de Adán y Eva, que hace que la humanidad esté alejada de Dios (Efesios 2:12; Colosenses 1:21). Es como si el pecado hubiera abierto un abismo entre él y los seres humanos, y ninguno puede cruzarlo por sí mismo. Sin ayuda, nuestra vida no tendría sentido y nuestro futuro no tendría esperanza. Por eso Jehová hizo algo para ayudarnos.",
+      pregunta: "1. ¿Por qué estamos todos los seres humanos en una situación desesperada?",
+      respuesta: "Por el pecado que heredamos, no por algo que hayamos elegido. El artículo lo llama un abismo, y me parece una imagen exacta: uno puede estirar los brazos todo lo que quiera, pero no llega al otro lado. Lo que me consuela es que el diagnóstico no es el final del artículo; es el principio. Si el problema fuera solo nuestro, no tendríamos salida."
     },
     {
       num: "2",
-      texto: "Cientos de años antes de que el apóstol Juan escribiera el libro de Apocalipsis, Jehová inspiró a Zacarías para que profetizara: «Muchas naciones se unirán a Jehová [...] y llegarán a ser mi pueblo» (Zacarías 2:11). Y también: «Esto es lo que dice Jehová de los ejércitos: “En esos días, 10 hombres de todos los idiomas de las naciones se agarrarán [...] con firmeza de la túnica de un judío y dirán: ‘Queremos ir con ustedes, porque hemos oído que Dios está con ustedes’”» (Zacarías 8:23). Esta emocionante profecía se está cumpliendo en nuestros días.",
-      pregunta: "2. ¿Qué profetizó Zacarías?",
-      respuesta: "Que la gente no vendría por obligación, sino porque querría. Diez hombres de distintos idiomas se agarrarían de la túnica de un judío y dirían: «Queremos ir con ustedes». Y fíjese en dónde nace ese deseo: en algo que oyeron. Alguien se lo contó. Ese alguien podemos ser nosotros."
+      texto: "Para ayudar a los seres humanos pecadores a acercarse a él, Jehová instituyó el sacerdocio. Les dio ese regalo primero a los israelitas y después a los cristianos, incluidos nosotros hoy día. En este artículo veremos cómo benefició el sacerdocio a los siervos de Dios en tiempos bíblicos, cómo nos beneficia ahora y cómo lo seguirá haciendo en el futuro, y cómo muestra el inmenso amor que Jehová siente por nosotros.",
+      pregunta: "2. ¿Qué veremos en este artículo?",
+      respuesta: "Un recorrido por el pasado, el presente y el futuro del sacerdocio. Y la idea que lo une es sencilla: no es un tema de historia antigua. Es una muestra de cariño que empezó hace miles de años y que todavía está funcionando hoy."
     },
     {
       num: "3",
-      texto: "Los «10 hombres» de la profecía de Zacarías representan a los humildes siervos de Dios que tienen la esperanza de vivir para siempre en la Tierra. Ellos vienen de todas partes del mundo y hablan muchos idiomas distintos. Por otro lado, el «judío» representa a los cristianos que Dios ha ungido con su espíritu santo. También se les conoce como «el Israel de Dios» (Gálatas 6:16). Ellos han recibido «la llamada celestial» (Hebreos 3:1).",
-      pregunta: "3. ¿A quiénes representan los «10 hombres» y el «judío»?",
-      respuesta: "Los diez hombres somos los que esperamos vivir para siempre en la Tierra; venimos de todas partes y hablamos idiomas distintos. El judío representa a los cristianos ungidos, el Israel de Dios. Y lo que más me gusta de la imagen es el verbo: no dice que se acercaron por curiosidad, dice que se agarraron con firmeza. Es gente que no quiere soltarse."
+      texto: "El apóstol Pablo explicó por inspiración por qué Jehová instituyó el sacerdocio en Israel (Hebreos 5:1). Quería ayudar a los israelitas a acercarse a él. El sumo sacerdote nombrado por Jehová tenía la responsabilidad de «actuar a favor de los hombres en las cosas relacionadas con Dios». Él y los demás sacerdotes ayudaban a quienes deseaban adorar a Jehová a acercarse a él, a cruzar el abismo que los separaba de Dios.",
+      pregunta: "3. Según Hebreos 5:1, ¿cómo ayudaba el sacerdocio a quienes deseaban adorar a Jehová?",
+      respuesta: "Les daba un camino para acercarse. Note que el texto dice «a favor de los hombres»: el sacerdote no estaba allí para impresionar a la gente, sino para servirla. Y eso ya dice mucho de Jehová, porque fue idea suya. Él no puso un guardia en la entrada; puso a alguien que ayudara a pasar."
     },
     {
       num: "4",
-      texto: "En 1919, Cristo eligió a un grupo de cristianos ungidos para que fueran «el esclavo fiel y prudente» (Mateo 24:45). Aquellos hermanos se dieron cuenta de que habría que traducir el mensaje de la Biblia a muchos idiomas y darlo a conocer en muchos países. Los Estudiantes de la Biblia ya contaban con el «Foto-Drama de la Creación», que lo habían traducido a varios idiomas. Pero el esclavo comprendió que no bastaba con eso, se necesitaba más. Por ejemplo, el manual de estudio bíblico El Arpa de Dios, que se publicó en inglés en 1921, con el tiempo se tradujo a 36 idiomas. Además, en 1935 se entendió claramente a quiénes representa la «gran muchedumbre», y eso permitió ver que el trabajo que había por delante era inmenso.",
-      pregunta: "4. ¿Qué pasó después de que Jesús nombró al «esclavo fiel y prudente»?",
-      respuesta: "Que el esclavo se puso a trabajar en serio. Primero con el Foto-Drama, luego traduciendo libros a decenas de idiomas, y después entendiendo mejor quiénes formarían la gran muchedumbre. Cada vez que se aclaraba una verdad, la obra crecía. Eso me dice mucho de esta organización: no se queda quieta."
+      texto: "Los sacerdotes ayudaban a los israelitas a acercarse a Jehová de dos maneras. Primero, eran los representantes de Dios ante los seres humanos, pues les enseñaban acerca de Jehová. Malaquías 2:7 dice: «Los labios de un sacerdote deben proteger el conocimiento [...] porque él es el mensajero de Jehová de los ejércitos». En tiempos de Nehemías, 13 levitas ayudaron al sacerdote Esdras a explicarle al pueblo el significado de lo que se leía en la Ley, y así el pueblo pudo entender y aplicar las normas de Dios (Nehemías 8:2, 3, 6-8).",
+      pregunta: "4. ¿En qué sentido eran los sacerdotes los representantes de Dios ante los seres humanos?",
+      respuesta: "En que enseñaban. El sacerdote no solo ofrecía sacrificios; también explicaba. Y fíjese en el detalle de Nehemías: no bastaba con leer la Ley, había que explicarla para que la gente la entendiera. Eso me hace valorar mucho a los maestros que hoy hacen lo mismo con nosotros, porque entender es lo que permite obedecer de corazón."
     },
     {
-      num: "5, 6",
-      texto: "A medida que las buenas noticias se fueron predicando en más y más idiomas, personas sinceras de todas las naciones fueron invitadas a la casa de Jehová para que aprendieran sus caminos, tal como profetizó Isaías (Isaías 2:2-4). Para llegar a estas personas y atenderlas, los siervos de Dios se han ofrecido voluntariamente, y no solo para predicar, sino también para traducir, imprimir y enviar nuestras publicaciones bíblicas en cada vez más idiomas. Además, muchos hermanos y hermanas expertos en informática han diseñado y mantienen programas como JW Library, así como nuestro sitio web, que está disponible en una enorme cantidad de idiomas. El alimento espiritual que proporciona el esclavo fiel y prudente está beneficiando a personas de muchísimos idiomas y países. Y una forma en la que ellas demuestran su agradecimiento es haciendo donaciones para la obra mundial. Gracias a los aportes de todos, estas publicaciones que salvan vidas están disponibles en más de 1.100 idiomas. Y, como resultado, todos los años se bautizan cientos de miles de personas.",
-      pregunta: "5, 6. ¿Cómo se están cumpliendo hoy día las palabras de Isaías 2:2-4?",
-      respuesta: "Se cumplen cada vez que alguien que no sabía nada de la Biblia aprende a andar en los caminos de Jehová. Isaías dice que las naciones afluirían a la montaña de Jehová y que convertirían las espadas en arados. Eso pasa hoy con personas que dejan el odio y aprenden a vivir en paz. Y detrás de cada una hay hermanos que se ofrecieron: traductores, impresores, informáticos."
+      num: "5",
+      texto: "Segundo, eran los representantes de los seres humanos ante Dios, pues ofrecían sacrificios en nombre del pueblo. Los israelitas sabían que todos los días cometían errores y pecados, y que necesitaban que Jehová los borrara (Salmo 51:9). Los sacerdotes hacían eso posible al ofrecer sacrificios. ¿Nos imaginamos el alivio que sentían al saber que sus pecados habían sido perdonados? Sin duda, el regalo del sacerdocio destaca el amor y la compasión de Jehová y el interés que tiene en el bienestar y la salvación de sus siervos.",
+      pregunta: "5. ¿En qué sentido eran los sacerdotes los representantes de los seres humanos ante Dios, y qué nos enseña esto sobre Jehová?",
+      respuesta: "Eran los que llevaban las ofrendas del pueblo ante Dios. Y lo que me enseña es que a Jehová no le da igual que carguemos con culpa. Él mismo diseñó un sistema para que la gente pudiera descargarse. Si alguien tan grande se toma la molestia de inventar la manera de perdonarnos, es que le importamos de verdad."
+    },
+    {
+      num: "6",
+      texto: "Jehová siempre ha querido tener una buena relación con sus siervos obedientes. En tiempos de los patriarcas, mucho antes de que se formara la nación de Israel, el cabeza de familia solía ofrecer sacrificios por él y por los miembros de su casa. Noé le hizo sacrificios a Jehová al salir del arca (Génesis 8:20). Abrahán construyó altares para hacer sacrificios (Génesis 12:7, 8). Y Job tenía la costumbre de ofrecer sacrificios quemados a favor de sus hijos (Job 1:5). Por eso la Biblia habla de sacerdotes antes de que existiera el sacerdocio en Israel.",
+      pregunta: "6. ¿Por qué habla la Biblia de sacerdotes incluso antes de que se estableciera el sacerdocio en Israel?",
+      respuesta: "Porque la necesidad era anterior a la Ley. Mucho antes del templo y de Aarón, los padres de familia ya buscaban la manera de acercarse a Dios por los suyos. Eso demuestra que el sacerdocio no fue una ocurrencia tardía de Jehová, sino algo que responde a una necesidad que existe desde el principio."
     },
     {
       num: "7",
-      texto: "Los siervos de Jehová contamos con herramientas que nos permiten superar las barreras lingüísticas. Predicamos unidos «buenas noticias eternas [...] a toda nación, tribu, lengua y pueblo» con la ayuda del «ángel» mencionado en Apocalipsis 14:6. Al ver cómo se cumplen en nuestros tiempos profecías tan emocionantes como esta de Apocalipsis y la de Zacarías, nos convencemos de que las demás también se harán realidad y estamos aún más decididos a ser leales a la organización que Jehová utiliza para proclamar las buenas noticias.",
-      pregunta: "7. ¿Qué efecto tiene en nosotros ver el cumplimiento de Apocalipsis 14:6?",
-      respuesta: "Nos da confianza en las demás promesas. Si Jehová ya está haciendo que las buenas noticias lleguen a toda nación, tribu, lengua y pueblo, entonces lo que falta también se cumplirá. A mí me ayuda a no ver la predicación como una tarea sin final, sino como una profecía que se está cumpliendo delante de mis ojos."
+      texto: "La primera persona a la que la Biblia llama específicamente sacerdote es Melquisedec (Génesis 14:18). Además de ser sacerdote, era rey. Tiempo después, Jehová prometió que el Mesías también sería rey y sacerdote, igual que Melquisedec, pero su reinado traería beneficios eternos para la humanidad (Salmo 110:4; Hebreos 7:17).",
+      pregunta: "7. ¿Quién era Melquisedec, y en qué se parecería el Mesías a él?",
+      respuesta: "Era rey y sacerdote a la vez, algo que en Israel no se mezclaba. Y el Mesías sería igual: rey y sumo sacerdote. Lo que me impresiona es la diferencia que añade el artículo: el reinado del Mesías no traería beneficios para unos años, sino eternos. Por eso el sacerdocio de Melquisedec apuntaba hacia algo muchísimo más grande."
     },
     {
       num: "8",
-      texto: "En el Pentecostés del año 33, Jehová usó su poder para hacer algo asombroso: les dio a los discípulos de Jesús la capacidad de hablar en idiomas que no conocían y así contrarrestó lo que pasó en la Torre de Babel (Hechos 2:4-10). Hizo este milagro porque quería que las personas de distintas naciones que habían ido a Jerusalén a adorarlo escucharan «las cosas magníficas de Dios» en su idioma (Hechos 2:11). ¿Y en nuestros días? Podemos usar nuestras publicaciones para que hablen por nosotros en los idiomas de las personas a las que predicamos.",
-      pregunta: "8. ¿Cómo contrarrestó Jehová en el año 33 lo que pasó en la Torre de Babel?",
-      respuesta: "Haciendo lo contrario. En Babel confundió los idiomas para dispersar a la gente; en Pentecostés les dio a los discípulos la capacidad de hablar idiomas que no conocían, para reunir a gente de muchas naciones. Fue un milagro con un propósito muy claro: que cada uno oyera «las cosas magníficas de Dios» en su propio idioma."
+      texto: "Posteriormente, Jehová formó la nación de Israel y le dio la Ley de Moisés, que incluía las instrucciones del sacerdocio. Eligió a Aarón, hermano de Moisés, y a sus descendientes para que fueran los sacerdotes (Éxodo 40:12-15). Su labor era ofrecer sacrificios por los israelitas, a veces por toda la nación y a veces por personas individuales. Para apoyarlos, Jehová asignó a los levitas y dio pautas específicas sobre los sacrificios, su propósito y la manera de presentarlos. El sacerdocio en Israel fue un anticipo de algo mejor.",
+      pregunta: "8. ¿Quiénes eran los sacerdotes en Israel, y cuál era su labor?",
+      respuesta: "Aarón y sus descendientes, con los levitas de apoyo. Y lo que hacían era servir a la gente: ofrecer sacrificios por la nación y también por personas concretas. Me gusta ese equilibrio, porque dice mucho de Jehová. No se le escapaba el pueblo entero, y tampoco se le escapaba el individuo que llegaba con su problema."
     },
     {
-      num: "9",
-      texto: "Las personas necesitan oír las buenas noticias en un idioma que entiendan. Pongamos un ejemplo: un hombre viaja a un país donde se habla otro idioma. Estando allí se enferma y va al hospital. Para entender las instrucciones del médico, necesitará que alguien se las traduzca. De forma parecida, hoy muchísimas personas están sufriendo en sentido espiritual y emocional, y necesitan el alivio y la esperanza que ofrece la Biblia. Nosotros podemos darles esa ayuda usando publicaciones y videos en un idioma que entiendan.",
-      pregunta: "9. ¿Qué podemos hacer para que quienes no hablan nuestro idioma oigan las buenas noticias?",
-      respuesta: "Usar lo que ya tenemos. Un folleto, un tratado o un video en su idioma vale más de lo que parece, sobre todo si conocemos bien el material y podemos señalarle qué leer. El ejemplo del hombre que se enferma en otro país me gustó mucho: necesita que alguien le traduzca las instrucciones del médico. Nosotros podemos ser esa persona en sentido espiritual."
+      num: "9, 10",
+      texto: "El gran templo espiritual de Jehová llegó a existir cuando Jesús se bautizó, y en ese momento él llegó a ser el Sumo Sacerdote (Hebreos 8:1). Más tarde ofreció su vida humana perfecta por nosotros, un sacrificio mucho mejor que los de Israel. ¿Por qué? Porque los sacrificios de animales no podían limpiar por completo los pecados, pero el de Jesús sí. Hoy sigue siendo nuestro Sumo Sacerdote y se presenta delante de Dios a favor nuestro (Hebreos 9:24). Cuando el Reino de Dios gobierne la Tierra, los 144.000 serán reyes y sacerdotes junto a Jesús (1 Pedro 1:3, 4; 2:9). Entonces Jehová, Jesús y los 144.000 ayudarán a los seres humanos obedientes a alcanzar la perfección y a convertir la Tierra en un paraíso.",
+      pregunta: "9, 10. ¿Quiénes serán sacerdotes con Jesús durante el Reinado de Mil Años?",
+      respuesta: "Los 144.000, los cristianos ungidos. Y hay un contraste que vale la pena ver: antes, los sacerdotes ofrecían animales que nunca podían limpiar del todo; Jesús ofreció algo que sí limpia. Ya no hay que repetir y repetir. Y cuando los seres humanos sean perfectos, ese trabajo sacerdotal habrá cumplido su misión, como un andamio que se quita después de construir."
     },
     {
-      num: "10, 11",
-      texto: "Un hermano llamado Robert, que solo habla inglés, estaba predicando en un puerto. Empezó una conversación con un hombre de Turquía que estaba trabajando en un barco. Como hablaba muy poquito inglés, Robert le dio el folleto Buenas noticias de parte de Dios en turco. Lo bueno es que Robert conocía muy bien el folleto, así que pudo pedirle que leyera párrafos específicos. El hombre le hizo algunas preguntas sobre la situación mundial y Robert utilizó la aplicación JW Library para mostrarle las respuestas de la Biblia en turco. El hombre exclamó asombrado: «¡Es como si hablaras mi idioma!». Estuvieron hablando como una hora. Entregar un tratado o mostrar un artículo de jw.org en un idioma que entienda la persona tal vez parezca un gesto pequeño, pero puede tener un efecto tremendo. Una refugiada de la cultura hmong llamada Youa, que no hablaba inglés y a quien su esposo no le permitía leer nada, recibió el tratado La vida en un pacífico nuevo mundo en su idioma. Lo guardó durante años en su cesta de coser y lo leía a escondidas una y otra vez. Con el tiempo, una de sus hijas aprendió la verdad y la llevó a una reunión en hmong, y Youa empezó a estudiar.",
-      pregunta: "10, 11. ¿Qué nos enseñan la experiencia de Robert y la del recuadro «Una refugiada encuentra esperanza»?",
-      respuesta: "Que no hace falta hablar el idioma de la persona para ayudarla. Robert solo sabía inglés y estuvo una hora conversando con un turco, porque le dio un folleto en su idioma y usó la aplicación para mostrarle los textos. El hombre le dijo: «¡Es como si hablaras mi idioma!». Y el caso de Youa demuestra que un tratadito puede valer muchísimo, incluso años después."
+      num: "11",
+      texto: "El sacerdocio nos muestra que Jehová desea que sus siervos sean sus amigos cercanos. El pecado abrió un abismo entre los seres humanos y Jehová, pero él está decidido a cerrarlo para siempre. Quiere que podamos acercarnos a él, tener su aprobación, ser sus amigos y liberarnos del pecado y la muerte (2 Corintios 5:18). Sabe que la imperfección no es algo que hayamos elegido, sino algo que hemos heredado. Debido a su gran misericordia, ha hecho lo necesario para que cada uno pueda acercarse a él y agradarle.",
+      pregunta: "11. ¿Qué es lo primero que nos muestra el sacerdocio sobre Jehová?",
+      respuesta: "Que quiere ser nuestro amigo, no solo nuestro Juez. Y que sabe de qué material estamos hechos: no se le olvida que la imperfección la heredamos. Eso cambia la manera en que leo mi propio historial. Él no me está mirando con lupa esperando la falla; está esperando que me acerque."
     },
     {
       num: "12",
-      texto: "Desde hace siglos, muchos traductores han trabajado para que la Palabra de Dios llegue a más personas. Gracias a su incansable labor, hoy podemos leer la Biblia en un idioma que entendemos. Una herramienta que ha sido clave para unir al pueblo de Jehová es la Traducción del Nuevo Mundo, que está disponible entera o en parte en más de 300 idiomas. Hablando de ella, un anciano que sirve en Nepal dice: «Leerla en mi idioma ha hecho que Jehová sea más real para mí. Me ha acercado a él y ha fortalecido mi fe». Sin importar el idioma en que se lea, transmite el mismo mensaje y es igual de clara y confiable.",
-      pregunta: "12. ¿Qué efecto ha tenido la Traducción del Nuevo Mundo en el pueblo de Jehová, y por qué?",
-      respuesta: "Nos ha unido. Un anciano de Nepal dijo que leerla en su idioma hizo que Jehová fuera más real para él. Y eso pasa porque el mensaje es el mismo en todos los idiomas: las mismas creencias, las mismas verdades. Cuando uno viaja y entra a una reunión en otro país, escucha exactamente lo mismo. Eso no es casualidad."
+      texto: "Jesús también quiere que seamos buenos amigos de Jehová. Como Sumo Sacerdote, es «un ayudante que está junto al Padre» y que intercede por nosotros cuando hacemos algo malo (1 Juan 2:1; Hebreos 7:25). ¿Qué toma en cuenta cuando habla por nosotros? Quizás se fije en cómo han influido en nosotros nuestra crianza, nuestras vivencias y nuestra salud física y emocional. Puede que también tenga presentes nuestras cualidades, las cosas buenas que hacemos y nuestro historial de servicio fiel. Además, está al tanto de lo que pensamos y sentimos y de nuestras oraciones pidiendo perdón.",
+      pregunta: "12. ¿Por qué nos reconforta que Jesús, nuestro Sumo Sacerdote, hable por nosotros ante Jehová?",
+      respuesta: "No habla como un fiscal. Habla como alguien que conoce el caso completo: cómo crecimos, lo que hemos vivido, cómo estamos de salud, y también lo bueno que hemos hecho. Cuando uno se siente reducido a su peor error, es un alivio saber que hay alguien a favor mostrando el cuadro entero."
     },
     {
       num: "13",
-      texto: "La Traducción del Nuevo Mundo usa el nombre de Dios miles de veces y así le da la honra que merece. Hace unos 100 años, todavía existían muchas versiones bíblicas que contenían el nombre de Jehová, sobre todo en las Escrituras Hebreas. Sin embargo, en la actualidad hay muy pocas que lo mantengan. Los líderes de las religiones que afirman ser cristianas están cada vez más en contra de usarlo o darlo a conocer. La Iglesia católica lo ha eliminado de sus Biblias y del resto de sus publicaciones, y la mayoría de las confesiones protestantes también lo han eliminado de sus traducciones.",
-      pregunta: "13. ¿Por qué muy pocas Biblias contienen hoy el nombre de Jehová?",
-      respuesta: "Por decisiones humanas, no por falta de apoyo bíblico. El artículo menciona que la Iglesia católica lo eliminó y que la mayoría de las confesiones protestantes hicieron lo mismo. Y no es un detalle pequeño: si una Biblia quita el nombre de Dios, el lector no puede invocar a alguien que no conoce. Nosotros tenemos el privilegio de tenerlo en nuestra traducción."
+      texto: "Gracias a la labor de Jesús como Sumo Sacerdote, podemos orarle a Jehová con libertad (Hebreos 4:16). A nuestro Padre le encanta escuchar nuestras oraciones, pues cuando le oramos demostramos que confiamos en él. Quizás a veces nos cueste encontrar las palabras o estemos tan angustiados que no sepamos qué pedir (Romanos 8:26). Incluso en esos casos, él nos escucha, nos entiende y nos responde. No dudemos en contarle a nuestro cariñoso Padre celestial cualquier cosa que nos preocupe.",
+      pregunta: "13. Según Hebreos 4:16, ¿qué otra cosa es posible gracias a la labor de nuestro Sumo Sacerdote, y cómo nos beneficia eso?",
+      respuesta: "Que podamos acercarnos «con confianza» a Jehová. Confianza, no miedo. Y eso alcanza incluso a las oraciones que salen mal, esas en las que uno no sabe qué pedir. El artículo dice que él nos entiende igual. Así que no hay excusa para quedarse callado por no saber decirlo bien."
     },
     {
       num: "14",
-      texto: "La Biblia enseña una y otra vez que es muy importante conocer y usar el nombre de Dios. El salmista les da esta instrucción a los siervos de Dios: «Alaben el nombre de Jehová» (Salmo 135:1). Jesús les enseñó a sus discípulos que, al orar a Jehová, le dijeran: «Que tu nombre sea santificado». Y, más tarde, en una oración a su Padre, le dijo: «He dado a conocer tu nombre» (Mateo 6:9; Juan 17:26). Además, el apóstol Pablo citó del profeta Joel y escribió: «Todo el que invoque el nombre de Jehová será salvado» (Romanos 10:13).",
-      pregunta: "14. ¿Cómo muestra la Biblia lo importante que es conocer y usar el nombre de Dios?",
-      respuesta: "Lo muestra de principio a fin. El salmista dice «Alaben el nombre de Jehová»; Jesús enseñó a orar «Que tu nombre sea santificado» y dijo de sí mismo «He dado a conocer tu nombre». Y Pablo repite que todo el que invoque el nombre de Jehová será salvado. No es un tema secundario: atraviesa toda la Biblia."
+      texto: "El sacerdocio también nos deja ver que Jehová quiere que vivamos para siempre (Ezequiel 33:11). Los sacrificios de animales no limpiaban por completo los pecados (Hebreos 7:19), pero servían para que los israelitas entendieran que necesitaban un sacrificio mejor: la vida perfecta de Jesús. Su muerte hace posible el perdón completo de nuestros pecados y la vida eterna. ¡Cuánto agradecemos que Jehová hiciera todo lo necesario para salvarnos! (1 Juan 4:10).",
+      pregunta: "14. ¿Cómo sabemos que Jehová quiere que vivamos para siempre?",
+      respuesta: "Porque pagó el precio más alto que se podía pagar. Nadie entrega la vida de su Hijo por algo que no le importa. Si el objetivo fuera solo mejorarnos un poco la vida aquí, no habría hecho falta tanto. El rescate demuestra que su intención es que vivamos para siempre."
     },
     {
       num: "15",
-      texto: "La inmensa mayoría de los testigos de Jehová tenemos acceso a una traducción de la Biblia que transmite con exactitud todas sus verdades, incluida la importancia de usar y alabar el glorioso nombre de Dios. Hemos llegado a confiar en Jehová y a sentir un profundo amor por su nombre (Proverbios 18:10; Isaías 56:6).",
-      pregunta: "15. ¿Qué sentimos por el nombre de Jehová?",
-      respuesta: "Cariño, y también un orgullo sano. Cuando alguien habla mal del apellido de uno, uno lo siente. Con el nombre de Jehová pasa algo parecido, pero más hondo: hemos llegado a confiar en él y a amarlo, así que nos duele cuando se usa mal y nos alegra cuando se honra."
+      texto: "Las personas que Jehová elige para ser sacerdotes son una prueba de lo mucho que nos quiere. Al igual que Jesús, los ungidos tienen que mantenerse fieles hasta la muerte (Filipenses 2:8; Apocalipsis 2:10). Su lealtad debe quedar demostrada por completo. Así que podemos estar seguros de que, durante el Reinado de Mil Años, serán sacerdotes amorosos y leales y colaborarán en hacer realidad las bendiciones que el rescate hace posibles (Apocalipsis 22:1, 2).",
+      pregunta: "15. ¿Por qué decimos que las personas que Jehová elige para ser sacerdotes son una prueba de lo mucho que nos quiere?",
+      respuesta: "Porque no los eligió de cualquier manera: les pide fidelidad hasta el final. Y esa exigencia no es capricho; es garantía. Cuando alguien ha sido probado así, no va a tratarnos con dureza cuando le toque ayudarnos. Los sacerdotes que vienen serán personas que ya demostraron lealtad."
     },
     {
       num: "16",
-      texto: "La Biblia predice que dentro de poco habrá una guerra entre «los reyes de toda la tierra habitada» y Jehová (Apocalipsis 16:14). Quienes conocen a Jehová y honran su nombre estarán protegidos (Salmo 9:10; Juan 17:3). En cambio, quienes se niegan a aceptarlo como su Padre y su Dios se verán obligados a conocerlo como su adversario. Jehová dice: «Sin falta me engrandeceré, me santificaré y me daré a conocer ante los ojos de muchas naciones; y tendrán que saber que yo soy Jehová» (Ezequiel 38:23).",
-      pregunta: "16. ¿Por qué es urgente que lleguemos a conocer a Jehová?",
-      respuesta: "Porque muy pronto todo el mundo tendrá que reconocerlo, y no todos lo harán como amigo. La Biblia dice que los que lo conocen y honran su nombre estarán protegidos. Y conocerlo no es solo saber que existe: es tener una relación con él, saber qué le gusta y qué no. Eso no se improvisa en el último momento."
+      texto: "Cristo comprende muy bien las dificultades que afrontamos, pues él mismo fue humano (Hebreos 4:15). ¿Te has sentido cansado? A Jesús le pasó (Juan 4:6). ¿Has pasado hambre y sed? Él también (Mateo 4:2; Juan 19:28). ¿Tienes que soportar burlas por tus creencias? Él lo sufrió en carne propia (Isaías 50:6; Juan 15:20). ¿Has perdido a un ser querido? Jesús perdió a su amigo Lázaro y al parecer a su padre adoptivo, José. Podemos estar seguros de que él nos cuidará bien porque nos comprende.",
+      pregunta: "16. ¿Cómo muestra Hebreos 4:15 que Jesús es el mejor Sumo Sacerdote que podríamos tener?",
+      respuesta: "No nos consuela desde la teoría. Él pasó por el cansancio, el hambre, las burlas y el duelo. Cuando oro y le digo que estoy agotado, no se lo estoy explicando: se lo estoy recordando a alguien que ya lo vivió. Eso hace que su compasión no suene a frase hecha."
     },
     {
       num: "17",
-      texto: "Es todo un privilegio aportar nuestro granito de arena al cumplimiento de la profecía de Zacarías 8:23. Tenemos la oportunidad de trabajar unidos no solo con nuestros hermanos, sino también con los ángeles en la predicación mundial. Jehová nos da herramientas para que podamos llegarles a personas de toda nación, tribu, lengua y pueblo. Así que aprovechémoslas bien para ayudar a tantas como sea posible a acercarse a Jehová y aprender que es un Dios imparcial, misericordioso y paciente. Es un inmenso honor participar en esta obra hasta que el nombre de Jehová quede santificado ante los ojos de toda la creación (Lucas 11:2).",
-      pregunta: "17. ¿Qué privilegio tenemos?",
-      respuesta: "El de participar en algo que Dios mismo anunció. Zacarías 8:23 no dice que los diez hombres buscarían un libro, sino a alguien que representara a Dios. Nosotros podemos ser ese alguien. Y tenemos herramientas, ángeles que trabajan con nosotros y hermanos en todo el mundo. Es difícil imaginar un privilegio más grande."
+      texto: "Los 144.000 también serán comprensivos al colaborar con Jesús. Ellos fueron imperfectos y pecadores durante su vida en la Tierra, así que saben lo que sentimos cuando cometemos un error, cuando nos sentimos culpables o cuando tenemos problemas de salud físicos o emocionales. Fueron hombres y mujeres de una gran variedad de lugares, razas, culturas, épocas y circunstancias. Sea cual sea nuestro caso, alguno de ellos podrá identificarse con nosotros.",
+      pregunta: "17. ¿Por qué estamos convencidos de que los ungidos serán sacerdotes comprensivos?",
+      respuesta: "Porque ellos también fallaron. No fueron elegidos por ser perfectos; fueron perdonados como nosotros. Y vienen de tantos lugares y épocas que, haga lo que haga mi vida, seguro que alguno pasó por algo parecido. Nadie va a tener que explicarle su caso a un sacerdote que no lo entienda."
+    },
+    {
+      num: "18",
+      texto: "Todo lo que hemos analizado sobre el sacerdocio nos enseña que Jehová nos quiere mucho, nos entiende y es muy misericordioso y compasivo. No se parece en nada a Satanás, que está todo el tiempo acusándonos (Apocalipsis 12:10). Jehová ha hecho muchas cosas para que podamos acercarnos a él y convencernos de que contamos con su aprobación y su amistad.",
+      pregunta: "18. ¿Qué nos enseña el sacerdocio sobre la personalidad de Jehová, y cómo te hace sentir todo eso?",
+      respuesta: "Que en el universo hay dos voces, y no dicen lo mismo. Una nos acusa todo el día; la otra preparó un sacerdocio entero para poder perdonarnos. Cuando me siento mal conmigo mismo, este artículo me obliga a preguntarme a cuál de las dos le estoy creyendo."
+    },
+    {
+      num: "19",
+      texto: "A veces quizás sintamos que, por culpa de nuestros pecados, no merecemos que Jehová nos quiera. Este artículo nos permite ver que Jehová nos entiende. Él se acuerda de que somos polvo (Salmo 103:14). Además, ve más allá de nuestros errores y se concentra en nuestras virtudes y en cómo podemos llegar a ser en el futuro. Si lo único que nuestro corazón puede ver son nuestros errores, recordemos que Jehová «es más grande que nuestro corazón y lo sabe todo» (1 Juan 3:20).",
+      pregunta: "19. ¿Cómo nos ve Jehová cuando nos sentimos mal por culpa de la imperfección?",
+      respuesta: "Nos ve mejor de lo que nos vemos nosotros. Se acuerda de que somos polvo, y al mismo tiempo mira lo que podemos llegar a ser. Ese texto de que él es más grande que nuestro corazón me ayuda mucho, porque mi corazón a veces es un juez muy injusto. Prefiero el veredicto del que me conoce mejor."
+    },
+    {
+      num: "20",
+      texto: "En resumen, el sacerdocio es un regalo que Jehová nos hizo para que podamos adorarlo a pesar de ser pecadores. Jehová desea de todo corazón que se cierre el abismo entre él y los seres humanos imperfectos, y eso es justo lo que logra el sacerdocio. Podemos demostrar nuestro agradecimiento haciendo lo que dice Hebreos 4:16: «Acerquémonos con confianza al trono de la bondad inmerecida para recibir misericordia y encontrar bondad inmerecida justo en el momento en que necesitamos ayuda».",
+      pregunta: "20. ¿Por qué estamos agradecidos por el sacerdocio, y cómo podemos demostrarlo?",
+      respuesta: "Porque nos devolvió el acceso. Antes había un abismo; ahora hay un camino, y encima con un sumo sacerdote que nos entiende. La manera de agradecerlo no es sentir gratitud y quedarse ahí: es acercarse. Orar más, y orar con confianza, sobre todo en el momento en que más ayuda hace falta."
     }
   ]
 };
